@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Set mod key (Mod1=alt, Mod4=super)
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -32,6 +33,7 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id fcitx -d
 
+# Sound
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -144,8 +146,8 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # brightness settings
-bindsym XF86MonBrightnessUp exec brightnessctl set +3%
-bindsym XF86MonBrightnessDown  exec brightnessctl set 2%-
+bindsym XF86MonBrightnessUp exec "brightnessctl set +3%; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown  exec "brightnessctl set 2%-; notify-send 'brightness down'"
 bindcode 235 exec brightnessctl set 1
 
 # redshift
