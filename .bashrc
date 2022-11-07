@@ -59,7 +59,9 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\e[0;32m\u@\h:\w\$ \e[m'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # Without the same value as "$color_prompt" = yes, alacritty was having drawing trouble
+    #PS1='${debian_chroot:+($debian_chroot)}\e[0;32m\u@\h:\w\$ \e[m'
 fi
 unset color_prompt force_color_prompt
 
@@ -121,3 +123,5 @@ alias emacs="emacsclient -c -a 'emacs'"
 export PATH="$HOME/.local/bin:$PATH"
 # Add an alias to manage my dotfiles using a bare git repo in .dotfiles folder using $HOME as the working directory
 alias dotgit='/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
+# Add make ranger cd after exiting it
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
