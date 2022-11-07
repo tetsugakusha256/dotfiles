@@ -1,0 +1,13 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "javascript",
+    // do :set ft? to check file type in vim
+    "jsonc",
+    "json",
+    "html",
+    "markdown"
+  ],
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5"
+}
