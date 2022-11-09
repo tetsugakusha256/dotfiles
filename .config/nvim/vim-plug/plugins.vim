@@ -19,6 +19,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Mark indentation level
     Plug 'lukas-reineke/indent-blankline.nvim'
 
+    " Start screen dashboard
+    Plug 'glepnir/dashboard-nvim'
     " LSP config
     Plug 'neovim/nvim-lspconfig'    
     

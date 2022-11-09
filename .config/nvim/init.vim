@@ -21,6 +21,7 @@
     source ~/.config/nvim/vim-plug/indent-blankline.lua
     source ~/.config/nvim/vim-plug/indent-blankline.vim
     source ~/.config/nvim/vim-plug/cmp-vsnip.vim
+    source ~/.config/nvim/vim-plug/dashboard.lua
     " source ~/.config/nvim/vim-plug/neoscroll.lua
 
     " source ~/.config/nvim/vim-plug/lspsaga.lua
@@ -125,7 +126,7 @@
     " show line number
     set number
     " Yank and paste with the system clipboard
-    set clipboard=unnamed
+    " set clipboard=unnamed
 
     set mouse=a
     " === TAB/Space settings === "
