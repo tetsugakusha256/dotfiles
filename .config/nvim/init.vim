@@ -2,30 +2,31 @@
     let mapleader = "\<Space>"  
 
     " Load plugins
-    source ~/.config/nvim/vim-plug/plugins.vim
     " source ~/.config/nvim/vim-plug/coc.vim 
     " source ~/.config/nvim/vim-plug/denite.vim 
     " source ~/.config/nvim/vim-plug/surround.vim 
-    source ~/.config/nvim/vim-plug/telescope.lua 
-    source ~/.config/nvim/vim-plug/telescope.vim 
-    source ~/.config/nvim/vim-plug/lualine.lua 
-    source ~/.config/nvim/vim-plug/bufferline.lua 
-    source ~/.config/nvim/vim-plug/nvimtree.vim 
-    source ~/.config/nvim/vim-plug/nvimtree.lua 
-    source ~/.config/nvim/vim-plug/easymotion.vim
-    source ~/.config/nvim/vim-plug/commenter.vim
-    source ~/.config/nvim/vim-plug/lsp-installer.lua
-    source ~/.config/nvim/vim-plug/lspconfig.lua
-    source ~/.config/nvim/vim-plug/nvim-cmp.vim
-    source ~/.config/nvim/vim-plug/nvim-cmp.lua
-    source ~/.config/nvim/vim-plug/indent-blankline.lua
-    source ~/.config/nvim/vim-plug/indent-blankline.vim
-    source ~/.config/nvim/vim-plug/cmp-vsnip.vim
-    source ~/.config/nvim/vim-plug/dashboard.lua
     " source ~/.config/nvim/vim-plug/neoscroll.lua
-
     " source ~/.config/nvim/vim-plug/lspsaga.lua
     " source ~/.config/nvim/vim-plug/lspsaga.vim
+    "
+    "
+    source ~/.config/nvim/vim-plug/plugins.vim
+    source ~/.config/nvim/vim-plug/easymotion.vim
+    source ~/.config/nvim/vim-plug/telescope.lua 
+    source ~/.config/nvim/vim-plug/telescope.vim 
+    "source ~/.config/nvim/vim-plug/commenter.vim
+    source ~/.config/nvim/vim-plug/lualine.lua 
+    source ~/.config/nvim/vim-plug/bufferline.lua 
+    "source ~/.config/nvim/vim-plug/nvimtree.vim 
+    "source ~/.config/nvim/vim-plug/nvimtree.lua 
+    "source ~/.config/nvim/vim-plug/lsp-installer.lua
+    "source ~/.config/nvim/vim-plug/lspconfig.lua
+    "source ~/.config/nvim/vim-plug/nvim-cmp.vim
+    "source ~/.config/nvim/vim-plug/nvim-cmp.lua
+    source ~/.config/nvim/vim-plug/indent-blankline.lua
+    source ~/.config/nvim/vim-plug/indent-blankline.vim
+    "source ~/.config/nvim/vim-plug/cmp-vsnip.vim
+    source ~/.config/nvim/vim-plug/dashboard.lua
 
 
     "}}}
@@ -116,7 +117,7 @@
     inoremap <C-BS> <C-W>
 
     " save on exiting insert mpdate
-    inoremap <Esc> <Esc>:update<CR>
+    " inoremap <Esc> <Esc>:update<CR>
     " autosave if changes every 4sec
     " :au CursorHold <buffer> :update
 
