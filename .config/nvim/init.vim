@@ -13,7 +13,6 @@
     source ~/.config/nvim/vim-plug/plugins.vim
     source ~/.config/nvim/vim-plug/easymotion.vim
     source ~/.config/nvim/vim-plug/telescope.lua 
-    source ~/.config/nvim/vim-plug/telescope.vim 
     "source ~/.config/nvim/vim-plug/commenter.vim
     source ~/.config/nvim/vim-plug/lualine.lua 
     source ~/.config/nvim/vim-plug/bufferline.lua 

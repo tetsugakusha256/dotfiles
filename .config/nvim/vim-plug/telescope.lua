@@ -22,23 +22,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fcs', builtin.colorscheme, {})
 
---[[ TODO run dotgit ls-files --workdir....
--- in order to have a full list my config files based on my git back up 
-function mysplit (inputstr, sep)
-        if sep == nil then
-                sep = "%s"
-        end
-        local t={}
-        for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
-                table.insert(t, str)
-        end
-        return t
-end
-
-local cmdRes = assert (io.popen("dotgit ls-files"))
-local dotfiles = cmdRes:lines()
---]]
-
+-- Get all the files tracked by my dotgit repo and feed it to telescope
 local cmdRes = assert (io.popen('/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r master --name-only'))
 local dotfiles = {}
 for line in cmdRes:lines() do
