@@ -69,7 +69,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     "this will auto close ( [ {
     Plug 'jiangmiao/auto-pairs' 
     " Easymotion
-    Plug 'easymotion/vim-easymotion'
+    " Plug 'easymotion/vim-easymotion'
+    " hop (more modern version of easymotion like motion)
+    Plug 'phaazon/hop.nvim'
 
     " telescope (fuzzy finding)
     Plug 'nvim-lua/plenary.nvim'

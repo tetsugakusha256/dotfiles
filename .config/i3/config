@@ -72,10 +72,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 80px
+bindsym $mod+Shift+j move down 80px
+bindsym $mod+Shift+k move up 80px
+bindsym $mod+Shift+l move right 80px
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
@@ -89,10 +89,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+n split h
+bindsym $mod+z split h
 
 # split in vertical orientation
-bindsym $mod+b split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -100,19 +100,21 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+v layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+v focus mode_toggle
+bindsym $mod+n focus mode_toggle
+bindsym $mod+a focus floating 
+bindsym $mod+t focus tiling 
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+s focus child
+# bindsym $mod+s focus child
 
 # make the toggle between focused and not focused 
 bindsym $mod+g sticky toggle
@@ -130,6 +132,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 assign [class="firefox" instance="Navigator"] → $ws2
+assign [class="brave-browser" instance="Navigator"] → $ws2
 assign [class="google-chrome" instance="Navigator"] → $ws3
 assign [class="emacs" instance="Navigator"] → $ws5
 
@@ -298,9 +301,9 @@ bar {
         }
 }
 # ideally move this to somewhere where it launches too even in gnome
-exec '/home/anon/capsRemap.sh'
+exec '/home/anon/.local/bin/capsRemap.sh'
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
-exec /snap/bin/emacs --daemon
+# exec /snap/bin/emacs --daemon
 exec --no-startup-id i3-msg 'workspace 5:Note; exec emacs /home/anon/Documents/Code/Docs\&tips/UltimateCheatSheat.org'
-exec --no-startup-id i3-msg 'workspace 2:Internet; exec firefox'
+exec --no-startup-id i3-msg 'workspace 2:Internet; exec brave-browser'
 # exec --no-startup-id i3-msg 'workspace 3:Terminal; exec alacritty'
