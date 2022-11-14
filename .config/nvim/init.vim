@@ -94,8 +94,8 @@
     " These commands will move the current buffer backwards or forwards in the bufferline
     "unmap H
     "unmap L
-    nnoremap L :BufferLineMoveNext<CR>
-    nnoremap H :BufferLineMovePrev<CR>
+    "nnoremap L :BufferLineMoveNext<CR>
+    "nnoremap H :BufferLineMovePrev<CR>
  
     " These commands will sort buffers by directory, language, or a custom criteria
     "nnoremap <silent>be :BufferLineSortByExtension<CR>

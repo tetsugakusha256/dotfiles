@@ -98,9 +98,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+q layout stacking
+#bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
-# bindsym $mod+v layout toggle split
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -230,10 +230,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-default_border pixel
-default_floating_border pixel
+default_border pixel 2
+default_floating_border pixel 1
 focus_follows_mouse no
-hide_edge_borders horizontal
+hide_edge_borders both
 
 # Colors
 # get color from XResource config - variable_name XResource fallback
