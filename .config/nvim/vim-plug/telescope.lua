@@ -23,7 +23,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fcs', builtin.colorscheme, {})
 
 -- Get all the files tracked by my dotgit repo and feed it to telescope
-local cmdRes = assert (io.popen('/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r master --name-only'))
+local cmdRes = assert (io.popen('/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'))
 local dotfiles = {}
 for line in cmdRes:lines() do
   table.insert(dotfiles, line)
