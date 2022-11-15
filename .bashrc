@@ -114,14 +114,20 @@ if ! shopt -oq posix; then
 fi
 # vim mode on and change cursor based on vim mode
 set -o vi
+
 # Adding doom tools to the PATH
 export PATH="$HOME/.emacs.d/bin:$PATH"
 # emacs to launch client
-alias emacs="emacsclient -c -a 'emacs'"
+# alias emacs="emacsclient -c -a 'emacs'"
 . "$HOME/.cargo/env"
+
 # Adding user/.local/bin to the PATH intended to be the place for my personal scripts
 export PATH="$HOME/.local/bin:$PATH"
+
 # Add an alias to manage my dotfiles using a bare git repo in .dotfiles folder using $HOME as the working directory
 alias dotgit='/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
-# Add make ranger cd after exiting it
+# Make ranger cd after exiting it
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+# alias for Foliate the ebook reader app
+alias er='com.github.johnfactotum.Foliate &'
+alias foliate='com.github.johnfactotum.Foliate &'
