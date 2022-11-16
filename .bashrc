@@ -131,3 +131,5 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 # alias for Foliate the ebook reader app
 alias er='com.github.johnfactotum.Foliate &'
 alias foliate='com.github.johnfactotum.Foliate &'
+
+eval "$(starship init bash)"
