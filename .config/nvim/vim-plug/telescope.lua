@@ -13,14 +13,15 @@ require('telescope').setup {
 }
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-require('telescope').load_extension('fzf')
+--require('telescope').load_extension('fzf')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>ft', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fcs', builtin.colorscheme, {})
+vim.keymap.set('n', '<leader>fh', builtin.oldfiles, {})
 
 -- Get all the files tracked by my dotgit repo and feed it to telescope
 local cmdRes = assert (io.popen('/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'))
@@ -28,5 +29,8 @@ local dotfiles = {}
 for line in cmdRes:lines() do
   table.insert(dotfiles, line)
 end
+-- TODO check a better way than addind the custom function to builtin
+function builtin.find_dotfiles()
+builtin.find_files({cwd="/home/anon/",hidden=true, search_dirs=dotfiles})end
 
-vim.keymap.set('n', '<leader>fd', function() builtin.find_files({cwd="/home/anon/",hidden=true, search_dirs=dotfiles})end , {})
+vim.keymap.set('n', '<leader>fd', builtin.find_dotfiles , {})

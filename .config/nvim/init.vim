@@ -10,16 +10,18 @@
     " source ~/.config/nvim/vim-plug/lspsaga.vim
     "
     "
-    source ~/.config/nvim/vim-plug/plugins.vim
-    source ~/.config/nvim/vim-plug/telescope.lua 
-    "source ~/.config/nvim/vim-plug/commenter.vim
-    source ~/.config/nvim/vim-plug/lualine.lua 
+    source ~/.config/nvim/plugins.lua
     source ~/.config/nvim/vim-plug/bufferline.lua 
-    source ~/.config/nvim/vim-plug/indent-blankline.lua
-    source ~/.config/nvim/vim-plug/indent-blankline.vim
+    source ~/.config/nvim/vim-plug/lualine.lua 
+    source ~/.config/nvim/vim-plug/telescope.lua 
     source ~/.config/nvim/vim-plug/dashboard.lua
     source ~/.config/nvim/vim-plug/hop.lua
-    " source ~/.config/nvim/vim-plug/easymotion.vim
+    "source ~/.config/nvim/vim-plug/indent-blankline.vim
+    "source ~/.config/nvim/vim-plug/indent-blankline.lua
+
+
+    "source ~/.config/nvim/vim-plug/commenter.vim
+    "source ~/.config/nvim/vim-plug/easymotion.vim
     "source ~/.config/nvim/vim-plug/nvim-cmp.vim
     "source ~/.config/nvim/vim-plug/nvim-cmp.lua
     "source ~/.config/nvim/vim-plug/nvimtree.vim 
@@ -28,18 +30,10 @@
     "source ~/.config/nvim/vim-plug/lspconfig.lua
     "source ~/.config/nvim/vim-plug/cmp-vsnip.vim
 
+    " COLOR SCHEME
+    colorscheme tokyonight
 
     "}}}
-
-" COLOR SCHEME {{{
-    " Vim Script
-    let g:tokyonight_style = "night"
-    " Vim-Script:
-    " colorscheme material
-    colorscheme tokyonight
-    "Vim-Script:
-    let g:material_style = "deep ocean"
-" }}}
 
 " MAPPING {{{
 
@@ -185,3 +179,5 @@
     autocmd BufReadPre *.odt,*.odp silent set ro
     autocmd BufReadPost *.odt,*.odp silent %!odt2txt "%"
 "}}}
+"
+"
