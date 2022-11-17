@@ -46,7 +46,7 @@ truncation_symbol = "…/"
 [directory.substitutions]
 "Documents" = " "
 "Downloads" = " "
-"Music" = " "
+"Music" = " "
 "Pictures" = " "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = "  "
