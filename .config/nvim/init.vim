@@ -2,33 +2,33 @@
     let mapleader = "\<Space>"  
 
     " Load plugins
-    " source ~/.config/nvim/vim-plug/coc.vim 
-    " source ~/.config/nvim/vim-plug/denite.vim 
-    " source ~/.config/nvim/vim-plug/surround.vim 
-    " source ~/.config/nvim/vim-plug/neoscroll.lua
-    " source ~/.config/nvim/vim-plug/lspsaga.lua
-    " source ~/.config/nvim/vim-plug/lspsaga.vim
+    " source ~/.config/nvim/plugin/coc.vim 
+    " source ~/.config/nvim/plugins-config/denite.vim 
+    " source ~/.config/nvim/plugin/surround.vim 
+    " source ~/.config/nvim/plugin/neoscroll.lua
+    " source ~/.config/nvim/plugin/lspsaga.lua
+    " source ~/.config/nvim/plugin/lspsaga.vim
     "
     "
     source ~/.config/nvim/plugins.lua
-    source ~/.config/nvim/vim-plug/bufferline.lua 
-    source ~/.config/nvim/vim-plug/lualine.lua 
-    source ~/.config/nvim/vim-plug/telescope.lua 
-    source ~/.config/nvim/vim-plug/dashboard.lua
-    source ~/.config/nvim/vim-plug/hop.lua
-    "source ~/.config/nvim/vim-plug/indent-blankline.vim
-    "source ~/.config/nvim/vim-plug/indent-blankline.lua
+    source ~/.config/nvim/plugins-config/bufferline.lua 
+    source ~/.config/nvim/plugins-config/lualine.lua 
+    source ~/.config/nvim/plugins-config/telescope.lua 
+    source ~/.config/nvim/plugins-config/dashboard.lua
+    source ~/.config/nvim/plugins-config/hop.lua
+    "source ~/.config/nvim/plugin/indent-blankline.vim
+    "source ~/.config/nvim/plugin/indent-blankline.lua
 
 
-    "source ~/.config/nvim/vim-plug/commenter.vim
-    "source ~/.config/nvim/vim-plug/easymotion.vim
-    "source ~/.config/nvim/vim-plug/nvim-cmp.vim
-    "source ~/.config/nvim/vim-plug/nvim-cmp.lua
-    "source ~/.config/nvim/vim-plug/nvimtree.vim 
-    "source ~/.config/nvim/vim-plug/nvimtree.lua 
-    "source ~/.config/nvim/vim-plug/lsp-installer.lua
-    "source ~/.config/nvim/vim-plug/lspconfig.lua
-    "source ~/.config/nvim/vim-plug/cmp-vsnip.vim
+    "source ~/.config/nvim/plugin/commenter.vim
+    "source ~/.config/nvim/plugin/easymotion.vim
+    "source ~/.config/nvim/plugin/nvim-cmp.vim
+    "source ~/.config/nvim/plugin/nvim-cmp.lua
+    "source ~/.config/nvim/plugin/nvimtree.vim 
+    "source ~/.config/nvim/plugin/nvimtree.lua 
+    "source ~/.config/nvim/plugin/lsp-installer.lua
+    "source ~/.config/nvim/plugin/lspconfig.lua
+    "source ~/.config/nvim/plugin/cmp-vsnip.vim
 
     " COLOR SCHEME
     colorscheme tokyonight

@@ -63,8 +63,8 @@ return require('packer').startup(function(use)
 --    -- list of CoC extensions needed
 --    -- let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']
 --
---    --this will auto close ( [ {
---    use 'jiangmiao/auto-pairs' 
+    --this will auto close ( [ {
+    use 'jiangmiao/auto-pairs' 
 --    -- Easymotion
 --        -- use 'easymotion/vim-easymotion'
     -- hop (more modern version of easymotion like motion)
