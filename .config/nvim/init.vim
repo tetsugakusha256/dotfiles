@@ -123,7 +123,7 @@
     " Yank and paste with the system clipboard
     " set clipboard=unnamed
 
-    set mouse=a
+    set mouse=
     " === TAB/Space settings === "
     " Insert spaces when TAB is pressed instead of tabs.
     set expandtab

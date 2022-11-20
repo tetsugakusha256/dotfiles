@@ -133,3 +133,9 @@ alias er='com.github.johnfactotum.Foliate &'
 alias foliate='com.github.johnfactotum.Foliate &'
 
 eval "$(starship init bash)"
+
+# tab completion with qmk (keyboard firmware utility)
+source ~/qmk_firmware/util/qmk_tab_complete.sh
+
+# autojump script 
+. /usr/share/autojump/autojump.bash
