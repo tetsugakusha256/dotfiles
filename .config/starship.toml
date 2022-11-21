@@ -5,7 +5,6 @@ $username\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
-$git_status\
 [](fg:#FCA17D bg:#86BBD8)\
 $c\
 $elixir\
@@ -25,6 +24,7 @@ $time\
 [ ](fg:#33658A)\
 """
 
+#$git_status\
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
