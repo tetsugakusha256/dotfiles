@@ -1,3 +1,5 @@
+vim.cmd([[
+
     " Map space as leader nnoremap <SPACE> <Nop>
     let mapleader = "\<Space>"  
 
@@ -35,7 +37,10 @@
 
     "}}}
 
-" MAPPING {{{
+" MAPPING
+
+    nnoremap <Leader>vr :source $MYVIMRC<CR>
+
 
     " Move the cursor based on physical lines
     nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -181,3 +186,6 @@
 "}}}
 "
 "
+
+
+]])
