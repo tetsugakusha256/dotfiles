@@ -64,7 +64,7 @@ db.custom_header = {
       {icon = '  ',
       desc = 'Find  File                              ',
       action = 'Telescope find_files find_command=rg,--hidden,--files',
-      shortcut = 'SPC c f'},
+      shortcut = 'SPC f f'},
 --      {icon = '  ',
 --      desc ='File Browser                            ',
 --      action =  'Telescope file_browser',

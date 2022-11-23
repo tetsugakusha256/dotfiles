@@ -9,6 +9,14 @@ return require('packer').startup(function(use)
     use {'catppuccin/nvim', as ='catppuccin'}
     use 'EdenEast/nightfox.nvim'
         -- use 'marko-cerovac/material.nvim'   
+     
+    -- (LSP server, Linters, Formatters, DAP) manager
+    use "williamboman/mason.nvim"
+
+    -- Configurations for Nvim LSP
+    use 'neovim/nvim-lspconfig' 
+    -- To bridge mason.nvim with lspconfig
+    use "williamboman/mason-lspconfig.nvim"
 
     -- Surround
     use 'tpope/vim-surround'
@@ -19,10 +27,7 @@ return require('packer').startup(function(use)
 
 --    -- Mark indentation level
 --    use 'lukas-reineke/indent-blankline.nvim'
---
---    -- LSP config
---    use 'neovim/nvim-lspconfig'    
---    
+    
 --    -- Because autocomplete is not supported with the base lsp feature we need
 --    -- to use a plugin
 --    use 'hrsh7th/nvim-cmp'
@@ -42,7 +47,7 @@ return require('packer').startup(function(use)
 --
 --    -- Manager to install more lsp server easily
 --    use 'williamboman/nvim-lsp-installer'
---
+
 --    -- Better Syntax Support
 --    use 'sheerun/vim-polyglot'
 --    -- File Explorer
@@ -102,3 +107,4 @@ return require('packer').startup(function(use)
 --    --use 'HerringtonDarkholme/yats.vim'
 --    --use 'maxmellon/vim-jsx-pretty'
 end)
+

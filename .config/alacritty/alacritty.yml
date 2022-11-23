@@ -159,7 +159,7 @@ font:
     style: bold italic
 
   # Point size
-  size: 13.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -855,8 +855,8 @@ key_bindings:
   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
   #- { key: Key0,           mods: Command,                    action: ResetFontSize         }
   #- { key: Equals,         mods: Command,                    action: IncreaseFontSize      }
-  - { key: PageUp,           mods: Control,                    action: IncreaseFontSize      }
-  - { key: PageDown,           mods: Control,                    action: DecreaseFontSize      }
+  - { key: PageUp,          mods: Control,                    action: IncreaseFontSize      }
+  - { key: PageDown,        mods: Control,                    action: DecreaseFontSize      }
   #- { key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize      }
   #- { key: Minus,          mods: Command,                    action: DecreaseFontSize      }
   #- { key: NumpadSubtract, mods: Command,                    action: DecreaseFontSize      }
