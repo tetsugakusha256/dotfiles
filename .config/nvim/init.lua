@@ -1,48 +1,36 @@
 vim.g.mapleader = " "
- 
+
+-------------------------------------------------------
+-- PLUGINS
+-------------------------------------------------------
+
+  require"plugins"
+  -- order is important (lspconfig should also be setup after those which it is now in init.lua)
+  require("mason").setup()
+  require("mason-lspconfig").setup()
+  require("mason-lspconfig").setup_handlers {
+      -- The first entry (without a key) will be the default handler
+      -- and will be called for each installed server that doesn't have
+      -- a dedicated handler.
+      function (server_name) -- default handler (optional)
+          require("lspconfig")[server_name].setup {}
+      end,
+      -- Next, you can provide a dedicated handler for specific servers.
+      -- For example, a handler override for the `rust_analyzer`:
+     -- ["rust_analyzer"] = function ()
+     --     require("rust-tools").setup {}
+     -- end
+  }
+  require"_lspconfig"
+  require"_hop"
+  require"_lualine"
+  require"_telescope"
+  require"_bufferline"
+  require"_dashboard"
+
+
+
 vim.cmd([[
-source ~/.config/nvim/plugins.lua
-]])
-
-
-    require"_lspconfig"
-    require"_hop"
-    require"_lualine"
-    require"_telescope"
-    require"_bufferline"
-    require"_dashboard"
-
-vim.cmd([[
-
-    " Map space as leader nnoremap <SPACE> <Nop>
-  " "let mapleader = "\<Space>"  
-
-    " Load plugins
-
-
-
-
-    " source ~/.config/nvim/plugin/coc.vim 
-    " source ~/.config/nvim/lua/denite.vim 
-    " source ~/.config/nvim/plugin/surround.vim 
-    " source ~/.config/nvim/plugin/neoscroll.lua
-    " source ~/.config/nvim/plugin/lspsaga.lua
-    " source ~/.config/nvim/plugin/lspsaga.vim
-    "
-    "
-    "source ~/.config/nvim/plugin/indent-blankline.vim
-    "source ~/.config/nvim/plugin/indent-blankline.lua
-
-
-    "source ~/.config/nvim/plugin/commenter.vim
-    "source ~/.config/nvim/plugin/easymotion.vim
-    "source ~/.config/nvim/plugin/nvim-cmp.vim
-    "source ~/.config/nvim/plugin/nvim-cmp.lua
-    "source ~/.config/nvim/plugin/nvimtree.vim 
-    "source ~/.config/nvim/plugin/nvimtree.lua 
-    "source ~/.config/nvim/plugin/lsp-installer.lua
-    "source ~/.config/nvim/plugin/cmp-vsnip.vim
-
     " COLOR SCHEME
     colorscheme tokyonight
 
@@ -199,20 +187,3 @@ vim.cmd([[
 "
 ]])
 
--- order is important (lspconfig should also be setup after those which it is now in init.lua)
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-lspconfig").setup_handlers {
-    -- The first entry (without a key) will be the default handler
-    -- and will be called for each installed server that doesn't have
-    -- a dedicated handler.
-    function (server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {}
-    end,
-    -- Next, you can provide a dedicated handler for specific servers.
-    -- For example, a handler override for the `rust_analyzer`:
-   -- ["rust_analyzer"] = function ()
-   --     require("rust-tools").setup {}
-   -- end
-}
---require("plugins-config.lspconfig")
