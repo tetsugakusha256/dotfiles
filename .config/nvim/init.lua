@@ -8,12 +8,16 @@ vim.g.mapleader = " "
   -- order is important (lspconfig should also be setup after those which it is now in init.lua)
   require("mason").setup()
   require("mason-lspconfig").setup()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require("mason-lspconfig").setup_handlers {
       -- The first entry (without a key) will be the default handler
       -- and will be called for each installed server that doesn't have
       -- a dedicated handler.
       function (server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup {}
+        require("lspconfig")[server_name].setup {
+          -- Add lsp based completion to cmp_nvim for that server
+          capabilities = capabilities
+        }
       end,
       -- Next, you can provide a dedicated handler for specific servers.
       -- For example, a handler override for the `rust_analyzer`:
@@ -21,6 +25,10 @@ vim.g.mapleader = " "
      --     require("rust-tools").setup {}
      -- end
   }
+--------------------------------------------------
+  -- Before lspconfig
+  require"_nvim-treesitter"
+  require"_nvim-cmp"
   require"_lspconfig"
   require"_hop"
   require"_lualine"
@@ -28,9 +36,8 @@ vim.g.mapleader = " "
   require"_bufferline"
   require"_dashboard"
 
-
-
 vim.cmd([[
+
     " COLOR SCHEME
     colorscheme tokyonight
 
@@ -171,18 +178,6 @@ vim.cmd([[
 
     "    }}}
     
-" Vimscript {{{
-    " This will enable code folding.
-    " Use the marker method of folding.
-    
-    augroup filetype_vim
-        autocmd!
-        autocmd FileType vim setlocal foldmethod=marker
-    augroup END
-    " Read-only odt/odp through odt2txt
-    autocmd BufReadPre *.odt,*.odp silent set ro
-    autocmd BufReadPost *.odt,*.odp silent %!odt2txt "%"
-"}}}
 "
 "
 ]])

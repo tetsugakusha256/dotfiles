@@ -9,69 +9,42 @@ return require('packer').startup(function(use)
     use {'catppuccin/nvim', as ='catppuccin'}
     use 'EdenEast/nightfox.nvim'
         -- use 'marko-cerovac/material.nvim'   
-     
+
     -- (LSP server, Linters, Formatters, DAP) manager
     use "williamboman/mason.nvim"
 
     -- Configurations for Nvim LSP
-    use 'neovim/nvim-lspconfig' 
+    use 'neovim/nvim-lspconfig'
     -- To bridge mason.nvim with lspconfig
     use "williamboman/mason-lspconfig.nvim"
 
+
+
+    -- Auto complete
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    -- Snippets
+    use 'hrsh7th/vim-vsnip'
+    -- Snippets integration into cmp
+    use 'hrsh7th/cmp-vsnip'
+
+    -- use {"ms-jpq/coq_nvim", branch = 'coq'}
     -- Surround
     use 'tpope/vim-surround'
-        -- use 'blackcauldron7/surround.nvim'
-    
-    -- Easy comment 
-        -- use 'preservim/nerdcommenter'
 
---    -- Mark indentation level
---    use 'lukas-reineke/indent-blankline.nvim'
-    
---    -- Because autocomplete is not supported with the base lsp feature we need
---    -- to use a plugin
---    use 'hrsh7th/nvim-cmp'
---    -- those pluggins are various sources for the autocompletion to work with
---    use 'hrsh7th/cmp-nvim-lsp'
---    use 'hrsh7th/cmp-buffer'
---    use 'hrsh7th/cmp-path'
---    use 'hrsh7th/cmp-cmdline'
---    -- snippet sources
---    use 'hrsh7th/cmp-vsnip'
---    use 'hrsh7th/vim-vsnip'
---    -- snippet made by community
---    use 'rafamadriz/friendly-snippets'
---
---    -- Makes go to def, diagnostic etc prettier
---        -- use 'glepnir/lspsaga.nvim'
---
---    -- Manager to install more lsp server easily
---    use 'williamboman/nvim-lsp-installer'
+    use 'nvim-treesitter/nvim-treesitter'
 
---    -- Better Syntax Support
---    use 'sheerun/vim-polyglot'
---    -- File Explorer
---    -- use 'scrooloose/NERDTree'
---
---    -- f,t on multiple lines
---    use 'dahu/vim-fanfingtastic'
---    -- needed to make fanfingtastic work with . (repeat)
---    use 'tpope/vim-repeat'
---
+
     -- smooth page scroll
     use 'psliwka/vim-smoothie'
         -- use 'karb94/neoscroll.nvim'
---
---
---    -- this is for auto complete, prettier and tslinting
---        -- use 'neoclide/coc.nvim', {'branch':'release'}
---    -- list of CoC extensions needed
---    -- let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']
---
+
     --this will auto close ( [ {
-    use 'jiangmiao/auto-pairs' 
---    -- Easymotion
---        -- use 'easymotion/vim-easymotion'
+    use 'jiangmiao/auto-pairs'
+
     -- hop (more modern version of easymotion like motion)
     use 'phaazon/hop.nvim'
 
