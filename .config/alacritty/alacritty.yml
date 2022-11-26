@@ -654,6 +654,7 @@ font:
 #       First column, or beginning of the line when already at the first column.
 #   - Last
 #       Last column, or beginning of the line when already at the last column.
+
 #   - FirstOccupied
 #       First non-empty cell in this terminal row, or first non-empty cell of
 #       the line when already at the first cell of the row.
@@ -802,7 +803,8 @@ key_bindings:
   #- { key: Left,                        mode: Vi|~Search, action: Left                    }
   #- { key: Right,                       mode: Vi|~Search, action: Right                   }
   #- { key: Key0,                        mode: Vi|~Search, action: First                   }
-  #- { key: Key4,   mods: Shift,         mode: Vi|~Search, action: Last                    }
+  # $ key on qwertz
+  - { key: 0x2b,                           mode: Vi|~Search, action: Last                    }
   #- { key: Key6,   mods: Shift,         mode: Vi|~Search, action: FirstOccupied           }
   #- { key: H,      mods: Shift,         mode: Vi|~Search, action: High                    }
   #- { key: M,      mods: Shift,         mode: Vi|~Search, action: Middle                  }
@@ -814,6 +816,7 @@ key_bindings:
   #- { key: W,      mods: Shift,         mode: Vi|~Search, action: WordRight               }
   #- { key: E,      mods: Shift,         mode: Vi|~Search, action: WordRightEnd            }
   #- { key: Key5,   mods: Shift,         mode: Vi|~Search, action: Bracket                 }
+  # é key on qwertz
   - { key: 0x27,   mods: Shift,                             mode: Vi|~Search, action: SearchForward           }
   - { key: 0x27,  mode: Vi|~Search, action: SearchBackward          }
   #- { key: N,                           mode: Vi|~Search, action: SearchNext              }
@@ -846,6 +849,8 @@ key_bindings:
   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
   #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
+  - { key: PageUp,          mods: Control,                    action: IncreaseFontSize      }
+  - { key: PageDown,        mods: Control,                    action: DecreaseFontSize      }
 
   # (Windows only)
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
@@ -855,8 +860,8 @@ key_bindings:
   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
   #- { key: Key0,           mods: Command,                    action: ResetFontSize         }
   #- { key: Equals,         mods: Command,                    action: IncreaseFontSize      }
-  - { key: PageUp,          mods: Control,                    action: IncreaseFontSize      }
-  - { key: PageDown,        mods: Control,                    action: DecreaseFontSize      }
+  #- { key: PageUp,          mods: Control,                    action: IncreaseFontSize      }
+  #- { key: PageDown,        mods: Control,                    action: DecreaseFontSize      }
   #- { key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize      }
   #- { key: Minus,          mods: Command,                    action: DecreaseFontSize      }
   #- { key: NumpadSubtract, mods: Command,                    action: DecreaseFontSize      }
