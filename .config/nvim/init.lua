@@ -1,3 +1,8 @@
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
 vim.g.mapleader = " "
 
 -------------------------------------------------------
@@ -8,8 +13,7 @@ require "plugins"
 -- order is important (lspconfig should also be setup after those which it is now in init.lua)
 require("mason").setup()
 require("mason-lspconfig").setup()
---------------------------------------------------
--- Before lspconfig
+-- Before lspconfig (Check)
 require "_nvim-treesitter"
 require "_nvim-cmp"
 require "_lspconfig"
@@ -18,7 +22,13 @@ require "_lualine"
 require "_telescope"
 require "_bufferline"
 require "_dashboard"
+require "_nvim-tree"
 
+
+-------------------------------------------------------
+-- KEYMAPPINGS
+-------------------------------------------------------
+-- TODO remap jlk to nei when using colemak
 
 vim.api.nvim_set_keymap("n", "<Leader>vr", ":source $MYVIMRC<CR>", { noremap = true })
 -- Move the cursor based on physical lines
@@ -47,15 +57,30 @@ vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
 -- not working everywhere because terminal can't catch ctrl-backspace
 vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 
+-- Save file 
+vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
+
+-----------------------------------
+-- Plugins mappings
+-----------------------------------
+
+-- Open nvim-tree
+vim.api.nvim_set_keymap("", "<a-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+
+
+-------------------------------------------------------
+-- PARAMS
+-------------------------------------------------------
 vim.g.smoothie_no_default_mappings = true
 
 -- Show line number
 vim.opt.number = true
 -- Yank and paste with the system clipboard
--- Vim.opt.clipboard=unnamed
+-- TODO fix clipboard provider
+vim.opt.clipboard = ""
+-- Enables mouse to scroll through page and drag-clic -> visual mode
+vim.opt.mouse = "a"
 
-vim.opt.mouse = ""
--- === TAB/Space settings === "
 -- Insert spaces when TAB is pressed instead of tabs.
 vim.opt.expandtab = true
 
@@ -67,10 +92,6 @@ vim.opt.fileencodings = "utf-8"
 -- Indentation amount for < and > commands.
 vim.opt.shiftwidth = 2
 
--- Don't wrap line
--- Vim.opt.nowrap
-
-
 -- Vim.opt.the commands to save in history default number is 20.
 vim.opt.history = 1000
 
@@ -80,5 +101,10 @@ vim.opt.splitright = true
 
 -- Remove one line at the bottom
 vim.opt.cmdheight = 1
+
+
+-------------------------------------------------------
 -- COLOR SCHEME
+-------------------------------------------------------
+
 vim.cmd([[colorscheme tokyonight]])
