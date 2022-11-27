@@ -54,4 +54,6 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   -- If you want to have icons in your statusline choose one of these
   use 'kyazdani42/nvim-web-devicons'
+  -- Personal wiki for organisation and note taking
+  use 'vimwiki/vimwiki'
 end)

@@ -310,6 +310,6 @@ bar {
 exec '/home/anon/.local/bin/capsRemap.sh'
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
 # exec /snap/bin/emacs --daemon
-exec --no-startup-id i3-msg 'workspace 5:Note; exec emacs /home/anon/Documents/Code/Docs\&tips/UltimateCheatSheat.org'
 exec --no-startup-id i3-msg 'workspace 2:Internet; exec brave-browser'
+exec --no-startup-id i3-msg 'workspace 5:Note; exec alacritty -e nvim /home/anon/vimwiki/index.wiki'
 # exec --no-startup-id i3-msg 'workspace 3:Terminal; exec alacritty'

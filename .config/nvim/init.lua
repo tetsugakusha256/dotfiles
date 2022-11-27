@@ -57,7 +57,7 @@ vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
 -- not working everywhere because terminal can't catch ctrl-backspace
 vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 
--- Save file 
+-- Save file
 vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
 
 -----------------------------------
@@ -66,7 +66,6 @@ vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
 
 -- Open nvim-tree
 vim.api.nvim_set_keymap("", "<a-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-
 
 -------------------------------------------------------
 -- PARAMS
