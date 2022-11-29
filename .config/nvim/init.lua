@@ -67,6 +67,9 @@ vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
 -- Open nvim-tree
 vim.api.nvim_set_keymap("", "<a-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap("n", "<leader>fml", ":CellularAutomaton make_it_rain<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>fmfl", ":CellularAutomaton game_of_life<CR>", {})
+
 -------------------------------------------------------
 -- PARAMS
 -------------------------------------------------------

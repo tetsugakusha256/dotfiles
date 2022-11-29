@@ -56,4 +56,6 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   -- Personal wiki for organisation and note taking
   use 'vimwiki/vimwiki'
+  -- Fun 
+  use 'eandrju/cellular-automaton.nvim'
 end)
