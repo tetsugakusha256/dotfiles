@@ -61,7 +61,7 @@ myTerminal = "alacritty"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
-myLauncher = "dmenu"
+myLauncher = "dmenu_run"
 
 
 
@@ -378,8 +378,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
       | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+      , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)
+      , ((0 .|. modMask, xK_i), windows $ W.greedyView "2")
+      , ((shiftMask .|. modMask, xK_i), windows $ W.shift "2")
+      ]]
   ++
+
 
   -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
   -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
@@ -475,7 +479,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- By default, do nothing.
 myStartupHook = do
   setWMName "LG3D"
-  spawn     "bash ~/.xmonad/startup.sh"
+  spawn     "bash ~/.xmonad/startup.sh; bash ~/.local/bin/capsRemap.sh"
   setDefaultCursor xC_left_ptr
 
 

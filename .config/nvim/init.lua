@@ -28,31 +28,62 @@ require "_nvim-tree"
 -------------------------------------------------------
 -- KEYMAPPINGS
 -------------------------------------------------------
--- TODO remap jlk to nei when using colemak
 
 vim.api.nvim_set_keymap("n", "<Leader>vr", ":source $MYVIMRC<CR>", { noremap = true })
+
+-- TODO remap jlk to nei when using colemak
+
+-- This is for qwertz configuration
+-----    -- Move the cursor based on physical lines
+-----    vim.api.nvim_set_keymap("n", "j", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
+-----    vim.api.nvim_set_keymap("n", "k", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
+-----
+-----    -- Move up and down half a page
+-----    vim.api.nvim_set_keymap("", "<c-j>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
+-----    vim.api.nvim_set_keymap("", "<c-k>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
+-----
+-----    -- Move line up or down
+-----    vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<CR>==", { noremap = true })
+-----    vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<CR>==", { noremap = true })
+-----    vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { noremap = true })
+-----    vim.api.nvim_set_keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { noremap = true })
+-----    vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true })
+-----    vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
+-----
+-----    -- Bufferline switch buffer
+-----    vim.api.nvim_set_keymap("", "<c-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+-----    vim.api.nvim_set_keymap("", "<c-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+
+
+-- This is for colemak configuration
 -- Move the cursor based on physical lines
-vim.api.nvim_set_keymap("n", "j", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap("n", "k", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("n", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("n", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("n", "i", "l", { noremap = true })
+vim.api.nvim_set_keymap("n", "j", "e", { noremap = true })
+vim.api.nvim_set_keymap("n", "k", "n", { noremap = true })
+vim.api.nvim_set_keymap("n", "l", "i", { noremap = true })
+vim.api.nvim_set_keymap("n", "L", "I", { noremap = true })
+vim.api.nvim_set_keymap("n", "K", "N", { noremap = true })
+vim.api.nvim_set_keymap("", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("", "i", "l", { noremap = true })
+vim.api.nvim_set_keymap("", "j", "e", { noremap = true })
+vim.api.nvim_set_keymap("", "k", "n", { noremap = true })
+vim.api.nvim_set_keymap("", "l", "i", { noremap = true })
+vim.api.nvim_set_keymap("", "L", "I", { noremap = true })
+vim.api.nvim_set_keymap("", "K", "N", { noremap = true })
 
 -- Move up and down half a page
-vim.api.nvim_set_keymap("", "<c-j>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "<c-k>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap("", "é", "/", { noremap = true })
+vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
 
 -- Bufferline switch buffer
-vim.api.nvim_set_keymap("", "<c-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("", "<c-i>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<c-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<c-c>", ":bd<CR>", { noremap = true, silent = true })
+--------------------------------------------------
 
--- Move line up or down
-vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<CR>==", { noremap = true })
-vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<CR>==", { noremap = true })
-vim.api.nvim_set_keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { noremap = true })
-vim.api.nvim_set_keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { noremap = true })
-vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true })
-vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("", "é", "/", { noremap = true })
 
 -- not working everywhere because terminal can't catch ctrl-backspace
 vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
