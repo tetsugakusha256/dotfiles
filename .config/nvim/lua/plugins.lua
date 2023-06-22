@@ -47,7 +47,9 @@ return require('packer').startup(function(use)
 
   -- Telescope (fuzzy finding)
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {   'nvim-telescope/telescope.nvim' ,
+  --        commit = '2f32775'
+  }
   -- Bufferline plugin to add buffer tab bar on top
   use 'akinsho/bufferline.nvim'
   -- Lualine is a new statusline for nvim

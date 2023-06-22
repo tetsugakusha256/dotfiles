@@ -19,6 +19,6 @@ vim.keymap.set('', 's', function()
   hop.hint_char1({})
 end, {remap=true})
 -- remap é as a move anywhere key but only in operator pending mode
-vim.keymap.set('o', 'é', function()
+vim.keymap.set('o', '/', function()
   hop.hint_char1({})
 end, {remap=true})

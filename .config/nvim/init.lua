@@ -65,14 +65,14 @@ vim.api.nvim_set_keymap("n", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("n", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("n", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("n", "K", "N", { noremap = true })
-vim.api.nvim_set_keymap("", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap("", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap("", "i", "l", { noremap = true })
-vim.api.nvim_set_keymap("", "j", "e", { noremap = true })
-vim.api.nvim_set_keymap("", "k", "n", { noremap = true })
-vim.api.nvim_set_keymap("", "l", "i", { noremap = true })
-vim.api.nvim_set_keymap("", "L", "I", { noremap = true })
-vim.api.nvim_set_keymap("", "K", "N", { noremap = true })
+vim.api.nvim_set_keymap("v", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("v", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("v", "i", "l", { noremap = true })
+vim.api.nvim_set_keymap("v", "j", "e", { noremap = true })
+vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
+vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
+vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
+vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
 
 -- Move up and down half a page
 vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
@@ -82,8 +82,6 @@ vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true
 vim.api.nvim_set_keymap("", "<c-i>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<c-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 --------------------------------------------------
-
-vim.api.nvim_set_keymap("", "é", "/", { noremap = true })
 
 -- not working everywhere because terminal can't catch ctrl-backspace
 vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
