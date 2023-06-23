@@ -1,5 +1,5 @@
 -- place this in one of your configuration file(s)
-require('hop').setup{ keys = 'tnseriaoplfuwyx.c,vmgjdhbk' }
+require('hop').setup{ keys = 'aoplfuwyx.c,vmgjdhbkrisent' }
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
 -- vim.keymap.set('', 'f', function()

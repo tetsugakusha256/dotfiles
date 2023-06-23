@@ -49,19 +49,19 @@ require("mason-lspconfig").setup_handlers {
   -- ["rust_analyzer"] = function ()
   --     require("rust-tools").setup {}
   -- end
---  ["sumneko_lua"] = function()
---    require('lspconfig')['sumneko_lua'].setup {
---      capabilities = capabilities,
---      on_attach = on_attach,
---      -- ... other configs
---      settings = {
---        Lua = {
---          diagnostics = {
---            -- Add vim to the global variables to avoid "vim not declared type of warning"
---            globals = { 'vim' }
---          }
---        }
---      }
---    }
---  end
+  ["lua_ls"] = function()
+    require('lspconfig')['lua_ls'].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      -- ... other configs
+      settings = {
+        Lua = {
+          diagnostics = {
+            -- Add vim to the global variables to avoid "vim not declared type of warning"
+            globals = { 'vim' }
+          }
+        }
+      }
+    }
+  end
 }

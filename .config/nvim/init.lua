@@ -74,6 +74,14 @@ vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
 
+-- Window motion Colemak
+vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-w>e", "<c-w>k", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-w>i", "<c-w>l", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-w><c-n>", "<c-w><c-j>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-w><c-e>", "<c-w><c-k>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
+
 -- Move up and down half a page
 vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
@@ -106,6 +114,7 @@ vim.g.smoothie_no_default_mappings = true
 
 -- Show line number
 vim.opt.number = true
+-- vim.opt.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
 -- Yank and paste with the system clipboard
 -- TODO fix clipboard provider
 vim.opt.clipboard = ""
@@ -133,6 +142,8 @@ vim.opt.splitright = true
 -- Remove one line at the bottom
 vim.opt.cmdheight = 1
 
+-- Persistent undo history
+vim.opt.undofile = true
 
 -------------------------------------------------------
 -- COLOR SCHEME
