@@ -113,7 +113,7 @@ if ! shopt -oq posix; then
   fi
 fi
 # vim mode on and change cursor based on vim mode
-set -o vi
+# set -o vi
 
 # Adding doom tools to the PATH
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -143,3 +143,6 @@ source ~/qmk_firmware/util/qmk_tab_complete.sh
 #export GTK_IM_MODULE=ibus
 #export XMODIFIERS=@im=ibus
 #export QT_IM_MODULE=ibus
+
+# remove c-s c-q to freeze and unfreeze terminal (XON/XOFF)
+stty -ixon

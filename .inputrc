@@ -1,0 +1,31 @@
+# INFO AT : https://tiswww.cwru.edu/php/chet/readline/readline.html
+#           https://man.archlinux.org/man/readline.3
+# This file controls the behaviour of line input editing for
+# programs that use the GNU Readline library.  Existing
+# programs include FTP, Bash, and GDB.
+#
+# You can re-read the inputrc file with C-x C-r.
+# Lines beginning with '#' are comments.
+#
+# First, include any system-wide bindings and variable
+# assignments from /etc/Inputrc
+$include /etc/Inputrc
+#
+# Set various bindings for vi mode.
+set editing-mode vi 
+
+# Update the cursor in the terminal based on the vi mode
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[5 q\2
+set vi-cmd-mode-string \1\e[2 q\2
+
+$if mode=vi
+  #Only change key in 'normal' mode
+  set keymap vi-command
+  "n":  next-history
+  "e":  previous-history
+  "j":  vi-end-word
+  "l":  vi-insertion-mode
+  "i":  forward-char
+  "k":  vi-search-again
+$endif
