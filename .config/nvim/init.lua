@@ -1,4 +1,4 @@
--- disable netrw at the very start of your init.lua (strongly advised)
+-- disable netrw at the very start of your init.lua (strongly advised) for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
@@ -10,20 +10,6 @@ vim.g.mapleader = " "
 -------------------------------------------------------
 
 require "plugins"
--- order is important (lspconfig should also be setup after those which it is now in init.lua)
-require("mason").setup()
-require("mason-lspconfig").setup()
--- Before lspconfig (Check)
-require "_nvim-treesitter"
-require "_nvim-cmp"
-require "_lspconfig"
-require "_hop"
-require "_lualine"
-require "_telescope"
-require "_bufferline"
-require "_dashboard"
-require "_nvim-tree"
-
 
 -------------------------------------------------------
 -- KEYMAPPINGS
@@ -73,6 +59,7 @@ vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-l>", "<c-i>", { noremap = true })
 
 -- Window motion Colemak
 vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
@@ -86,9 +73,9 @@ vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
 vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
 
--- Bufferline switch buffer
-vim.api.nvim_set_keymap("", "<c-i>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "<c-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+-- This does not work because the keys are not send to nvim I need to do some modification in alacritty
+-- vim.api.nvim_set_keymap("", "<c-s-i>", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("", "<c-s-h>", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
 --------------------------------------------------
 
 -- not working everywhere because terminal can't catch ctrl-backspace
@@ -97,12 +84,12 @@ vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 -- Save file
 vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
 
+-- Maximize window
+vim.api.nvim_set_keymap("", "<c-w>m", "z100<CR>", { noremap = true })
+
 -----------------------------------
 -- Plugins mappings
 -----------------------------------
-
--- Open nvim-tree
-vim.api.nvim_set_keymap("", "<a-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>fml", ":CellularAutomaton make_it_rain<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>fmfl", ":CellularAutomaton game_of_life<CR>", {})

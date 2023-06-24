@@ -1,4 +1,4 @@
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
   -- Plugin manager for nvim, Packer can manage itself :O
   use 'wbthomason/packer.nvim'
 
@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
   -- Configurations for Nvim LSP
   use 'neovim/nvim-lspconfig'
 
-  -- Static highligting 
+  -- Static highligting
   use 'nvim-treesitter/nvim-treesitter'
 
   -- File explorer for nvim
@@ -28,12 +28,14 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
-  -- Snippets TODO check snippets 
+  -- Snippets TODO check snippets
   use 'hrsh7th/vim-vsnip'
   -- Snippets integration into cmp
   use 'hrsh7th/cmp-vsnip'
 
-  -- Surround easy surrounding 
+  -- Comment
+  use 'numToStr/Comment.nvim'
+  -- Surround easy surrounding
   use 'tpope/vim-surround'
 
   -- Smooth page scroll
@@ -47,8 +49,8 @@ return require('packer').startup(function(use)
 
   -- Telescope (fuzzy finding)
   use 'nvim-lua/plenary.nvim'
-  use {   'nvim-telescope/telescope.nvim' ,
-  --        commit = '2f32775'
+  use { 'nvim-telescope/telescope.nvim',
+    --        commit = '2f32775'
   }
   -- Bufferline plugin to add buffer tab bar on top
   use 'akinsho/bufferline.nvim'
@@ -58,28 +60,45 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   -- dersonal wiki for organisation and note taking
   use 'vimwiki/vimwiki'
-  -- Fun 
+  -- Fun
   use 'eandrju/cellular-automaton.nvim'
 
   use {
-  'rmagatti/auto-session',
-  config = function()
-    require("auto-session").setup {
-       log_level = "error",
-       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-       auto_session_use_git_branch = false,
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+        auto_session_use_git_branch = false,
 
-       auto_session_enable_last_session = false,
+        auto_session_enable_last_session = false,
 
-       -- ⚠️ This will only work if Telescope.nvim is installed
-       -- The following are already the default values, no need to provide them if these are already the settings you want.
-       session_lens = {
-         -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
-         load_on_setup = true,
-         theme_conf = { border = true },
-         previewer = false,
-       },
-    }
-  end
-}
+        -- ⚠️ This will only work if Telescope.nvim is installed
+        -- The following are already the default values, no need to provide them if these are already the settings you want.
+        session_lens = {
+          -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
+          load_on_setup = true,
+          theme_conf = { border = true },
+          previewer = false,
+        },
+      }
+    end
+  }
 end)
+
+-- Setting up all the plugins
+-- order is important (lspconfig should also be setup after those which it is now in init.lua)
+require("mason").setup()
+require("mason-lspconfig").setup()
+-- Before lspconfig (Check)
+require "_nvim-treesitter"
+require "_nvim-cmp"
+require "_lspconfig"
+require "_hop"
+require "_comment"
+require "_lualine"
+require "_telescope"
+require "_dashboard"
+require "_nvim-tree"
+-- Buffer tab might be against vim philosophy so I'll try without it for a while
+-- require "_bufferline"
