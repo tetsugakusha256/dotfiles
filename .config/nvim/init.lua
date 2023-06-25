@@ -68,7 +68,7 @@ vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- Maximize window
-vim.api.nvim_set_keymap("", "<c-w>m", "z100<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-w>m", "<c-w>_ <c-w>|", { noremap = true })
 
 -----------------------------------
 -- Plugins mappings
