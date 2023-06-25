@@ -39,6 +39,8 @@ vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-l>", "<c-i>", { noremap = true })
+-- go to previous buffer (#buffer)
+vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 
 -- Window motion Colemak
 vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
