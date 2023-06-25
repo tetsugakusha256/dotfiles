@@ -30,7 +30,7 @@ require('telescope').setup {
 
 -- Get all the files tracked by my dotgit repo and feed it to telescope
 local cmdRes = assert(io.popen(
-'/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'))
+  '/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'))
 local dotfiles = {}
 for line in cmdRes:lines() do
   table.insert(dotfiles, line)
@@ -40,6 +40,10 @@ local builtin = require('telescope.builtin')
 -- TODO check a better way than addind the custom function to builtin
 function builtin.find_dotfiles()
   builtin.find_files({ cwd = "/home/anon/", hidden = true, search_dirs = dotfiles })
+end
+
+function builtin.find_allfiles()
+  builtin.find_files({ hidden = true })
 end
 
 function builtin.find_sessions()
@@ -60,6 +64,7 @@ vim.keymap.set('n', '<leader>sw', builtin.find_wiki, {})
 vim.keymap.set('n', '<leader>sd', builtin.find_dotfiles, {})
 vim.keymap.set('n', '<leader>sf', builtin.find_sessions, {})
 vim.keymap.set('n', '<leader>ss', builtin.find_files, {})
+vim.keymap.set('n', '<leader>sh', builtin.find_allfiles, {})
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>sb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>st', builtin.help_tags, {})
