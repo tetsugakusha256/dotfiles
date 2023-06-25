@@ -5,6 +5,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 
+-- Open help page on the right side
+vim.cmd([[autocmd FileType help wincmd L]])
+vim.o.splitright = true
 -------------------------------------------------------
 -- PLUGINS
 -------------------------------------------------------
