@@ -52,6 +52,14 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope.nvim',
     --        commit = '2f32775'
   }
+  -- Git lazygit
+  use({
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  })
   -- Bufferline plugin to add buffer tab bar on top
   use 'akinsho/bufferline.nvim'
   -- Lualine is a new statusline for nvim
