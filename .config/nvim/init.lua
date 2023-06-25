@@ -77,6 +77,9 @@ vim.api.nvim_set_keymap("n", "<c-w>m", "<c-w>_ <c-w>|", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fml", ":CellularAutomaton make_it_rain<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>fmfl", ":CellularAutomaton game_of_life<CR>", {})
 
+-- Launch lazygit
+vim.api.nvim_set_keymap("n", "<leader>lg", ":LazyGit<CR>", {})
+
 -------------------------------------------------------
 -- PARAMS
 -------------------------------------------------------
