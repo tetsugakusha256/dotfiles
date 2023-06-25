@@ -126,6 +126,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Add an alias to manage my dotfiles using a bare git repo in .dotfiles folder using $HOME as the working directory
 alias dotgit='/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
+alias dotlgit='lazygit --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
 # Make ranger cd after exiting it
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 # alias for Foliate the ebook reader app
