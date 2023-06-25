@@ -62,7 +62,7 @@ require('packer').startup(function(use)
   use 'vimwiki/vimwiki'
   -- Fun
   use 'eandrju/cellular-automaton.nvim'
-
+  -- Session manager
   use {
     'rmagatti/auto-session',
     config = function()
@@ -88,12 +88,10 @@ end)
 
 -- Setting up all the plugins
 -- order is important (lspconfig should also be setup after those which it is now in init.lua)
-require("mason").setup()
-require("mason-lspconfig").setup()
 -- Before lspconfig (Check)
+require "_lspconfig"
 require "_nvim-treesitter"
 require "_nvim-cmp"
-require "_lspconfig"
 require "_hop"
 require "_comment"
 require "_lualine"
