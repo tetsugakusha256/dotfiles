@@ -42,7 +42,7 @@ gui:
   showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
   showCommandLog: true
   showIcons: false # deprecated: use nerdFontsVersion instead
-  nerdFontsVersion: "" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
+  nerdFontsVersion: "3" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
   commandLogSize: 8
   splitDiff: 'auto' # one of 'auto' | 'always'
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
@@ -84,8 +84,8 @@ git:
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
 os:
   editPreset: '' # see 'Configuring File Editing' section
-  edit: ''
-  editAtLine: ''
+  edit: 'nvim {{filename}}'
+  editAtLine: 'nvim +{{line}} {{filename}}'
   editAtLineAndWait: ''
   open: ''
   openLink: ''
@@ -129,11 +129,11 @@ keybinding:
     optionMenu-alt1: '?' # show help menu
     select: '<space>'
     goInto: '<enter>'
-    openRecentRepos: '<c-r>'
+    openRecentRepos: '<c-z>'
     confirm: '<enter>'
     remove: 'd'
     new: 'k'
-    edit: 'j'
+    edit: 'l'
     openFile: 'o'
     scrollUpMain: '<pgup>' # main panel scroll up
     scrollDownMain: '<pgdown>' # main panel scroll down
@@ -151,8 +151,8 @@ keybinding:
     prevTab: '['
     nextScreenMode: '+'
     prevScreenMode: '_'
-    undo: 'z'
-    redo: '<c-z>'
+    undo: 'u'
+    redo: '<c-r>'
     filteringMenu: '<c-s>'
     diffingMenu: 'W'
     diffingMenu-alt: '<c-e>' # deprecated
@@ -163,14 +163,14 @@ keybinding:
     increaseContextInDiffView: '}'
     decreaseContextInDiffView: '{'
   status:
-    checkForUpdate: 'u'
+    checkForUpdate: 'z'
     recentRepos: '<enter>'
   files:
     commitChanges: 'c'
     commitChangesWithoutHook: 'w' # commit changes without pre-commit hook
     amendLastCommit: 'A'
     commitChangesWithEditor: 'C'
-    ignoreFile: 'l'
+    ignoreFile: 'j'
     refreshFiles: 'r'
     stashAllChanges: 's'
     viewStashOptions: 'S'
@@ -188,11 +188,11 @@ keybinding:
     rebaseBranch: 'r'
     renameBranch: 'R'
     mergeIntoCurrentBranch: 'M'
-    viewGitFlowOptions: 'l'
+    viewGitFlowOptions: 'j'
     fastForward: 'f' # fast-forward this branch from its upstream
     createTag: 'T'
     pushTag: 'P'
-    setUpstream: 'u' # set as upstream of checked-out branch
+    setUpstream: 'z' # set as upstream of checked-out branch
     fetchRemote: 'f'
   commits:
     squashDown: 's'
@@ -228,5 +228,5 @@ keybinding:
     pickBothHunks: 'b'
   submodules:
     init: 'i'
-    update: 'u'
+    update: 'z'
     bulkMenu: 'b'
