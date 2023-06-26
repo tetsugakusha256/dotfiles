@@ -169,6 +169,9 @@ bindsym $mod+3 exec redshift -O 2000
 # Screen saver
 bindsym $mod+4 exec xset dpms force off
 
+# Launch nvim
+bindsym $mod+o exec alacritty -e "nvim"
+
 # move focused container to workspace
 bindsym $mod+Shift+l move container to workspace number $ws1
 bindsym $mod+Shift+u move container to workspace number $ws2
