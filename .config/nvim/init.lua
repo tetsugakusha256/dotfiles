@@ -38,9 +38,12 @@ vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-l>", "<c-i>", { noremap = true })
+
 -- go to previous buffer (#buffer)
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
+-- Makes control i behave as its own key (require the key combination to be sent by terminal)
+vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
+vim.api.nvim_set_keymap("i", "<c-i>", "<c-i>", { noremap = true })
 
 -- System clipboard shortcut
 vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
