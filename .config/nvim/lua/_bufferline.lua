@@ -3,14 +3,13 @@ vim.opt.termguicolors = true
 require('bufferline').setup {
   options = {
     numbers = "none",
-    close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+    close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
     right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
-    left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-    middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+    left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+    middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
-
     indicator = {
       icon = '▎', -- this should be omitted if indicator style is not 'icon'
       style = 'icon',
