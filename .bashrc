@@ -147,3 +147,6 @@ source ~/qmk_firmware/util/qmk_tab_complete.sh
 
 # remove c-s c-q to freeze and unfreeze terminal (XON/XOFF)
 stty -ixon
+
+# makes neovim default editor
+export VISUAL=nvim
