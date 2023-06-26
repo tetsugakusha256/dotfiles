@@ -68,6 +68,15 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   -- dersonal wiki for organisation and note taking
   use 'vimwiki/vimwiki'
+  -- Todo
+  use({
+    "folke/todo-comments.nvim",
+    -- optional for floating window border decoration
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  })
+
   -- Fun
   use 'eandrju/cellular-automaton.nvim'
   -- Session manager
@@ -106,5 +115,6 @@ require "_lualine"
 require "_telescope"
 require "_dashboard"
 require "_nvim-tree"
+require "_todo-comments"
 -- Buffer tab might be against vim philosophy so I'll try without it for a while
 -- require "_bufferline"

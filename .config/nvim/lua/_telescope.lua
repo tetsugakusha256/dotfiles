@@ -66,7 +66,7 @@ vim.keymap.set('n', '<leader>ss', builtin.find_files, {})
 vim.keymap.set('n', '<leader>sh', builtin.find_allfiles, {})
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>sb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>st', builtin.help_tags, {})
+-- vim.keymap.set('n', '<leader>st', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>scs', builtin.colorscheme, {})
 vim.keymap.set('n', '<leader>sh', builtin.oldfiles, {})
 -- Same with f as a start
@@ -78,6 +78,9 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>ft', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fcs', builtin.colorscheme, {})
 vim.keymap.set('n', '<leader>fh', builtin.oldfiles, {})
+-- Shows todo fix etc
+vim.api.nvim_set_keymap('n', '<leader>st', ':TodoTelescope keywords=TODO,FIX<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>sn', ':TodoTelescope keywords=PERF,HACK,WARN,NOTE<CR>', { noremap = true })
 -- Set mapping for searching a session.
 vim.keymap.set('n', '<leader>fs', builtin.find_sessions, {
   noremap = true,
