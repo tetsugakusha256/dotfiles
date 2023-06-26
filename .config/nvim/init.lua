@@ -42,6 +42,16 @@ vim.api.nvim_set_keymap("n", "<c-l>", "<c-i>", { noremap = true })
 -- go to previous buffer (#buffer)
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 
+-- System clipboard shortcut
+vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>p", '"+p', { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>P", '"+P', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>p", '"+p', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>P", '"+P', { noremap = true })
+-- Fix this
+vim.api.nvim_set_keymap("i", "<c-p>", '<c-r>+', { noremap = true })
+
 -- Window motion Colemak
 vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>e", "<c-w>k", { noremap = true })
@@ -88,9 +98,11 @@ vim.g.smoothie_no_default_mappings = true
 -- Show line number
 vim.opt.number = true
 -- vim.opt.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
+
 -- Yank and paste with the system clipboard
 -- TODO fix clipboard provider
-vim.opt.clipboard = ""
+vim.opt.clipboard = "unnamedplus"
+
 -- Enables mouse to scroll through page and drag-clic -> visual mode
 vim.opt.mouse = "a"
 
