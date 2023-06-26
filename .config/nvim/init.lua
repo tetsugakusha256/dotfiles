@@ -109,10 +109,6 @@ vim.g.smoothie_no_default_mappings = true
 vim.opt.number = true
 -- vim.opt.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
 
--- Yank and paste with the system clipboard
--- TODO fix clipboard provider
-vim.opt.clipboard = "unnamedplus"
-
 -- Enables mouse to scroll through page and drag-clic -> visual mode
 vim.opt.mouse = "a"
 
