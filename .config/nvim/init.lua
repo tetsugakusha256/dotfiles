@@ -1,13 +1,17 @@
--- disable netrw at the very start of your init.lua (strongly advised) for nvim-tree
+-------------------------------------------------------
+-- EARLY
+-------------------------------------------------------
+
+-- Disable netrw at the very start of your init.lua (strongly advised) for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
--- set termguicolors to enable highlight groups
+-- Set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
-
 -- Open help page on the right side
 vim.cmd([[autocmd FileType help wincmd L]])
 vim.o.splitright = true
+
 -------------------------------------------------------
 -- PLUGINS
 -------------------------------------------------------
@@ -42,7 +46,7 @@ vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
 vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
 vim.api.nvim_set_keymap("", "<c-space>", ":", { noremap = true })
 
--- go to previous buffer (#buffer)
+-- Go to previous buffer (#buffer)
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 -- Makes control i behave as its own key (require the key combination to be sent by terminal)
 vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
@@ -79,7 +83,7 @@ vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true
 -- vim.api.nvim_set_keymap("", "<c-s-h>", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
 --------------------------------------------------
 
--- not working everywhere because terminal can't catch ctrl-backspace
+-- Not working everywhere because terminal can't catch ctrl-backspace
 vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 
 -- Save file
@@ -136,8 +140,6 @@ vim.opt.cmdheight = 1
 -- Persistent undo history
 vim.opt.undofile = true
 
--------------------------------------------------------
--- COLOR SCHEME
--------------------------------------------------------
+-- Setting colorscheme
 
 vim.cmd([[colorscheme tokyonight]])
