@@ -38,6 +38,9 @@ vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
+-- Easier access to command
+vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
+vim.api.nvim_set_keymap("", "<c-space>", ":", { noremap = true })
 
 -- go to previous buffer (#buffer)
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
