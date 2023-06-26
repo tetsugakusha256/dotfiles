@@ -45,6 +45,10 @@ vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<c-i>", "<c-i>", { noremap = true })
 
+-- Add spellcheck toggel
+vim.api.nvim_set_keymap("n", "<Leader>cs", ":setlocal spell spelllang=en<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>ns", ":setlocal nospell nospelllang<CR>", { noremap = true })
+
 -- System clipboard shortcut
 vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>p", '"+p', { noremap = true })
