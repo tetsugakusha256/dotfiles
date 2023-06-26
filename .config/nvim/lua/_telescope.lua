@@ -1,12 +1,11 @@
--- You dont need to set any of these options. These are the default ones. Only
--- the loading is important
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        -- colemak qwerty conversion
-        -- ["<C-j>"] = require('telescope.actions').move_selection_next,
-        -- ["<C-k>"] = require('telescope.actions').move_selection_previous,
+        ["<C-o>"] = require('telescope.actions').file_split,
+        ["<C-l>"] = require('telescope.actions').file_vsplit,
+        ["<C-space>"] = require('telescope.actions').toggle_selection,
+        ["<C-d>"] = require('telescope.actions').delete_buffer,
         ["<C-n>"] = require('telescope.actions').move_selection_next,
         ["<C-e>"] = require('telescope.actions').move_selection_previous,
       },
