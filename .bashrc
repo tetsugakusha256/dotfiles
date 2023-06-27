@@ -74,7 +74,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# "enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -132,6 +132,8 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 # alias for Foliate the ebook reader app
 alias er='com.github.johnfactotum.Foliate &'
 alias foliate='com.github.johnfactotum.Foliate &'
+# aliar for android sutdio
+alias andstud='/home/anon/.androidstudio/android-studio-2022.2.1.20-linux/android-studio/bin/studio.sh'
 
 eval "$(starship init bash)"
 
@@ -150,3 +152,7 @@ stty -ixon
 
 # makes neovim default editor
 export VISUAL=nvim
+# env var for android dev
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
