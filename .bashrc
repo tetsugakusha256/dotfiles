@@ -135,8 +135,6 @@ alias foliate='com.github.johnfactotum.Foliate &'
 # aliar for android sutdio
 alias andstud='/home/anon/.androidstudio/android-studio-2022.2.1.20-linux/android-studio/bin/studio.sh'
 
-eval "$(starship init bash)"
-
 # tab completion with qmk (keyboard firmware utility)
 source ~/qmk_firmware/util/qmk_tab_complete.sh
 
@@ -156,3 +154,5 @@ export VISUAL=nvim
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+eval "$(starship init bash)"
