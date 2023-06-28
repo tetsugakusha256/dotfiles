@@ -102,7 +102,7 @@ vim.api.nvim_set_keymap("n", "<leader>fml", ":CellularAutomaton make_it_rain<CR>
 vim.api.nvim_set_keymap("n", "<leader>fmfl", ":CellularAutomaton game_of_life<CR>", {})
 
 -- Launch lazygit
-vim.api.nvim_set_keymap("n", "<leader>lg", ":LazyGit<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
 
 -------------------------------------------------------
 -- PARAMS
