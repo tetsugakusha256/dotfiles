@@ -52,6 +52,11 @@ vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<c-i>", "<c-i>", { noremap = true })
 
+-- Go to begining = _ so I make - go to end (same key)
+vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
+vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
+vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
+
 -- Add spellcheck toggel
 vim.api.nvim_set_keymap("n", "<Leader>cs", ":setlocal spell spelllang=en<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>ns", ":setlocal nospell nospelllang<CR>", { noremap = true })
@@ -66,11 +71,13 @@ vim.api.nvim_set_keymap("n", "<Leader>P", '"+P', { noremap = true })
 -- Fix this
 vim.api.nvim_set_keymap("i", "<c-p>", '<c-r>+', { noremap = true })
 
-vim.api.nvim_set_keymap("n", "<c-q>", ':wqa<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-q>", ':qa<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-a-q>", ':wqa<CR>', { noremap = true })
 -- Tab motion Colemak
 vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-c>", ':tabc<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-c>", ':tabc<CR>', { noremap = true })
+
 -- Create new tab with the current buffer inside
 vim.api.nvim_set_keymap("n", "<a-o>", ':tab sb %<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
@@ -167,8 +174,8 @@ vim.opt.cmdheight = 1
 -- Persistent undo history
 vim.opt.undofile = true
 
--- Permanently show tab
-vim.opt.stal = 2
+-- Only show tab if 2 or more
+vim.opt.stal = 1
 -- Setting colorscheme
 
 vim.cmd([[colorscheme tokyonight]])
