@@ -66,7 +66,21 @@ vim.api.nvim_set_keymap("n", "<Leader>P", '"+P', { noremap = true })
 -- Fix this
 vim.api.nvim_set_keymap("i", "<c-p>", '<c-r>+', { noremap = true })
 
+vim.api.nvim_set_keymap("n", "<c-q>", ':wqa<CR>', { noremap = true })
+-- Tab motion Colemak
+vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c>", ':tabc<CR>', { noremap = true })
+-- Create new tab with the current buffer inside
+vim.api.nvim_set_keymap("n", "<a-o>", ':tab sb %<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-a-i>", ':tabm +<CR>', { noremap = true })
+
 -- Window motion Colemak
+vim.api.nvim_set_keymap("n", "<a-e>", "<c-w><c-w>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>r", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-b>", ":bd<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>e", "<c-w>k", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>i", "<c-w>l", { noremap = true })
@@ -74,6 +88,19 @@ vim.api.nvim_set_keymap("n", "<c-w><c-n>", "<c-w><c-j>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-e>", "<c-w><c-k>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
 
+-- Harpoon motion
+local harpoon = require("harpoon")
+vim.keymap.set('n', '<a-m>', require("harpoon.mark").add_file, {})
+vim.keymap.set('n', '<leader>h', require("harpoon.ui").toggle_quick_menu, {})
+vim.api.nvim_set_keymap("n", "<a-l>", ":lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-u>", ":lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-y>", ":lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-;>", ":lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true })
+require("harpoon").setup({
+  menu = {
+    width = vim.api.nvim_win_get_width(0) - 4,
+  }
+})
 -- Move up and down half a page
 vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
@@ -140,6 +167,8 @@ vim.opt.cmdheight = 1
 -- Persistent undo history
 vim.opt.undofile = true
 
+-- Permanently show tab
+vim.opt.stal = 2
 -- Setting colorscheme
 
 vim.cmd([[colorscheme tokyonight]])

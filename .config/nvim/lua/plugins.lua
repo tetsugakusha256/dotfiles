@@ -76,7 +76,8 @@ require('packer').startup(function(use)
       "nvim-lua/plenary.nvim",
     },
   })
-
+  -- Harpoon
+  use 'ThePrimeagen/harpoon'
   -- Fun
   use 'eandrju/cellular-automaton.nvim'
   -- Session manager

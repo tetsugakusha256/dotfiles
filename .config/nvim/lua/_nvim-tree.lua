@@ -100,4 +100,4 @@ require("nvim-tree").setup {
     width = 30,
   }
 }
-vim.api.nvim_set_keymap("n", "<a-e>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-f>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })

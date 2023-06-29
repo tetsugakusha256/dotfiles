@@ -2,8 +2,11 @@ require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ["<C-o>"] = require('telescope.actions').file_split,
-        ["<C-l>"] = require('telescope.actions').file_vsplit,
+        ["<C-h>"] = require('telescope.actions').file_split,
+        ["<C-v>"] = require('telescope.actions').file_vsplit,
+        ["<C-t>"] = require('telescope.actions').file_tab,
+        ["<C-a-n>"] = require('telescope.actions').preview_scrolling_down,
+        ["<C-a-e>"] = require('telescope.actions').preview_scrolling_up,
         ["<C-space>"] = require('telescope.actions').toggle_selection,
         ["<C-d>"] = require('telescope.actions').delete_buffer,
         ["<C-n>"] = require('telescope.actions').move_selection_next,
@@ -26,6 +29,8 @@ require('telescope').setup {
     }
   }
 }
+-- Harpoon suport
+require("telescope").load_extension('harpoon')
 
 -- Get all the files tracked by my dotgit repo and feed it to telescope
 local cmdRes = assert(io.popen(

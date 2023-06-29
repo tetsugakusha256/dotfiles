@@ -764,6 +764,9 @@ key_bindings:
   # this makes alacritty recognize control+i before it was sent as tab
   # 105 is the code for 'i' and 5u is a bit representation of the modifier control, shift...
   - { key: I, mods: Control, chars: "\x1b[105;5u" }
+  - { key: H, mods: Alt, chars: "\x1Bh" }
+  - { key: N, mods: Alt, chars: "\x1Bn" }
+  - { key: I, mods: Alt, chars: "\x1Bi" }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
