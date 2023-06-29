@@ -34,7 +34,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>fr', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
--- WARN IF THE SERVER SEEM TO BE INSTALLED BUT DOESNT START CHECK NODE VERSION
+-- WARN: IF THE SERVER SEEM TO BE INSTALLED BUT DOESNT START CHECK NODE VERSION
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require("mason-lspconfig").setup_handlers {
   -- The first entry (without a key) will be the default handler
