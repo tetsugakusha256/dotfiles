@@ -75,8 +75,8 @@ vim.keymap.set('n', '<leader>sb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>scs', builtin.colorscheme, {})
 vim.keymap.set('n', '<leader>sh', builtin.oldfiles, {})
 -- Shows todo fix etc
-vim.api.nvim_set_keymap('n', '<leader>tt', ':TodoTelescope keywords=TODO,FIX<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>tn', ':TodoTelescope keywords=PERF,HACK,WARN,NOTE<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>st', ':TodoTelescope keywords=TODO,FIX<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>sn', ':TodoTelescope keywords=PERF,HACK,WARN,NOTE<CR>', { noremap = true })
 -- Set mapping for searching a session.
 vim.keymap.set('n', '<leader>fs', builtin.find_sessions, {
   noremap = true,
