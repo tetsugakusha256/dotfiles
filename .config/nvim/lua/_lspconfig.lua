@@ -24,20 +24,19 @@ local on_attach = function(client, bufnr)
         return true
       end,
       bufnr = bufnr,
-      async = true
     })
   end
   -- If client can format create autocmd to format on save
   if client.supports_method("textDocument/formatting") then
-    -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    -- vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    -- vim.api.nvim_create_autocmd("BufWritePre", {
-    --   group = vim.api.nvim_create_augroup("LspFormatting", {}),
-    --   buffer = bufnr,
-    --   callback = function()
-    --     lsp_formatting()
-    --   end,
-    -- })
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("LspFormatting", {}),
+      buffer = bufnr,
+      callback = function()
+        lsp_formatting()
+      end,
+    })
   end
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")

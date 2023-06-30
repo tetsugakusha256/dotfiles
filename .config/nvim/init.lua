@@ -211,5 +211,5 @@ vim.opt.undofile = true
 -- Only show tab if 2 or more
 vim.opt.stal = 1
 -- Setting colorscheme
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.cmd([[colorscheme tokyonight]])
