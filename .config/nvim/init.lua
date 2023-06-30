@@ -143,8 +143,6 @@ vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 
 -- Save file
 vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
--- AutoFormat on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 -- Maximize window
 vim.api.nvim_set_keymap("n", "<c-w>m", "<c-w>_ <c-w>|", { noremap = true })
