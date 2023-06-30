@@ -1,4 +1,6 @@
 require("lazy").setup({
+    -- Git show sign
+    'mhinz/vim-signify',
     -- Start screen dashboard
     'glepnir/dashboard-nvim',
     -- Different colorschemes
@@ -35,15 +37,34 @@ require("lazy").setup({
     -- Surround easy surrounding
     'tpope/vim-surround',
 
+    -- Fromatting plugin none lsp source to lsp client (formatter)
+    'jose-elias-alvarez/null-ls.nvim',
+    {
+      "jay-babu/mason-null-ls.nvim",
+      event = { "BufReadPre", "BufNewFile" },
+      dependencies = {
+        "williamboman/mason.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+      },
+
+      -- config = function()
+      --   require("your.null-ls.config") -- require your null-ls config here (example below)
+      -- end,
+    },
+
     -- Smooth page scroll
     'psliwka/vim-smoothie',
 
     -- This will auto close ( [ {
-    'jiangmiao/auto-pairs',
-
+    {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      opts = {
+        enable_check_bracket_line = true
+      } -- this is equalent to setup({}) function
+    },
     -- Hop (more modern version of easymotion like motion)
     'phaazon/hop.nvim',
-
     -- Telescope (fuzzy finding)
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope.nvim',
@@ -80,7 +101,7 @@ require("lazy").setup({
     -- Session manager
     {
       'rmagatti/auto-session',
-    }
+    },
   },
   {
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
@@ -233,6 +254,7 @@ require("lazy").setup({
 
 -- Might be unnecessary with lazy
 require "_lspconfig"
+require "_null-ls"
 require "_nvim-treesitter"
 require "_nvim-cmp"
 require "_hop"
