@@ -1,112 +1,237 @@
-require('packer').startup(function(use)
-  -- Plugin manager for nvim, Packer can manage itself :O
-  use 'wbthomason/packer.nvim'
+require("lazy").setup({
+    -- Start screen dashboard
+    'glepnir/dashboard-nvim',
+    -- Different colorschemes
+    'folke/tokyonight.nvim',
+    { 'catppuccin/nvim',                 name = 'catppuccin' },
+    'EdenEast/nightfox.nvim',
 
-  -- Start screen dashboard
-  use 'glepnir/dashboard-nvim'
-  -- Different colorschemes
-  use 'folke/tokyonight.nvim'
-  use { 'catppuccin/nvim', as = 'catppuccin' }
-  use 'EdenEast/nightfox.nvim'
+    -- (LSP server, Linters, Formatters, DAP) manager
+    "williamboman/mason.nvim",
+    -- To bridge mason.nvim with lspconfig
+    "williamboman/mason-lspconfig.nvim",
+    -- Configurations for Nvim LSP
+    'neovim/nvim-lspconfig',
 
-  -- (LSP server, Linters, Formatters, DAP) manager
-  use "williamboman/mason.nvim"
-  -- To bridge mason.nvim with lspconfig
-  use "williamboman/mason-lspconfig.nvim"
-  -- Configurations for Nvim LSP
-  use 'neovim/nvim-lspconfig'
+    -- Static highligting
+    { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
 
-  -- Static highligting
-  use 'nvim-treesitter/nvim-treesitter'
+    -- File explorer for nvim
+    "nvim-tree/nvim-tree.lua",
 
-  -- File explorer for nvim
-  use "nvim-tree/nvim-tree.lua"
+    -- Auto completion
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    -- Snippets TODO check snippets
+    'hrsh7th/vim-vsnip',
+    -- Snippets integration into cmp
+    'hrsh7th/cmp-vsnip',
 
-  -- Auto completion
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  -- Snippets TODO check snippets
-  use 'hrsh7th/vim-vsnip'
-  -- Snippets integration into cmp
-  use 'hrsh7th/cmp-vsnip'
+    -- Comment
+    'numToStr/Comment.nvim',
+    -- Surround easy surrounding
+    'tpope/vim-surround',
 
-  -- Comment
-  use 'numToStr/Comment.nvim'
-  -- Surround easy surrounding
-  use 'tpope/vim-surround'
+    -- Smooth page scroll
+    'psliwka/vim-smoothie',
 
-  -- Smooth page scroll
-  use 'psliwka/vim-smoothie'
+    -- This will auto close ( [ {
+    'jiangmiao/auto-pairs',
 
-  -- This will auto close ( [ {
-  use 'jiangmiao/auto-pairs'
+    -- Hop (more modern version of easymotion like motion)
+    'phaazon/hop.nvim',
 
-  -- Hop (more modern version of easymotion like motion)
-  use 'phaazon/hop.nvim'
-
-  -- Telescope (fuzzy finding)
-  use 'nvim-lua/plenary.nvim'
-  use { 'nvim-telescope/telescope.nvim',
-    --        commit = '2f32775'
-  }
-  -- Git lazygit
-  use({
-    "kdheepak/lazygit.nvim",
-    -- optional for floating window border decoration
-    requires = {
-      "nvim-lua/plenary.nvim",
+    -- Telescope (fuzzy finding)
+    'nvim-lua/plenary.nvim',
+    { 'nvim-telescope/telescope.nvim',
+      --        commit = '2f32775'
     },
-  })
-  -- Bufferline plugin to add buffer tab bar on top
-  use 'akinsho/bufferline.nvim'
-  -- Lualine is a new statusline for nvim
-  use 'nvim-lualine/lualine.nvim'
-  -- If you want to have icons in your statusline choose one of these
-  use 'kyazdani42/nvim-web-devicons'
-  -- dersonal wiki for organisation and note taking
-  use 'vimwiki/vimwiki'
-  -- Todo
-  use({
-    "folke/todo-comments.nvim",
-    -- optional for floating window border decoration
-    requires = {
-      "nvim-lua/plenary.nvim",
+    -- Git lazygit
+    ({
+      "kdheepak/lazygit.nvim",
+      -- optional for floating window border decoration
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+    }),
+    -- Bufferline plugin to add buffer tab bar on top
+    'akinsho/bufferline.nvim',
+    -- Lualine is a new statusline for nvim
+    'nvim-lualine/lualine.nvim',
+    -- If you want to have icons in your statusline choose one of these
+    'kyazdani42/nvim-web-devicons',
+    -- dersonal wiki for organisation and note taking
+    'vimwiki/vimwiki',
+    -- Todo
+    ({
+      "folke/todo-comments.nvim",
+      -- optional for floating window border decoration
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+    }),
+    -- Harpoon
+    'ThePrimeagen/harpoon',
+    -- Fun
+    'eandrju/cellular-automaton.nvim',
+    -- Session manager
+    {
+      'rmagatti/auto-session',
+    }
+  },
+  {
+    root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
+    defaults = {
+      lazy = false,                           -- should plugins be lazy-loaded?
+      version = nil,
+      -- default `cond` you can use to globally disable a lot of plugins
+      -- when running inside vscode for example
+      cond = nil, ---@type boolean|fun(self:LazyPlugin):boolean|nil
+      -- version = "*", -- enable this to try installing the latest stable versions of plugins
     },
-  })
-  -- Harpoon
-  use 'ThePrimeagen/harpoon'
-  -- Fun
-  use 'eandrju/cellular-automaton.nvim'
-  -- Session manager
-  use {
-    'rmagatti/auto-session',
-    config = function()
-      require("auto-session").setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-        auto_session_use_git_branch = false,
-
-        auto_session_enable_last_session = false,
-
-        -- ⚠️ This will only work if Telescope.nvim is installed
-        -- The following are already the default values, no need to provide them if these are already the settings you want.
-        session_lens = {
-          -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
-          load_on_setup = true,
-          theme_conf = { border = true },
-          previewer = false,
+    -- leave nil when passing the spec as the first argument to setup()
+    spec = nil, ---@type LazySpec
+    lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
+    concurrency = nil, ---@type number limit the maximum amount of concurrent tasks
+    git = {
+      -- defaults for the `Lazy log` command
+      -- log = { "-10" }, -- show the last 10 commits
+      log = { "-8" }, -- show commits from the last 3 days
+      timeout = 120,  -- kill processes that take more than 2 minutes
+      url_format = "https://github.com/%s.git",
+      -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
+      -- then set the below to false. This should work, but is NOT supported and will
+      -- increase downloads a lot.
+      filter = true,
+    },
+    dev = {
+      -- directory where you store your local plugin projects
+      path = "~/projects",
+      ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+      patterns = {},    -- For example {"folke"}
+      fallback = false, -- Fallback to git when local plugin doesn't exist
+    },
+    install = {
+      -- install missing plugins on startup. This doesn't increase startup time.
+      missing = true,
+      -- try to load one of these colorschemes when starting an installation during startup
+      colorscheme = { "habamax" },
+    },
+    ui = {
+      -- a number <1 is a percentage., >1 is a fixed size
+      size = { width = 0.8, height = 0.8 },
+      wrap = true, -- wrap the lines in the ui
+      -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
+      border = "none",
+      title = nil, ---@type string only works when border is not "none"
+      title_pos = "center", ---@type "center" | "left" | "right"
+      icons = {
+        cmd = " ",
+        config = "",
+        event = "",
+        ft = " ",
+        init = " ",
+        import = " ",
+        keys = " ",
+        lazy = "󰒲 ",
+        loaded = "●",
+        not_loaded = "○",
+        plugin = " ",
+        runtime = " ",
+        source = " ",
+        start = "",
+        task = "✔ ",
+        list = {
+          "●",
+          "➜",
+          "★",
+          "‒",
         },
-      }
-    end
-  }
-end)
+      },
+      -- leave nil, to automatically select a browser depending on your OS.
+      -- If you want to use a specific browser, you can define it here
+      browser = nil, ---@type string?
+      throttle = 20, -- how frequently should the ui process render events
+      custom_keys = {
+        -- you can define custom key maps here.
+        -- To disable one of the defaults, set it to false
 
--- Setting up all the plugins
--- order is important (lspconfig should also be setup after those which it is now in init.lua)
--- Before lspconfig (Check)
+        -- open lazygit log
+        ["<localleader>l"] = function(plugin)
+          require("lazy.util").float_term({ "lazygit", "log" }, {
+            cwd = plugin.dir,
+          })
+        end,
+
+        -- open a terminal for the plugin dir
+        ["<localleader>t"] = function(plugin)
+          require("lazy.util").float_term(nil, {
+            cwd = plugin.dir,
+          })
+        end,
+      },
+    },
+    diff = {
+      -- diff command <d> can be one of:
+      -- * browser: opens the github compare view. Note that this is always mapped to <K> as well,
+      --   so you can have a different command for diff <d>
+      -- * git: will run git diff and open a buffer with filetype git
+      -- * terminal_git: will open a pseudo terminal with git diff
+      -- * diffview.nvim: will open Diffview to show the diff
+      cmd = "git",
+    },
+    checker = {
+      -- automatically check for plugin updates
+      enabled = false,
+      concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+      notify = true,    -- get a notification when new updates are found
+      frequency = 3600, -- check for updates every hour
+    },
+    change_detection = {
+      -- automatically check for config file changes and reload the ui
+      enabled = true,
+      notify = true, -- get a notification when changes are found
+    },
+    performance = {
+      cache = {
+        enabled = true,
+      },
+      reset_packpath = true, -- reset the package path to improve startup time
+      rtp = {
+        reset = true,        -- reset the runtime path to $VIMRUNTIME and your config directory
+        ---@type string[]
+        paths = {},          -- add any custom paths here that you want to includes in the rtp
+        ---@type string[] list any plugins you want to disable here
+        disabled_plugins = {
+          -- "gzip",
+          -- "matchit",
+          -- "matchparen",
+          -- "netrwPlugin",
+          -- "tarPlugin",
+          -- "tohtml",
+          -- "tutor",
+          -- "zipPlugin",
+        },
+      },
+    },
+    -- lazy can generate helptags from the headings in markdown readme files,
+    -- so :help works even for plugins that don't have vim docs.
+    -- when the readme opens with :help it will be correctly displayed as markdown
+    readme = {
+      enabled = true,
+      root = vim.fn.stdpath("state") .. "/lazy/readme",
+      files = { "README.md", "lua/**/README.md" },
+      -- only generate markdown helptags for plugins that dont have docs
+      skip_if_doc_exists = true,
+    },
+    state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
+  }
+)
+
+-- Might be unnecessary with lazy
 require "_lspconfig"
 require "_nvim-treesitter"
 require "_nvim-cmp"
@@ -117,5 +242,4 @@ require "_telescope"
 require "_dashboard"
 require "_nvim-tree"
 require "_todo-comments"
--- Buffer tab might be against vim philosophy so I'll try without it for a while
--- require "_bufferline"
+require "_autosession"
