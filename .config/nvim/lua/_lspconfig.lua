@@ -29,12 +29,13 @@ local on_attach = function(client, bufnr)
   end
   -- If client can format create autocmd to format on save
   if client.supports_method("textDocument/formatting") then
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("LspFormatting", {}),
       buffer = bufnr,
       callback = function()
-        lsp_formatting(bufnr)
+        lsp_formatting()
       end,
     })
   end
@@ -43,20 +44,27 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+  -- Go to declaration
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+  -- Go to definition
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-  vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
+  -- List implementation implementation
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+  -- Show info
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
+  -- Seach for Incoming/Outgoint calls
+  vim.keymap.set("n", "<space>si", vim.lsp.buf.incoming_calls, bufopts)
+  vim.keymap.set("n", "<space>so", vim.lsp.buf.outgoing_calls, bufopts)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "<space>ws", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set("n", "<space>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, bufopts)
-  vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+  vim.keymap.set("n", "<space>st", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "<space>fr", lsp_formatting, bufopts)
 end
 

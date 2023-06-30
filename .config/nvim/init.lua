@@ -103,8 +103,13 @@ vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-i>", ':tabm +<CR>', { noremap = true })
 
 -- Window motion Colemak
-vim.api.nvim_set_keymap("n", "<a-n>", "<c-w><c-w>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>r", { noremap = true })
+-- TODO: add resize
+vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>w", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-n>", "<c-w>r", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-N>", "<c-w>p-<c-w>p>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>p", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-e>", "<c-w>R", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-E>", "<c-w>p+<c-w>p<", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c>", ":bd<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-a>", ":sp<CR>", { noremap = true })
