@@ -2,6 +2,7 @@
 -- EARLY
 -------------------------------------------------------
 
+
 -- Disable netrw at the very start of your init.lua (strongly advised) for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -97,6 +98,9 @@ vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
 -- vim.api.nvim_set_keymap("n", "<a-c>", ':tabc<CR>', { noremap = true })
 
+-- vim.api.nvim_set_keymap("n", "<a-[>", ":lprev<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-]>", ":lnext<CR>", { noremap = true })
+
 -- Create new tab with the current buffer inside
 vim.api.nvim_set_keymap("n", "<a-o>", ':tab sb %<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
@@ -120,6 +124,12 @@ vim.api.nvim_set_keymap("n", "<c-w>i", "<c-w>l", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-n>", "<c-w><c-j>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-e>", "<c-w><c-k>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
+
+-- Command mode mappings
+vim.api.nvim_set_keymap("c", "<c-h>", "<c-f>", { noremap = true })
+
+-- Copilot
+-- vim.api.nvim_set_keymap("c", "", "", { noremap = true })
 
 -- Harpoon motion
 local harpoon = require("harpoon")
@@ -201,5 +211,5 @@ vim.opt.undofile = true
 -- Only show tab if 2 or more
 vim.opt.stal = 1
 -- Setting colorscheme
-
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 vim.cmd([[colorscheme tokyonight]])

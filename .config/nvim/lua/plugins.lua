@@ -5,9 +5,129 @@ require("lazy").setup({
     'glepnir/dashboard-nvim',
     -- Different colorschemes
     'folke/tokyonight.nvim',
-    { 'catppuccin/nvim',                 name = 'catppuccin' },
+    {
+      'catppuccin/nvim',
+      name = 'catppuccin'
+    },
     'EdenEast/nightfox.nvim',
 
+    -- Copilot
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      config = function()
+        require('copilot').setup({
+          panel = {
+            enabled = false,
+            auto_refresh = false,
+            keymap = {
+              jump_prev = "[[",
+              jump_next = "]]",
+              accept = "<CR>",
+              refresh = "gr",
+              open = "<M-CR>"
+            },
+            layout = {
+              position = "bottom", -- | top | left | right
+              ratio = 0.4
+            },
+          },
+          suggestion = {
+            enabled = false,
+            auto_trigger = false,
+            debounce = 75,
+            keymap = {
+              accept = "<M-l>",
+              accept_word = false,
+              accept_line = false,
+              next = "<M-]>",
+              prev = "<M-[>",
+              dismiss = "<C-]>",
+            },
+          },
+          filetypes = {
+            yaml = false,
+            markdown = false,
+            help = false,
+            gitcommit = false,
+            gitrebase = false,
+            hgcommit = false,
+            svn = false,
+            cvs = false,
+            ["."] = false,
+          },
+          copilot_node_command = 'node', -- Node.js version must be > 16.x
+          server_opts_overrides = {},
+        })
+      end,
+    },
+    {
+      "zbirenbaum/copilot-cmp",
+      config = function()
+        require("copilot_cmp").setup(
+          {
+            event = { "InsertEnter", "LspAttach" },
+            fix_pairs = true,
+          }
+        )
+      end
+    },
+    {
+      'onsails/lspkind.nvim',
+      config = function()
+        require('lspkind').init({
+          -- DEPRECATED (use mode instead): enables text annotations
+          --
+          -- default: true
+          -- with_text = true,
+
+          -- defines how annotations are shown
+          -- default: symbol
+          -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+          mode = 'symbol_text',
+
+          -- default symbol map
+          -- can be either 'default' (requires nerd-fonts font) or
+          -- 'codicons' for codicon preset (requires vscode-codicons font)
+          --
+          -- default: 'default'
+          preset = 'codicons',
+
+          -- override preset symbols
+          --
+          -- default: {}
+          symbol_map = {
+            Text = "󰉿",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰜢",
+            Variable = "󰀫",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "󰑭",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "󰈇",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "󰙅",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = "",
+            Copilot = "",
+          }
+        })
+      end
+    },
     -- (LSP server, Linters, Formatters, DAP) manager
     "williamboman/mason.nvim",
     -- To bridge mason.nvim with lspconfig
