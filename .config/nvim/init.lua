@@ -15,7 +15,6 @@ vim.o.splitright = true
 -------------------------------------------------------
 -- PLUGINS
 -------------------------------------------------------
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -56,7 +55,6 @@ vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
 -- Easier access to command
 vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
-vim.api.nvim_set_keymap("", "<c-space>", ":", { noremap = true })
 
 -- Go to previous buffer (#buffer)
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
@@ -68,6 +66,15 @@ vim.api.nvim_set_keymap("i", "<c-i>", "<c-i>", { noremap = true })
 vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
 vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
 vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
+
+-- Signify
+vim.api.nvim_set_keymap("n", "<Leader>gr", ":SignifyRefresh<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>gg", ":SignifyToggle<CR>", { noremap = true })
+-- Open a tab with diff of the file
+vim.api.nvim_set_keymap("n", "<Leader>gd", ":SignifyDiff<CR>", { noremap = true })
+-- Show diff of the line in a popup
+vim.api.nvim_set_keymap("n", "<Leader>gh", ":SignifyHunkDiff<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>gu", ":SignifyHunkUndo<CR>", { noremap = true })
 
 -- Add spellcheck toggel
 vim.api.nvim_set_keymap("n", "<Leader>cs", ":setlocal spell spelllang=en<CR>", { noremap = true })
@@ -96,10 +103,12 @@ vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-i>", ':tabm +<CR>', { noremap = true })
 
 -- Window motion Colemak
-vim.api.nvim_set_keymap("n", "<a-e>", "<c-w><c-w>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>r", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-b>", ":bd<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-n>", "<c-w><c-w>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>r", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c>", ":bd<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-a>", ":sp<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-v>", ":vs<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>e", "<c-w>k", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>i", "<c-w>l", { noremap = true })
