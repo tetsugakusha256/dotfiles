@@ -52,6 +52,8 @@ require("lazy").setup({
     -- Surround easy surrounding
     'tpope/vim-surround',
 
+    -- Undo tree explorer
+    'mbbill/undotree',
     -- Fromatting plugin none lsp source to lsp client (formatter)
     'jose-elias-alvarez/null-ls.nvim',
     {
@@ -93,6 +95,8 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
       },
     }),
+    'tpope/vim-fugitive',
+    'rbong/vim-flog',
     -- Bufferline plugin to add buffer tab bar on top
     'akinsho/bufferline.nvim',
     -- Lualine is a new statusline for nvim

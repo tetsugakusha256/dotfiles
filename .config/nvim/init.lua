@@ -1,5 +1,7 @@
 -------------------------------------------------------
+-------------------------------------------------------
 -- EARLY
+-------------------------------------------------------
 -------------------------------------------------------
 
 
@@ -14,7 +16,9 @@ vim.cmd([[autocmd FileType help wincmd L]])
 vim.o.splitright = true
 
 -------------------------------------------------------
+-------------------------------------------------------
 -- PLUGINS
+-------------------------------------------------------
 -------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -31,11 +35,16 @@ vim.opt.rtp:prepend(lazypath)
 require("plugins")
 
 -------------------------------------------------------
+-------------------------------------------------------
 -- KEYMAPPINGS
+-------------------------------------------------------
 -------------------------------------------------------
 
 vim.api.nvim_set_keymap("n", "<Leader>vr", ":source $MYVIMRC<CR>", { noremap = true })
 
+-------------------------------------------------------
+-- Motion
+-------------------------------------------------------
 -- This is for colemak configuration
 -- Move the cursor based on physical lines
 vim.api.nvim_set_keymap("n", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
@@ -54,6 +63,12 @@ vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
+
+-- Go to begining = _ so I make - go to end (same key)
+vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
+vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
+vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
+
 -- Easier access to command
 vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
 
@@ -63,11 +78,14 @@ vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<c-i>", "<c-i>", { noremap = true })
 
--- Go to begining = _ so I make - go to end (same key)
-vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
-vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
-vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
 
+
+-- Untotree
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-- Git
+-- Show git tree view
+vim.api.nvim_set_keymap("n", "<Leader>gt", ":Flog<CR>", { noremap = true })
 -- Signify
 vim.api.nvim_set_keymap("n", "<Leader>gr", ":SignifyRefresh<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>gg", ":SignifyToggle<CR>", { noremap = true })
@@ -86,8 +104,8 @@ vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>p", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>P", '"+P', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>p", '"+p', { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>P", '"+P', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>pp", '"+p', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>po", 'o<esc>"+p', { noremap = true })
 -- Fix this
 vim.api.nvim_set_keymap("i", "<c-p>", '<c-r>+', { noremap = true })
 
@@ -98,14 +116,43 @@ vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
 -- vim.api.nvim_set_keymap("n", "<a-c>", ':tabc<CR>', { noremap = true })
 
+-- Quick fix mapping
+-- close quickfix menu after selecting choice
+vim.api.nvim_create_autocmd(
+  "FileType", {
+    pattern = { "qf" },
+    command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]]
+  })
+vim.api.nvim_create_autocmd(
+  "FileType", {
+    pattern = { "qf" },
+    command = [[nnoremap <buffer> <Tab> <CR>]]
+  })
 -- vim.api.nvim_set_keymap("n", "<a-[>", ":lprev<CR>", { noremap = true })
 -- vim.api.nvim_set_keymap("n", "<a-]>", ":lnext<CR>", { noremap = true })
 
+
+
+-------------------------------------------------------
+-- Tab/Window/Buffer
+-------------------------------------------------------
+
+--- Tab ---
 -- Create new tab with the current buffer inside
-vim.api.nvim_set_keymap("n", "<a-o>", ':tab sb %<CR>', { noremap = true })
+-- if multiple window in the current tab move the window to the new tab
+function move_window_tab()
+  -- Call the vim function to get the number of window
+  local win_count = vim.api.nvim_call_function('winnr', { '$' })
+  if win_count > 1 then
+    vim.cmd(':wincmd T')
+  else
+    vim.cmd(':sbp|wincmd p|wincmd T')
+  end
+end
+
+vim.keymap.set('n', '<a-o>', move_window_tab, {})
 vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-i>", ':tabm +<CR>', { noremap = true })
-
 -- Window motion Colemak
 -- TODO: add resize
 vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>w", { noremap = true })
@@ -128,6 +175,9 @@ vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
 -- Command mode mappings
 vim.api.nvim_set_keymap("c", "<c-h>", "<c-f>", { noremap = true })
 
+
+-- <leader>t action on word under cursor ('take' and search next)
+vim.api.nvim_set_keymap("n", "<leader>tn", "*", { noremap = true })
 -- Copilot
 -- vim.api.nvim_set_keymap("c", "", "", { noremap = true })
 
@@ -139,6 +189,11 @@ vim.api.nvim_set_keymap("n", "<a-l>", ":lua require('harpoon.ui').nav_file(1)<CR
 vim.api.nvim_set_keymap("n", "<a-u>", ":lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-y>", ":lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-;>", ":lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-5>", ":lua require('harpoon.ui').nav_file(5)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-6>", ":lua require('harpoon.ui').nav_file(6)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-7>", ":lua require('harpoon.ui').nav_file(7)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-8>", ":lua require('harpoon.ui').nav_file(8)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-9>", ":lua require('harpoon.ui').nav_file(9)<CR>", { noremap = true, silent = true })
 require("harpoon").setup({
   menu = {
     width = vim.api.nvim_win_get_width(0) - 4,

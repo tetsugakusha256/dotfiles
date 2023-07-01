@@ -1,7 +1,11 @@
 local home = os.getenv('HOME')
 local db = require('dashboard')
+
+-- TODO: add a few pictures and choose randomly at startup
+-- Dashboard setup
 db.setup({
   theme = 'doom',
+  -- config that adds a custom header
   config = {
     week_header = {
       enable = true,
