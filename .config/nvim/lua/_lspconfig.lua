@@ -12,7 +12,6 @@ vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>dw", vim.diagnostic.setloclist, opts)
 vim.keymap.set("n", "<leader>dh", vim.diagnostic.hide, opts)
 vim.keymap.set("n", "<leader>ds", vim.diagnostic.show, opts)
--- TODO: use c-[ instead but when doing so esc act as goto_prev (maybe problem with keybind in alacritty)
 vim.keymap.set("n", "<a-[>", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<a-]>", vim.diagnostic.goto_next, opts)
 -- Use an on_attach function to only map the following keys
