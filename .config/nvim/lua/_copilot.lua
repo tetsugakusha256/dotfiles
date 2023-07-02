@@ -43,9 +43,9 @@ require('copilot').setup({
   server_opts_overrides = {},
 })
 -- copilot_cmp integration
-require("copilot_cmp").setup(
-  {
-    event = { "InsertEnter", "LspAttach" },
-    fix_pairs = true,
-  }
-)
+-- require("copilot_cmp").setup(
+--   {
+--     event = { "InsertEnter", "LspAttach" },
+--     fix_pairs = true,
+--   }
+-- )
