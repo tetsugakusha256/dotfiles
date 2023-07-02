@@ -8,10 +8,10 @@ for type, icon in pairs(signs) do
 end
 -- Diagnostic
 local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>dd", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "<space>dw", vim.diagnostic.setloclist, opts)
-vim.keymap.set("n", "<space>dh", vim.diagnostic.hide, opts)
-vim.keymap.set("n", "<space>ds", vim.diagnostic.show, opts)
+vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>dw", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<leader>dh", vim.diagnostic.hide, opts)
+vim.keymap.set("n", "<leader>ds", vim.diagnostic.show, opts)
 -- TODO: use c-[ instead but when doing so esc act as goto_prev (maybe problem with keybind in alacritty)
 vim.keymap.set("n", "<a-[>", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<a-]>", vim.diagnostic.goto_next, opts)
@@ -46,32 +46,28 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  -- Codelens 
-  vim.keymap.set("n", "<leader>cc",vim.lsp.codelens.display, bufopts)
+  -- Codelens
+  vim.keymap.set("n", "<leader>cc", vim.lsp.codelens.display, bufopts)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
--- <leader>t action on word under cursor ('take' action)
-  vim.keymap.set("n", "<leader>ta", vim.lsp.buf.code_action, bufopts)
-  -- Go to declaration
-  vim.keymap.set("n", "<leader>tD", vim.lsp.buf.declaration, bufopts)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+  -- List implementation implementation
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+  -- Show info
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
+  -- Seach for Incoming/Outgoint calls
+  vim.keymap.set("n", "<leader>tc", vim.lsp.buf.incoming_calls, bufopts)
+  vim.keymap.set("n", "<leader>to", vim.lsp.buf.outgoing_calls, bufopts)
+  vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover, bufopts)
+  vim.keymap.set("n", "<leader>tr", vim.lsp.buf.references, bufopts)
+  -- <leader>t action on word under cursor ('take' action)
+  vim.keymap.set("n", "<leader>ta", vim.lsp.buf.code_action, bufopts)
   -- Go to definition
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "<leader>td", vim.lsp.buf.definition, bufopts)
-  -- List implementation implementation
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  -- vim.keymap.set("n", "<leader>ti", vim.lsp.buf.implementation, bufopts)
-  -- Show info
-  vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
-  vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover, bufopts)
-  vim.keymap.set("n", "<leader>tt", vim.lsp.buf.hover, bufopts)
-  -- Seach for Incoming/Outgoint calls
-  vim.keymap.set("n", "<leader>ti", vim.lsp.buf.incoming_calls, bufopts)
-  vim.keymap.set("n", "<leader>to", vim.lsp.buf.outgoing_calls, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-  vim.keymap.set("n", "<leader>tr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "<leader>ws", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -110,6 +106,7 @@ require("mason-lspconfig").setup_handlers({
           diagnostics = {
             -- Add vim to the global variables to avoid "vim not declared type of warning"
             globals = { "vim" },
+
           },
         },
       },

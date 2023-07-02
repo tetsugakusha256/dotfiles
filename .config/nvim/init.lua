@@ -63,7 +63,6 @@ vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
-
 -- Go to begining = _ so I make - go to end (same key)
 vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
 vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
@@ -72,11 +71,6 @@ vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
 -- Easier access to command
 vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
 
--- Go to previous buffer (#buffer)
-vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
--- Makes control i behave as its own key (require the key combination to be sent by terminal)
-vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
-vim.api.nvim_set_keymap("i", "<c-i>", "<c-i>", { noremap = true })
 
 
 
@@ -128,9 +122,6 @@ vim.api.nvim_create_autocmd(
     pattern = { "qf" },
     command = [[nnoremap <buffer> <Tab> <CR>]]
   })
--- vim.api.nvim_set_keymap("n", "<a-[>", ":lprev<CR>", { noremap = true })
--- vim.api.nvim_set_keymap("n", "<a-]>", ":lnext<CR>", { noremap = true })
-
 
 
 -------------------------------------------------------
@@ -171,16 +162,24 @@ vim.api.nvim_set_keymap("n", "<c-w>i", "<c-w>l", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-n>", "<c-w><c-j>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-e>", "<c-w><c-k>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
+-- Go to previous buffer (#buffer)
+vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
+
+-- Makes control i behave as its own key (require the key combination to be sent by terminal)
+-- normally <c-[> is the same as <esc> but with the correct escape sequence in alacritty config it works
+vim.api.nvim_set_keymap("n", "<ESC>", "<ESC>", { noremap = true })
+-- Navigate quickfix list
+vim.api.nvim_set_keymap("n", "<c-]>", ":cn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-[>", ":cp<CR>", { noremap = true })
+vim.api.nvim_set_keymap("i", "<c-i>", "<del>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
+
+
+
+-- vim.api.nvim_set_keymap("c", "<c-e>", "<S-Tab>", { noremap = true })
 
 -- Command mode mappings
 vim.api.nvim_set_keymap("c", "<c-h>", "<c-f>", { noremap = true })
-
-
--- <leader>t action on word under cursor ('take' and search next)
-vim.api.nvim_set_keymap("n", "<leader>tn", "*", { noremap = true })
--- Copilot
--- vim.api.nvim_set_keymap("c", "", "", { noremap = true })
-
 -- Harpoon motion
 local harpoon = require("harpoon")
 vim.keymap.set('n', '<a-m>', require("harpoon.mark").add_file, {})
@@ -199,6 +198,17 @@ require("harpoon").setup({
     width = vim.api.nvim_win_get_width(0) - 4,
   }
 })
+
+
+
+-- <leader>t action on word under cursor ('take' and search next)
+vim.api.nvim_set_keymap("n", "<leader>tn", "*", { noremap = true })
+-- vim.api.nvim_set_keymap("c", "", "", { noremap = true })
+vim.api.nvim_set_keymap("n", "N", " :m .+1<CR>==", { noremap = true })
+vim.api.nvim_set_keymap("n", "E", " :m .-2<CR>==", { noremap = true })
+vim.api.nvim_set_keymap("v", "N", " :m '>+1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("v", "E", " :m '<-2<CR>gv=gv", { noremap = true })
+
 -- Move up and down half a page
 vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
@@ -209,14 +219,17 @@ vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true
 --------------------------------------------------
 
 -- Not working everywhere because terminal can't catch ctrl-backspace
+-- TODO: add c-bs in alacritty
 vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 
+
 -- Save file
-vim.api.nvim_set_keymap("", "<c-s>", ":update<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-s>", ":update<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<c-s>", ":update<CR>", { noremap = true })
+vim.api.nvim_set_keymap("i", "<c-s>", "<ESC>:update<CR>", { noremap = true })
 
 -- Maximize window
 vim.api.nvim_set_keymap("n", "<c-w>m", "<c-w>_ <c-w>|", { noremap = true })
-
 -----------------------------------
 -- Plugins mappings
 -----------------------------------

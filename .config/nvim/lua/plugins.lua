@@ -1,8 +1,10 @@
 require("lazy").setup({
-    -- Git show sign
-    'mhinz/vim-signify',
     -- Start screen dashboard
     'glepnir/dashboard-nvim',
+    ---------------------------------------------
+    --- Colorschemes
+    ---------------------------------------------
+
     -- Different colorschemes
     'folke/tokyonight.nvim',
     {
@@ -11,15 +13,6 @@ require("lazy").setup({
     },
     'EdenEast/nightfox.nvim',
 
-    -- Copilot
-    {
-      "zbirenbaum/copilot.lua",
-      cmd = "Copilot",
-      event = "InsertEnter",
-    },
-    {
-      "zbirenbaum/copilot-cmp",
-    },
     {
       'onsails/lspkind.nvim',
     },
@@ -36,7 +29,17 @@ require("lazy").setup({
     -- File explorer for nvim
     "nvim-tree/nvim-tree.lua",
 
+    ---------------------------------------------
+    --- Completion
+    ---------------------------------------------
+    -- Copilot
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+    },
     -- Auto completion
+    "zbirenbaum/copilot-cmp",
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
@@ -46,6 +49,12 @@ require("lazy").setup({
     'hrsh7th/vim-vsnip',
     -- Snippets integration into cmp
     'hrsh7th/cmp-vsnip',
+    -- Path completion
+    'FelipeLema/cmp-async-path',
+    -- Lua nvim function completion 
+    'hrsh7th/cmp-nvim-lua',
+    -- Nerd font completion
+    'chrisgrieser/cmp-nerdfont',
 
     -- Comment
     'numToStr/Comment.nvim',
@@ -87,6 +96,9 @@ require("lazy").setup({
     { 'nvim-telescope/telescope.nvim',
       --        commit = '2f32775'
     },
+    ---------------------------------------------
+    --- Git
+    ---------------------------------------------
     -- Git lazygit
     ({
       "kdheepak/lazygit.nvim",
@@ -95,16 +107,20 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
       },
     }),
+    -- Git fugitive
     'tpope/vim-fugitive',
+    -- Git flog (git timeline)
     'rbong/vim-flog',
+    -- Git show sign
+    'mhinz/vim-signify',
+
+
     -- Bufferline plugin to add buffer tab bar on top
     'akinsho/bufferline.nvim',
     -- Lualine is a new statusline for nvim
     'nvim-lualine/lualine.nvim',
     -- If you want to have icons in your statusline choose one of these
     'kyazdani42/nvim-web-devicons',
-    -- dersonal wiki for organisation and note taking
-    'vimwiki/vimwiki',
     -- Todo
     ({
       "folke/todo-comments.nvim",
@@ -117,6 +133,11 @@ require("lazy").setup({
     'ThePrimeagen/harpoon',
     -- Fun
     'eandrju/cellular-automaton.nvim',
+    ---------------------------------------------
+    -- Organisation
+    ---------------------------------------------
+    -- dersonal wiki for organisation and note taking
+    'vimwiki/vimwiki',
     -- Session manager
     {
       'rmagatti/auto-session',

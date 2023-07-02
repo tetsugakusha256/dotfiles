@@ -59,17 +59,62 @@ function builtin.find_wiki()
   builtin.find_files({ cwd = "/home/anon/vimwiki/", search_dirs = { '/home/anon/vimwiki/' } })
 end
 
+-- Telescope function to grep including .gitignore files
+function builtin.grep_gitignore()
+  builtin.live_grep({
+    vimgrep_arguments = { 'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '-u'
+    }
+  })
+end
+
+-- Same but with a string
+function builtin.grep_string_gitignore()
+  builtin.grep_string({
+    vimgrep_arguments = { 'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '-u'
+    }
+  })
+end
+
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 --require('telescope').load_extension('fzf')
 
 -- Mappings Leader Search ...
+-- Leader + t = action on the word under the cursor
+-- t : grep string (leader tt is fast)
+-- i : grep string in gitignore files
+-- c : incoming calls
+-- o : outgoing calls
+-- h : hover
+-- r : references
+-- a : code actions
+-- d : go to definition
+-- e : search expression (grep)
+vim.keymap.set('n', '<leader>te', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>ti', builtin.grep_string_gitignore, {})
+-- TODO: visual mode grep_string
 vim.keymap.set('n', '<leader>sw', builtin.find_wiki, {})
 vim.keymap.set('n', '<leader>sd', builtin.find_dotfiles, {})
 vim.keymap.set('n', '<leader>sf', builtin.find_sessions, {})
 vim.keymap.set('n', '<leader>ss', builtin.find_files, {})
 vim.keymap.set('n', '<leader>sa', builtin.find_allfiles, {})
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>se', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>si', builtin.grep_gitignore, {})
 vim.keymap.set('n', '<leader>sb', builtin.buffers, {})
 -- vim.keymap.set('n', '<leader>st', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>scs', builtin.colorscheme, {})
