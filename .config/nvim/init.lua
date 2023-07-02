@@ -1,9 +1,24 @@
 -------------------------------------------------------
+-- Functions
+-------------------------------------------------------
+
+-- Create new tab with the current buffer inside
+-- If multiple window in the current tab move the window to the new tab
+function move_window_tab()
+  -- Call the vim function to get the number of window
+  local win_count = vim.api.nvim_call_function('winnr', { '$' })
+  if win_count > 1 then
+    vim.cmd(':wincmd T')
+  else
+    vim.cmd(':sbp|wincmd p|wincmd T')
+  end
+end
+
+-------------------------------------------------------
 -------------------------------------------------------
 -- EARLY
 -------------------------------------------------------
 -------------------------------------------------------
-
 
 -- Disable netrw at the very start of your init.lua (strongly advised) for nvim-tree
 vim.g.loaded_netrw = 1
@@ -27,7 +42,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable", -- Latest stable release
     lazypath,
   })
 end
@@ -39,8 +54,6 @@ require("plugins")
 -- KEYMAPPINGS
 -------------------------------------------------------
 -------------------------------------------------------
-
-vim.api.nvim_set_keymap("n", "<Leader>vr", ":source $MYVIMRC<CR>", { noremap = true })
 
 -------------------------------------------------------
 -- Motion
@@ -71,47 +84,22 @@ vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
 -- Easier access to command
 vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
 
+-- Move up and down half a page
+vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
 
-
-
--- Untotree
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-
--- Git
--- Show git tree view
-vim.api.nvim_set_keymap("n", "<Leader>gt", ":Flog<CR>", { noremap = true })
--- Signify
-vim.api.nvim_set_keymap("n", "<Leader>gr", ":SignifyRefresh<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>gg", ":SignifyToggle<CR>", { noremap = true })
--- Open a tab with diff of the file
-vim.api.nvim_set_keymap("n", "<Leader>gd", ":SignifyDiff<CR>", { noremap = true })
--- Show diff of the line in a popup
-vim.api.nvim_set_keymap("n", "<Leader>gh", ":SignifyHunkDiff<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>gu", ":SignifyHunkUndo<CR>", { noremap = true })
-
--- Add spellcheck toggel
-vim.api.nvim_set_keymap("n", "<Leader>cs", ":setlocal spell spelllang=en<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>ns", ":setlocal nospell nospelllang<CR>", { noremap = true })
-
--- System clipboard shortcut
-vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
-vim.api.nvim_set_keymap("v", "<Leader>p", '"+p', { noremap = true })
-vim.api.nvim_set_keymap("v", "<Leader>P", '"+P', { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>pp", '"+p', { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>po", 'o<esc>"+p', { noremap = true })
--- Fix this
-vim.api.nvim_set_keymap("i", "<c-p>", '<c-r>+', { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<c-q>", ':qa<CR>', { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-a-q>", ':wqa<CR>', { noremap = true })
--- Tab motion Colemak
-vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
--- vim.api.nvim_set_keymap("n", "<a-c>", ':tabc<CR>', { noremap = true })
-
+-- Move line up and down
+vim.api.nvim_set_keymap("n", "N", " :m .+1<CR>==", { noremap = true })
+vim.api.nvim_set_keymap("n", "E", " :m .-2<CR>==", { noremap = true })
+vim.api.nvim_set_keymap("v", "N", " :m '>+1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("v", "E", " :m '<-2<CR>gv=gv", { noremap = true })
 -- Quick fix mapping
--- close quickfix menu after selecting choice
+-- Normally <c-[> is the same as <esc> but with the correct escape sequence in alacritty config it works
+vim.api.nvim_set_keymap("n", "<ESC>", "<ESC>", { noremap = true })
+-- Navigate quickfix list
+vim.api.nvim_set_keymap("n", "<c-]>", ":cn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-[>", ":cp<CR>", { noremap = true })
+-- Close quickfix menu after selecting choice
 vim.api.nvim_create_autocmd(
   "FileType", {
     pattern = { "qf" },
@@ -123,35 +111,34 @@ vim.api.nvim_create_autocmd(
     command = [[nnoremap <buffer> <Tab> <CR>]]
   })
 
+-------------------------------------------------------
+-- Git
+-------------------------------------------------------
+-- Show git tree view
+vim.api.nvim_set_keymap("n", "<Leader>gt", ":Flog<CR>", { noremap = true })
+-- Signify
+vim.api.nvim_set_keymap("n", "<Leader>gr", ":SignifyRefresh<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>gg", ":SignifyToggle<CR>", { noremap = true })
+-- Open a tab with diff of the file
+vim.api.nvim_set_keymap("n", "<Leader>gd", ":SignifyDiff<CR>", { noremap = true })
+-- Show diff of the line in a popup
+vim.api.nvim_set_keymap("n", "<Leader>gh", ":SignifyHunkDiff<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>gu", ":SignifyHunkUndo<CR>", { noremap = true })
 
 -------------------------------------------------------
 -- Tab/Window/Buffer
 -------------------------------------------------------
-
 --- Tab ---
--- Create new tab with the current buffer inside
--- if multiple window in the current tab move the window to the new tab
-function move_window_tab()
-  -- Call the vim function to get the number of window
-  local win_count = vim.api.nvim_call_function('winnr', { '$' })
-  if win_count > 1 then
-    vim.cmd(':wincmd T')
-  else
-    vim.cmd(':sbp|wincmd p|wincmd T')
-  end
-end
-
 vim.keymap.set('n', '<a-o>', move_window_tab, {})
 vim.api.nvim_set_keymap("n", "<c-a-h>", ':tabm -<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-i>", ':tabm +<CR>', { noremap = true })
+
 -- Window motion Colemak
 -- TODO: add resize
 vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>w", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-n>", "<c-w>r", { noremap = true })
--- vim.api.nvim_set_keymap("n", "<a-N>", "<c-w>p-<c-w>p>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>p", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-e>", "<c-w>R", { noremap = true })
--- vim.api.nvim_set_keymap("n", "<a-E>", "<c-w>p+<c-w>p<", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c>", ":bd<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-a>", ":sp<CR>", { noremap = true })
@@ -166,20 +153,13 @@ vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 
 -- Makes control i behave as its own key (require the key combination to be sent by terminal)
--- normally <c-[> is the same as <esc> but with the correct escape sequence in alacritty config it works
-vim.api.nvim_set_keymap("n", "<ESC>", "<ESC>", { noremap = true })
--- Navigate quickfix list
-vim.api.nvim_set_keymap("n", "<c-]>", ":cn<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-[>", ":cp<CR>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<c-i>", "<del>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
 
+-- Tab motion Colemak
+vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
 
-
--- vim.api.nvim_set_keymap("c", "<c-e>", "<S-Tab>", { noremap = true })
-
--- Command mode mappings
-vim.api.nvim_set_keymap("c", "<c-h>", "<c-f>", { noremap = true })
 -- Harpoon motion
 local harpoon = require("harpoon")
 vim.keymap.set('n', '<a-m>', require("harpoon.mark").add_file, {})
@@ -199,37 +179,6 @@ require("harpoon").setup({
   }
 })
 
-
-
--- <leader>t action on word under cursor ('take' and search next)
-vim.api.nvim_set_keymap("n", "<leader>tn", "*", { noremap = true })
--- vim.api.nvim_set_keymap("c", "", "", { noremap = true })
-vim.api.nvim_set_keymap("n", "N", " :m .+1<CR>==", { noremap = true })
-vim.api.nvim_set_keymap("n", "E", " :m .-2<CR>==", { noremap = true })
-vim.api.nvim_set_keymap("v", "N", " :m '>+1<CR>gv=gv", { noremap = true })
-vim.api.nvim_set_keymap("v", "E", " :m '<-2<CR>gv=gv", { noremap = true })
-
--- Move up and down half a page
-vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
-
--- This does not work because the keys are not send to nvim I need to do some modification in alacritty
--- vim.api.nvim_set_keymap("", "<c-s-i>", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("", "<c-s-h>", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
---------------------------------------------------
-
--- Not working everywhere because terminal can't catch ctrl-backspace
--- TODO: add c-bs in alacritty
-vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
-
-
--- Save file
-vim.api.nvim_set_keymap("n", "<c-s>", ":update<CR>", { noremap = true })
-vim.api.nvim_set_keymap("v", "<c-s>", ":update<CR>", { noremap = true })
-vim.api.nvim_set_keymap("i", "<c-s>", "<ESC>:update<CR>", { noremap = true })
-
--- Maximize window
-vim.api.nvim_set_keymap("n", "<c-w>m", "<c-w>_ <c-w>|", { noremap = true })
 -----------------------------------
 -- Plugins mappings
 -----------------------------------
@@ -239,15 +188,54 @@ vim.api.nvim_set_keymap("n", "<leader>fmfl", ":CellularAutomaton game_of_life<CR
 
 -- Launch lazygit
 vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
+-- Untotree
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -------------------------------------------------------
+-- Others
+-------------------------------------------------------
+
+-- Command mode mappings
+vim.api.nvim_set_keymap("c", "<c-h>", "<c-f>", { noremap = true })
+
+-- Save file
+vim.api.nvim_set_keymap("n", "<c-s>", ":update<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<c-s>", ":update<CR>", { noremap = true })
+vim.api.nvim_set_keymap("i", "<c-s>", "<ESC>:update<CR>", { noremap = true })
+
+-- Add spellcheck toggel
+-- TODO: spellcheck
+vim.api.nvim_set_keymap("n", "<Leader>cs", ":setlocal spell spelllang=en<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>ns", ":setlocal nospell nospelllang<CR>", { noremap = true })
+
+-- System clipboard shortcut
+vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>p", '"+p', { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>P", '"+P', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>pp", '"+p', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>po", 'o<esc>"+p', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>pO", 'O<esc>"+p', { noremap = true })
+-- Fix this
+vim.api.nvim_set_keymap("i", "<c-p>", '<c-r>+', { noremap = true })
+vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
+
+-- Close vim
+vim.api.nvim_set_keymap("n", "<c-q>", ':qa<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-a-q>", ':wqa<CR>', { noremap = true })
+
+-- <leader>t action on word under cursor ('take' and search next)
+vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
+-------------------------------------------------------
+-------------------------------------------------------
 -- PARAMS
+-------------------------------------------------------
 -------------------------------------------------------
 vim.g.smoothie_no_default_mappings = true
 
 -- Show line number
 vim.opt.number = true
--- vim.opt.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
+-- Vim.opt.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
 
 -- Enables mouse to scroll through page and drag-clic -> visual mode
 vim.opt.mouse = "a"
