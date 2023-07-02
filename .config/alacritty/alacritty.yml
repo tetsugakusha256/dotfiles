@@ -780,6 +780,7 @@ key_bindings:
 # Escape = 0x1b	Shift-Escape = CSI 27;2 u	Ctrl-Escape = CSI 27;5 u
 # Backspace = 0x7f	Shift-Backspace = CSI 127;2 u	Ctrl-Backspace = CSI 127;5 u
   - { key: I, mods: Control, chars: "\x1b[105;5u" }
+  - { key: Back, mods: Control, chars: "\x1b[127;5u" }
   - { key: H, mods: Alt, chars: "\x1Bh" }
   - { key: N, mods: Alt, chars: "\x1Bn" }
   - { key: I, mods: Alt, chars: "\x1Bi" }
