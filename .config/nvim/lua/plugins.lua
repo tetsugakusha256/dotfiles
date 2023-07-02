@@ -51,7 +51,7 @@ require("lazy").setup({
     'hrsh7th/cmp-vsnip',
     -- Path completion
     'FelipeLema/cmp-async-path',
-    -- Lua nvim function completion 
+    -- Lua nvim function completion
     'hrsh7th/cmp-nvim-lua',
     -- Nerd font completion
     'chrisgrieser/cmp-nerdfont',
@@ -112,7 +112,9 @@ require("lazy").setup({
     -- Git flog (git timeline)
     'rbong/vim-flog',
     -- Git show sign
-    'mhinz/vim-signify',
+    'lewis6991/gitsigns.nvim',
+    -- Scrollbar with support for gitsigns
+    'petertriho/nvim-scrollbar',
 
 
     -- Bufferline plugin to add buffer tab bar on top
@@ -301,3 +303,5 @@ require "_todo-comments"
 require "_autosession"
 require "_lspkind"
 require "_copilot"
+require "_nvim-scrollbar"
+require "_gitsigns"
