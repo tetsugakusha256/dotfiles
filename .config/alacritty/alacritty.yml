@@ -767,11 +767,24 @@ key_bindings:
   # Want to add a binding (e.g. "PageUp") but are unsure what the X sequence
 # (e.g. "\x1b[5~") is? Open another terminal (like xterm) without tmux,
 # then run `showkey -a` to get the sequence associated to a key combination.
+
+
+# CSIu norme disambiguating those key
+# http://www.leonerd.org.uk/hacks/fixterms/
+# Ctrl-I = CSI 105;5 u	Ctrl-Shift-I = CSI 73;5 u	Tab = 0x09
+# Ctrl-M = CSI 109;5 u	Ctrl-Shift-M = CSI 77;5 u	Enter = 0x0d
+# Ctrl-[ = CSI 91;5 u	Ctrl-{ = CSI 123;5 u	Escape = 0x1b
+# Ctrl-@ = CSI 64;5u	Ctrl-Space = 0x00
+# Ctrl-Space = 0x00	Ctrl-Shift-Space = CSI 32;6 
+# Enter = 0x0d	Shift-Enter = CSI 13;2 u	Ctrl-Enter = CSI 13;5 u	...
+# Escape = 0x1b	Shift-Escape = CSI 27;2 u	Ctrl-Escape = CSI 27;5 u
+# Backspace = 0x7f	Shift-Backspace = CSI 127;2 u	Ctrl-Backspace = CSI 127;5 u
   - { key: I, mods: Control, chars: "\x1b[105;5u" }
   - { key: H, mods: Alt, chars: "\x1Bh" }
   - { key: N, mods: Alt, chars: "\x1Bn" }
   - { key: I, mods: Alt, chars: "\x1Bi" }
-  # - { key: LBracket, mods: Control, chars: "\x1b[;5" }
+  - { key: LBracket, mods: Control, chars: "\x1b[91;5u" }
+
   # - { key: RBracket, mods: Control, chars: "\x1b];5" }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
