@@ -16,7 +16,7 @@ end
 
 -------------------------------------------------------
 -------------------------------------------------------
--- EARLY
+-- EARLY call
 -------------------------------------------------------
 -------------------------------------------------------
 
@@ -114,16 +114,20 @@ vim.api.nvim_create_autocmd(
 -------------------------------------------------------
 -- Git
 -------------------------------------------------------
+-- TODO: only map those when buffer has a git using onattached
 -- Show git tree view
 vim.api.nvim_set_keymap("n", "<Leader>gt", ":Flog<CR>", { noremap = true })
--- Signify
-vim.api.nvim_set_keymap("n", "<Leader>gr", ":SignifyRefresh<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>gg", ":SignifyToggle<CR>", { noremap = true })
--- Open a tab with diff of the file
-vim.api.nvim_set_keymap("n", "<Leader>gd", ":SignifyDiff<CR>", { noremap = true })
--- Show diff of the line in a popup
-vim.api.nvim_set_keymap("n", "<Leader>gh", ":SignifyHunkDiff<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>gu", ":SignifyHunkUndo<CR>", { noremap = true })
+-- Gitsigns
+local gitsigns = require("gitsigns")
+vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, {})
+vim.keymap.set('n', '<leader>gh', gitsigns.toggle_signs, {})
+vim.keymap.set('n', '<leader>gd', gitsigns.toggle_word_diff, {})
+vim.keymap.set('n', '<leader>gb', gitsigns.toggle_current_line_blame, {})
+vim.keymap.set('n', '<leader>gr', gitsigns.undo_stage_hunk, {})
+vim.keymap.set('n', '<leader>gu', gitsigns.reset_hunk, {})
+vim.keymap.set('n', '<leader>gg', gitsigns.preview_hunk, {})
+vim.keymap.set('n', '<leader>gn', gitsigns.next_hunk, {})
+vim.keymap.set('n', '<leader>ge', gitsigns.prev_hunk, {})
 
 -------------------------------------------------------
 -- Tab/Window/Buffer
