@@ -130,10 +130,10 @@ bindsym $mod+d sticky toggle
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:Code"
-set $ws2 "2:Internet"
-set $ws3 "3:Terminal"
-set $ws4 "4:Config"
-set $ws5 "5:Run"
+set $ws2 "2:Internet A"
+set $ws3 "3:Internet B"
+set $ws4 "4:Run"
+set $ws5 "5:Config"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
