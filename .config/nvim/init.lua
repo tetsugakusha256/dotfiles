@@ -165,7 +165,6 @@ vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
 
 -- Harpoon motion
-local harpoon = require("harpoon")
 vim.keymap.set('n', '<a-m>', require("harpoon.mark").add_file, {})
 vim.keymap.set('n', '<leader>h', require("harpoon.ui").toggle_quick_menu, {})
 vim.api.nvim_set_keymap("n", "<a-l>", ":lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })

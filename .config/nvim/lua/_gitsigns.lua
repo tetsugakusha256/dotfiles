@@ -10,7 +10,8 @@ require('gitsigns').setup {
   signcolumn                   = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff                    = true,  -- Toggle with `:Gitsigns toggle_word_diff`
+  -- TODO: change highlights to make it less annoying
+  word_diff                    = true, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir                 = {
     follow_files = true
   },
