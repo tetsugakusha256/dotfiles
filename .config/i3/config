@@ -79,10 +79,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left 80px
-bindsym $mod+Shift+n move down 80px
-bindsym $mod+Shift+e move up 80px
-bindsym $mod+Shift+i move right 80px
+bindsym $mod+Ctrl+h move left 80px
+bindsym $mod+Ctrl+n move down 80px
+bindsym $mod+Ctrl+e move up 80px
+bindsym $mod+Ctrl+i move right 80px
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
@@ -90,10 +90,10 @@ bindsym Mod4+Tab workspace back_and_forth
 # bindcode Mod4+47 workspace back_and_forth
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Down move down
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Right move right
 
 # split in horizontal orientation
 bindsym $mod+a split h
