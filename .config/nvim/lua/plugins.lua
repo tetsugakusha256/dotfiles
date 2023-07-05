@@ -144,6 +144,10 @@ require("lazy").setup({
     {
       'rmagatti/auto-session',
     },
+    {
+      'kevinhwang91/nvim-ufo',
+      dependencies = 'kevinhwang91/promise-async'
+    }
   },
   {
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
@@ -305,3 +309,4 @@ require "_lspkind"
 require "_copilot"
 require "_nvim-scrollbar"
 require "_gitsigns"
+require "_ufo"
