@@ -135,6 +135,17 @@ alias er='com.github.johnfactotum.Foliate &'
 alias foliate='com.github.johnfactotum.Foliate &'
 # aliar for android sutdio
 alias andstud='/home/anon/.androidstudio/android-studio-2022.2.1.20-linux/android-studio/bin/studio.sh'
+man_nvim(){
+  # if no argument are passed to the function, show the help
+if [ -z "$@"];
+then
+  echo "Usage: mann <man page>"
+else
+  man "$@" | nvim - -R
+fi
+}
+# alias to see man page with nvim
+alias mann='man_nvim'
 
 # tab completion with qmk (keyboard firmware utility)
 source ~/qmk_firmware/util/qmk_tab_complete.sh
