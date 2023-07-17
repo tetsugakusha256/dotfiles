@@ -845,8 +845,8 @@ key_bindings:
   # é key on qwertz
   - { key: 0x27,   mods: Shift,                             mode: Vi|~Search, action: SearchForward           }
   - { key: 0x27,  mode: Vi|~Search, action: SearchBackward          }
-  #- { key: N,                           mode: Vi|~Search, action: SearchNext              }
-  #- { key: N,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
+  - { key: K,                           mode: Vi|~Search, action: SearchNext              }
+  - { key: K,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
 
   # Search Mode
   #- { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
@@ -858,8 +858,8 @@ key_bindings:
   #- { key: N,      mods: Control, mode: Search,     action: SearchHistoryNext     }
   #- { key: N,                    mode: Search,     action: SearchHistoryPrevious }
   #- { key: E,                  mode: Search,     action: SearchHistoryNext     }
-  #- { key: Return,                mode: Search|~Vi, action: SearchFocusNext       }
-  #- { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
+  - { key: Return,                mode: Search|~Vi, action: SearchFocusNext       }
+  - { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
 
   # (Windows, Linux, and BSD only)
   - { key: Return,              mods: Control|Shift,                    action: SpawnNewInstance      }
