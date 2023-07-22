@@ -36,7 +36,13 @@ db.setup({
         icon = '  ',
         desc = 'Sessions',
         action = 'Telescope find_sessions',
-        shortcut = 'SPC s c s'
+        shortcut = 'SPC s f'
+      },
+      {
+        icon = '󱚠  ',
+        desc = 'Leetcode practice',
+        action = '<cmd>LBQuestions<cr>',
+        shortcut = 'SPC k q'
       },
       {
         icon = '  ',
@@ -62,10 +68,6 @@ db.setup({
         action = 'Telescope live_grep',
         shortcut = 'SPC s g'
       },
-      --      {icon = '  ',
-      --      desc ='File Browser                            ',
-      --      action =  'Telescope file_browser',
-      --      shortcut = 'SPC f b'},
       {
         icon = '  ',
         desc = 'Change colorscheme',

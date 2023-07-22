@@ -90,7 +90,65 @@ require("lazy").setup({
       } -- this is equalent to setup({}) function
     },
     -- Hop (more modern version of easymotion like motion)
-    'phaazon/hop.nvim',
+    -- 'phaazon/hop.nvim',
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      ---@type Flash.Config
+      opts = {
+        modes = {
+          -- options used when flash is activated through
+          -- a regular search with `/` or `?`
+          search = {
+            -- when `true`, flash will be activated during regular search by default.
+            -- You can always toggle when searching with `require("flash").toggle()`
+            enabled = false,
+          }
+        }
+      },
+      keys = {
+        {
+          "s",
+          mode = { "n", "x", "o" },
+          function()
+            require("flash").jump()
+          end,
+          desc = "Flash",
+        },
+        {
+          "S",
+          mode = { "n", "o", "x" },
+          function()
+            require("flash").treesitter()
+          end,
+          desc = "Flash Treesitter",
+        },
+        {
+          "r",
+          mode = "o",
+          function()
+            require("flash").remote()
+          end,
+          desc = "Remote Flash",
+        },
+        {
+          "R",
+          mode = { "o", "x" },
+          function()
+            require("flash").treesitter_search()
+          end,
+          desc = "Flash Treesitter Search",
+        },
+        {
+          "<c-s>",
+          mode = { "c" },
+          function()
+            require("flash").toggle()
+          end,
+          desc = "Toggle Flash Search",
+        },
+      },
+    },
     -- Telescope (fuzzy finding)
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope.nvim',
@@ -147,6 +205,25 @@ require("lazy").setup({
     {
       'kevinhwang91/nvim-ufo',
       dependencies = 'kevinhwang91/promise-async'
+    },
+    {
+      "Dhanus3133/LeetBuddy.nvim",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+      },
+      config = function()
+        require("leetbuddy").setup({
+          language = "js",
+        })
+      end,
+      keys = {
+        { "<leader>kq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+        { "<leader>kk", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+        { "<leader>kr", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+        { "<leader>kt", "<cmd>LBTest<cr>",      desc = "Run Code" },
+        { "<leader>ks", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
+      },
     }
   },
   {

@@ -32,6 +32,7 @@ require('copilot').setup({
     typescript = true,
     typescriptreact = true,
     javascriptreact = true,
+    sh = true,
     css = true,
     scss = true,
     html = true,

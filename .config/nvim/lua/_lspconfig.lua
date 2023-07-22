@@ -77,8 +77,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<leader>fr", lsp_formatting, bufopts)
 end
 
+
 -- WARN: IF THE SERVER SEEM TO BE INSTALLED BUT DOESNT START CHECK NODE VERSION or server platform version
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- ufo fold support
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
 require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have

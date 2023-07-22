@@ -11,7 +11,7 @@ require('gitsigns').setup {
   numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
   -- TODO: change highlights to make it less annoying
-  word_diff                    = true, -- Toggle with `:Gitsigns toggle_word_diff`
+  word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir                 = {
     follow_files = true
   },

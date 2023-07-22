@@ -186,8 +186,8 @@ require("harpoon").setup({
 -- Plugins mappings
 -----------------------------------
 
-vim.api.nvim_set_keymap("n", "<leader>fml", ":CellularAutomaton make_it_rain<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>fmfl", ":CellularAutomaton game_of_life<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>fl", ":CellularAutomaton make_it_rain<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>fll", ":CellularAutomaton game_of_life<CR>", {})
 
 -- Launch lazygit
 vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
@@ -263,6 +263,9 @@ vim.opt.splitright = true
 
 -- Remove one line at the bottom
 vim.opt.cmdheight = 1
+
+-- cursor stay more centered
+-- vim.opt.scrolloff = 18
 
 -- Persistent undo history
 vim.opt.undofile = true
