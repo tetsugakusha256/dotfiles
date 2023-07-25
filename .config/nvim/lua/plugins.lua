@@ -199,7 +199,8 @@ require("lazy").setup({
     -- Organisation
     ---------------------------------------------
     -- dersonal wiki for organisation and note taking
-    'vimwiki/vimwiki',
+    -- 'vimwiki/vimwiki',
+    'epwalsh/obsidian.nvim',
     -- Session manager
     {
       'rmagatti/auto-session',
@@ -388,4 +389,5 @@ require "_lspkind"
 require "_copilot"
 require "_nvim-scrollbar"
 require "_gitsigns"
+require "_obsidian"
 require "_ufo"
