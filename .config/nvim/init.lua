@@ -29,7 +29,13 @@ vim.g.mapleader = " "
 -- Open help page on the right side
 vim.cmd([[autocmd FileType help wincmd L]])
 vim.o.splitright = true
-
+vim.g.vimwiki_list = {
+  {
+    path = '/home/anon/Documents/myWiki/obs_vault/',
+    syntax = 'markdown',
+    ext = '.md',
+  }
+}
 -------------------------------------------------------
 -------------------------------------------------------
 -- PLUGINS
@@ -188,8 +194,6 @@ require("harpoon").setup({
 
 vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)", {})
 vim.api.nvim_set_keymap("x", "<leader>a", "<Plug>(EasyAlign)", {})
-
-
 
 vim.api.nvim_set_keymap("n", "<leader>fl", ":CellularAutomaton make_it_rain<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>fll", ":CellularAutomaton game_of_life<CR>", {})
