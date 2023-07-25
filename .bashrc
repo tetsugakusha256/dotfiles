@@ -114,6 +114,21 @@ if ! shopt -oq posix; then
 fi
 # vim mode on and change cursor based on vim mode
 # set -o vi
+rangercd () {
+tmp="$(mktemp)"
+ranger --choosedir="$tmp" "$@"
+if [ -f "$tmp" ]; then
+dir="$(cat "$tmp")"
+rm -f "$tmp"
+[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+fi
+}
+alias ranger="rangercd"
+
+# Make ranger cd after exiting it
+# alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+# alias ranger='command ranger; if [ $? -eq 0 ] || [ $? -ge 128 ]; then cd "$(cat ~/.config/ranger/.lastdir)"; fi'
 
 # Adding doom tools to the PATH
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -128,8 +143,6 @@ export PATH="$HOME/.local/bin:$PATH"
 alias dotgit='/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
 alias dotlgit='lazygit --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
 alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim /home/anon/.config/nvim/init.lua'
-# Make ranger cd after exiting it
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 # alias for Foliate the ebook reader app
 alias er='com.github.johnfactotum.Foliate &'
 alias foliate='com.github.johnfactotum.Foliate &'
