@@ -78,6 +78,8 @@ require("lazy").setup({
       -- end,
     },
 
+    -- Autoalign
+    'junegunn/vim-easy-align',
     -- Smooth page scroll
     'psliwka/vim-smoothie',
 

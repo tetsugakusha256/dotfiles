@@ -186,6 +186,11 @@ require("harpoon").setup({
 -- Plugins mappings
 -----------------------------------
 
+vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)", {})
+vim.api.nvim_set_keymap("x", "<leader>a", "<Plug>(EasyAlign)", {})
+
+
+
 vim.api.nvim_set_keymap("n", "<leader>fl", ":CellularAutomaton make_it_rain<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>fll", ":CellularAutomaton game_of_life<CR>", {})
 
