@@ -337,4 +337,4 @@ exec --no-startup-id i3-msg 'workspace 2:Internet ; exec brave-browser-beta'
 exec --no-startup-id i3-msg 'workspace 7:Note ; exec alacritty -e nvim +":cd /home/anon/vimwiki"'
 # exec --no-startup-id i3-msg 'workspace 3:Terminal; exec alacritty'
 exec --no-startup-id "flatpak run com.tomjwatson.Emote"
-exec --no-startup-id "/home/anon/.local/bin/capsRemap.sh"
+exec --no-startup-id "sleep 5s;bash /home/anon/.local/bin/capsRemap.sh"
