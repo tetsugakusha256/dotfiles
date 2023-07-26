@@ -200,35 +200,20 @@ require("lazy").setup({
     ---------------------------------------------
     -- dersonal wiki for organisation and note taking
     'vimwiki/vimwiki',
-    -- {
-    --   "epwalsh/obsidian.nvim",
-    --   lazy = true,
-    --   event = { "BufReadPre path/to/my-vault/**.md" },
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
-    --   -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
-    --   dependencies = {
-    --     -- Required.
-    --     "nvim-lua/plenary.nvim",
-    --
-    --     -- Optional, for completion.
-    --     "hrsh7th/nvim-cmp",
-    --
-    --     -- Optional, for search and quick-switch functionality.
-    --     "nvim-telescope/telescope.nvim",
-    --
-    --     -- Optional, an alternative to telescope for search and quick-switch functionality.
-    --     -- "ibhagwan/fzf-lua"
-    --
-    --     -- Optional, another alternative to telescope for search and quick-switch functionality.
-    --     -- "junegunn/fzf",
-    --     -- "junegunn/fzf.vim"
-    --
-    --     -- Optional, alternative to nvim-treesitter for syntax highlighting.
-    --     "godlygeek/tabular",
-    --     "preservim/vim-markdown",
-    --   },
-    -- },
-
+    -- Anki
+    {
+      "rareitems/anki.nvim",
+      config = function()
+        require("anki").setup({
+          -- this function will add support for associating '.anki' extension with both 'anki' and 'tex' filetype.
+          tex_support = false,
+          models = {
+            -- Here you specify which notetype should be associated with which deck
+            ["One Q one A Code"] = "Code",
+          },
+        })
+      end,
+    },
     -- Session manager
     {
       'rmagatti/auto-session',
