@@ -143,8 +143,6 @@ set $ws10 "7:Note "
 # assign [class="firefox" instance="Navigator"] → $ws2
 assign [class="brave-browser-beta" instance="Navigator"] → $ws2
 assign [class="google-chrome" instance="Navigator"] → $ws3
-assign [class="emacs" instance="Navigator"] → $ws10
-assign [class="nvim" instance="Navigator"] → $ws10
 
 # switch to workspace
 bindsym $mod+l workspace number $ws1
@@ -332,6 +330,9 @@ bar {
 }
 # ideally move this to somewhere where it launches too even in gnome
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
+exec --no-startup-id "i3-msg 'workspace 2:Internet ; append_layout /home/anon/.config/i3/workspace-2.json'"
+exec --no-startup-id "i3-msg 'workspace 5:Relax ; append_layout /home/anon/.config/i3/workspace-5.json'"
+exec --no-startup-id "i3-msg 'workspace 7:Note ; append_layout /home/anon/.config/i3/workspace-7.json'"
 # exec /snap/bin/emacs --daemon
 exec --no-startup-id i3-msg 'workspace 2:Internet ; exec brave-browser-beta'
 exec --no-startup-id i3-msg 'workspace 7:Note ; exec alacritty -e nvim +":cd /home/anon/Documents/myWiki/obs_vault/"'
