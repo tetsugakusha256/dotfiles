@@ -86,15 +86,15 @@ cmp.setup({
         return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
       end
     },
-    { name = 'vsnip', group_index = 2 },
+    { name = 'vsnip',  group_index = 2 },
     {
       name = 'async_path',
       option = {
         -- Options go into this table
         group_index = 2
       },
-      { name = 'buffer', group_index = 2 },
     },
+    { name = 'buffer', group_index = 2 },
     {
       name = 'nerdfont',
     }
