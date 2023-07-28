@@ -169,6 +169,8 @@ bindsym $mod+3 exec redshift -O 2500
 # Screen saver
 bindsym $mod+4 exec xset dpms force off
 
+
+bindsym $mod+q exec gnome-screenshot -a 
 # Launch nvim
 # bindsym $mod+o exec alacritty -e "nvim"
 
