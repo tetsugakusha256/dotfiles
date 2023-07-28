@@ -4,7 +4,7 @@
 
 -- Create new tab with the current buffer inside
 -- If multiple window in the current tab move the window to the new tab
-function move_window_tab()
+local function move_window_tab()
   -- Call the vim function to get the number of window
   local win_count = vim.api.nvim_call_function('winnr', { '$' })
   if win_count > 1 then
@@ -126,10 +126,10 @@ vim.api.nvim_set_keymap("n", "<Leader>gt", ":Flog<CR>", { noremap = true })
 -- Gitsigns
 local gitsigns = require("gitsigns")
 vim.keymap.set('n', '<leader>gs', gitsigns.stage_hunk, {})
+vim.keymap.set('n', '<leader>gr', gitsigns.undo_stage_hunk, {})
 vim.keymap.set('n', '<leader>gh', gitsigns.toggle_signs, {})
 vim.keymap.set('n', '<leader>gd', gitsigns.toggle_word_diff, {})
 vim.keymap.set('n', '<leader>gb', gitsigns.toggle_current_line_blame, {})
-vim.keymap.set('n', '<leader>gr', gitsigns.undo_stage_hunk, {})
 vim.keymap.set('n', '<leader>gu', gitsigns.reset_hunk, {})
 vim.keymap.set('n', '<leader>gg', gitsigns.preview_hunk, {})
 vim.keymap.set('n', '<leader>gn', gitsigns.next_hunk, {})
@@ -192,17 +192,22 @@ require("harpoon").setup({
 -- Plugins mappings
 -----------------------------------
 
+
+-- Anki
 vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A Code<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>ca", ":AnkiSend<CR>", {})
 
+-- Easy align
 vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)", {})
 vim.api.nvim_set_keymap("x", "<leader>a", "<Plug>(EasyAlign)", {})
 
+-- Fun
 vim.api.nvim_set_keymap("n", "<leader>fl", ":CellularAutomaton make_it_rain<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>fll", ":CellularAutomaton game_of_life<CR>", {})
 
 -- Launch lazygit
 vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
+
 -- Untotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
@@ -255,39 +260,43 @@ vim.opt.number                     = true
 vim.opt.wrap                       = true
 vim.opt.textwidth                  = 80
 
+-- ignorecase when searching
+vim.opt.ignorecase                 = true
+-- except when using capital letters
+vim.opt.smartcase                  = true
 
 -- Enables mouse to scroll through page and drag-clic -> visual mode
-vim.opt.mouse         = "a"
+vim.opt.mouse                      = "a"
 
 -- Insert spaces when TAB is pressed instead of tabs.
-vim.opt.expandtab     = true
+vim.opt.expandtab                  = true
 
 -- Change number of spaces that a <Tab> counts for during editing ops
-vim.opt.softtabstop   = 2
-vim.opt.encoding      = "utf-8"
-vim.opt.fileencodings = "utf-8"
+vim.opt.softtabstop                = 2
+vim.opt.encoding                   = "utf-8"
+vim.opt.fileencodings              = "utf-8"
 
 -- Indentation amount for < and > commands.
-vim.opt.shiftwidth    = 2
+vim.opt.shiftwidth                 = 2
 
 -- Vim.opt.the commands to save in history default number is 20.
-vim.opt.history       = 1000
+vim.opt.history                    = 1000
 
 -- Set more natural default split
-vim.opt.splitbelow    = true
-vim.opt.splitright    = true
+vim.opt.splitbelow                 = true
+vim.opt.splitright                 = true
 
 -- Remove one line at the bottom
-vim.opt.cmdheight     = 1
+vim.opt.cmdheight                  = 1
 
 -- cursor stay more centered
 -- vim.opt.scrolloff = 18
 
 -- Persistent undo history
-vim.opt.undofile      = true
+vim.opt.undofile                   = true
 
 -- Only show tab if 2 or more
-vim.opt.stal          = 1
+vim.opt.stal                       = 1
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.cmd([[colorscheme tokyonight]])
