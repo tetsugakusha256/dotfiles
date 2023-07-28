@@ -15,8 +15,6 @@
     {
       "class": "^Brave\\-browser\\-beta$",
       "instance": "^brave\\-browser\\-beta$"
-      // "title": "^i3\\:\\ Layout\\ saving\\ in\\ i3\\ \\-\\ Brave$",
-      // "window_role": "^browser$"
     }
   ],
   "type": "con"
