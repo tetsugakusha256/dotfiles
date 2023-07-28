@@ -223,6 +223,12 @@ require("lazy").setup({
       dependencies = 'kevinhwang91/promise-async'
     },
     {
+      'dccsillag/magma-nvim',
+      build = ':UpdateRemotePlugins'
+    },
+
+    -- Leetcode plugin
+    {
       "Dhanus3133/LeetBuddy.nvim",
       dependencies = {
         "nvim-lua/plenary.nvim",
