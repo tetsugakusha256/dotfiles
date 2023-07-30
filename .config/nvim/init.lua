@@ -195,15 +195,17 @@ require("harpoon").setup({
 -- Magma mappings and opitons
 vim.g.magma_automatically_open_output = false
 
--- vim.api.nvim_set_keymap("n", "<leader>r", ":MagmaEvaluateOperator<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rs", ":MagmaInterrupt<CR>", { silent = true })
+-- Example: Running Vimscript code from Lua
+
+vim.api.nvim_set_keymap("n", "<leader>ra", ":MagmaInterrupt<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>rr", ":MagmaEvaluateLine<CR>", { silent = true })
 vim.api.nvim_set_keymap("x", "<leader>r", ":<C-u>MagmaEvaluateVisual<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>r", ":MagmaReevaluateCell<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rc", ":MagmaReevaluateCell<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>rd", ":MagmaDelete<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ro", ":MagmaShowOutput<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ri", ":MagmaInit<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rij", ":MagmaInit javascript<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rs", ":MagmaInit<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rsj", ":MagmaInit javascript<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>rsp", ":MagmaInit python3<CR>", { silent = true })
 
 -- Anki
 vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A Code<CR>", {})
