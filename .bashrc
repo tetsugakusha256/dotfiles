@@ -123,6 +123,7 @@ rm -f "$tmp"
 [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 fi
 }
+alias r="rangercd"
 alias ranger="rangercd"
 
 # Make ranger cd after exiting it
