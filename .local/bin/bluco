@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+device1=ear
+device2=head
+device3=mouse
+arg1=${1:-nothing}
+if [ $arg1 == $device1 ]
+then
+  #echo "ear 1"
+  bluetoothctl connect 14:3F:A6:EB:28:0D
+elif [ $arg1 == $device2 ]; then
+  #echo "head 2"
+  bluetoothctl connect 80:C7:55:44:19:A9
+elif [ $arg1 == $device3 ]; then
+  #echo "mouse 3"
+  bluetoothctl connect CF:94:D9:6B:FC:DA
+else
+  echo "Invalide arguments"
+fi
+
+
