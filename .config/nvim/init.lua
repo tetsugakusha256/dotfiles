@@ -31,7 +31,7 @@ vim.cmd([[autocmd FileType help wincmd L]])
 vim.o.splitright = true
 vim.g.vimwiki_list = {
   {
-    path = '/home/anon/Documents/myWiki/obs_vault/',
+    path = '/home/anon/Documents/myWiki/',
     syntax = 'markdown',
     ext = '.md',
   }
