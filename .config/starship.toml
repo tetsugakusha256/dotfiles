@@ -1,5 +1,5 @@
 format = """
-[](#9A348E)\
+[ ](#9A348E)\
 $username\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
@@ -44,9 +44,9 @@ truncation_symbol = "…/"
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
-"Documents" = " "
+"Documents" = "󰈙 "
 "Downloads" = " "
-"Music" = " "
+"Music" = " "
 "Pictures" = " "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = "  "
@@ -127,4 +127,4 @@ format = '[ $symbol ($version) ]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A fg:#000000"
-format = '[ ♥ $time ]($style)'
+format = '[ 󱜚 $time ]($style)'
