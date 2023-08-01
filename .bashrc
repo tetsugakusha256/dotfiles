@@ -167,15 +167,9 @@ source ~/qmk_firmware/util/qmk_tab_complete.sh
 # autojump script 
 . /usr/share/autojump/autojump.bash
 
-#export GTK_IM_MODULE=ibus
-#export XMODIFIERS=@im=ibus
-#export QT_IM_MODULE=ibus
-
 # remove c-s c-q to freeze and unfreeze terminal (XON/XOFF)
 stty -ixon
 
-# makes neovim default editor
-export VISUAL=nvim
 # env var for android dev
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
