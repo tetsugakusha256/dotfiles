@@ -16,6 +16,12 @@ require("lazy").setup({
     {
       'onsails/lspkind.nvim',
     },
+    {     
+      'norcalli/nvim-colorizer.lua', 
+      config = function()
+        require("colorizer").setup()
+      end,
+    },
     -- (LSP server, Linters, Formatters, DAP) manager
     "williamboman/mason.nvim",
     -- To bridge mason.nvim with lspconfig
