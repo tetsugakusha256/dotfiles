@@ -32,17 +32,18 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 exec --no-startup-id nm-applet
 
 # Polybar
-exec --no-startup-id polybar -r
+exec --no-startup-id polybar -r top
+exec --no-startup-id polybar -r bottom
 exec --no-startup-id python /home/anon/.local/bin/hide_polybar_mod4.py
 #exec --no-startup-id hideIt.sh -N polybar -H -d top
 
 exec --no-startup-id fcitx5 -d
 exec --no-startup-id picom --config /home/anon/.config/picom/picom.conf -b
-exec --no-startup-id "i3-msg 'workspace 2:Internet ; append_layout /home/anon/.config/i3/workspace-2.json'"
-exec --no-startup-id "i3-msg 'workspace 5:Relax ; append_layout /home/anon/.config/i3/workspace-5.json'"
-exec --no-startup-id "i3-msg 'workspace 7:Note ; append_layout /home/anon/.config/i3/workspace-7.json'"
-exec --no-startup-id i3-msg 'workspace 2:Internet ; exec brave-browser-beta'
-exec --no-startup-id i3-msg 'workspace 7:Note ; exec alacritty -e nvim +":cd /home/anon/Documents/myWiki/"'
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/workspace-2.json'"
+exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
+exec --no-startup-id "i3-msg 'workspace 7; append_layout /home/anon/.config/i3/workspace-7.json'"
+exec --no-startup-id i3-msg 'workspace 2; exec brave-browser-beta'
+exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim +":cd /home/anon/Documents/myWiki/"'
 # exec --no-startup-id "flatpak run com.tomjwatson.Emote"
 exec --no-startup-id "/home/anon/.local/bin/capsRemap.sh"
 
