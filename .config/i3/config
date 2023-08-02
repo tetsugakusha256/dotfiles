@@ -175,7 +175,7 @@ bindsym $mod+3 exec redshift -O 2500
 bindsym $mod+4 exec xset dpms force off
 
 
-bindsym $mod+q exec gnome-screenshot -a 
+bindsym $mod+q exec flameshot gui
 
 # move focused container to workspace
 bindsym $mod+Shift+l move container to workspace number $ws1
