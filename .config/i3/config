@@ -31,6 +31,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+exec --no-startup-id feh --bg-scale /usr/share/backgrounds/catpuccin_min.png
 # Polybar
 exec --no-startup-id polybar -r top
 exec --no-startup-id polybar -r bottom
@@ -69,7 +70,7 @@ bindsym $mod+Shift+q kill
 # bindcode --release 133 exec i3-sensible-terminal
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec rofi -show run
+bindsym $mod+s exec /home/anon/.config/rofi/bin/launcher
 
 # TODO:
 # bindsym $mod+period exec "flatpak run it.mijorus.smile"
@@ -115,7 +116,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+q layout stacking
 bindsym $mod+p layout toggle split
-bindsym $mod+w layout tabbed
+#bindsym $mod+w layout tabbed
 
 # toggle tiling / floating
 bindsym $mod+g floating toggle
@@ -211,6 +212,7 @@ mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
 }
 
 bindsym $mod+Shift+f mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
+bindsym $mod+w exec /home/anon/.config/rofi/bin/powermenu
 
 
 # resizing out of rezise mode
