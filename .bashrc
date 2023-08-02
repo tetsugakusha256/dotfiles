@@ -135,7 +135,7 @@ alias ranger="rangercd"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 # emacs to launch client
 # alias emacs="emacsclient -c -a 'emacs'"
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 # Adding user/.local/bin to the PATH intended to be the place for my personal scripts
 export PATH="$HOME/.local/bin:$PATH"
@@ -145,10 +145,10 @@ alias dotgit='/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon
 alias dotlgit='lazygit --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
 alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim /home/anon/.config/nvim/init.lua'
 # alias for Foliate the ebook reader app
-alias er='com.github.johnfactotum.Foliate &'
-alias foliate='com.github.johnfactotum.Foliate &'
+# alias er='com.github.johnfactotum.Foliate &'
+# alias foliate='com.github.johnfactotum.Foliate &'
 # aliar for android sutdio
-alias andstud='/home/anon/.androidstudio/android-studio-2022.2.1.20-linux/android-studio/bin/studio.sh'
+# alias andstud='/home/anon/.androidstudio/android-studio-2022.2.1.20-linux/android-studio/bin/studio.sh'
 man_nvim(){
   # if no argument are passed to the function, show the help
 if [ -z "$@"];
@@ -162,7 +162,7 @@ fi
 alias mann='man_nvim'
 
 # tab completion with qmk (keyboard firmware utility)
-source ~/qmk_firmware/util/qmk_tab_complete.sh
+# source ~/qmk_firmware/util/qmk_tab_complete.sh
 
 # autojump script 
 . /usr/share/autojump/autojump.bash
