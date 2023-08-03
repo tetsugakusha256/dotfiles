@@ -25,7 +25,6 @@ else
 		logout=""
 
 	else
-  # Section 1
 		shutdown=" Shutdown"
 		reboot=" Restart"
 		lock=" Lock"
@@ -52,7 +51,7 @@ case $chosen in
 			systemctl suspend
         ;;
     $logout)
-			i3-msd exit
+			i3-msg exit
         ;;
 esac
 
