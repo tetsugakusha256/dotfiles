@@ -38,16 +38,23 @@
 #keystate_scrolllock= enable
 
 # Examples of commands:
+"redshift -O 5500"
+ Mod4+Mod5+l 
+"redshift -x"
+ Mod4+Mod5+u 
+"redshift -O 7500"
+ Mod4+Mod5+y 
+"brightnessctl set 2%-"
+ Mod4+Mod5+i 
+"brightnessctl set +2%"
+ Mod4+Mod5+o 
+"pactl set-sink-volume @DEFAULT_SINK@ +5%"
+ Mod4+Mod5+e 
+"pactl set-sink-volume @DEFAULT_SINK@ -5%"
+ Mod4+Mod5+n 
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+ Mod4+Mod5+m 
 
-"echo test" 
-  control+shift + q
-# set directly keycode (here control + f with my keyboard)
-"xterm"
-  c:41 + m:0x4
-
-# specify a mouse button
-"xterm"
-  control + b:2
 
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s
