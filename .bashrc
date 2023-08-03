@@ -161,6 +161,8 @@ fi
 # alias to see man page with nvim
 alias mann='man_nvim'
 alias wiki='nvim +":cd /home/anon/Documents/myWiki/"'
+alias key='xbindkeys -k'
+alias keys='xbindkeys -mk'
 
 # tab completion with qmk (keyboard firmware utility)
 # source ~/qmk_firmware/util/qmk_tab_complete.sh
