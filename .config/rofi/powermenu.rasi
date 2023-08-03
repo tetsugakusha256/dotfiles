@@ -5,6 +5,9 @@ configuration {
     disable-history:                false;
     click-to-exit: 		            true;
     location:                       4;
+    kb-row-up: "Up,e,Control+e";
+    kb-row-down: "Down,n,Control+n";
+    kb-accept-entry: "Control+j,Control+m,Return,KP_Enter,i";
 }
 
 @import "colors.rasi"
