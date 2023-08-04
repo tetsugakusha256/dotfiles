@@ -68,6 +68,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w kill
 
 # bindsym --release $mod+z exec 'kill -s SIGUSR1 32242'
 # bindcode --release 133 exec i3-sensible-terminal
@@ -140,18 +141,16 @@ bindsym $mod+x focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:Code "
-set $ws2 "2:Internet "
-set $ws3 "3:Run "
-set $ws4 "4:Chat "
-set $ws5 "5:Relax "
-set $ws6 "10:Misc "
-set $ws7 "8:Chat "
-set $ws8 "9:Misc "
-set $ws9 "6:Config "
-set $ws10 "7:Note "
-assign [class="brave-browser-beta" instance="Navigator"] → $ws2
-assign [class="google-chrome" instance="Navigator"] → $ws3
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+l workspace number $ws1
@@ -159,11 +158,11 @@ bindsym $mod+u workspace number $ws2
 bindsym $mod+y workspace number $ws3
 bindsym $mod+semicolon workspace number $ws4
 bindsym $mod+o workspace number $ws5
-bindsym $mod+j workspace number $ws6
-bindsym $mod+8 workspace number $ws7
-bindsym $mod+9 workspace number $ws8
-bindsym $mod+k workspace number $ws9
-bindsym $mod+m workspace number $ws10
+bindsym $mod+k workspace number $ws6
+bindsym $mod+m workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+j workspace number $ws10
 
 # brightness settings
 # TODO:
@@ -179,28 +178,26 @@ bindsym $mod+3 exec redshift -O 2500
 # Screen saver
 bindsym $mod+4 exec xset dpms force off
 
-
-bindsym $mod+q exec flameshot gui
-
 # move focused container to workspace
 bindsym $mod+Shift+l move container to workspace number $ws1
 bindsym $mod+Shift+u move container to workspace number $ws2
 bindsym $mod+Shift+y move container to workspace number $ws3
 bindsym $mod+Shift+semicolon move container to workspace number $ws4
 bindsym $mod+Shift+o move container to workspace number $ws5
-bindsym $mod+Shift+j move container to workspace number $ws6
-bindsym $mod+Shift+8 move container to workspace number $ws7
-bindsym $mod+Shift+9 move container to workspace number $ws8
-bindsym $mod+Shift+k move container to workspace number $ws9
-bindsym $mod+Shift+m move container to workspace number $ws10
+bindsym $mod+Shift+k move container to workspace number $ws6
+bindsym $mod+Shift+m move container to workspace number $ws7
+bindsym $mod+Shift+j move container to workspace number $ws8
+bindsym $mod+Shift+8 move container to workspace number $ws9
+bindsym $mod+Shift+9 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Shift+f mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
+bindsym $mod+w exec /home/anon/.config/rofi/bin/powermenu
+bindsym $mod+q exec /home/anon/.config/rofi/bin/powermenu
 
 # Create Log out, Reboot, Poweroff bindings
 mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
@@ -213,10 +210,6 @@ mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+Shift+f mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
-bindsym $mod+w exec /home/anon/.config/rofi/bin/powermenu
-
 
 # resizing out of rezise mode
 bindsym $mod+Shift+Ctrl+h resize shrink width 5 px or 5 ppt
@@ -264,78 +257,36 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+        bindsym v gaps inner current plus 5
+        bindsym c gaps inner current minus 5
+        bindsym z gaps top current plus 5
+        bindsym x gaps top current minus 5
+        bindsym b gaps bottom all toggle 25
 }
 
+bindsym $mod+Shift+b gaps bottom all toggle 25
 bindsym $mod+r mode "resize"
 
+# Activate smart borders (always) border if more than 1 window
+smart_borders on
+smart_gaps on
 
 default_border pixel 2
 default_floating_border pixel 1
 focus_follows_mouse no
 hide_edge_borders both
 
+# Inner gaps for all windows: space between two adjacent windows (or split containers).
+gaps inner 5
+gaps outer 0
+
 # Colors
-# get color from XResource config - variable_name XResource fallback
 
-# special
-set_from_resource $foreground foreground #C6C6C6
-set_from_resource $background background #1C1C1C
-set_from_resource $cursorColor cursorColor #C6C6C6
+# class                 border  backgr. text    indicator child_borde
+client.focused          #b4befe #1e1e2e #cdd6f4 #b4befe   #b4befe
+client.focused_inactive #313244 #1e1e2e #cdd6f4 #484e50   #585b70
+client.unfocused        #313244 #1e1e2e #888888 #292d2e   #313244
+client.urgent           #2f343a #f38ba8 #cdd6f4 #f38ba8   #f38ba8
+client.placeholder      #181825 #11111b #cdd6f4 #181825   #11111b
 
-# black
-set_from_resource $black1 color0 #303030
-set_from_resource $black2 color8 #444444
-set $trueblack #000000
-
-# red
-set_from_resource $red1 color1 #d75f5f
-set_from_resource $red2 color9 #d75f5f
-
-# green
-set_from_resource $green1 color2 #87AF87
-set_from_resource $green2 color10 #87AF87
-
-# yellow
-set_from_resource $yellow1 color3 #ffd75f
-set_from_resource $yellow2 color11 #ffd75f
-
-# blue
-set_from_resource $blue1 color4 #87afd7
-set_from_resource $blue2 color12 #87afd7
-
-# magenta
-set_from_resource $cyan1 color5 #afafd7
-set_from_resource $cyan2 color13 #afafd7
-
-# cyan
-set_from_resource $cyan1 color6 #afd7ff
-set_from_resource $cyan2 color14 #afd7ff
-
-# white
-set_from_resource $white1 color7 #4E4E4E
-set_from_resource $white2 color15 #ffffff
-
-set $orange #ff9e64
-set $darkBlue #24283b
-set $green #9ece6a
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status --config ~/.config/i3/i3status.conf
-#         mode hide
-#         # Disable all tray icons
-#         # tray_output none
-#         colors {
-#             background $darkBlue
-#             statusline $white2
-#             separator #d14bc8
-#
-#             #                  border background text
-#             focused_workspace  #292e42 #292e42 #f7768e
-#             active_workspace   $black2 $black1 $white2
-#             inactive_workspace $black1 $black2 $foreground
-#             urgent_workspace   $red1 $red1 $white2
-#             binding_mode       $background $red2 $white2
-#         }
-# }
+client.background       #cdd6f4
