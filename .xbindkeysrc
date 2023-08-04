@@ -38,6 +38,10 @@
 #keystate_scrolllock= enable
 
 # Examples of commands:
+"flameshot gui"
+ Mod4+Mod3+q
+"flameshot gui"
+ Mod3+q
 "redshift -O 5500"
  Mod4+Mod5+l 
 "redshift -x"
