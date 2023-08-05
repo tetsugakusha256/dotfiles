@@ -1,0 +1,153 @@
+/* Notification center */
+/* to update the css live use the following command */
+/* notify-send.py a --hint boolean:deadd-notification-center:true
+ * string:type:reloadStyle */
+
+.blurredBG, #main_window, .blurredBG.low, .blurredBG.normal {
+    background: #1e1e2e;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fab387;
+}
+
+.noti-center.time {
+    font-size: 122px;
+}
+
+/* Notifications */
+
+.title {
+    font-weight: bold;
+    font-size: 44px;
+    margin-left: 5px;
+}
+
+.appname {
+    font-size: 20px;
+}
+
+.time {
+    font-size: 20px;
+}
+.in-center.body {
+  font-size: 24px;
+}
+
+.blurredBG.notification {
+    background: #1e1e2e;
+}
+
+.blurredBG.notification.critical {
+    background: #1e1e2e;
+}
+
+.notificationInCenter.critical {
+    background: rgba(155, 0, 20, 0.5);
+}
+
+/* Labels */
+
+label {
+    color: #fab387;
+}
+
+label.notification {
+    color: #fab387;
+}
+
+label.critical {
+    color: #000;
+}
+
+label.deadd-noti-center.noti-center.date {
+    font-size: 32px;
+}
+.notificationInCenter label.critical {
+    color: #000;
+}
+
+label.deadd-noti-center.noti-center.delete-all {
+
+}
+
+/* Buttons */
+
+button {
+    background: transparent;
+    color: #fab387;
+    border-radius: 3px;
+    border-width: 2px;
+    border-color: #fab387;
+    background-position: 0px 0px;
+    text-shadow: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+button:hover {
+    border-radius: 3px;
+    background: #313244;
+    border-radius: 3px;
+    border-width: 2px;
+    border-color: #f38ba8;
+    color: #fee;
+}
+
+
+/* Custom Buttons */
+
+.userbutton {
+    background: #181825;
+}
+
+.userbuttonlabel {
+    color: #fab387;
+    font-size: 30px;
+}
+
+.userbutton:hover {
+    background: #313244;
+}
+
+.userbuttonlabel:hover {
+    color: #111;
+}
+
+button.buttonState1 {
+    background: rgba(20,0,0,0.5);
+}
+
+.userbuttonlabel.buttonState1 {
+    color: #fff;
+}
+
+button.buttonState1:hover {
+    background: rgba(20,0,0, 0.4);
+}
+
+.userbuttonlabel.buttonState1:hover {
+    color: #111;
+}
+
+button.buttonState2 {
+    background: rgba(255,255,255,0.3);
+}
+
+.userbuttonlabel.buttonState2 {
+    color: #111;
+}
+
+button.buttonState2:hover {
+    background: rgba(20,0,0, 0.3);
+}
+
+.userbuttonlabel.buttonState2:hover {
+    color: #000;
+}
+
+
+/* Images */
+
+image.deadd-noti-center.notification.image {
+    margin-left: 20px;
+}
