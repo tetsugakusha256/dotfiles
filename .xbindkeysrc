@@ -41,6 +41,8 @@
 "flameshot gui"
  Mod4+Mod3+q
 "flameshot gui"
+ Mod4+Mod5+h
+"flameshot gui"
  Mod3+q
 "redshift -O 5500"
  Mod4+Mod5+l 
@@ -58,6 +60,8 @@
  Mod4+Mod5+n 
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
  Mod4+Mod5+m 
+"kill -s USR1 $(pidof deadd-notification-center)"
+ Mod4+Mod5+c:33
 
 
 #"xterm -geom 50x20+20+20"
