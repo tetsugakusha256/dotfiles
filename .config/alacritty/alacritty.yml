@@ -164,7 +164,7 @@ font:
     style: bold italic
 
   # Point size font need to be a 'fraction' of the screen size to avoid black bars
-  size: 11.5
+  size: 17.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
