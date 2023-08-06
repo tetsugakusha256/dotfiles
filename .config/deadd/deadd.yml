@@ -70,14 +70,14 @@ notification-center:
     actions:
       # - label: VPN
       #   command: "sudo vpnToggle"
-       - label: 
-         command: bluetoothToggle
+      # - label: 
+      #   command: bluetoothToggle
+      # - label: 
+      #   command: screensaverToggle
        - label: 
-         command: wifiToggle
-       - label: 
-         command: screensaverToggle
+         command: nm-connection-editor
        - label: 󰌌
-         command: keyboardToggle
+         command: fcitx5-configtool
 
 notification:
   ### If true, markup (<u>, <i>, <b>, <a>) will be displayed properly
