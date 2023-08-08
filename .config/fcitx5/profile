@@ -16,7 +16,7 @@ Layout=
 # Name
 Name=mozc
 # Layout
-Layout=cuco
+Layout=
 
 [GroupOrder]
 0="Group 1"
