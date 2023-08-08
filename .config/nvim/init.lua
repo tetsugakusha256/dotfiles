@@ -14,6 +14,21 @@ local function move_window_tab()
   end
 end
 
+-- Move to right window is possible, otherwise move to next tab
+function MoveToRightWindowOrNextTab()
+    local current_win = vim.fn.winnr()
+    vim.cmd(':wincmd l') -- Try to move to the right window
+    if current_win == vim.fn.winnr() then
+        vim.cmd(':tabnext')
+    end
+end
+function MoveToLeftWindowOrNextTab()
+    local current_win = vim.fn.winnr()
+    vim.cmd(':wincmd h') -- Try to move to the right window
+    if current_win == vim.fn.winnr() then
+        vim.cmd(':tabprevious')
+    end
+end
 -------------------------------------------------------
 -------------------------------------------------------
 -- EARLY call
@@ -145,14 +160,21 @@ vim.api.nvim_set_keymap("n", "<c-a-i>", ':tabm +<CR>', { noremap = true })
 
 -- Window motion Colemak
 -- TODO: add resize
-vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>w", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-c-n>", "<c-w>r", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>p", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-c-e>", "<c-w>R", { noremap = true })
+-- Tab motion Colemak
+vim.keymap.set('n', '<a-i>', MoveToRightWindowOrNextTab, { noremap = true, silent = true })
+vim.keymap.set('n', '<a-h>', MoveToLeftWindowOrNextTab, { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>j", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>k", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-h>", "<c-w><", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-i>", "<c-w>>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-n>", "<c-w>-", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-e>", "<c-w>+", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-c-r>", "<c-w>r", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c>", ":bd<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-a>", ":sp<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-v>", ":vs<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-a>", ":vs<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-v>", ":sp<CR>", { noremap = true })
+-- Colemak mappings
 vim.api.nvim_set_keymap("n", "<c-w>n", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>e", "<c-w>k", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w>i", "<c-w>l", { noremap = true })
@@ -166,9 +188,8 @@ vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
 vim.api.nvim_set_keymap("i", "<c-i>", "<del>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-i>", "<c-i>", { noremap = true })
 
--- Tab motion Colemak
-vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-h>", 'gT', { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-i>", 'gt', { noremap = true })
 
 -- Harpoon motion
 vim.keymap.set('n', '<a-m>', require("harpoon.mark").add_file, {})
@@ -256,6 +277,7 @@ vim.api.nvim_set_keymap("i", "<c-bs>", "<C-W>", { noremap = true })
 
 -- Close vim
 vim.api.nvim_set_keymap("n", "<c-q>", ':qa<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<c-w>", ':qa<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-a-q>", ':wqa<CR>', { noremap = true })
 
 -- <leader>t action on word under cursor ('take' and search next)
