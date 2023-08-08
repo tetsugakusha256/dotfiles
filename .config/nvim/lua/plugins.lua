@@ -16,8 +16,8 @@ require("lazy").setup({
     {
       'onsails/lspkind.nvim',
     },
-    {     
-      'norcalli/nvim-colorizer.lua', 
+    {
+      'norcalli/nvim-colorizer.lua',
       config = function()
         require("colorizer").setup()
       end,
@@ -65,8 +65,14 @@ require("lazy").setup({
     -- Comment
     'numToStr/Comment.nvim',
     -- Surround easy surrounding
-    'tpope/vim-surround',
-
+    -- 'tpope/vim-surround',
+    {
+      "kylechui/nvim-surround",
+      version = "*", -- Use for stability; omit to use `main` branch for the latest features
+      event = "VeryLazy",
+      config = function()
+      end
+    },
     -- Undo tree explorer
     'mbbill/undotree',
     -- Fromatting plugin none lsp source to lsp client (formatter)
@@ -123,7 +129,7 @@ require("lazy").setup({
           desc = "Flash",
         },
         {
-          "S",
+          "ys",
           mode = { "n", "o", "x" },
           function()
             require("flash").treesitter()
@@ -401,7 +407,8 @@ require "_lspconfig"
 require "_null-ls"
 require "_nvim-treesitter"
 require "_nvim-cmp"
-require "_hop"
+-- require "_hop"
+require "_flash"
 require "_comment"
 require "_lualine"
 require "_telescope"
@@ -413,5 +420,6 @@ require "_lspkind"
 require "_copilot"
 require "_nvim-scrollbar"
 require "_gitsigns"
+require "_surround"
 -- require "_obsidian"
 require "_ufo"
