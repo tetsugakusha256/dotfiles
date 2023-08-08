@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>fi", function()
     -- vim.lsp.buf.hover()
     vim.cmd [[ Lspsaga hover_doc ]]
   end
-end,{silent = true})
+end, { silent = true })
 
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
@@ -57,26 +57,26 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 end
 
 local opts = {
-    -- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
-    -- provider_selector = function(bufnr, filetype, buftype)
-    --   return { "treesitter", "indent" }
-    -- end,
-    open_fold_hl_timeout = 400,
-    close_fold_kinds = { "imports", "comment" },
-    preview = {
-      win_config = {
-        border = { "", "─", "", "", "", "─", "", "" },
-        -- winhighlight = "Normal:Folded",
-        winblend = 0,
-      },
-      mappings = {
-        scrollU = "<C-u>",
-        scrollD = "<C-d>",
-        jumpTop = "[",
-        jumpBot = "]",
-      },
+  -- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
+  -- provider_selector = function(bufnr, filetype, buftype)
+  --   return { "treesitter", "indent" }
+  -- end,
+  open_fold_hl_timeout = 400,
+  close_fold_kinds = { "imports", "comment" },
+  preview = {
+    win_config = {
+      border = { "", "─", "", "", "", "─", "", "" },
+      -- winhighlight = "Normal:Folded",
+      winblend = 0,
     },
-    fold_virt_text_handler = handler,
-  }
+    mappings = {
+      scrollU = "<C-u>",
+      scrollD = "<C-d>",
+      jumpTop = "[",
+      jumpBot = "]",
+    },
+  },
+  fold_virt_text_handler = handler,
+}
 
 require("ufo").setup(opts)
