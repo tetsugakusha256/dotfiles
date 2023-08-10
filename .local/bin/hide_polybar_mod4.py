@@ -22,7 +22,7 @@ def on_press(key):
                 locked = not locked
         else:
             time_pressed = 1
-    last_pressed_time = time.time()
+        last_pressed_time = time.time()
 
 
 def on_release(key):
