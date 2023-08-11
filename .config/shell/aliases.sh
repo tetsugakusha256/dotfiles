@@ -33,7 +33,7 @@ alias mann='man_nvim'
 # When using the dim alias, change the 'search file in dir' function to search for
 # dotfiles only
 dim_nvim(){
-    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" 
+    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})"
 }
 # launch nvim with my dotgit config (cd into the bare git repo so it keeps
 # the session link to this directory)
@@ -41,3 +41,14 @@ alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME dim_nvim;cd ~'
 alias wiki='nvim +":cd /home/anon/Documents/myWiki/"'
 alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
+
+# Check if the user's shell is Bash
+if [ -n "$BASH_VERSION" ]; then
+    # autojump script
+    . /usr/share/autojump/autojump.bash
+fi
+# Check if the user's shell is Zsh
+if [ -n "$ZSH_VERSION" ]; then
+    # autojump script
+    . /usr/share/autojump/autojump.zsh
+fi
