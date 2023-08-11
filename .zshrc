@@ -1,6 +1,6 @@
 # Sourcing config
-source ./.config/shell/aliases.sh
-source ./.config/shell/zsh/keybind.zsh
+source $HOME/.config/shell/aliases.sh
+source $HOME/.config/shell/zsh/keybind.zsh
 
 HISTFILE=~/.histfile
 HISTSIZE=1000

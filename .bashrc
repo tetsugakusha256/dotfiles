@@ -3,7 +3,7 @@
 # for examples
 
 # Aliases
-source ./.config/shell/aliases.sh
+source $HOME/.config/shell/aliases.sh
 
 # If not running interactively, don't do anything
 case $- in
