@@ -39,9 +39,9 @@ exec --no-startup-id xbindkeys
 
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/catpuccin_min.png
 # Polybar
-exec --no-startup-id sleep 0.2;polybar -r main
+exec --no-startup-id polybar -r main
 # exec --no-startup-id polybar -r bottom
-exec --no-startup-id sleep 0.3;python /home/anon/.local/bin/hide_polybar_mod4.py
+exec --no-startup-id sleep 0.1;python /home/anon/.local/bin/hide_polybar_mod4.py
 #exec --no-startup-id hideIt.sh -N polybar -H -d top
 
 exec --no-startup-id fcitx5 -d
