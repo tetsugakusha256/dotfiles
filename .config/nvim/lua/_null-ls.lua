@@ -13,5 +13,7 @@ null_ls.setup({
     null_ls.builtins.code_actions.gitsigns,
     -- Anything not supported by mason.
     -- null_ls.builtins.formatting.prettierd
+    -- Installed with Mason
+    null_ls.builtins.formatting.beautysh
   },
 })
