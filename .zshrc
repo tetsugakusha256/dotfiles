@@ -1,6 +1,7 @@
+# Sourcing config
 source ./.config/shell/aliases.sh
 source ./.config/shell/zsh/keybind.zsh
-# Lines configured by zsh-newuser-install
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -11,10 +12,9 @@ setopt hist_ignore_space
 setopt autocd
 
 bindkey -v
-# End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/anon/.zshrc'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -34,9 +34,6 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
-
-
 
 # starship prompt
 eval "$(starship init zsh)"
