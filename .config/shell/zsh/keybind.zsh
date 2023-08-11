@@ -6,9 +6,10 @@ bindkey -M vicmd "^H" vi-backward-char
 bindkey -M vicmd "^J" accept-line
 bindkey -M vicmd "^L" clear-screen
 bindkey -M vicmd "^M" accept-line
-bindkey -M vicmd "^N" down-history
 
-bindkey -M vicmd "^E" up-history
+# bindkey -M vicmd "^N" down-history
+# bindkey -M vicmd "^E" up-history
+
 bindkey -M vicmd "^R" redo
 bindkey -M vicmd "^[" beep
 bindkey -M vicmd "^[OA" up-line-or-history
@@ -30,7 +31,12 @@ bindkey -M vicmd "+" vi-down-line-or-history
 bindkey -M vicmd "," vi-rev-repeat-find
 # bindkey -M vicmd "-" vi-up-line-or-history
 bindkey -M vicmd "." vi-repeat-change
-bindkey -M vicmd "/" vi-history-search-backward
+bindkey -M vicmd "/" history-incremental-search-backward
+# Remap incremental history search to Ctrl+S
+bindkey -M isearch '^E' history-incremental-pattern-search-backward
+bindkey -M isearch '^N' history-incremental-pattern-search-forward
+# bindkey -M isearch '^H' backward-delete-char
+
 bindkey -M vicmd "0" vi-digit-or-beginning-of-line
 bindkey -M vicmd "1"-"9" digit-argument
 bindkey -M vicmd ":" execute-named-cmd
@@ -38,7 +44,8 @@ bindkey -M vicmd ";" vi-repeat-find
 bindkey -M vicmd "<" vi-unindent
 bindkey -M vicmd "=" list-choices
 bindkey -M vicmd ">" vi-indent
-bindkey -M vicmd "?" vi-history-search-forward
+# bindkey -M vicmd "?" vi-history-search-forward
+bindkey -M vicmd "?" history-incremental-search-forward
 bindkey -M vicmd "A" vi-add-eol
 bindkey -M vicmd "B" vi-backward-blank-word
 bindkey -M vicmd "C" vi-change-eol
@@ -115,7 +122,7 @@ bindkey -M viins "^J" accept-line
 bindkey -M viins "^K" self-insert
 bindkey -M viins "^L" clear-screen
 bindkey -M viins "^M" accept-line
-bindkey -M viins "^N"-"^P" self-insert
+# bindkey -M viins "^N"-"^P" self-insert
 bindkey -M viins "^Q" vi-quoted-insert
 bindkey -M viins "^R" redisplay
 bindkey -M viins "^S"-"^T" self-insert
