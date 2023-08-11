@@ -1,4 +1,5 @@
 source ./.config/shell/aliases.sh
+source ./.config/shell/zsh/keybind.zsh
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
