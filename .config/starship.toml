@@ -4,6 +4,7 @@ palette = "catppuccin_mocha"
 format = """
 [ ](blue)\
 $username\
+$shell\
 [](bg:lavender fg:blue)\
 $directory\
 [](fg:lavender bg:sky)\
@@ -64,7 +65,7 @@ crust = "#11111b"
 show_always = true
 style_user = "bg:blue fg:#000000"
 style_root = "bg:blue fg:#000000"
-format = '[$user ]($style)'
+format = '[$user]($style)'
 
 [directory]
 style = "bg:lavender fg:#000000"
@@ -158,4 +159,14 @@ format = '[ $symbol ($version) ]($style)'
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:red fg:#000000"
-format = '[ 󱜚 $time ]($style)'
+format = '[ $time ]($style)'
+
+[shell]
+fish_indicator = '󰈺 '
+bash_indicator = 'ᵦ'
+zsh_indicator = 'ᶻ'
+powershell_indicator = '_'
+unknown_indicator = 'mystery shell'
+style = "bg:blue fg:#000000"
+format = '[$indicator ]($style)'
+disabled = false
