@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+    *) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -33,7 +33,6 @@ shopt -s checkwinsize
 # "enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -55,13 +54,13 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 rangercd () {
-tmp="$(mktemp)"
-ranger --choosedir="$tmp" "$@"
-if [ -f "$tmp" ]; then
-dir="$(cat "$tmp")"
-rm -f "$tmp"
-[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-fi
+    tmp="$(mktemp)"
+    ranger --choosedir="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
 }
 alias r="rangercd"
 alias ranger="rangercd"
@@ -84,13 +83,13 @@ alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim /home/anon/.co
 # aliar for android sutdio
 # alias andstud='/home/anon/.androidstudio/android-studio-2022.2.1.20-linux/android-studio/bin/studio.sh'
 man_nvim(){
-  # if no argument are passed to the function, show the help
-if [ -z "$@"];
-then
-  echo "Usage: mann <man page>"
-else
-  man "$@" | nvim - -R
-fi
+    # if no argument are passed to the function, show the help
+    if [ -z "$@"];
+    then
+        echo "Usage: mann <man page>"
+    else
+        man "$@" | nvim - -R
+    fi
 }
 # alias to see man page with nvim
 alias mann='man_nvim'
@@ -101,7 +100,7 @@ alias keys='xbindkeys -mk'
 # tab completion with qmk (keyboard firmware utility)
 # source ~/qmk_firmware/util/qmk_tab_complete.sh
 
-# autojump script 
+# autojump script
 . /usr/share/autojump/autojump.bash
 
 # remove c-s c-q to freeze and unfreeze terminal (XON/XOFF)
