@@ -42,6 +42,7 @@ alias wiki='nvim +":cd /home/anon/Documents/myWiki/"'
 alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
 
+alias spotifyd='$HOME/.config/spotifyd/spotifyd_with_pass.sh'
 # Check if the user's shell is Bash
 if [ -n "$BASH_VERSION" ]; then
     # autojump script
