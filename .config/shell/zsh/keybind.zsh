@@ -53,7 +53,8 @@ bindkey -M vicmd "D" vi-kill-eol
 bindkey -M vicmd "E" vi-forward-blank-word-end
 bindkey -M vicmd "F" vi-find-prev-char
 bindkey -M vicmd "G" vi-fetch-history
-bindkey -M vicmd "I" vi-insert-bol
+
+bindkey -M vicmd "L" vi-insert-bol
 bindkey -M vicmd "J" vi-join
 bindkey -M vicmd "N" vi-rev-repeat-search
 bindkey -M vicmd "O" vi-open-line-above
