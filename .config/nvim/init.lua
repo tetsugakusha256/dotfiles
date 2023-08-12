@@ -16,19 +16,21 @@ end
 
 -- Move to right window is possible, otherwise move to next tab
 function MoveToRightWindowOrNextTab()
-    local current_win = vim.fn.winnr()
-    vim.cmd(':wincmd l') -- Try to move to the right window
-    if current_win == vim.fn.winnr() then
-        vim.cmd(':tabnext')
-    end
+  local current_win = vim.fn.winnr()
+  vim.cmd(':wincmd l') -- Try to move to the right window
+  if current_win == vim.fn.winnr() then
+    vim.cmd(':tabnext')
+  end
 end
+
 function MoveToLeftWindowOrNextTab()
-    local current_win = vim.fn.winnr()
-    vim.cmd(':wincmd h') -- Try to move to the right window
-    if current_win == vim.fn.winnr() then
-        vim.cmd(':tabprevious')
-    end
+  local current_win = vim.fn.winnr()
+  vim.cmd(':wincmd h') -- Try to move to the right window
+  if current_win == vim.fn.winnr() then
+    vim.cmd(':tabprevious')
+  end
 end
+
 -------------------------------------------------------
 -------------------------------------------------------
 -- EARLY call
@@ -260,8 +262,13 @@ vim.api.nvim_set_keymap("i", "<c-s>", "<ESC>:update<CR>", { noremap = true })
 
 -- Add spellcheck toggel
 -- TODO: spellcheck
-vim.api.nvim_set_keymap("n", "<Leader>cs", ":setlocal spell spelllang=en<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>ns", ":setlocal nospell nospelllang<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>oe", ":setlocal spell spelllang=en<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>on", ":setlocal nospell nospelllang<CR>", { noremap = true })
+-- correct, set wrong, set correct
+vim.api.nvim_set_keymap("n", "<Leader>oo", 'z=', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>ow", 'zw', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>oc", 'zg', { noremap = true })
+
 
 -- System clipboard shortcut
 vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
