@@ -13,8 +13,8 @@ if [ -z "$title" ]; then
     # I believe it might be useless because I think it never goes highes than 1
     # (need confirmation)
 elif [[ "$title" =~ ^\([0-9]+\).* ]]; then
-    echo 'case (1)'
-    no_notif_title="${title#\(1\)}"
+    echo 'case ([0-9]+)'
+    no_notif_title=$(echo "$title" | sed 's/^([0-9]\+)//')
     bt_title=$(bt list | grep "${no_notif_title}" | cut -f 1)
     bt activate ${bt_title}
     i3-msg "[title=\"${no_notif_title}\"] focus" 2>&1
