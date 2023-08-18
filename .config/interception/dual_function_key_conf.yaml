@@ -1,0 +1,152 @@
+TIMING:
+  TAP_MILLISEC: 200
+  DOUBLE_TAP_MILLISEC: 0
+  SYNTHETIC_KEYS_PAUSE_MILLISEC: 10
+
+MAPPINGS: 
+  - KEY: KEY_RIGHTALT
+    TAP: KEY_BACKSPACE
+    HOLD: KEY_RIGHTALT
+
+  - KEY: KEY_LEFTALT
+    TAP: KEY_ENTER
+    HOLD: KEY_LEFTALT
+    
+  # print screen key map to key below esc
+  - KEY: KEY_SYSRQ
+    TAP: KEY_GRAVE
+    HOLD: KEY_SYSRQ
+
+  # - KEY: KEY_LEFTMETA
+  #   TAP: [KEY_RIGHTALT, KEY_Q, KEY_E]
+  #   HOLD: KEY_LEFTMETA
+  
+  # - KEY: KEY_A
+  #   TAP: KEY_A
+  #   HOLD: KEY_A
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_B
+  #   TAP: KEY_B
+  #   HOLD: KEY_B
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_C
+  #   TAP: KEY_C
+  #   HOLD: KEY_C
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_D
+  #   TAP: KEY_D
+  #   HOLD: KEY_D
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_E
+  #   TAP: KEY_E
+  #   HOLD: KEY_E
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_F
+  #   TAP: KEY_F
+  #   HOLD: KEY_F
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_G
+  #   TAP: KEY_G
+  #   HOLD: KEY_G
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_H
+  #   TAP: KEY_H
+  #   HOLD: KEY_H
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_I
+  #   TAP: KEY_I
+  #   HOLD: KEY_I
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_J
+  #   TAP: KEY_J
+  #   HOLD: KEY_J
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_K
+  #   TAP: KEY_K
+  #   HOLD: KEY_K
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_L
+  #   TAP: KEY_L
+  #   HOLD: KEY_L
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_M
+  #   TAP: KEY_M
+  #   HOLD: KEY_M
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_N
+  #   TAP: KEY_N
+  #   HOLD: KEY_N
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_O
+  #   TAP: KEY_O
+  #   HOLD: KEY_O
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_P
+  #   TAP: KEY_P
+  #   HOLD: KEY_P
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_Q
+  #   TAP: KEY_Q
+  #   HOLD: KEY_Q
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_R
+  #   TAP: KEY_R
+  #   HOLD: KEY_R
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_S
+  #   TAP: KEY_S
+  #   HOLD: KEY_S
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_T
+  #   TAP: KEY_T
+  #   HOLD: KEY_T
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_U
+  #   TAP: KEY_U
+  #   HOLD: KEY_U
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_V
+  #   TAP: KEY_V
+  #   HOLD: KEY_V
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_W
+  #   TAP: KEY_W
+  #   HOLD: KEY_W
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_X
+  #   TAP: KEY_X
+  #   HOLD: KEY_X
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_Y
+  #   TAP: KEY_Y
+  #   HOLD: KEY_Y
+  #   HOLD_START: AFTER_RELEASE
+  #
+  # - KEY: KEY_Z
+  #   TAP: KEY_Z
+  #   HOLD: KEY_Z
+  #   HOLD_START: AFTER_RELEASE
