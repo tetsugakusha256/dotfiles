@@ -5,7 +5,7 @@ require("mason-null-ls").setup({
     -- Opt to list sources here, when available in mason.
     "prettierd",
   },
-  automatic_installation = false,
+  automatic_installation = true,
   handlers = {},
 })
 null_ls.setup({
@@ -14,6 +14,6 @@ null_ls.setup({
     -- Anything not supported by mason.
     -- null_ls.builtins.formatting.prettierd
     -- Installed with Mason
-    null_ls.builtins.formatting.beautysh
+    -- null_ls.builtins.formatting.beautysh
   },
 })
