@@ -11,7 +11,9 @@ require("lazy").setup({
       'catppuccin/nvim',
       name = 'catppuccin'
     },
-    'EdenEast/nightfox.nvim',
+    {
+      'EdenEast/nightfox.nvim',
+    },
 
     {
       'onsails/lspkind.nvim',
@@ -28,6 +30,8 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     -- Configurations for Nvim LSP
     'neovim/nvim-lspconfig',
+    -- Rust analyzer config
+    'simrat39/rust-tools.nvim',
 
     -- Static highligting
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
@@ -43,9 +47,13 @@ require("lazy").setup({
       "zbirenbaum/copilot.lua",
       cmd = "Copilot",
       event = "InsertEnter",
+      enabled = false
     },
     -- Auto completion
-    "zbirenbaum/copilot-cmp",
+    {
+      "zbirenbaum/copilot-cmp",
+      enabled = false,
+    },
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
@@ -205,12 +213,18 @@ require("lazy").setup({
     -- Harpoon
     'ThePrimeagen/harpoon',
     -- Fun
-    'eandrju/cellular-automaton.nvim',
+    {
+      'eandrju/cellular-automaton.nvim',
+      cmd = "CellularAutomaton",
+    },
     ---------------------------------------------
     -- Organisation
     ---------------------------------------------
     -- dersonal wiki for organisation and note taking
-    'vimwiki/vimwiki',
+    {
+      'vimwiki/vimwiki',
+      ft = "markdown"
+    },
     -- Anki
     {
       "rareitems/anki.nvim",
@@ -417,7 +431,7 @@ require "_nvim-tree"
 require "_todo-comments"
 require "_autosession"
 require "_lspkind"
-require "_copilot"
+-- require "_copilot"
 require "_nvim-scrollbar"
 require "_gitsigns"
 require "_surround"
