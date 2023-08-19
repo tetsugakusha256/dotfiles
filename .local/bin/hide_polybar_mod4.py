@@ -20,6 +20,8 @@ def on_press(key):
             time_pressed += 1
             if time_pressed >= 3:
                 locked = not locked
+                os.system('i3-msg gaps bottom all toggle 33')
+
         else:
             time_pressed = 1
         last_pressed_time = time.time()
