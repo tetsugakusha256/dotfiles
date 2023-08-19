@@ -1,9 +1,13 @@
 #!/bin/bash
+# This file is not called anymore, now using interception tools
+# to set the ctrl_modifier remap at a lower level
+# it should work in the ttc, wayland and x11
 
 # Define the program name
 program="xcape"
 
 /usr/bin/setxkbmap -option 'caps:ctrl_modifier,shift:both_capslock_cancel'
+
 # Check if the program is already running
 if pgrep -x "$program" > /dev/null; then
     # Kill the program
