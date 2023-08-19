@@ -7,11 +7,18 @@ title=$(bt list | cut -f 2,3 | rofi -dmenu \
         | cut -f 1
 )
 echo ${title}
+matching_window=$(bt list | grep "${title}")
+echo "matching:${matching_window}"
 if [ -z "$title" ]; then
-    echo "No choice made"
-    # TODO: remove the number based on the number that was match
-    # I believe it might be useless because I think it never goes highes than 1
-    # (need confirmation)
+    echo "No choice or input porvided"
+elif [ -z "$matching_window" ]; then
+  # TODO: make the switch to workspace smarter
+    echo "No choice made: search term :${title}"
+    search_window=$(bt windows | cut -f 1 | sed -n "1p")
+    echo "Window match:  ${search_window}"
+    echo "Search:  ${title}"
+    bt new ${search_window} ${title}
+    i3-msg workspace 2
 elif [[ "$title" =~ ^\([0-9]+\).* ]]; then
     echo 'case ([0-9]+)'
     no_notif_title=$(echo "$title" | sed 's/^([0-9]\+)//')
