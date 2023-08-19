@@ -270,7 +270,7 @@ mode "resize" {
         bindsym b gaps bottom all toggle 25
 }
 
-bindsym $mod+Shift+b gaps bottom all toggle 40
+bindsym $mod+Shift+b gaps bottom all toggle 33
 #bindsym $mod+r mode "resize"
 
 # Activate smart borders (always) border if more than 1 window
