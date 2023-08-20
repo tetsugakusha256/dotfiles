@@ -87,6 +87,7 @@ vim.api.nvim_set_keymap("n", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = tru
 vim.api.nvim_set_keymap("n", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
 vim.api.nvim_set_keymap("n", "i", "l", { noremap = true })
 vim.api.nvim_set_keymap("n", "j", "e", { noremap = true })
+vim.api.nvim_set_keymap("n", "J", "E", { noremap = true })
 vim.api.nvim_set_keymap("n", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("n", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("n", "L", "I", { noremap = true })
@@ -95,17 +96,14 @@ vim.api.nvim_set_keymap("v", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = tru
 vim.api.nvim_set_keymap("v", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
 vim.api.nvim_set_keymap("v", "i", "l", { noremap = true })
 vim.api.nvim_set_keymap("v", "j", "e", { noremap = true })
+vim.api.nvim_set_keymap("v", "J", "E", { noremap = true })
 vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
--- Go to begining = _ so I make - go to end (same key)
-vim.api.nvim_set_keymap("n", "-", "$", { noremap = true })
-vim.api.nvim_set_keymap("v", "-", "$", { noremap = true })
-vim.api.nvim_set_keymap("o", "-", "$", { noremap = true })
 
 -- Easier access to command
-vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
+-- vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
 
 -- Move up and down half a page
 vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
@@ -200,7 +198,7 @@ vim.api.nvim_set_keymap("n", "<a-l>", ":lua require('harpoon.ui').nav_file(1)<CR
 vim.api.nvim_set_keymap("n", "<a-u>", ":lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-y>", ":lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-;>", ":lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<a-5>", ":lua require('harpoon.ui').nav_file(5)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-j>", ":lua require('harpoon.ui').nav_file(5)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-6>", ":lua require('harpoon.ui').nav_file(6)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-7>", ":lua require('harpoon.ui').nav_file(7)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-8>", ":lua require('harpoon.ui').nav_file(8)<CR>", { noremap = true, silent = true })
@@ -232,7 +230,7 @@ vim.api.nvim_set_keymap("n", "<leader>rsp", ":MagmaInit python3<CR>", { silent =
 
 -- Anki
 vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A Code<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>ca", ":AnkiSend<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>", {})
 
 -- Easy align
 vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)", {})
@@ -294,6 +292,10 @@ vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
 -- PARAMS
 -------------------------------------------------------
 -------------------------------------------------------
+
+vim.g.vimwiki_folding              = "custom"
+vim.g.markdown_folding             = 1
+
 vim.g.smoothie_no_default_mappings = true
 
 -- Show line number
