@@ -68,7 +68,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 bindsym $mod+slash exec "bt activate `bt list | grep chat.openai | cut -f 1`;i3-msg workspace 2"
-bindsym $mod+period exec "bt activate `bt list | grep devdocs.io | cut -f 1`;i3-msg workspace 2"
+# bindsym $mod+period exec "bt activate `bt list | grep devdocs.io | cut -f 1`;i3-msg workspace 2"
+bindsym $mod+period exec rofimoji -f emojis_animals_nature emojis_component emojis_flags emojis_food_drink emojis_objects emojis_people_body emojis_smileys_emotion emojis_symbols emojis_travel_places emojis_activities math -a clipboard --selector-args="-theme ~/.config/rofi/launcher.rasi"
+
 # start a terminal
 bindsym $mod+t exec /home/anon/.config/rofi/bin/rofiTab.sh
 bindsym $mod+Return exec i3-sensible-terminal
@@ -108,6 +110,7 @@ bindsym $mod+Ctrl+i move right 80px
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
+bindsym Mod4+BackSpace workspace back_and_forth
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Ctrl+Left move left
@@ -205,6 +208,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+f mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 bindsym $mod+w exec /home/anon/.config/rofi/bin/powermenu
 
+for_window [title="Picture in picture"] floating enable, move absolute position 2027px 0px, resize set 300px 300px
 # Create Log out, Reboot, Poweroff bindings
 mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
         bindsym r exec --no-startup-id systemctl reboot
@@ -222,53 +226,6 @@ bindsym $mod+Shift+Ctrl+h resize shrink width 5 px or 5 ppt
 bindsym $mod+Shift+Ctrl+n resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+Ctrl+e resize shrink height 5 px or 5 ppt
 bindsym $mod+Shift+Ctrl+i resize grow width 5 px or 5 ppt
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h move left 100px
-        bindsym n move down 100px
-        bindsym e move up 100px
-        bindsym i move right 100px
-
-        bindsym Shift+h move left 5px
-        bindsym Shift+n move down 5px
-        bindsym Shift+e move up 5px
-        bindsym Shift+i move right 5px
-
-        bindsym Ctrl+n move down 5px
-        bindsym Ctrl+e move up 5px
-
-        bindsym j resize shrink width 40 px or 40 ppt
-        bindsym l resize grow height 40 px or 40 ppt
-        bindsym u resize shrink height 40 px or 40 ppt
-        bindsym y resize grow width 40 px or 40 ppt
-
-        bindsym Shift+j resize shrink width 5 px or 5 ppt
-        bindsym Shift+l resize grow height 5 px or 5 ppt
-        bindsym Shift+u resize shrink height 5 px or 5 ppt
-        bindsym Shift+y resize grow width 5 px or 5 ppt
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 20 px or 20 ppt
-        bindsym Down resize grow height 20 px or 20 ppt
-        bindsym Up resize shrink height 20 px or 20 ppt
-        bindsym Right resize grow width 20 px or 20 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-        bindsym v gaps inner current plus 5
-        bindsym c gaps inner current minus 5
-        bindsym z gaps top current plus 5
-        bindsym x gaps top current minus 5
-        bindsym b gaps bottom all toggle 25
-}
 
 bindsym $mod+Shift+b gaps bottom all toggle 33
 #bindsym $mod+r mode "resize"
