@@ -31,9 +31,9 @@ man_nvim(){
 # See man page with nvim
 alias mann='man_nvim'
 # When using the dim alias, change the 'search file in dir' function to search for
-# dotfiles only
+# dotfiles only same with the grep function
 dim_nvim(){
-    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})"
+    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" -c "lua vim.keymap.set('n', '<leader>se', require('telescope.builtin').live_grep_dotfiles, {})" -c "SessionRestore"
 }
 # launch nvim with my dotgit config (cd into the bare git repo so it keeps
 # the session link to this directory)

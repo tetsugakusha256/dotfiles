@@ -46,6 +46,22 @@ function builtin.find_dotfiles()
   builtin.find_files({ cwd = "/home/anon/", hidden = true, search_dirs = dotfiles })
 end
 
+-- Grep in all the dotfiles
+function builtin.live_grep_dotfiles()
+  builtin.live_grep({
+    search_dirs = dotfiles,
+    vimgrep_arguments = { 'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '-u'
+    }
+  })
+end
+
 function builtin.find_allfiles()
   builtin.find_files({ hidden = true })
 end
