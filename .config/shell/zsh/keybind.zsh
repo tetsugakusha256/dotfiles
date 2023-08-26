@@ -37,7 +37,8 @@ bindkey -M isearch '^E' history-incremental-pattern-search-backward
 bindkey -M isearch '^N' history-incremental-pattern-search-forward
 # bindkey -M isearch '^H' backward-delete-char
 
-bindkey -M vicmd "0" vi-digit-or-beginning-of-line
+bindkey -M vicmd "_" vi-digit-or-beginning-of-line
+
 bindkey -M vicmd "1"-"9" digit-argument
 bindkey -M vicmd ":" execute-named-cmd
 bindkey -M vicmd ";" vi-repeat-find
@@ -103,7 +104,9 @@ bindkey -M vicmd "r" vi-replace-chars
 bindkey -M vicmd "s" vi-substitute
 bindkey -M vicmd "t" vi-find-next-char-skip
 bindkey -M vicmd "u" undo
-bindkey -M vicmd "v" visual-mode
+
+bindkey -M vicmd "v" edit-command-line
+# bindkey -M vicmd "v" visual-mode
 bindkey -M vicmd "w" vi-forward-word
 bindkey -M vicmd "x" vi-delete-char
 bindkey -M vicmd "y" vi-yank
@@ -160,5 +163,4 @@ bindkey -M viins "^\\\\"-"~" self-insert
 bindkey -M viins "^?" vi-backward-delete-char
 bindkey -M viins "\M-^@"-"\M-^?" self-insert
 
-
-
+bindkey -M visual "i" vi-forward-char
