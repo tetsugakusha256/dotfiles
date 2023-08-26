@@ -101,8 +101,7 @@ require("lazy").setup({
     -- Autoalign
     'junegunn/vim-easy-align',
     -- Smooth page scroll
-    'psliwka/vim-smoothie',
-
+    'karb94/neoscroll.nvim',
     -- This will auto close ( [ {
     {
       'windwp/nvim-autopairs',
@@ -435,5 +434,6 @@ require "_lspkind"
 require "_nvim-scrollbar"
 require "_gitsigns"
 require "_surround"
+require "_neoscroll"
 -- require "_obsidian"
 require "_ufo"

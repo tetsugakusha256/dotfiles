@@ -101,13 +101,29 @@ vim.api.nvim_set_keymap("v", "k", "n", { noremap = true })
 vim.api.nvim_set_keymap("v", "l", "i", { noremap = true })
 vim.api.nvim_set_keymap("v", "L", "I", { noremap = true })
 vim.api.nvim_set_keymap("v", "K", "N", { noremap = true })
+-- Can't use i for "entire/inside and right at the same time"
+-- vim.api.nvim_set_keymap("o", "i", "l", { noremap = true })
+vim.api.nvim_set_keymap("o", "j", "e", { noremap = true })
+vim.api.nvim_set_keymap("o", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
+vim.api.nvim_set_keymap("o", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
 
 -- Easier access to command
 -- vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
 
--- Move up and down half a page
-vim.api.nvim_set_keymap("", "<c-n>", "<Plug>(SmoothieDownwards)", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("", "<c-e>", "<Plug>(SmoothieUpwards)", { noremap = true, silent = true })
+-- Scroll smooth motion
+local t    = {}
+-- Syntax: t[keys] = {function, {function arguments}}
+t['<C-e>'] = { 'scroll', { '-vim.wo.scroll', 'true', '250' } }
+t['<C-n>'] = { 'scroll', { 'vim.wo.scroll', 'true', '250' } }
+t['<C-b>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '450' } }
+t['<C-f>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '450' } }
+t['<C-y>'] = { 'scroll', { '-0.10', 'false', '100' } }
+t['<C-u>'] = { 'scroll', { '0.10', 'false', '100' } }
+t['zt']    = { 'zt', { '250' } }
+t['zz']    = { 'zz', { '250' } }
+t['zb']    = { 'zb', { '250' } }
+
+require('neoscroll.config').set_mappings(t)
 
 -- Move line up and down
 vim.api.nvim_set_keymap("n", "N", " :m .+1<CR>==", { noremap = true })
