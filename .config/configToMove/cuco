@@ -1,5 +1,5 @@
-// Don't forget to update the evdev.lst and etdev.xml
-// 
+// NOTE: Don't forget to update the evdev.lst and etdev.xml and move this(create
+// symlink in /usr/share/X11/xkb/symbols)
 
 partial modifier_keys
 xkb_symbols "add_layers" {
@@ -18,7 +18,7 @@ xkb_symbols "basic" {
     name[Group1]= "English (US colemak, with custom layout)";
 
     key.type = "EIGHT_LEVEL";
-    key <TLDE> { [            1,           2, 3,                                   4, BackSpace,          6 ] };
+    key <TLDE> { [            grave,           2, 3,                                   4, BackSpace,          6 , 7,8] };
     key <AE01> { [            1,      exclam, exclamdown,                oneinferior, NoSymbol,     NoSymbol ]};
     key <AE02> { [            2,          at, masculine,                 twoinferior, NoSymbol,    NoSymbol ] };
     key <AE03> { [            3,  numbersign, ordfeminine,             threeinferior, NoSymbol,    NoSymbol ] };
@@ -50,20 +50,20 @@ xkb_symbols "basic" {
     key <AC03> { [            s,           S, 5,                        fivesuperior, F5,          0x1002085] };
     key <AC04> { [            t,           T, 6,                         sixsuperior, F6,          0x1002087] };
     key <AC05> { [            d,           D, 0,                        zerosuperior, F10,        0x1002080 ] };
-    key <AC06> { [            h,           H, numbersign,                        yen, Left,    NoSymbol ] };
-    key <AC07> { [            n,           N, BackSpace,                  asciitilde, Down,        0x1002190] };
+    key <AC06> { [            h,           H, ampersand,                        yen, Left,    NoSymbol ] };
+    key <AC07> { [            n,           N, minus,                  asciitilde, Down,        0x1002190] };
     key <AC08> { [            e,           E, parenleft,                   braceleft, Up,       0x1002193 ] };
     key <AC09> { [            i,           I, parenright,                 braceright, Right,      0x1002192 ] };
     key <AC10> { [            o,           O, dollar,                      ampersand, NoSymbol,    NoSymbol ] };
     key <AC11> { [   apostrophe,    quotedbl, ccedilla,                     Ccedilla, NoSymbol,    NoSymbol ] };
-    key <BKSL> { [    backslash,         bar, 0x10023ff,                  asciitilde, NoSymbol,    NoSymbol ] };
+    key <BKSL> { [    backslash,         bar, eacute,                     Eacute, NoSymbol,    NoSymbol ] };
 
     key <AB01> { [            z,           Z, dead_circumflex,            dead_caron, NoSymbol,    NoSymbol ] };
     key <AB02> { [            x,           X, 7,                       sevensuperior, F7,          0x1002087] };
     key <AB03> { [            c,           C, 8,                       eightsuperior, F8,          0x1002088] };
     key <AB04> { [            v,           V, 9,                        ninesuperior, F9,          0x1002089] };
     key <AB05> { [            b,           B, dead_diaeresis,             dead_tilde, F12,         NoSymbol ] };
-    key <AB06> { [            k,           K, minus,                       0x10000b0, 0x100026f,   NoSymbol ] };
+    key <AB06> { [            k,           K, numbersign,                       0x10000b0, 0x100026f,   NoSymbol ] };
     key <AB07> { [            m,           M, plus,                        0x10000b1, 0x100028d,  NoSymbol  ] };
     key <AB08> { [        comma,        less, asterisk,                    0x10000d7, 0x1000271,    NoSymbol] };
     key <AB09> { [       period,     greater, percent,                     0x10000f7, NoSymbol,  NoSymbol   ] };
@@ -100,8 +100,8 @@ xkb_symbols "basic" {
    // key <AC05> { [            d,            D, dead_diaeresis,                 asciitilde ] };
    // key <AC06> { [            h,            H, dead_caron,                     asciitilde ] };
    // key <AC09> { [            i,            I, iacute,                             Iacute ] };
-   // key <AC10> { [            o,            O, oacute,                             Oacute ] };
    // key <AB02> { [            x,            X, dead_circumflex,                asciitilde ] };
+   // key <AC10> { [            o,            O, oacute,                             Oacute ] };
    // key <AB03> { [            c,            C, ccedilla,                         Ccedilla ] };
    // key <AB04> { [            v,            V, oe,                                     OE ] };
    // key <AB05> { [            b,            B, dead_breve,                     asciitilde ] };
