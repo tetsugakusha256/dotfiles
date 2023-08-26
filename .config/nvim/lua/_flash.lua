@@ -1,6 +1,6 @@
 require('flash').setup({
   -- labels = "abcdefghijklmnopqrstuvwxyz",
-  labels = "ntesiroalpufywm",
+  labels = "neioarstdhkv,.cxuywfpl",
   search = {
     -- search/jump in all windows
     multi_window = true,
@@ -170,7 +170,7 @@ require('flash').setup({
       multi_line = true,
       -- When using jump labels, don't use these keys
       -- This allows using those keys directly after the motion
-      label = { exclude = "hjkliardc" },
+      label = { exclude = "lardcADCLR" },
       -- by default all keymaps are enabled, but you can disable some of them,
       -- by removing them from the list.
       -- If you rather use another key, you can map them
