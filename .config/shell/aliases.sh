@@ -43,6 +43,8 @@ alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
 
 alias spotifyd='$HOME/.config/spotifyd/spotifyd_with_pass.sh'
+# python home (activate python virtual env)
+alias ph='source $HOME/.python_venv/bin/activate'
 # Check if the user's shell is Bash
 if [ -n "$BASH_VERSION" ]; then
     # autojump script
