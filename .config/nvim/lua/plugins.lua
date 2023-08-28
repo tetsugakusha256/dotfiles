@@ -110,8 +110,6 @@ require("lazy").setup({
         enable_check_bracket_line = true
       } -- this is equalent to setup({}) function
     },
-    -- Hop (more modern version of easymotion like motion)
-    -- 'phaazon/hop.nvim',
     {
       "folke/flash.nvim",
       event = "VeryLazy",
@@ -420,7 +418,6 @@ require "_lspconfig"
 require "_null-ls"
 require "_nvim-treesitter"
 require "_nvim-cmp"
--- require "_hop"
 require "_flash"
 require "_comment"
 require "_lualine"
