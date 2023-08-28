@@ -166,7 +166,8 @@ set $ws10 "10"
 bindsym $mod+l workspace number $ws1
 bindsym $mod+u workspace number $ws2
 bindsym $mod+y workspace number $ws3
-bindsym $mod+semicolon workspace number $ws4
+# bindsym $mod+semicolon workspace number $ws4
+bindcode $mod+33 workspace number $ws4
 bindsym $mod+o workspace number $ws5
 bindsym $mod+k workspace number $ws6
 bindsym $mod+m workspace number $ws7
@@ -192,7 +193,8 @@ bindsym $mod+4 exec xset dpms force off
 bindsym $mod+Shift+l move container to workspace number $ws1
 bindsym $mod+Shift+u move container to workspace number $ws2
 bindsym $mod+Shift+y move container to workspace number $ws3
-bindsym $mod+Shift+semicolon move container to workspace number $ws4
+# bindsym $mod+Shift+semicolon move container to workspace number $ws4
+bindcode $mod+Shift+33 move container to workspace number $ws4
 bindsym $mod+Shift+o move container to workspace number $ws5
 bindsym $mod+Shift+k move container to workspace number $ws6
 bindsym $mod+Shift+m move container to workspace number $ws7
