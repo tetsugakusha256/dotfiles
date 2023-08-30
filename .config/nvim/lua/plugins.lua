@@ -256,7 +256,7 @@ require("lazy").setup({
           tex_support = false,
           models = {
             -- Here you specify which notetype should be associated with which deck
-            ["One Q one A Code"] = "Code",
+            ["One Q one A Code"] = "Coding::nvim",
           },
         })
       end,
