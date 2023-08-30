@@ -11,5 +11,6 @@ require("nvim-surround").setup({
     visual_line = "gS",
     delete = "dS",
     change = "cS",
+    change_line = "cSS",
   },
 })
