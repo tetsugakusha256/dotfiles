@@ -19,6 +19,28 @@ require("lazy").setup({
       'onsails/lspkind.nvim',
     },
     {
+      "kelly-lin/ranger.nvim",
+      config = function()
+        require("ranger-nvim").setup({ replace_netrw = true })
+        vim.api.nvim_set_keymap("n", "<a-f>", "", {
+          noremap = true,
+          callback = function()
+            require("ranger-nvim").open(true)
+          end,
+        })
+        local ranger_nvim = require("ranger-nvim")
+        ranger_nvim.setup({
+          -- new ranger bindings to open file differently
+          keybinds = {
+            ["ov"] = ranger_nvim.OPEN_MODE.vsplit,
+            ["oh"] = ranger_nvim.OPEN_MODE.split,
+            ["ot"] = ranger_nvim.OPEN_MODE.tabedit,
+            ["or"] = ranger_nvim.OPEN_MODE.rifle,
+          },
+        })
+      end,
+    },
+    {
       'norcalli/nvim-colorizer.lua',
       config = function()
         require("colorizer").setup()
@@ -36,8 +58,6 @@ require("lazy").setup({
     -- Static highligting
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
 
-    -- File explorer for nvim
-    "nvim-tree/nvim-tree.lua",
 
     ---------------------------------------------
     --- Completion
@@ -423,7 +443,6 @@ require "_comment"
 require "_lualine"
 require "_telescope"
 require "_dashboard"
-require "_nvim-tree"
 require "_todo-comments"
 require "_autosession"
 require "_lspkind"
