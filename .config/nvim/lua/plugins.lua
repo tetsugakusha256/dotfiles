@@ -135,6 +135,7 @@ require("lazy").setup({
         enable_check_bracket_line = true
       } -- this is equalent to setup({}) function
     },
+    -- Flash (easymotion)
     {
       "folke/flash.nvim",
       event = "VeryLazy",
@@ -175,7 +176,7 @@ require("lazy").setup({
           desc = "Remote Flash",
         },
         {
-          "R",
+          "=",
           mode = { "o", "x" },
           function()
             require("flash").treesitter_search()

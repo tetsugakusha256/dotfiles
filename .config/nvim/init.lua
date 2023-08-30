@@ -107,8 +107,10 @@ vim.api.nvim_set_keymap("o", "j", "e", { noremap = true })
 vim.api.nvim_set_keymap("o", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
 vim.api.nvim_set_keymap("o", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
 
--- Easier access to command
--- vim.api.nvim_set_keymap("", "?", ":", { noremap = true })
+-- Move edit history
+vim.api.nvim_set_keymap("n", "(", "g;", { noremap = true })
+vim.api.nvim_set_keymap("n", ")", "g,", { noremap = true })
+
 
 -- Scroll smooth motion
 local t    = {}
@@ -134,8 +136,8 @@ vim.api.nvim_set_keymap("v", "E", " :m '<-2<CR>gv=gv", { noremap = true })
 -- Normally <c-[> is the same as <esc> but with the correct escape sequence in alacritty config it works
 vim.api.nvim_set_keymap("n", "<ESC>", "<ESC>", { noremap = true })
 -- Navigate quickfix list
-vim.api.nvim_set_keymap("n", "<c-]>", ":cn<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-[>", ":cp<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-)>", ":cn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-(>", ":cp<CR>", { noremap = true })
 -- Close quickfix menu after selecting choice
 vim.api.nvim_create_autocmd(
   "FileType", {
@@ -181,6 +183,7 @@ vim.keymap.set('n', '<a-i>', MoveToRightWindowOrNextTab, { noremap = true, silen
 vim.keymap.set('n', '<a-h>', MoveToLeftWindowOrNextTab, { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-n>", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-e>", "<c-w>k", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-BS>", "<c-w>w", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-h>", "<c-w><", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-i>", "<c-w>>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-n>", "<c-w>-", { noremap = true })
@@ -226,6 +229,22 @@ require("harpoon").setup({
 })
 
 -----------------------------------
+-- Terminal mode
+-----------------------------------
+
+vim.keymap.set('t', '<a-i>', MoveToRightWindowOrNextTab, { noremap = true, silent = true })
+vim.keymap.set('t', '<a-h>', MoveToLeftWindowOrNextTab, { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<a-n>",     "<C-\\><C-N><c-w>j",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-e>",     "<C-\\><C-N><c-w>k",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-BS>",    "<C-\\><C-N><c-w>w",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-h>",   "<C-\\><C-N><c-w><",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-i>",   "<C-\\><C-N><c-w>>",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-n>",   "<C-\\><C-N><c-w>-",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-e>",   "<C-\\><C-N><c-w>+",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-r>",   "<C-\\><C-N><c-w>r",      { noremap = true })
+vim.api.nvim_set_keymap('t', '<C-SPACE>', '<C-\\><C-n>', { noremap = true })
+
+-----------------------------------
 -- Plugins mappings
 -----------------------------------
 
@@ -234,21 +253,21 @@ vim.g.magma_automatically_open_output = false
 
 -- Example: Running Vimscript code from Lua
 
-vim.api.nvim_set_keymap("n", "<leader>ra", ":MagmaInterrupt<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rr", ":MagmaEvaluateLine<CR>", { silent = true })
-vim.api.nvim_set_keymap("x", "<leader>r", ":<C-u>MagmaEvaluateVisual<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rc", ":MagmaReevaluateCell<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rd", ":MagmaDelete<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ro", ":MagmaShowOutput<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rs", ":MagmaInit<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rsj", ":MagmaInit javascript<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>rsp", ":MagmaInit python3<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ma", ":MagmaInterrupt<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>mr", ":MagmaEvaluateLine<CR>", { silent = true })
+vim.api.nvim_set_keymap("x", "<leader>m", ":<C-u>MagmaEvaluateVisual<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>mc", ":MagmaReevaluateCell<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>md", ":MagmaDelete<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>mo", ":MagmaShowOutput<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ms", ":MagmaInit<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>msj", ":MagmaInit javascript<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>msp", ":MagmaInit python3<CR>", { silent = true })
 
 -- Anki
 vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A Code<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>", {})
 
--- Easy align
+-- Easy align (* + delimiter = align on all delimiter)
 vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)", {})
 vim.api.nvim_set_keymap("x", "<leader>a", "<Plug>(EasyAlign)", {})
 
@@ -261,6 +280,64 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
 
 -- Untotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
+-------------------------------------------------------
+-- Lsp
+-------------------------------------------------------
+
+local lsp_formatting = function()
+  vim.lsp.buf.format({
+    filter = function(client)
+      -- Don't format with tsserver
+      -- Instead, because I have prettier in null-ls, it will try to use that
+      if client.name == "tsserver" then
+        return false
+      end
+      return true
+    end,
+    timeout_ms = 2000
+  })
+end
+-- The idea is leader+t for function that 'take' the word under cursor
+-- leader+s for function that search
+-- Codelens
+-- vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.display)
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("n", "<leader>tD", vim.lsp.buf.definition)
+-- List implementation implementation
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+-- Seach for Incoming/Outgoint calls
+vim.keymap.set("n", "<leader>tc", vim.lsp.buf.incoming_calls)
+vim.keymap.set("n", "<leader>to", vim.lsp.buf.outgoing_calls)
+-- <leader>t action on word under cursor ('take' action)
+vim.keymap.set("n", "<leader>ta", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+-- Go to definition
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "<leader>td", vim.lsp.buf.definition)
+-- Show info
+vim.keymap.set("n", "gh", vim.lsp.buf.hover)
+vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover)
+vim.keymap.set("n", "gr", vim.lsp.buf.references)
+vim.keymap.set("n", "<leader>tr", vim.lsp.buf.references)
+
+vim.keymap.set("n", "<leader>ts", vim.lsp.buf.signature_help)
+vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder)
+vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
+vim.keymap.set("n", "<leader>wl", function()
+  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end)
+
+vim.keymap.set("n", "<leader>fr", lsp_formatting, { noremap = true })
+-- Diagnostic (errors)
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<leader>ee", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "<leader>ew", vim.diagnostic.setloclist, opts)
+vim.keymap.set("n", "<leader>eh", vim.diagnostic.hide, opts)
+vim.keymap.set("n", "<leader>es", vim.diagnostic.show, opts)
+vim.keymap.set("n", "<a-[>", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "<a-]>", vim.diagnostic.goto_next, opts)
 
 -------------------------------------------------------
 -- Debug
@@ -300,6 +377,7 @@ vim.api.nvim_set_keymap("i", "<c-s>", "<ESC>:update<CR>", { noremap = true })
 -- TODO: spellcheck
 vim.api.nvim_set_keymap("n", "<Leader>oe", ":setlocal spell spelllang=en<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>on", ":setlocal nospell nospelllang<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>od", ":setlocal nospell nospelllang<CR>", { noremap = true })
 -- correct, set wrong, set correct
 vim.api.nvim_set_keymap("n", "<Leader>oo", 'z=', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>ow", 'zw', { noremap = true })
