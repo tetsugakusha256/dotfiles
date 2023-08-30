@@ -841,14 +841,14 @@ key_bindings:
   #- { key: L,      mods: Shift,         mode: Vi|~Search, action: Low                     }
   #- { key: B,                           mode: Vi|~Search, action: SemanticLeft            }
   #- { key: W,                           mode: Vi|~Search, action: SemanticRight           }
-  - { key: K,                           mode: Vi|~Search, action: SemanticRightEnd        }
+  - { key: J,                           mode: Vi|~Search, action: SemanticRightEnd        }
   #- { key: B,      mods: Shift,         mode: Vi|~Search, action: WordLeft                }
   #- { key: W,      mods: Shift,         mode: Vi|~Search, action: WordRight               }
-  #- { key: E,      mods: Shift,         mode: Vi|~Search, action: WordRightEnd            }
+  - { key: J,      mods: Shift,         mode: Vi|~Search, action: WordRightEnd            }
   #- { key: Key5,   mods: Shift,         mode: Vi|~Search, action: Bracket                 }
   # é key on qwertz
-  - { key: 0x27,   mods: Shift,                             mode: Vi|~Search, action: SearchForward           }
-  - { key: 0x27,  mode: Vi|~Search, action: SearchBackward          }
+  # - { key: 0x61, mods: Shift,      mode: Vi|~Search, action: SearchForward           }
+  - { key: 0x61, mode: Vi|~Search, action: SearchBackward          }
   - { key: K,                           mode: Vi|~Search, action: SearchNext              }
   - { key: K,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
 
