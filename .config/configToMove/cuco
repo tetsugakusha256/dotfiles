@@ -32,11 +32,11 @@ xkb_symbols "basic" {
     key <AE11> { [        minus,     underscore,  endash,               emdash,           NoSymbol,  NoSymbol ] };
     key <AE12> { [        equal,     plus,        multiply,             division,         NoSymbol,  NoSymbol ] };
  
-    key <AD01> { [            q,     Q,           dead_grave,           dead_belowmacron, NoSymbol,  NoSymbol] };
+    key <AD01> { [            q,     Q,           dead_grave,           dead_diaeresis, NoSymbol,  NoSymbol] };
     key <AD02> { [            w,     W,           1,                    onesuperior,      F1,        0x1002081] };
     key <AD03> { [            f,     F,           2,                    twosuperior,      F2,        0x1002082] };
     key <AD04> { [            p,     P,           3,                    threesuperior,    F3,        0x1002083] };
-    key <AD05> { [            g,     G,           dead_acute,           dead_macron,      F11,       NoSymbol] };
+    key <AD05> { [            g,     G,           dead_acute,           dead_tilde,      F11,       NoSymbol] };
     key <AD06> { [            j,     J,           at,                   EuroSign,         NoSymbol,  NoSymbol ] };
     key <AD07> { [            l,     L,           exclam,               exclamdown,       NoSymbol,  NoSymbol ] };
     key <AD08> { [            u,     U,           bracketleft,          guillemotleft,    Up,        0x1002191] };
@@ -62,7 +62,7 @@ xkb_symbols "basic" {
     key <AB02> { [            x,     X,           7,                    sevensuperior,    F7,        0x1002087] };
     key <AB03> { [            c,     C,           8,                    eightsuperior,    F8,        0x1002088] };
     key <AB04> { [            v,     V,           9,                    ninesuperior,     F9,        0x1002089] };
-    key <AB05> { [            b,     B,           dead_diaeresis,       dead_tilde,       F12,       NoSymbol ] };
+    key <AB05> { [            b,     B,           at,       dead_tilde,       F12,       NoSymbol ] };
     key <AB06> { [            k,     K,           asterisk,             multiply,         0x100026f, NoSymbol ] };
     key <AB07> { [            m,     M,           plus,                 0x10000b1,        0x100028d, NoSymbol  ] };
     key <AB08> { [        comma,     semicolon,   braceleft,            percent,          0x1000271, NoSymbol] };
