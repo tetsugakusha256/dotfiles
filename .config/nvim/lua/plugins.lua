@@ -60,6 +60,11 @@ require("lazy").setup({
 
 
     ---------------------------------------------
+    --- Debug
+    ---------------------------------------------
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    ---------------------------------------------
     --- Completion
     ---------------------------------------------
     -- Copilot
@@ -453,3 +458,4 @@ require "_surround"
 require "_neoscroll"
 -- require "_obsidian"
 require "_ufo"
+require "_dap"

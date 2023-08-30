@@ -263,6 +263,28 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -------------------------------------------------------
+-- Debug
+-------------------------------------------------------
+
+local dui = require("dapui")
+vim.keymap.set("n", "<leader>du", dui.toggle, opts)
+vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts)
+-- easier to type
+vim.api.nvim_set_keymap("n", "<leader>ds", ":DapToggleBreakpoint<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>dt", ":DapTerminate<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>dr", ":DapRestartFrame<CR>", opts)
+-- next line
+vim.api.nvim_set_keymap("n", "<leader>dn", ":DapStepOver<CR>", opts)
+-- exit scope
+vim.api.nvim_set_keymap("n", "<leader>de", ":DapStepOut<CR>", opts)
+-- into
+vim.api.nvim_set_keymap("n", "<leader>di", ":DapStepInto<CR>", opts)
+
+
+
+
+-------------------------------------------------------
 -- Others
 -------------------------------------------------------
 
