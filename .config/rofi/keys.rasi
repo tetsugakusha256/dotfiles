@@ -1,7 +1,7 @@
 configuration {
 /*	kb-primary-paste: "Control+V,Shift+Insert";*/
 /*	kb-secondary-paste: "Control+v,Insert";*/
-/*	kb-clear-line: "Control+w";*/
+/*	kb-clear-line: "Control+z";*/
 /*	kb-move-front: "Control+a";*/
 	kb-move-end: "Control+p";
 /*	kb-move-word-back: "Alt+b,Control+Left";*/
@@ -15,9 +15,9 @@ configuration {
 /*	kb-remove-to-eol: "Control+k";*/
 /*	kb-remove-to-sol: "Control+u";*/
 /*	kb-accept-entry: "Control+j,Control+m,Return,KP_Enter";*/
-/*	kb-accept-custom: "Control+Return";*/
+	kb-accept-custom: "Shift+Return";
 /*	kb-accept-custom-alt: "Control+Shift+Return";*/
-/*	kb-accept-alt: "Shift+Return";*/
+	kb-accept-alt: "Control+space";
 /*	kb-delete-entry: "Shift+Delete";*/
 /*	kb-mode-next: "Shift+Right,Control+Tab";*/
 /*	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";*/
@@ -33,7 +33,7 @@ configuration {
 /*	kb-page-next: "Page_Down";*/
 /*	kb-row-first: "Home,KP_Home";*/
 /*	kb-row-last: "End,KP_End";*/
-/*	kb-row-select: "Control+space";*/
+	kb-row-select: "Control+Return";
 /*	kb-screenshot: "Alt+S";*/
 /*	kb-ellipsize: "Alt+period";*/
 /*	kb-toggle-case-sensitivity: "grave,dead_grave";*/
