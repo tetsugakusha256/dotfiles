@@ -14,7 +14,7 @@ MAPPINGS:
     
   # print screen key map to key below esc
   - KEY: KEY_SYSRQ
-    TAP: KEY_GRAVE
+    TAP: KEY_DELETE
     HOLD: KEY_SYSRQ
 
   # - KEY: KEY_LEFTMETA
