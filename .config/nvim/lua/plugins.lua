@@ -31,6 +31,13 @@ require("lazy").setup({
         local ranger_nvim = require("ranger-nvim")
         ranger_nvim.setup({
           -- new ranger bindings to open file differently
+          ui = {
+            border = "rounded",
+            height = 0.90,
+            width = 0.95,
+            x = 0.5,
+            y = 0.5,
+          },
           keybinds = {
             ["ov"] = ranger_nvim.OPEN_MODE.vsplit,
             ["oh"] = ranger_nvim.OPEN_MODE.split,
@@ -52,6 +59,8 @@ require("lazy").setup({
     "williamboman/mason-lspconfig.nvim",
     -- Configurations for Nvim LSP
     'neovim/nvim-lspconfig',
+    -- Lsp symbols tree view
+    'simrat39/symbols-outline.nvim',
     -- Rust analyzer config
     'simrat39/rust-tools.nvim',
 
@@ -215,6 +224,8 @@ require("lazy").setup({
     'rbong/vim-flog',
     -- Git show sign
     'lewis6991/gitsigns.nvim',
+    -- Compare version of git file and merge conflicts view...
+    'sindrets/diffview.nvim',
     -- Scrollbar with support for gitsigns
     'petertriho/nvim-scrollbar',
 
@@ -458,5 +469,7 @@ require "_gitsigns"
 require "_surround"
 require "_neoscroll"
 -- require "_obsidian"
+require "_symbols-outline"
 require "_ufo"
 require "_dap"
+require "_diffview"
