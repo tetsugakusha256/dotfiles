@@ -75,7 +75,7 @@ require("diffview").setup({
     },
     win_config = { -- See ':h diffview-config-win_config'
       position = "bottom",
-      height = 16,
+      height = 10,
       win_opts = {}
     },
   },
