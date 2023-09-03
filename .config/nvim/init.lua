@@ -31,6 +31,33 @@ function MoveToLeftWindowOrNextTab()
   end
 end
 
+-- Set textwidth if the current buffer's file type is the target
+-- NOTE: Check why it's not working (current fix: set textwidht on wiki alias)
+function SetTextwidthMarkdown()
+  if vim.bo.filetype == "markdown" then
+    vim.bo.textwidth = 80
+  end
+end
+
+-- Define a function that takes user input and calls another function
+function AttachDebugToProcess()
+  -- Prompt the user for input
+  local user_input = vim.fn.input('Name of the process :')
+  -- Check if the user_input is not empty
+  if user_input ~= '' then
+    -- Call another function and pass the user input as an argument
+    local thread = require('dap.utils').pick_process({ filter = user_input })
+    require('dap').run({
+      name = "Attach to Rust Process",
+      type = "codelldb",
+      request = "attach",
+      pid = thread,
+    })
+  else
+    print("No input provided.")
+  end
+end
+
 -------------------------------------------------------
 -------------------------------------------------------
 -- EARLY call
@@ -168,6 +195,10 @@ vim.keymap.set('n', '<leader>gg', gitsigns.preview_hunk, {})
 vim.keymap.set('n', '<leader>gn', gitsigns.next_hunk, {})
 vim.keymap.set('n', '<leader>ge', gitsigns.prev_hunk, {})
 
+-- Git diffview
+vim.api.nvim_set_keymap("n", "<leader>gf", ':DiffviewFileHistory %<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-d>", ':DiffviewFileHistory %<CR>', { noremap = true })
+
 -------------------------------------------------------
 -- Tab/Window/Buffer
 -------------------------------------------------------
@@ -191,6 +222,7 @@ vim.api.nvim_set_keymap("n", "<a-c-e>", "<c-w>+", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-r>", "<c-w>r", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c>", ":bd<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-s-w>", ":tabclose<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-a>", ":vs<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-v>", ":sp<CR>", { noremap = true })
 -- Colemak mappings
@@ -216,7 +248,7 @@ vim.keymap.set('n', '<leader>h', require("harpoon.ui").toggle_quick_menu, {})
 vim.api.nvim_set_keymap("n", "<a-l>", ":lua require('harpoon.ui').nav_file(1)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-u>", ":lua require('harpoon.ui').nav_file(2)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-y>", ":lua require('harpoon.ui').nav_file(3)<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<a-;>", ":lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<a-=>", ":lua require('harpoon.ui').nav_file(4)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-j>", ":lua require('harpoon.ui').nav_file(5)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-6>", ":lua require('harpoon.ui').nav_file(6)<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-7>", ":lua require('harpoon.ui').nav_file(7)<CR>", { noremap = true, silent = true })
@@ -234,14 +266,14 @@ require("harpoon").setup({
 
 vim.keymap.set('t', '<a-i>', MoveToRightWindowOrNextTab, { noremap = true, silent = true })
 vim.keymap.set('t', '<a-h>', MoveToLeftWindowOrNextTab, { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<a-n>",     "<C-\\><C-N><c-w>j",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-e>",     "<C-\\><C-N><c-w>k",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-BS>",    "<C-\\><C-N><c-w>w",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-c-h>",   "<C-\\><C-N><c-w><",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-c-i>",   "<C-\\><C-N><c-w>>",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-c-n>",   "<C-\\><C-N><c-w>-",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-c-e>",   "<C-\\><C-N><c-w>+",      { noremap = true })
-vim.api.nvim_set_keymap("t", "<a-c-r>",   "<C-\\><C-N><c-w>r",      { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-n>", "<C-\\><C-N><c-w>j", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-e>", "<C-\\><C-N><c-w>k", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-BS>", "<C-\\><C-N><c-w>w", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-h>", "<C-\\><C-N><c-w><", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-i>", "<C-\\><C-N><c-w>>", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-n>", "<C-\\><C-N><c-w>-", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-e>", "<C-\\><C-N><c-w>+", { noremap = true })
+vim.api.nvim_set_keymap("t", "<a-c-r>", "<C-\\><C-N><c-w>r", { noremap = true })
 vim.api.nvim_set_keymap('t', '<C-SPACE>', '<C-\\><C-n>', { noremap = true })
 
 -----------------------------------
@@ -310,7 +342,6 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 -- Seach for Incoming/Outgoint calls
 vim.keymap.set("n", "<leader>tc", vim.lsp.buf.incoming_calls)
 vim.keymap.set("n", "<leader>to", vim.lsp.buf.outgoing_calls)
--- <leader>t action on word under cursor ('take' action)
 vim.keymap.set("n", "<leader>ta", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 -- Go to definition
@@ -328,6 +359,8 @@ vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
 vim.keymap.set("n", "<leader>wl", function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end)
+-- Symbol tree view
+vim.api.nvim_set_keymap("n", "<a-s>", ":SymbolsOutline<CR>", {noremap = true})
 
 vim.keymap.set("n", "<leader>fr", lsp_formatting, { noremap = true })
 -- Diagnostic (errors)
@@ -345,6 +378,7 @@ vim.keymap.set("n", "<a-]>", vim.diagnostic.goto_next, opts)
 
 local dui = require("dapui")
 vim.keymap.set("n", "<leader>du", dui.toggle, opts)
+vim.keymap.set("n", "<leader>da", AttachDebugToProcess, opts)
 vim.api.nvim_set_keymap("n", "<leader>db", ":DapToggleBreakpoint<CR>", opts)
 -- easier to type
 vim.api.nvim_set_keymap("n", "<leader>ds", ":DapToggleBreakpoint<CR>", opts)
@@ -357,9 +391,6 @@ vim.api.nvim_set_keymap("n", "<leader>dn", ":DapStepOver<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>de", ":DapStepOut<CR>", opts)
 -- into
 vim.api.nvim_set_keymap("n", "<leader>di", ":DapStepInto<CR>", opts)
-
-
-
 
 -------------------------------------------------------
 -- Others
@@ -376,8 +407,8 @@ vim.api.nvim_set_keymap("i", "<c-s>", "<ESC>:update<CR>", { noremap = true })
 -- Add spellcheck toggel
 -- TODO: spellcheck
 vim.api.nvim_set_keymap("n", "<Leader>oe", ":setlocal spell spelllang=en<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>on", ":setlocal nospell nospelllang<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>od", ":setlocal nospell nospelllang<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>on", ":setlocal nospell <CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>od", ":setlocal nospell <CR>", { noremap = true })
 -- correct, set wrong, set correct
 vim.api.nvim_set_keymap("n", "<Leader>oo", 'z=', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>ow", 'zw', { noremap = true })
@@ -416,48 +447,52 @@ vim.g.smoothie_no_default_mappings = true
 
 -- Show line number
 vim.opt.number                     = true
---vim.opt.statuscolumn = "%@SignCb@%s%=%T%@NumCb@%r│%T"
+--vim.opt.statuscolumn             = "%@SignCb@%s %= %T%@NumCb@%r│%T"
 -- Wrap line after 80 characters
 vim.opt.wrap                       = true
-vim.opt.textwidth                  = 80
+vim.opt.textwidth                  = 200
+-- Set textwidth to 80 if in a markdown file
+vim.api.nvim_exec([[
+  autocmd BufEnter * lua SetTextwidthMarkdown()
+]], false)
 
 -- ignorecase when searching
-vim.opt.ignorecase                 = true
+vim.opt.ignorecase    = true
 -- except when using capital letters
-vim.opt.smartcase                  = true
+vim.opt.smartcase     = true
 
 -- Enables mouse to scroll through page and drag-clic -> visual mode
-vim.opt.mouse                      = "a"
+vim.opt.mouse         = "a"
 
 -- Insert spaces when TAB is pressed instead of tabs.
-vim.opt.expandtab                  = true
+vim.opt.expandtab     = true
 
 -- Change number of spaces that a <Tab> counts for during editing ops
-vim.opt.softtabstop                = 2
-vim.opt.encoding                   = "utf-8"
-vim.opt.fileencodings              = "utf-8"
+vim.opt.softtabstop   = 2
+vim.opt.encoding      = "utf-8"
+vim.opt.fileencodings = "utf-8"
 
 -- Indentation amount for < and > commands.
-vim.opt.shiftwidth                 = 2
+vim.opt.shiftwidth    = 2
 
 -- Vim.opt.the commands to save in history default number is 20.
-vim.opt.history                    = 1000
+vim.opt.history       = 1000
 
 -- Set more natural default split
-vim.opt.splitbelow                 = true
-vim.opt.splitright                 = true
+vim.opt.splitbelow    = true
+vim.opt.splitright    = true
 
 -- Remove one line at the bottom
-vim.opt.cmdheight                  = 1
+vim.opt.cmdheight     = 1
 
 -- cursor stay more centered
--- vim.opt.scrolloff = 18
+-- vim.opt.scrolloff               = 18
 
 -- Persistent undo history
-vim.opt.undofile                   = true
+vim.opt.undofile      = true
 
 -- Only show tab if 2 or more
-vim.opt.stal                       = 1
+vim.opt.stal          = 1
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.cmd([[colorscheme catppuccin-mocha]])
