@@ -1,3 +1,6 @@
+# WARN: WHEN CHANGING ALIASES DON'T FORGET TO SOURE IT AGAIN OR RESTART
+# TERMINAL!!!!!!!!!!!!!!!!
+#
 # ls aliases
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -30,15 +33,21 @@ man_nvim(){
 }
 # See man page with nvim
 alias mann='man_nvim'
+# Open a new terminal in the same working dir
+alias clone='alacritty &;disown'
 # When using the dim alias, change the 'search file in dir' function to search for
 # dotfiles only same with the grep function
 dim_nvim(){
-    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" -c "lua vim.keymap.set('n', '<leader>se', require('telescope.builtin').live_grep_dotfiles, {})" -c "SessionRestore"
-}
+    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" \
+        -c "lua vim.keymap.set('n', '<leader>se', require('telescope.builtin').live_grep_dotfiles, {})" \
+        -c "lua vim.keymap.set('n', '<leader>ti', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
+        -c "lua vim.keymap.set('n', '<leader>te', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
+        -c "SessionRestore" \
+    }
 # launch nvim with my dotgit config (cd into the bare git repo so it keeps
 # the session link to this directory)
-alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME dim_nvim;cd ~'
-alias wiki='nvim +":cd /home/anon/Documents/myWiki/"'
+alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME dim_nvim ; exit'
+alias wiki='nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/" ; exit'
 alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
 
