@@ -102,8 +102,11 @@ require("mason-lspconfig").setup_handlers({
         on_attach = function(_, bufnr)
           vim.keymap.set("n", "<Leader>rh", rt.hover_actions.hover_actions, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>rl", toggle_inlay_hints, { buffer = bufnr })
+          vim.keymap.set("n", "<Leader>rr", rt.runnables.runnables, { buffer = bufnr })
+          vim.keymap.set("n", "<Leader>rc", rt.open_cargo_toml.open_cargo_toml, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>ru", function() rt.move_item.move_item(true) end, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>rd", function() rt.move_item.move_item(false) end, { buffer = bufnr })
+          -- vim.keymap.set("v", "<Leader>rh", rt.hover_range.hover_range, { buffer = bufnr })
         end,
       },
     })
@@ -115,6 +118,15 @@ require("mason-lspconfig").setup_handlers({
       -- ... other configs
       settings = {
         Lua = {
+          runtime = {
+          },
+          workspace = {
+            library = {
+              vim.fn.expand("$HOME/.local/share/nvim/lazy"),
+              vim.fn.expand '~/.luarocks/share/lua/5.3',
+              '/usr/share/lua/5.3'
+            }
+          },
           diagnostics = {
             -- Add vim to the global variables to avoid "vim not declared type of warning"
             globals = { "vim" },
