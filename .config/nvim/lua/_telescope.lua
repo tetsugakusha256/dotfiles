@@ -1,21 +1,37 @@
 require('telescope').setup {
   defaults = {
+    layout_strategy = 'vertical',
+    layout_config = {
+      horizontal = { height = 0.95, preview_width = 0.50, width = 0.85, },
+      vertical = {
+        height = 0.96,
+        preview_cutoff = 2,
+        prompt_position = "bottom",
+        width = 0.85
+      },
+    },
+    cycle_layout_list = { "horizontal", "vertical" },
     mappings = {
       i = {
-        ["<C-h>"] = require('telescope.actions').file_split,
+        ["<C-a>"] = require('telescope.actions').file_split,
         ["<C-v>"] = require('telescope.actions').file_vsplit,
+        ["<C-o>"] = require('telescope.actions').file_tab,
         ["<C-t>"] = require('telescope.actions').file_tab,
-        ["<C-a-n>"] = require('telescope.actions').preview_scrolling_down,
-        ["<C-a-e>"] = require('telescope.actions').preview_scrolling_up,
+        ["<C-u>"] = require('telescope.actions').preview_scrolling_down,
+        ["<C-y>"] = require('telescope.actions').preview_scrolling_up,
         ["<C-space>"] = require('telescope.actions').toggle_selection,
         ["<C-d>"] = require('telescope.actions').delete_buffer,
         ["<C-n>"] = require('telescope.actions').move_selection_next,
         ["<C-e>"] = require('telescope.actions').move_selection_previous,
+        ["<C-h>"] = require('telescope.actions.layout').toggle_preview,
+        ["<C-p>"] = require('telescope.actions.layout').cycle_layout_next,
       },
       n = {
         --
         ["n"] = require('telescope.actions').move_selection_next,
         ["e"] = require('telescope.actions').move_selection_previous,
+        ["<C-u>"] = require('telescope.actions').preview_scrolling_down,
+        ["<C-y>"] = require('telescope.actions').preview_scrolling_up,
       }
     }
   },
@@ -49,6 +65,22 @@ end
 -- Grep in all the dotfiles
 function builtin.live_grep_dotfiles()
   builtin.live_grep({
+    search_dirs = dotfiles,
+    vimgrep_arguments = { 'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '-u'
+    }
+  })
+end
+
+-- Same but with a string
+function builtin.grep_string_gitignore_dotfiles()
+  builtin.grep_string({
     search_dirs = dotfiles,
     vimgrep_arguments = { 'rg',
       '--color=never',
@@ -120,9 +152,9 @@ end
 -- a : code actions
 -- d : go to definition
 -- e : search expression (grep)
+-- TODO: visual mode grep_string
 vim.keymap.set('n', '<leader>te', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>ti', builtin.grep_string_gitignore, {})
--- TODO: visual mode grep_string
 vim.keymap.set('n', '<leader>sw', builtin.find_wiki, {})
 vim.keymap.set('n', '<leader>sd', builtin.find_dotfiles, {})
 vim.keymap.set('n', '<leader>sf', builtin.find_sessions, {})
