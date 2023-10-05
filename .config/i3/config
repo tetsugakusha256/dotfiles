@@ -51,6 +51,7 @@ exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/w
 exec --no-startup-id "i3-msg 'workspace 7; append_layout /home/anon/.config/i3/workspace-7.json'"
 exec --no-startup-id i3-msg 'workspace 2; exec brave-browser-beta'
 exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim +":cd /home/anon/Documents/myWiki/"'
+exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
 # exec --no-startup-id "flatpak run com.tomjwatson.Emote"
 # Now using interception tools to set the ctrl_modifier remap at a lower level
 # it should work in the ttc, wayland and x11
