@@ -178,8 +178,8 @@ bindsym $mod+j workspace number $ws10
 
 # brightness settings
 # TODO:
-bindsym XF86MonBrightnessUp exec "brightnessctl set +3%; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown  exec "brightnessctl set 2%-; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "brightnessctl set +3%"
+bindsym XF86MonBrightnessDown  exec "brightnessctl set 2%-"
 bindcode 235 exec brightnessctl set 1
 
 # redshift
