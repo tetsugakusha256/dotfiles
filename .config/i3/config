@@ -68,7 +68,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+slash exec "bt activate `bt list | grep chat.openai | cut -f 1`;i3-msg workspace 2"
+bindsym $mod+slash exec "bt activate `bt list | grep chat.openai | cut -f 1 | head -n 1`;i3-msg workspace 2"
 # bindsym $mod+period exec "bt activate `bt list | grep devdocs.io | cut -f 1`;i3-msg workspace 2"
 bindsym $mod+period exec rofimoji -f emojis_animals_nature emojis_component emojis_flags emojis_food_drink emojis_objects emojis_people_body emojis_smileys_emotion emojis_symbols emojis_travel_places emojis_activities math -a clipboard --selector-args="-theme ~/.config/rofi/launcher.rasi"
 
