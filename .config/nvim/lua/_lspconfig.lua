@@ -122,9 +122,9 @@ require("mason-lspconfig").setup_handlers({
           },
           workspace = {
             library = {
-              vim.fn.expand("$HOME/.local/share/nvim/lazy"),
-              vim.fn.expand '~/.luarocks/share/lua/5.3',
-              '/usr/share/lua/5.3'
+              -- vim.fn.expand("$HOME/.local/share/nvim/lazy"),
+              -- vim.fn.expand '~/.luarocks/share/lua/5.3',
+              -- '/usr/share/lua/5.3'
             }
           },
           diagnostics = {

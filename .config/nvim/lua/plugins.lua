@@ -1,23 +1,22 @@
 require("lazy").setup({
+    ---------------------------------------------
+    --- Dashboard
+    ---------------------------------------------
     -- Start screen dashboard
     'glepnir/dashboard-nvim',
+
     ---------------------------------------------
     --- Colorschemes
     ---------------------------------------------
-
     -- Different colorschemes
     'folke/tokyonight.nvim',
     {
       'catppuccin/nvim',
       name = 'catppuccin'
     },
-    {
-      'EdenEast/nightfox.nvim',
-    },
+    'EdenEast/nightfox.nvim',
 
-    {
-      'onsails/lspkind.nvim',
-    },
+    'onsails/lspkind.nvim',
     {
       "kelly-lin/ranger.nvim",
       config = function()
@@ -53,9 +52,13 @@ require("lazy").setup({
         require("colorizer").setup()
       end,
     },
+
+    ---------------------------------------------
+    --- LSP
+    ---------------------------------------------
     -- (LSP server, Linters, Formatters, DAP) manager
     "williamboman/mason.nvim",
-    -- To bridge mason.nvim with lspconfig
+    -- To bridge mason.nvim with lspconfig easily
     "williamboman/mason-lspconfig.nvim",
     -- Configurations for Nvim LSP
     'neovim/nvim-lspconfig',
@@ -63,16 +66,29 @@ require("lazy").setup({
     'simrat39/symbols-outline.nvim',
     -- Rust analyzer config
     'simrat39/rust-tools.nvim',
-
     -- Static highligting
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
+    -- Fromatting plugin none lsp source to lsp client (formatter)
+    'jose-elias-alvarez/null-ls.nvim',
+    {
+      "jay-babu/mason-null-ls.nvim",
+      event = { "BufReadPre", "BufNewFile" },
+      dependencies = {
+        "williamboman/mason.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+      },
 
+      -- config = function()
+      --   require("your.null-ls.config") -- require your null-ls config here (example below)
+      -- end,
+    },
 
     ---------------------------------------------
     --- Debug
     ---------------------------------------------
     'mfussenegger/nvim-dap',
     'rcarriga/nvim-dap-ui',
+
     ---------------------------------------------
     --- Completion
     ---------------------------------------------
@@ -104,10 +120,18 @@ require("lazy").setup({
     -- Nerd font completion
     'chrisgrieser/cmp-nerdfont',
 
+    ---------------------------------------------
+    --- Motions
+    ---------------------------------------------
+
+    -- Smooth page scroll
+    'karb94/neoscroll.nvim',
+    ---------------------------------------------
+    --- Other
+    ---------------------------------------------
     -- Comment
     'numToStr/Comment.nvim',
     -- Surround easy surrounding
-    -- 'tpope/vim-surround',
     {
       "kylechui/nvim-surround",
       version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -117,25 +141,9 @@ require("lazy").setup({
     },
     -- Undo tree explorer
     'mbbill/undotree',
-    -- Fromatting plugin none lsp source to lsp client (formatter)
-    'jose-elias-alvarez/null-ls.nvim',
-    {
-      "jay-babu/mason-null-ls.nvim",
-      event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-        "williamboman/mason.nvim",
-        "jose-elias-alvarez/null-ls.nvim",
-      },
-
-      -- config = function()
-      --   require("your.null-ls.config") -- require your null-ls config here (example below)
-      -- end,
-    },
 
     -- Autoalign
     'junegunn/vim-easy-align',
-    -- Smooth page scroll
-    'karb94/neoscroll.nvim',
     -- This will auto close ( [ {
     {
       'windwp/nvim-autopairs',
@@ -207,6 +215,24 @@ require("lazy").setup({
     { 'nvim-telescope/telescope.nvim',
       --        commit = '2f32775'
     },
+    -- {
+    --   "nvim-telescope/telescope.nvim",
+    --   dependencies = {
+    --     "nvim-lua/plenary.nvim",
+    --     "debugloop/telescope-undo.nvim",
+    --   },
+    --   config = function()
+    --     require("telescope").setup({
+    --       extensions = {
+    --         undo = {
+    --           -- telescope-undo.nvim config, see below
+    --         },
+    --       },
+    --     })
+    --     require("telescope").load_extension("undo")
+    --     -- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+    --   end,
+    -- },
     ---------------------------------------------
     --- Git
     ---------------------------------------------
@@ -231,7 +257,7 @@ require("lazy").setup({
 
 
     -- Bufferline plugin to add buffer tab bar on top
-    'akinsho/bufferline.nvim',
+    -- 'akinsho/bufferline.nvim',
     -- Lualine is a new statusline for nvim
     'nvim-lualine/lualine.nvim',
     -- If you want to have icons in your statusline choose one of these
@@ -295,7 +321,7 @@ require("lazy").setup({
       },
       config = function()
         require("leetbuddy").setup({
-          language = "js",
+          language = "rs",
         })
       end,
       keys = {
@@ -468,7 +494,6 @@ require "_nvim-scrollbar"
 require "_gitsigns"
 require "_surround"
 require "_neoscroll"
--- require "_obsidian"
 require "_symbols-outline"
 require "_ufo"
 require "_dap"

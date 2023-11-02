@@ -1,4 +1,5 @@
 # Sourcing config
+export PATH="$HOME/.local/bin:$PATH"
 source $HOME/.config/shell/aliases.sh
 source $HOME/.config/shell/zsh/keybind.zsh
 

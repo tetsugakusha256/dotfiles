@@ -1,6 +1,6 @@
 # NOTE: need to be enabled interception tools (service (systemctl enable udevmon))
 # caps2esc patch with delay is used the arg is the time window when esc is
 # possible otherwise it's a ctrl
-- JOB: intercept -g $DEVNODE | caps2esc 0.15 | dual-function-keys -c /home/anon/.config/interception/dual_function_key_conf.yaml | uinput -d $DEVNODE
+- JOB: intercept -g $DEVNODE |  caps2esc 0.15 | dual-function-keys -c /home/anon/.config/interception/dual_function_key_conf.yaml | /home/anon/Documents/Code/RustLearning/key_capture/target/debug/intercept | uinput -d $DEVNODE
   DEVICE:
     NAME: "AT Translated Set 2 keyboard"

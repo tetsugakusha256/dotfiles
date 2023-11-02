@@ -42,7 +42,7 @@ xkb_symbols "basic" {
     key <AD08> { [            u,     U,           bracketleft,          guillemotleft,        Up,        0x1002191] };
     key <AD09> { [            y,     Y,           bracketright,         guillemotright,       NoSymbol,  NoSymbol] };
     key <AD10> { [       equal,      0x1002248,   numbersign,           degree,               NoSymbol,  NoSymbol] };
-    key <AD11> { [  ccedilla,        Ccedilla,    oe,                   OE,                   NoSymbol,  NoSymbol ] };
+    key <AD11> { [  bar,        Ccedilla,    oe,                   OE,                   NoSymbol,  NoSymbol ] };
     key <AD12> { [ bracketright,     braceright,  ae,                   AE,                   NoSymbol,  NoSymbol ] };
 
     key <AC01> { [            a,     A,           underscore,           currency,             NoSymbol,  NoSymbol ] };
@@ -71,5 +71,5 @@ xkb_symbols "basic" {
 
     key <CAPS> { [    BackSpace,     BackSpace,   BackSpace,            BackSpace,            NoSymbol,  NoSymbol ] };
     key <LSGT> { [        less,      percent,     greater,              section,              NoSymbol,  NoSymbol ] };
-    key <SPCE> { [        space,     space,       nobreakspace,         nobreakspace,         NoSymbol,  NoSymbol ] };
+    key <SPCE> { [        space,     space,       space,                nobreakspace,         NoSymbol,  NoSymbol ] };
 };

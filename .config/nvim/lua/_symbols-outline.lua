@@ -5,7 +5,7 @@ require("symbols-outline").setup(
     auto_preview = false,
     position = 'right',
     relative_width = true,
-    width = 25,
+    width = 22,
     auto_close = false,
     show_numbers = false,
     show_relative_numbers = false,

@@ -234,6 +234,7 @@ vim.api.nvim_set_keymap("n", "<c-w><c-e>", "<c-w><c-k>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-w><c-i>", "<c-w><c-l>", { noremap = true })
 -- Go to previous buffer (#buffer)
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-^>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-BS>", "<c-^>", { noremap = true })
 
 -- Makes control i behave as its own key (require the key combination to be sent by terminal)
 vim.api.nvim_set_keymap("i", "<c-i>", "<del>", { noremap = true })
@@ -347,6 +348,7 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 -- Go to definition
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "<leader>td", vim.lsp.buf.definition)
+vim.keymap.set("n", "<leader>tf", vim.lsp.buf.definition)
 -- Show info
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover)
@@ -360,7 +362,7 @@ vim.keymap.set("n", "<leader>wl", function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end)
 -- Symbol tree view
-vim.api.nvim_set_keymap("n", "<a-s>", ":SymbolsOutline<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<a-s>", ":SymbolsOutline<CR>", { silent = true, noremap = true })
 
 vim.keymap.set("n", "<leader>fr", lsp_formatting, { noremap = true })
 -- Diagnostic (errors)
@@ -372,6 +374,35 @@ vim.keymap.set("n", "<leader>es", vim.diagnostic.show, opts)
 vim.keymap.set("n", "<a-[>", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "<a-]>", vim.diagnostic.goto_next, opts)
 
+-------------------------------------------------------
+-- Telescope
+-------------------------------------------------------
+
+local builtin_telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>sd', builtin_telescope.diagnostics, {})
+vim.keymap.set('n', '<leader>te', builtin_telescope.grep_string, {})
+vim.keymap.set('n', '<leader>ti', builtin_telescope.grep_string_gitignore, {})
+vim.keymap.set('n', '<leader>sw', builtin_telescope.find_wiki, {})
+vim.keymap.set('n', '<leader>sc', builtin_telescope.find_dotfiles, {})
+vim.keymap.set('n', '<leader>sf', builtin_telescope.find_sessions, {})
+vim.keymap.set('n', '<leader>ss', builtin_telescope.find_files, {})
+vim.keymap.set('n', '<leader>sa', builtin_telescope.find_allfiles, {})
+vim.keymap.set('n', '<leader>sg', builtin_telescope.live_grep, {})
+vim.keymap.set('n', '<leader>se', builtin_telescope.live_grep, {})
+vim.keymap.set('n', '<leader>si', builtin_telescope.grep_gitignore, {})
+vim.keymap.set('n', '<leader>sb', builtin_telescope.buffers, {})
+-- Search 'object' lsp symbols
+vim.keymap.set('n', '<leader>so', builtin_telescope.lsp_dynamic_workspace_symbols, {})
+-- vim.keymap.set('n', '<leader>st', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>scs', builtin_telescope.colorscheme, {})
+vim.keymap.set('n', '<leader>sh', builtin_telescope.oldfiles, {})
+-- Shows todo fix etc
+vim.api.nvim_set_keymap('n', '<leader>st', ':TodoTelescope keywords=TODO,FIX<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>sn', ':TodoTelescope keywords=PERF,HACK,WARN,NOTE<CR>', { noremap = true })
+-- Set mapping for searching a session.
+vim.keymap.set('n', '<leader>fs', builtin_telescope.find_sessions, {
+  noremap = true,
+})
 -------------------------------------------------------
 -- Debug
 -------------------------------------------------------

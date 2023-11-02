@@ -2,6 +2,7 @@
 device1=ear
 device2=head
 device3=mouse
+device4=jabra
 arg1=${1:-nothing}
 if [ $arg1 == $device1 ]
 then
@@ -13,6 +14,9 @@ elif [ $arg1 == $device2 ]; then
 elif [ $arg1 == $device3 ]; then
   #echo "mouse 3"
   bluetoothctl connect CF:94:D9:6B:FC:DA
+elif [ $arg1 == $device4 ]; then
+  #echo "jabra ear 3"
+  bluetoothctl connect 50:C2:75:31:2F:77
 else
   echo "Invalide arguments"
 fi
