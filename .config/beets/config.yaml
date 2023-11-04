@@ -1,0 +1,7 @@
+directory: ~/Documents/Music
+library: ~/Documents/Music/Data/library.db
+import:
+    move: yes
+plugins: chroma
+chroma:
+    auto: yes
