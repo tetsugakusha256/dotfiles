@@ -283,7 +283,9 @@ require("lazy").setup({
     -- dersonal wiki for organisation and note taking
     {
       'vimwiki/vimwiki',
-      ft = "markdown"
+      -- Removing lazy load because it would make the highligting of the first
+      -- opened markdown file different
+      -- ft = "markdown"
     },
     -- Anki
     {
