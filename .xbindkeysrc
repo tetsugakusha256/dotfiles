@@ -38,6 +38,21 @@
 #keystate_scrolllock= enable
 
 # Examples of commands:
+ 
+ # Music controls
+ "/home/anon/.local/bin/moc_fzf_to_playlist.sh append"
+ Mod4+Mod5+a #Append music to mocp playlist
+ "/home/anon/.local/bin/moc_fzf_to_playlist.sh play"
+ Mod4+Mod5+t #Append and play music with mocp
+ "mocp -G"
+ Mod4+Mod5+s #Play pause music
+ "mocp -P"
+ Mod4+Mod5+r #Pause music
+ "mocp -r"
+ Mod4+Mod5+c:59 #Prev track
+ "mocp -f"
+ Mod4+Mod5+c:60 #Next track
+
 "flameshot gui"
  Mod4+Mod3+q
 "flameshot gui"
