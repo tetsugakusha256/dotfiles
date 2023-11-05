@@ -807,8 +807,8 @@ key_bindings:
   - { key: L,                           mode: Vi|~Search, action: ToggleViMode            }
   - { key: J,                           mode: Vi|~Search, action: ScrollToBottom          }
   #- { key: C,      mods: Control,       mode: Vi|~Search, action: ToggleViMode            }
-  #- { key: Y,      mods: Control,       mode: Vi|~Search, action: ScrollLineUp            }
-  #- { key: N,      mods: Control,       mode: Vi|~Search, action: ScrollLineDown          }
+  - { key: Y,      mods: Control,       mode: Vi|~Search, action: ScrollLineUp            }
+  - { key: U,      mods: Control,       mode: Vi|~Search, action: ScrollLineDown          }
   #- { key: G,                           mode: Vi|~Search, action: ScrollToTop             }
   #- { key: G,      mods: Shift,         mode: Vi|~Search, action: ScrollToBottom          }
   #- { key: B,      mods: Control,       mode: Vi|~Search, action: ScrollPageUp            }
