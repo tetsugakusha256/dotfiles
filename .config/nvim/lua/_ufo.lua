@@ -15,11 +15,12 @@ vim.api.nvim_set_keymap("n", "<leader>fh", 'zM', { noremap = true })
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
+-- TODO: change to gh to make it peak
 vim.keymap.set("n", "<leader>fi", function()
   local winid = require("ufo").peekFoldedLinesUnderCursor()
   if not winid then
-    -- vim.lsp.buf.hover()
-    vim.cmd [[ Lspsaga hover_doc ]]
+    vim.lsp.buf.hover()
+    -- vim.cmd [[ Lspsaga hover_doc ]]
   end
 end, { silent = true })
 
@@ -57,10 +58,10 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 end
 
 local opts = {
-  -- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
-  -- provider_selector = function(bufnr, filetype, buftype)
-  --   return { "treesitter", "indent" }
-  -- end,
+  -- INFO: Uncomment to use treesitter as fold provider, otherwise nvim lsp is used
+  provider_selector = function(bufnr, filetype, buftype)
+    return { "treesitter", "indent" }
+  end,
   open_fold_hl_timeout = 400,
   close_fold_kinds = {},
   -- close_fold_kinds = { "imports", "comment" },
