@@ -2,6 +2,11 @@ directory: ~/Documents/Music
 library: ~/Documents/Music/Data/library.db
 import:
     move: yes
-plugins: chroma
+plugins: chroma lyrics
 chroma:
     auto: yes
+lyrics:
+    auto: yes
+ignore:
+    paths:
+        - ~/Documents/Music/Need_Import
