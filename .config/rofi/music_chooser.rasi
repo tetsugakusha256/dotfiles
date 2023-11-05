@@ -1,0 +1,6 @@
+@import "launcher.rasi"
+
+window {
+    width:                1400px;
+    height:               1030px;
+}
