@@ -81,10 +81,10 @@ cmp.setup({
       name = 'nvim_lsp',
       group_index = 2
       ,
-      -- filter out text entries
-      entry_filter = function(entry, ctx)
-        return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
-      end
+      -- filter out text entries (Caused problem with marksman so removed)
+      -- entry_filter = function(entry, ctx)
+      --   return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+      -- end
     },
     { name = 'vsnip',  group_index = 2 },
     {
