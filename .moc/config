@@ -87,7 +87,7 @@ MusicDir = /home/anon/Documents/Music/Non-Album/
 #MP3IgnoreCRCErrors = yes
 
 # Set playback toggles.
-#Repeat = no
+Repeat = yes
 #Shuffle = no
 #AutoNext = yes
 
@@ -274,7 +274,7 @@ Theme = custom_theme
 
 # When using more than one client (interface) at a time, do they share
 # the playlist?
-#SyncPlaylist = yes
+SyncPlaylist = yes
 
 # Choose a keymap file (relative to '~/.moc/' or using an absolute path).
 # An annotated example keymap file is included ('keymap.example').
@@ -489,7 +489,7 @@ Keymap = keymap
 # something from the playlist?  If CanStartInPlaylist is set to 'yes', the
 # interface will switch to the playlist.  When set to 'no' it will start
 # from the last directory.
-#CanStartInPlaylist = yes
+CanStartInPlaylist = yes
 
 # Executing external commands (1 - 10) invoked with key commands (F1 - F10
 # by default).
@@ -523,8 +523,8 @@ Keymap = keymap
 # Examples:   ExecCommand1 = "cp %f /mnt/usb_drive"
 #             ExecCommand2 = "/home/joe/now_playing %I"
 #
-ExecCommand1 = "/home/anon/.config/rofi/bin/powermenu"
-#ExecCommand2 =
+# ExecCommand1 = "/home/anon/.local/bin/moc_fzf_to_playlist.sh append"
+# ExecCommand2 = "/home/anon/.local/bin/moc_fzf_to_playlist.sh play"
 #ExecCommand3 =
 #ExecCommand4 =
 #ExecCommand5 =
