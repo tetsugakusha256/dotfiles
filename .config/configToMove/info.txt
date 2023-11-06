@@ -1,0 +1,4 @@
+./cuco
+  symlink in /usr/share/X11/xkb/symbols
+./pacman-pklist.hook
+  symlink in /etc/pacman.d/hooks/
