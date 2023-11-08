@@ -1,4 +1,7 @@
 require("auto-session").setup {
+  -- Close the symbols outline window if it's open so the session
+  -- isn't saved with the window and buffer open which causes problem
+  pre_save_cmds = { "SymbolsOutlineClose" },
   log_level = "error",
   auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
   _git_branch = false,
