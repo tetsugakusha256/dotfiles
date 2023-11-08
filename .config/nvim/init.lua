@@ -80,6 +80,8 @@ vim.g.vimwiki_list = {
     ext = '.md',
   }
 }
+-- vim.g.vimwiki_folding              = 'custom'
+-- vim.g.markdown_folding             = 1
 -------------------------------------------------------
 -------------------------------------------------------
 -- PLUGINS
@@ -361,8 +363,22 @@ vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder)
 vim.keymap.set("n", "<leader>wl", function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end)
+
+-- Define a function to check if a window with a specific buffer is open
+local function create_or_focus_symbols_window()
+  for _, win_id in ipairs(vim.fn.getwininfo()) do
+    if vim.fn.bufname(win_id.bufnr) == "OUTLINE" then
+      vim.cmd('wincmd w') -- Focus the window
+      return true
+    end
+  end
+  vim.cmd(':SymbolsOutlineOpen')
+  return false
+end
 -- Symbol tree view
-vim.api.nvim_set_keymap("n", "<a-s>", ":SymbolsOutline<CR>", { silent = true, noremap = true })
+-- vim.api.nvim_set_keymap("n", "<a-s>", ":SymbolsOutline<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<a-s>", create_or_focus_symbols_window, {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<a-S>", ":SymbolsOutlineClose<CR>", {})
 
 vim.keymap.set("n", "<leader>fr", lsp_formatting, { noremap = true })
 -- Diagnostic (errors)
@@ -471,8 +487,7 @@ vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
 -------------------------------------------------------
 -------------------------------------------------------
 
-vim.g.vimwiki_folding              = "custom"
-vim.g.markdown_folding             = 1
+-- vim.wo.conceallevel = 2
 
 vim.g.smoothie_no_default_mappings = true
 
@@ -483,47 +498,52 @@ vim.opt.number                     = true
 vim.opt.wrap                       = true
 vim.opt.textwidth                  = 200
 -- Set textwidth to 80 if in a markdown file
-vim.api.nvim_exec([[
-  autocmd BufEnter * lua SetTextwidthMarkdown()
-]], false)
+-- vim.api.nvim_exec([[
+--   autocmd BufEnter * lua SetTextwidthMarkdown()
+-- ]], false)
+
+-- Define custom fold markers for Markdown headers
+-- vim.cmd('set foldmethod=marker')
+-- vim.cmd('autocmd FileType markdown setlocal foldmarker=#,#')
+-- vim.cmd('autocmd FileType markdown setlocal foldmarker=##,##')
 
 -- ignorecase when searching
-vim.opt.ignorecase    = true
+vim.opt.ignorecase                 = true
 -- except when using capital letters
-vim.opt.smartcase     = true
+vim.opt.smartcase                  = true
 
 -- Enables mouse to scroll through page and drag-clic -> visual mode
-vim.opt.mouse         = "a"
+vim.opt.mouse                      = "a"
 
 -- Insert spaces when TAB is pressed instead of tabs.
-vim.opt.expandtab     = true
+vim.opt.expandtab                  = true
 
 -- Change number of spaces that a <Tab> counts for during editing ops
-vim.opt.softtabstop   = 2
-vim.opt.encoding      = "utf-8"
-vim.opt.fileencodings = "utf-8"
+vim.opt.softtabstop                = 2
+vim.opt.encoding                   = "utf-8"
+vim.opt.fileencodings              = "utf-8"
 
 -- Indentation amount for < and > commands.
-vim.opt.shiftwidth    = 2
+vim.opt.shiftwidth                 = 2
 
 -- Vim.opt.the commands to save in history default number is 20.
-vim.opt.history       = 1000
+vim.opt.history                    = 1000
 
 -- Set more natural default split
-vim.opt.splitbelow    = true
-vim.opt.splitright    = true
+vim.opt.splitbelow                 = true
+vim.opt.splitright                 = true
 
 -- Remove one line at the bottom
-vim.opt.cmdheight     = 1
+vim.opt.cmdheight                  = 1
 
 -- cursor stay more centered
 -- vim.opt.scrolloff               = 18
 
 -- Persistent undo history
-vim.opt.undofile      = true
+vim.opt.undofile                   = true
 
 -- Only show tab if 2 or more
-vim.opt.stal          = 1
+vim.opt.stal                       = 1
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.cmd([[colorscheme catppuccin-mocha]])
