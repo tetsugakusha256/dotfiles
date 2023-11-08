@@ -74,7 +74,8 @@ require('telescope').setup {
 require("telescope").load_extension('harpoon')
 -- Undo telescope
 -- require("telescope").extensions.undo.undo()
-vim.keymap.set("n", "<leader>su", "<cmd>Telescope undo<cr>")
+-- vim.keymap.set("n", "<leader>su", "<cmd>Telescope undo<cr>")
+
 -- Get all the files tracked by my dotgit repo and feed it to telescope
 local cmdRes = assert(io.popen(
   '/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'))
@@ -180,3 +181,5 @@ end
 -- d : go to definition
 -- e : search expression (grep)
 -- TODO: visual mode grep_string
+
+-- Markdown title picker
