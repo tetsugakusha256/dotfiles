@@ -40,9 +40,11 @@
 # Examples of commands:
  
  # Music controls
- "/home/anon/.local/bin/moc_fzf_to_playlist.sh append"
+ "/home/anon/.local/bin/play_music.sh playlist"
+ Mod4+Mod5+p #Append music to mocp playlist
+ "/home/anon/.local/bin/play_music.sh append"
  Mod4+Mod5+a #Append music to mocp playlist
- "/home/anon/.local/bin/moc_fzf_to_playlist.sh play"
+ "/home/anon/.local/bin/play_music.sh play"
  Mod4+Mod5+t #Append and play music with mocp
  "mocp -G"
  Mod4+Mod5+s #Play pause music

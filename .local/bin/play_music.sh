@@ -31,6 +31,7 @@ then
         echo "Adding : ${output} to playlist"
         selected_music_path="$music_dir$output"
         mocp -a "${selected_music_path}"
+        mocp -q "${selected_music_path}"
         echo "Added"
     fi
 elif [ $arg1 == $option2 ]; then
