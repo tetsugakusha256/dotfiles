@@ -45,7 +45,7 @@ dim_nvim(){
         -c "SessionRestore" \
     }
 # launch nvim with my dotgit config (cd into the bare git repo so it keeps
-# the session link to this directory)
+# the session link to this directory (causes nvim to have error when closing it))
 alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME dim_nvim ; exit'
 alias wiki='nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/" ; exit'
 alias key='xbindkeys -k'
