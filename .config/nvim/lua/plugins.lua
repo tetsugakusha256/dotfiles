@@ -280,6 +280,8 @@ require("lazy").setup({
     ---------------------------------------------
     -- Organisation
     ---------------------------------------------
+    -- vim wiki alternative
+    -- 'renerocksai/telekasten.nvim',
     -- dersonal wiki for organisation and note taking
     {
       'vimwiki/vimwiki',
@@ -477,7 +479,9 @@ require("lazy").setup({
     state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
   }
 )
-
+-- require('telekasten').setup({
+--   home = vim.fn.expand("~/Documents/myWiki"), -- Put the name of your notes directory here
+-- })
 -- Might be unnecessary with lazy
 require "_lspconfig"
 require "_null-ls"
