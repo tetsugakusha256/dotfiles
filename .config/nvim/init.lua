@@ -73,6 +73,7 @@ vim.g.mapleader = " "
 -- Open help page on the right side
 vim.cmd([[autocmd FileType help wincmd L]])
 vim.o.splitright = true
+-- Wiki config
 vim.g.vimwiki_list = {
   {
     path = '/home/anon/Documents/myWiki/',
@@ -280,6 +281,14 @@ vim.api.nvim_set_keymap("t", "<a-c-r>", "<C-\\><C-N><c-w>r", { noremap = true })
 vim.api.nvim_set_keymap('t', '<C-SPACE>', '<C-\\><C-n>', { noremap = true })
 
 -----------------------------------
+-- Wiki feature
+-----------------------------------
+
+vim.api.nvim_set_keymap("n", "<CR>", "gd", { noremap = false, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>ww", ":e ~/Documents/myWiki/index.md <CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>w<leader>w", ":e ~/Documents/myWiki/diary/diary.md <CR>", { noremap = true })
+
+-----------------------------------
 -- Plugins mappings
 -----------------------------------
 
@@ -350,7 +359,7 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 -- Go to definition
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "<leader>td", vim.lsp.buf.definition)
-vim.keymap.set("n", "<leader>tf", vim.lsp.buf.definition)
+vim.keymap.set("n", "<leader>tf", vim.lsp.buf.declaration)
 -- Show info
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover)
