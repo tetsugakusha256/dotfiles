@@ -65,7 +65,7 @@ quit_client           = q
 quit                  = Q
 
 # Menu and interface control keys:
-go                    = i
+go                    = i ENTER
 menu_down             = n
 menu_up               = e
 menu_page_down        = ^n
@@ -74,14 +74,14 @@ menu_first_item       = HOME
 menu_last_item        = END
 search_menu           = g /
 toggle_read_tags      = f
-toggle_show_time      = ^t
+toggle_show_time      = 
 toggle_show_format    = ^f
 toggle_menu           = p TAB
 toggle_layout         = l
 toggle_hidden_files   = H
 next_search           = ^g
 show_lyrics           = L
-theme_menu            = T
+theme_menu            = ^t
 help                  = ?
 refresh               = ^r
 reload                = r
@@ -118,7 +118,7 @@ volume_90             = M-9
 
 # Directory navigation keys: defaults are Shift-number
 #                            (i.e., 'shift 1' -> '!' -> 'Fastdir1').
-go_to_a_directory     = ENTER
+go_to_a_directory     = 
 go_to_music_directory = m
 go_to_fast_dir1       = !
 go_to_fast_dir2       = @
@@ -146,8 +146,8 @@ remove_dead_entries   = Y
 clear_playlist        = C
 
 # Queue manipulation keys:
-enqueue_file          = z
-clear_queue           = Z
+enqueue_file          = t
+clear_queue           = T
 
 # User interaction control:
 history_up            = UP
@@ -170,8 +170,8 @@ equalizer_next        = k
 # External commands:
 mark_start            = '
 mark_end              = "
-exec_command1         = s F1
-exec_command2         = t F2
+exec_command1         = F1
+exec_command2         = F2
 exec_command3         = F3
 exec_command4         = F4
 exec_command5         = F5
