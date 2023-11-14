@@ -102,6 +102,7 @@ require("mason-lspconfig").setup_handlers({
         on_attach = function(_, bufnr)
           vim.keymap.set("n", "<Leader>rh", rt.hover_actions.hover_actions, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>rl", toggle_inlay_hints, { buffer = bufnr })
+          vim.keymap.set("n", "<Leader>ra", rt.code_action_group.code_action_group, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>rr", rt.runnables.runnables, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>rc", rt.open_cargo_toml.open_cargo_toml, { buffer = bufnr })
           vim.keymap.set("n", "<Leader>ru", function() rt.move_item.move_item(true) end, { buffer = bufnr })
