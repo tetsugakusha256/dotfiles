@@ -23,3 +23,5 @@ smartplaylist:
           query: 'genre:disney'
         - name: jpop.m3u
           query: 'genre:"j-pop"'
+        - name: chanson.m3u
+          query: 'genre:"chanson"'
