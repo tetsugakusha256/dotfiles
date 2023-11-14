@@ -16,6 +16,7 @@ require('telescope').setup {
         ["<C-a>"] = require('telescope.actions').file_split,
         ["<C-v>"] = require('telescope.actions').file_vsplit,
         ["<C-o>"] = require('telescope.actions').file_tab,
+        ["<C-i>"] = require('telescope.actions').file_edit,
         ["<C-t>"] = require('telescope.actions').file_tab,
         ["<C-u>"] = require('telescope.actions').preview_scrolling_down,
         ["<C-y>"] = require('telescope.actions').preview_scrolling_up,
