@@ -39,8 +39,8 @@ xkb_symbols "basic" {
     key <AD05> { [            g,     G,           dead_acute,           dead_tilde,           F11,       NoSymbol] };
     key <AD06> { [            j,     J,           copyright,            EuroSign,             NoSymbol,  NoSymbol ] };
     key <AD07> { [            l,     L,           acute,                grave,                NoSymbol,  NoSymbol ] };
-    key <AD08> { [            u,     U,           bracketleft,          guillemotleft,        Up,        0x1002191] };
-    key <AD09> { [            y,     Y,           bracketright,         guillemotright,       NoSymbol,  NoSymbol] };
+    key <AD08> { [            u,     U,           bracketleft,          guillemotleft,        Next,      0x1002191] };
+    key <AD09> { [            y,     Y,           bracketright,         guillemotright,       Prior,     NoSymbol] };
     key <AD10> { [        equal,     0x1002248,   numbersign,           degree,               NoSymbol,  NoSymbol] };
     key <AD11> { [          bar,     brokenbar,   oe,                   OE,                   NoSymbol,  NoSymbol ] };
     key <AD12> { [ bracketright,     braceright,  ae,                   AE,                   NoSymbol,  NoSymbol ] };
