@@ -12,6 +12,7 @@ bluez-plugins
 brave-beta-bin
 brightnessctl
 brotab-git
+calibre
 catppuccin-cursors-frappe
 catppuccin-cursors-latte
 catppuccin-cursors-macchiato
@@ -30,6 +31,7 @@ fcitx5-mozc
 fcitx5-qt
 feh
 flameshot
+floorp
 gcc
 gimp
 git
@@ -76,6 +78,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 npm
 ntp
+obsidian
 otf-ipafont
 p7zip
 pavucontrol
@@ -100,6 +103,7 @@ python-pylast
 python-pynput
 python-pynvim
 python-setuptools
+python-tasklib
 qt5-styleplugins
 ranger
 redshift
@@ -116,6 +120,7 @@ spotifyd
 starship
 steam
 sudo
+syncthing
 telegram-desktop
 texinfo
 tldr
