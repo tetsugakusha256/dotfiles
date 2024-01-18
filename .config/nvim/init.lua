@@ -58,6 +58,18 @@ function AttachDebugToProcess()
   end
 end
 
+-- Define a function to search for "- [ ]" and paste results under the cursor
+function PrintTodo()
+  -- Search for "- [ ]" in all Markdown files and store the results in the register 'a'
+  local wiki_path = vim.fn.expand('~/Documents/myWiki')
+  vim.cmd([[%!grep "\- \[ \]" ]] .. wiki_path .. '/**/*.md | sed "s|'.. wiki_path .. '/| |"')
+  -- Open a new scratch buffer and paste the search results
+  -- vim.cmd([[botright vnew]])
+  -- Restore the cursor position
+end
+
+-- Create a command to call the function
+vim.cmd("command! PrintTodo lua PrintTodo()")
 -------------------------------------------------------
 -------------------------------------------------------
 -- EARLY call
@@ -149,8 +161,8 @@ t['<C-e>'] = { 'scroll', { '-vim.wo.scroll', 'true', '250' } }
 t['<C-n>'] = { 'scroll', { 'vim.wo.scroll', 'true', '250' } }
 t['<C-b>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '450' } }
 t['<C-f>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '450' } }
-t['<C-y>'] = { 'scroll', { '-0.10', 'false', '100' } }
-t['<C-u>'] = { 'scroll', { '0.10', 'false', '100' } }
+t['<C-y>'] = { 'scroll', { '-1', 'false', '1' } }
+t['<C-u>'] = { 'scroll', { '1', 'false', '1' } }
 t['zt']    = { 'zt', { '250' } }
 t['zz']    = { 'zz', { '250' } }
 t['zb']    = { 'zb', { '250' } }
@@ -386,7 +398,7 @@ local function create_or_focus_symbols_window()
 end
 -- Symbol tree view
 -- vim.api.nvim_set_keymap("n", "<a-s>", ":SymbolsOutline<CR>", { silent = true, noremap = true })
-vim.keymap.set("n", "<a-s>", create_or_focus_symbols_window, {noremap = true, silent = true})
+vim.keymap.set("n", "<a-s>", create_or_focus_symbols_window, { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<a-S>", ":SymbolsOutlineClose<CR>", {})
 
 vim.keymap.set("n", "<leader>fr", lsp_formatting, { noremap = true })
