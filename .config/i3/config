@@ -211,7 +211,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+f mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 bindsym $mod+w exec /home/anon/.config/rofi/bin/powermenu
 
-for_window [title="Picture in picture"] floating enable, move absolute position 2027px 0px, resize set 300px 300px
+for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
 # Create Log out, Reboot, Poweroff bindings
 mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
         bindsym r exec --no-startup-id systemctl reboot
