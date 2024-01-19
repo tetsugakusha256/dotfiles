@@ -1,5 +1,6 @@
 + /.config/
-+ /.dotfiles/**
-+ /Documents/**
-+ /Pictures/**
++ /.dotfiles/
++ /Documents/
++ /Pictures/
+- /.config/BraveSoftware/**
 - /*

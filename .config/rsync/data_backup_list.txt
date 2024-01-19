@@ -1,3 +1,5 @@
 + /Documents/
 + /Pictures/
+- /Documents/Code/**
+- /Documents/Git_clones/**
 - /*
