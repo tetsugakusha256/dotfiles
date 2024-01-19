@@ -147,18 +147,33 @@ bindkey -M viins "^Xt" _complete_tag
 bindkey -M viins "^X~" _bash_list-choices
 bindkey -M viins "^Y"-"^Z" self-insert
 bindkey -M viins "^[" vi-cmd-mode
-bindkey -M viins "^[," _history-complete-newer
-bindkey -M viins "^[/" _history-complete-older
-bindkey -M viins "^[OA" up-line-or-history
-bindkey -M viins "^[OB" down-line-or-history
-bindkey -M viins "^[OC" vi-forward-char
-bindkey -M viins "^[OD" vi-backward-char
-bindkey -M viins "^[[200~" bracketed-paste
-bindkey -M viins "^[[A" up-line-or-history
-bindkey -M viins "^[[B" down-line-or-history
-bindkey -M viins "^[[C" vi-forward-char
-bindkey -M viins "^[[D" vi-backward-char
-bindkey -M viins "^[~" _bash_complete-word
+# bindkey -M viins "^[," _history-complete-newer
+# bindkey -M viins "^[/" _history-complete-older
+# bindkey -M viins "^[OA" up-line-or-history
+# bindkey -M viins "^[OB" down-line-or-history
+# bindkey -M viins "^[OC" vi-forward-char
+# bindkey -M viins "^[OD" vi-backward-char
+# bindkey -M viins "^[[200~" bracketed-paste
+# bindkey -M viins "^[[A" up-line-or-history
+# bindkey -M viins "^[[B" down-line-or-history
+# bindkey -M viins "^[[C" vi-forward-char
+# bindkey -M viins "^[[D" vi-backward-char
+# bindkey -M viins "^[~" _bash_complete-word
+
+# Removing all esc(^[) chord to remove esc delay 
+bindkey -M viins -r "^[," 
+bindkey -M viins -r "^[/" 
+bindkey -M viins -r "^[OA" 
+bindkey -M viins -r "^[OB" 
+bindkey -M viins -r "^[OC" 
+bindkey -M viins -r "^[OD" 
+bindkey -M viins -r "^[[200~" 
+bindkey -M viins -r "^[[A" 
+bindkey -M viins -r "^[[B" 
+bindkey -M viins -r "^[[C" 
+bindkey -M viins -r "^[[D" 
+bindkey -M viins -r "^[~" 
+
 bindkey -M viins "^\\\\"-"~" self-insert
 bindkey -M viins "^?" vi-backward-delete-char
 bindkey -M viins "\M-^@"-"\M-^?" self-insert

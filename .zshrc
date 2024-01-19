@@ -1,7 +1,6 @@
 # Sourcing config
 export PATH="$HOME/.local/bin:$PATH"
 source $HOME/.config/shell/aliases.sh
-source $HOME/.config/shell/zsh/keybind.zsh
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -41,3 +40,6 @@ stty -ixon
 
 # starship prompt
 eval "$(starship init zsh)"
+
+# Keybinding sourcing
+source $HOME/.config/shell/zsh/keybind.zsh
