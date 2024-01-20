@@ -1,10 +1,9 @@
 # Sourcing config
-export PATH="$HOME/.local/bin:$PATH"
-source $HOME/.config/shell/aliases.sh
+source "$HOME/.config/shell/aliases.sh"
 
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 # Remove duplicate commands from history
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -18,6 +17,7 @@ zstyle :compinstall filename '/home/anon/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+source $HOME/.config/shell/zsh/completion.zsh
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
@@ -34,6 +34,31 @@ zle-line-init() {
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# Makes quote and bracket text object in viins mode
+autoload -Uz select-bracketed select-quoted
+zle -N select-quoted
+zle -N select-bracketed
+for km in viopp visual; do
+  bindkey -M $km -- '-' vi-up-line-or-history
+  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+    bindkey -M $km $c select-quoted
+  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $km $c select-bracketed
+  done
+done
+
+# Surround plugins for viins 
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd css change-surround
+bindkey -M vicmd dss delete-surround
+bindkey -M vicmd yss add-surround
+bindkey -M visual S add-surround
+
 
 # Disable Ctrl+S and Ctrl+Q
 stty -ixon

@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Env var
+source $HOME/.config/shell/shenv.sh
 # Aliases
 source $HOME/.config/shell/aliases.sh
 
@@ -46,9 +48,5 @@ export PATH="$HOME/.local/bin:$PATH"
 # remove c-s c-q to freeze and unfreeze terminal (XON/XOFF)
 stty -ixon
 
-# env var for android dev
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 eval "$(starship init bash)"
