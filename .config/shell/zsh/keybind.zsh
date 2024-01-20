@@ -1,3 +1,40 @@
+# Keybinding for completion menu
+#
+# Use vim in menu selection (during completion)
+bindkey -M menuselect 'h' backward-char
+bindkey -M menuselect 'e' up-line-or-history
+bindkey -M menuselect 'n' down-line-or-history
+bindkey -M menuselect 'i' forward-char
+bindkey -M menuselect 'u' beginning-of-buffer-or-history
+bindkey -M menuselect 'y' end-of-buffer-or-history
+
+bindkey -M menuselect 'l' vi-insert # Interactive mode
+bindkey -M menuselect '^M' accept-and-hold # Hold
+bindkey -M menuselect ' ' accept-and-infer-next-history # Next
+bindkey -M menuselect '^[' accept-line # Leave suggestion printed and leave
+bindkey -M menuselect '^I' accept-line # Leave suggestion printed and leave
+bindkey -M menuselect '^?' undo # Cancel suggestion validation
+
+# key list
+# ^M -> Enter
+# ^? -> Backspace
+# ^I -> Tab
+
+
+bindkey -M menuselect -r "^[," 
+bindkey -M menuselect -r "^[/" 
+bindkey -M menuselect -r "^[OA" 
+bindkey -M menuselect -r "^[OB" 
+bindkey -M menuselect -r "^[OC" 
+bindkey -M menuselect -r "^[OD" 
+bindkey -M menuselect -r "^[[200~" 
+bindkey -M menuselect -r "^[[A" 
+bindkey -M menuselect -r "^[[B" 
+bindkey -M menuselect -r "^[[C" 
+bindkey -M menuselect -r "^[[D" 
+bindkey -M menuselect -r "^[~" 
+#
+
 # Keybinding vicmd keymap
 bindkey -M vicmd "^D" list-choices
 bindkey -M vicmd "^G" list-expand
@@ -117,11 +154,12 @@ bindkey -M vicmd "^?" vi-backward-char
 # Keybinding viins keymap
 bindkey -M viins "^A"-"^C" self-insert
 bindkey -M viins "^D" list-choices
-bindkey -M viins "^E"-"^F" self-insert
+# bindkey -M viins "^E"-"^F" self-insert
 bindkey -M viins "^G" list-expand
 # Backspace and <c-h>
 bindkey -M viins "^H" backward-delete-char
 bindkey -M viins "^I" expand-or-complete
+bindkey -M viins "^N" expand-or-complete
 bindkey -M viins "^J" accept-line
 bindkey -M viins "^K" self-insert
 bindkey -M viins "^L" clear-screen
@@ -136,7 +174,7 @@ bindkey -M viins "^W" vi-backward-kill-word
 bindkey -M viins "^X^R" _read_comp
 bindkey -M viins "^X?" _complete_debug
 bindkey -M viins "^XC" _correct_filename
-bindkey -M viins "^Xa" _expand_alias
+bindkey -M viins "^E" _expand_alias
 bindkey -M viins "^Xc" _correct_word
 bindkey -M viins "^Xd" _list_expansions
 bindkey -M viins "^Xe" _expand_word
@@ -161,18 +199,19 @@ bindkey -M viins "^[" vi-cmd-mode
 # bindkey -M viins "^[~" _bash_complete-word
 
 # Removing all esc(^[) chord to remove esc delay 
-bindkey -M viins -r "^[," 
-bindkey -M viins -r "^[/" 
-bindkey -M viins -r "^[OA" 
-bindkey -M viins -r "^[OB" 
-bindkey -M viins -r "^[OC" 
-bindkey -M viins -r "^[OD" 
-bindkey -M viins -r "^[[200~" 
-bindkey -M viins -r "^[[A" 
-bindkey -M viins -r "^[[B" 
-bindkey -M viins -r "^[[C" 
-bindkey -M viins -r "^[[D" 
-bindkey -M viins -r "^[~" 
+bindkey -r "^[," 
+bindkey -r "^[/" 
+bindkey -r "^[OA" 
+bindkey -r "^[OB" 
+bindkey -r "^[OC" 
+bindkey -r "^[OD" 
+bindkey -r "^[[200~" 
+bindkey -r "^[[A" 
+bindkey -r "^[[B" 
+bindkey -r "^[[C" 
+bindkey -r "^[[D" 
+bindkey -r "^[~" 
+bindkey -r "^E-^F" 
 
 bindkey -M viins "^\\\\"-"~" self-insert
 bindkey -M viins "^?" vi-backward-delete-char
