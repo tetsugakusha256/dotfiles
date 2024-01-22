@@ -62,7 +62,7 @@ end
 function PrintTodo()
   -- Search for "- [ ]" in all Markdown files and store the results in the register 'a'
   local wiki_path = vim.fn.expand('~/Documents/myWiki')
-  vim.cmd([[%!grep "\- \[ \]" ]] .. wiki_path .. '/**/*.md | sed "s|'.. wiki_path .. '/| |"')
+  vim.cmd([[%!grep "\- \[ \]" ]] .. wiki_path .. '/**/*.md | sed "s|' .. wiki_path .. '/| |"')
   -- Open a new scratch buffer and paste the search results
   -- vim.cmd([[botright vnew]])
   -- Restore the cursor position
@@ -323,9 +323,9 @@ vim.api.nvim_set_keymap("n", "<leader>msp", ":MagmaInit python3<CR>", { silent =
 vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A Code<CR>", {})
 vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>", {})
 
--- Easy align (* + delimiter = align on all delimiter)
-vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)", {})
-vim.api.nvim_set_keymap("x", "<leader>a", "<Plug>(EasyAlign)", {})
+-- Easy align (* + delimiter = align on all delimiter) (indent)
+vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)*", {})
+vim.api.nvim_set_keymap("x", "<leader>a", "<Plug>(EasyAlign)*", {})
 
 -- Fun
 vim.api.nvim_set_keymap("n", "<leader>fl", ":CellularAutomaton make_it_rain<CR>", {})
@@ -428,6 +428,7 @@ vim.keymap.set('n', '<leader>sg', builtin_telescope.live_grep, {})
 vim.keymap.set('n', '<leader>se', builtin_telescope.live_grep, {})
 vim.keymap.set('n', '<leader>si', builtin_telescope.grep_gitignore, {})
 vim.keymap.set('n', '<leader>sb', builtin_telescope.buffers, {})
+vim.keymap.set('n', '<leader>s/', builtin_telescope.help_tags, {})
 -- Search 'object' lsp symbols
 vim.keymap.set('n', '<leader>so', builtin_telescope.lsp_dynamic_workspace_symbols, {})
 -- vim.keymap.set('n', '<leader>st', builtin.help_tags, {})
@@ -502,6 +503,44 @@ vim.api.nvim_set_keymap("n", "<c-a-q>", ':wqa<CR>', { noremap = true })
 
 -- <leader>t action on word under cursor ('take' and search next)
 vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
+
+-------------------------------------------------------
+-------------------------------------------------------
+-- Autocmd
+-------------------------------------------------------
+-------------------------------------------------------
+
+-- -- Disable syntax highlighting in big files
+-- function DisableSyntaxTreesitter()
+--   vim.api.nvim_out_write("Big file, disabling syntax, treesitter, and folding\n")
+--
+--   if vim.fn.exists(":TSBufDisable") then
+--     vim.cmd("TSBufDisable highlight")
+--     vim.cmd("TSBufDisable indent")
+--     vim.cmd("TSBufDisable incremental_selection")
+--   end
+--
+--   vim.api.nvim_win_set_option(0, "foldmethod", "manual")
+--   vim.cmd("syntax clear")
+--   vim.cmd("syntax off")
+--   vim.cmd("filetype off")
+--   vim.cmd("set noundofile")
+--   vim.cmd("set noswapfile")
+--   vim.cmd("set noloadplugins")
+-- end
+--
+-- -- show cursor line only in active window
+-- local BigFileDisable = vim.api.nvim_create_augroup("BigFileDisable", { clear = true })
+--
+-- vim.api.nvim_create_autocmd(
+--   { "BufReadPre", "FileReadPre" },
+--   {
+--     pattern = "*",
+--     command = "if getfsize(expand('%')) > 512 * 1024 | lua DisableSyntaxTreesitter() ",
+--     group = BigFileDisable
+--   }
+-- )
+
 -------------------------------------------------------
 -------------------------------------------------------
 -- PARAMS
