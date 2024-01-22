@@ -17,13 +17,13 @@ smartplaylist:
     playlist_dir: ~/Documents/Music/Playlists
     forward_slash: no
     playlists:
-        - name: all.m3u
+        - name: All.m3u
           query: ''
-        - name: disney.m3u
+        - name: Disney.m3u
           query: 'genre:disney'
-        - name: jpop.m3u
+        - name: Jpop.m3u
           query: 'genre:"j-pop"'
-        - name: chanson.m3u
+        - name: Chanson.m3u
           query: 'genre:"chanson"'
-        - name: lana.m3u
+        - name: Lana.m3u
           query: 'artist:"Lana Del Rey"'

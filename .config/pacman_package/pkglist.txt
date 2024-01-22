@@ -18,7 +18,6 @@ catppuccin-cursors-latte
 catppuccin-cursors-macchiato
 catppuccin-cursors-mocha
 catppuccin-gtk-theme-mocha
-cmus
 code
 deadd-notification-center
 discord
@@ -70,6 +69,7 @@ man-pages
 minecraft-launcher
 mpc
 mpd
+mpd-notification
 ncmpcpp
 neofetch
 neovim

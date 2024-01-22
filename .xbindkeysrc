@@ -47,8 +47,10 @@
  "/home/anon/.local/bin/play_music.sh play"
  Mod4+Mod5+t #Append and play music with mocp
  "mpc toggle"
- Mod4+Mod5+s #Play pause music
- "mpc pause"
+ Mod4+Mod5+s #Toggle repeat
+ "mpc repeat; notify-send.py Repeat $(mpc status | sed -n 's/.*repeat: \(.*\)   random.*/\1/p')"
+ Mod4+Mod5+x #Toggle shuffle
+ "mpc random; notify-send.py Random $(mpc status | sed -n 's/.*random: \(.*\)   single.*/\1/p')"
  Mod4+Mod5+r #Pause music
  "mpc prev"
  Mod4+Mod5+c:59 #Prev track

@@ -44,7 +44,14 @@ exec --no-startup-id polybar -r main
 exec --no-startup-id sleep 0.1;python /home/anon/.local/bin/hide_polybar_mod4.py
 #exec --no-startup-id hideIt.sh -N polybar -H -d top
 
+# Input manager (japanese etc...)
 exec --no-startup-id fcitx5 -d
+
+# Music player deamon
+exec --no-startup-id mpd
+# MPD notification
+exec --no-startup-id mpd-notification -t 2
+
 exec --no-startup-id picom --config /home/anon/.config/picom/picom.conf -b
 exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/workspace-2.json'"
 exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
