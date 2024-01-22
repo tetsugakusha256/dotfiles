@@ -289,6 +289,11 @@ require("lazy").setup({
       -- opened markdown file different
       -- ft = "markdown"
     },
+    -- allow task from vimwiki to be sync with taskwarrior (syntax: * [ ] task1)
+    {
+      -- 'tools-life/taskwiki'
+    },
+
     -- Anki
     {
       "rareitems/anki.nvim",
@@ -298,7 +303,8 @@ require("lazy").setup({
           tex_support = false,
           models = {
             -- Here you specify which notetype should be associated with which deck
-            ["One Q one A Code"] = "Coding::nvim",
+            ["One Q one A"] = "Computer::nvim",
+            ["One Q one A Code"] = "Computer::nvim",
           },
         })
       end,
