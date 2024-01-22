@@ -158,7 +158,7 @@
 ## Time of inactivity (in seconds) after playlist highlighting will be disabled
 ## (0 = always on).
 ##
-#playlist_disable_highlight_delay = 5
+playlist_disable_highlight_delay = 0
 #
 ## Defines how long messages are supposed to be visible.
 ##
@@ -440,7 +440,7 @@
 ## media_library, playlist_editor, tag_editor, outputs, visualizer, clock,
 ## lyrics, last_fm.
 ##
-#screen_switcher_mode = playlist, browser
+screen_switcher_mode = playlist, browser, search_engine, tag_editor
 #
 ##
 ## Note: You can define startup screen by choosing screen from the list above.

@@ -46,13 +46,13 @@
  Mod4+Mod5+a #Append music to mocp playlist
  "/home/anon/.local/bin/play_music.sh play"
  Mod4+Mod5+t #Append and play music with mocp
- "mocp -G"
+ "mpc toggle"
  Mod4+Mod5+s #Play pause music
- "mocp -P"
+ "mpc pause"
  Mod4+Mod5+r #Pause music
- "mocp -r"
+ "mpc prev"
  Mod4+Mod5+c:59 #Prev track
- "mocp -f"
+ "mpc next"
  Mod4+Mod5+c:60 #Next track
 
 "flameshot gui"

@@ -51,7 +51,6 @@ alias wiki='nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/" ; exi
 alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
 alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
-alias mp='mocp'
 
 alias spotifyd='$HOME/.config/spotifyd/spotifyd_with_pass.sh'
 # python home (activate python virtual env)
@@ -66,3 +65,4 @@ if [ -n "$ZSH_VERSION" ]; then
     # autojump script
     . /usr/share/autojump/autojump.zsh
 fi
+
