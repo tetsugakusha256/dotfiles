@@ -10,8 +10,10 @@ vim.api.nvim_set_keymap("n", "<leader>fc", 'zc', { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>fo", 'zo', { noremap = true })
 -- All fold open
 vim.api.nvim_set_keymap("n", "<leader>fa", 'zR', { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fO", 'zR', { noremap = true })
 -- Hide all fold
 vim.api.nvim_set_keymap("n", "<leader>fh", 'zM', { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>fC", 'zM', { noremap = true })
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
