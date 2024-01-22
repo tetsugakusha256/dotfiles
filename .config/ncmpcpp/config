@@ -19,7 +19,7 @@
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-#lyrics_directory = ~/.lyrics
+lyrics_directory = ~/Documents/Music/lyrics
 #
 ##### connection settings #####
 #
@@ -249,9 +249,9 @@ playlist_disable_highlight_delay = 0
 #
 #current_item_inactive_column_suffix = $/r$(end)
 #
-#now_playing_prefix = $b
+now_playing_prefix = $b 󰼛 
 #
-#now_playing_suffix = $/b
+# now_playing_suffix = $/b
 #
 #browser_playlist_prefix = "$2playlist$9 "
 #
@@ -358,15 +358,15 @@ playlist_disable_highlight_delay = 0
 #
 #volume_change_step = 2
 #
-#autocenter_mode = no
+# autocenter_mode = yes
 #
-#centered_cursor = no
+centered_cursor = yes
 #
 ##
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
+progressbar_look = -󰼛 
 #
 ## Available values: database, playlist.
 ##
@@ -405,9 +405,9 @@ playlist_disable_highlight_delay = 0
 #
 #cyclic_scrolling = no
 #
-#lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+lyrics_fetchers = tekstowo, musixmatch, sing365, metrolyrics, jahlyrics, plyrics, zeneszoveg, justsomelyrics, musixmatch, internet, azlyrics 
 #
-#follow_now_playing_lyrics = no
+follow_now_playing_lyrics = yes
 #
 #fetch_lyrics_for_current_song_in_background = no
 #
@@ -526,7 +526,7 @@ screen_switcher_mode = playlist, browser, search_engine, tag_editor
 #
 #search_engine_default_search_mode = 1
 #
-#external_editor = nano
+external_editor = nvim
 #
 ## Note: set to yes if external editor is a console application.
 ##

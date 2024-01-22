@@ -23,7 +23,9 @@ arg1=${1:-nothing}
 
 if [ $arg1 == $option1 ]
 then
-    output=$(find "$music_dir" -type f -iname "*.mp3" | sed "s#^$music_dir/##" | rofi -dmenu -i -p "Choose music" \
+  song_list=$(find "$music_dir" -type f -iname "*.mp3" | sed "s#^$music_dir/##")
+  echo "${song_list}"
+  output=$(echo "${song_list}" | rofi -dmenu -i -p "Choose music" \
             -theme "$HOME"/.config/rofi/music_chooser.rasi\
         )
     if [ -z "$output" ]; then

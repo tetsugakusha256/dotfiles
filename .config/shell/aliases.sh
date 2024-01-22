@@ -52,6 +52,9 @@ alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
 alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
 
+# Music player 
+alias mp='ncmpcpp'
+
 alias spotifyd='$HOME/.config/spotifyd/spotifyd_with_pass.sh'
 # python home (activate python virtual env)
 alias ph='source $HOME/.python_venv/bin/activate'

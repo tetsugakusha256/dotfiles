@@ -34,9 +34,13 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 # notification center deamon
 exec --no-startup-id deadd-notification-center
 
+# Music player deamon
+exec --no-startup-id mpd
+
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
 exec --no-startup-id xbindkeys
 
+# backgrounds
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/catpuccin_min.png
 # Polybar
 exec --no-startup-id polybar -r main
@@ -47,10 +51,6 @@ exec --no-startup-id sleep 0.1;python /home/anon/.local/bin/hide_polybar_mod4.py
 # Input manager (japanese etc...)
 exec --no-startup-id fcitx5 -d
 
-# Music player deamon
-exec --no-startup-id mpd
-# MPD notification
-exec --no-startup-id mpd-notification -t 2
 
 exec --no-startup-id picom --config /home/anon/.config/picom/picom.conf -b
 exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/workspace-2.json'"
@@ -63,6 +63,9 @@ exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
 # Now using interception tools to set the ctrl_modifier remap at a lower level
 # it should work in the ttc, wayland and x11
 # exec --no-startup-id "/home/anon/.local/bin/capsRemap.sh"
+
+# MPD notification FIX: need to make sure mpd is started? or deadd-notification-center?
+exec --no-startup-id mpd-notification -t 2
 
 # Sound
 # Use pactl to adjust volume in PulseAudio.

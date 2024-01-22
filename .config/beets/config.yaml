@@ -27,3 +27,5 @@ smartplaylist:
           query: 'genre:"chanson"'
         - name: Lana.m3u
           query: 'artist:"Lana Del Rey"'
+        - name: Eminem.m3u
+          query: 'artist:"eminem"'

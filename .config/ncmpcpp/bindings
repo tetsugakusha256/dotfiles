@@ -234,6 +234,9 @@ def_key "space"
 #def_key "space"
 #  add_item_to_playlist
 #
+def_key "u"
+ toggle_lyrics_update_on_song_change
+
 #def_key "space"
 #  toggle_lyrics_update_on_song_change
 #
@@ -274,6 +277,10 @@ def_key "h"
 #  execute_command
 #
 def_key "escape"
+ require_screen "playlist"
+ jump_to_playing_song
+
+def_key "escape"
  show_playlist
 
 def_key "alt-i"
@@ -302,6 +309,9 @@ def_key "alt-f"
 
 def_key "alt-/"
  show_search_engine
+
+def_key "/"
+ find_item_forward
 
 def_key "/"
  start_searching
@@ -486,6 +496,12 @@ def_key "A"
 #def_key "?"
 #  find_item_backward
 #
+def_key "K"
+ previous_found_item
+
+def_key "k"
+ next_found_item
+
 #def_key "."
 #  next_found_item
 #
@@ -510,6 +526,19 @@ def_key "A"
 #def_key "e"
 #  edit_playlist_name
 #
+def_key "c"
+ edit_lyrics
+
+def_key "l"
+ show_lyrics
+
+def_key "h"
+ toggle_lyrics_fetcher
+
+# "Generate lyrics"
+def_key "g"
+ refetch_lyrics
+
 #def_key "e"
 #  edit_lyrics
 #

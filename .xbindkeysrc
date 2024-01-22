@@ -40,22 +40,28 @@
 # Examples of commands:
  
  # Music controls
+ "mpc cdprev"
+ Mod4+Mod5+q #Seek back 5sec
+ "mpc seekthrough -5"
+ Mod4+Mod5+w #Seek back 5sec
+ "mpc seekthrough 5"
+ Mod4+Mod5+f #Seek forward 5sec
  "/home/anon/.local/bin/play_music.sh playlist"
  Mod4+Mod5+p #Append music to mocp playlist
  "/home/anon/.local/bin/play_music.sh append"
  Mod4+Mod5+a #Append music to mocp playlist
- "/home/anon/.local/bin/play_music.sh play"
- Mod4+Mod5+t #Append and play music with mocp
  "mpc toggle"
  Mod4+Mod5+s #Toggle repeat
  "mpc repeat; notify-send.py Repeat $(mpc status | sed -n 's/.*repeat: \(.*\)   random.*/\1/p')"
- Mod4+Mod5+x #Toggle shuffle
+ Mod4+Mod5+r #Shuffle music
+ "/home/anon/.local/bin/play_music.sh play"
+ Mod4+Mod5+t #Append and play music with mocp
  "mpc random; notify-send.py Random $(mpc status | sed -n 's/.*random: \(.*\)   single.*/\1/p')"
- Mod4+Mod5+r #Pause music
+ Mod4+Mod5+x #Repeat shuffle
  "mpc prev"
- Mod4+Mod5+c:59 #Prev track
+ Mod4+Mod5+c:59 #Prev track (,)
  "mpc next"
- Mod4+Mod5+c:60 #Next track
+ Mod4+Mod5+c:60 #Next track (.)
 
 "flameshot gui"
  Mod4+Mod3+q
@@ -69,6 +75,8 @@
  Mod4+Mod5+u 
 "redshift -O 7500"
  Mod4+Mod5+y 
+"kill -s USR1 $(pidof deadd-notification-center)"
+ Mod4+Mod5+c:33
 "brightnessctl set 2%-"
  Mod4+Mod5+i 
 "brightnessctl set +2%"
@@ -79,8 +87,6 @@
  Mod4+Mod5+n 
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
  Mod4+Mod5+m 
-"kill -s USR1 $(pidof deadd-notification-center)"
- Mod4+Mod5+c:33
 
 
 #"xterm -geom 50x20+20+20"
