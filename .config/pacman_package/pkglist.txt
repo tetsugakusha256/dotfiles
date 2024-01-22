@@ -24,6 +24,7 @@ deadd-notification-center
 discord
 dmenu
 dracula-gtk-theme
+exfat-utils
 fcitx5
 fcitx5-configtool
 fcitx5-gtk
@@ -53,6 +54,7 @@ interception-tools
 iptables-nft
 iwd
 jq
+jre-openjdk
 jre11-openjdk
 kcachegrind
 keepassxc
@@ -66,7 +68,9 @@ linux-firmware
 man-db
 man-pages
 minecraft-launcher
-moc
+mpc
+mpd
+ncmpcpp
 neofetch
 neovim
 network-manager-applet
@@ -94,6 +98,7 @@ python-cairosvg
 python-jupyter-client
 python-kaleido-bin
 python-matplotlib
+python-mpd2
 python-numpy
 python-pip
 python-plotly
@@ -181,3 +186,5 @@ xournalpp
 xss-lock
 yay-git
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
