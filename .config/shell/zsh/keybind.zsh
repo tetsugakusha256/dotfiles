@@ -9,11 +9,18 @@ bindkey -M menuselect 'u' beginning-of-buffer-or-history
 bindkey -M menuselect 'y' end-of-buffer-or-history
 
 bindkey -M menuselect 'l' vi-insert # Interactive mode
-bindkey -M menuselect '^M' accept-and-hold # Hold
-bindkey -M menuselect ' ' accept-and-infer-next-history # Next
+# bindkey -M menuselect '^M' accept-and-hold # Hold
+bindkey -M menuselect '^M' accept-and-execute # Hold
+# bindkey -M menuselect ' ' accept-and-infer-next-history # Next
+bindkey -M menuselect ' ' accept-line # Print selection and leave menu
 bindkey -M menuselect '^[' accept-line # Leave suggestion printed and leave
-bindkey -M menuselect '^I' accept-line # Leave suggestion printed and leave
+# bindkey -M menuselect '^I' accept-line # Leave suggestion printed and leave
 bindkey -M menuselect '^?' undo # Cancel suggestion validation
+
+bindkey -M viins '^E' autosuggest-accept
+bindkey -M viins '^O' autosuggest-execute
+bindkey -M vicmd '^S' autosuggest-toggle
+bindkey -M viins '^S' autosuggest-toggle
 
 # key list
 # ^M -> Enter
@@ -174,7 +181,7 @@ bindkey -M viins "^W" vi-backward-kill-word
 bindkey -M viins "^X^R" _read_comp
 bindkey -M viins "^X?" _complete_debug
 bindkey -M viins "^XC" _correct_filename
-bindkey -M viins "^E" _expand_alias
+# bindkey -M viins "^E" _expand_alias
 bindkey -M viins "^Xc" _correct_word
 bindkey -M viins "^Xd" _list_expansions
 bindkey -M viins "^Xe" _expand_word

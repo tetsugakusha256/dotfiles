@@ -1,9 +1,12 @@
 # Sourcing config
 source "$HOME/.config/shell/aliases.sh"
 
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+# Plugin to allow for autosuggestions while typing (pacman package)
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$ZSH_CONFIG/zsh_autosuggestions_config.zsh"
+# Plugin for highlighting (pacman package)
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Remove duplicate commands from history
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -11,6 +14,9 @@ setopt hist_ignore_space
 setopt autocd
 
 bindkey -v
+
+# Fix pasting with vi mode active
+unset zle_bracketed_paste
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/anon/.zshrc'
@@ -65,6 +71,7 @@ stty -ixon
 
 # starship prompt
 eval "$(starship init zsh)"
+
 
 # Keybinding sourcing
 source $HOME/.config/shell/zsh/keybind.zsh
