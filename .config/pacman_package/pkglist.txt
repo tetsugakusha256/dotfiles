@@ -9,7 +9,7 @@ beautiful-discord-git
 beets
 bluez
 bluez-plugins
-brave-beta-bin
+brave-bin
 brightnessctl
 brotab-git
 calibre
@@ -140,6 +140,7 @@ unrar
 unzip
 usbutils
 valgrind
+vlc
 wireplumber
 xbindkeys
 xcape

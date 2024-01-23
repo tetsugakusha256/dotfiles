@@ -13,8 +13,8 @@
   "percent": 1,
   "swallows": [
     {
-      "class": "^Brave\\-browser\\-beta$",
-      "instance": "^brave\\-browser\\-beta$"
+      "class": "^Brave",
+      "instance": "^brave"
     }
   ],
   "type": "con"
