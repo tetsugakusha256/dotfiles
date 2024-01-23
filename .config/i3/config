@@ -34,9 +34,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 # notification center deamon
 exec --no-startup-id deadd-notification-center
 
-# Music player deamon
-exec --no-startup-id mpd
-
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
 exec --no-startup-id xbindkeys
 
@@ -63,9 +60,6 @@ exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
 # Now using interception tools to set the ctrl_modifier remap at a lower level
 # it should work in the ttc, wayland and x11
 # exec --no-startup-id "/home/anon/.local/bin/capsRemap.sh"
-
-# MPD notification FIX: need to make sure mpd is started? or deadd-notification-center?
-exec --no-startup-id mpd-notification -t 2
 
 # Sound
 # Use pactl to adjust volume in PulseAudio.
