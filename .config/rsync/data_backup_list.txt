@@ -1,5 +1,10 @@
++ /.config/
++ /.local/
++ /.dotfiles/
 + /Documents/
 + /Pictures/
-- /Documents/Code/**
-- /Documents/Git_clones/**
+- /Documents/Code/Git_clones
+- **/node_modules/
+- **/Code/**/target/
+- /.config/BraveSoftware/**
 - /*

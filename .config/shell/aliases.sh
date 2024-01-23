@@ -55,6 +55,9 @@ alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
 # Music player 
 alias mp='ncmpcpp'
 
+# Custom backup script
+alias backup='$HOME/.local/bin/backup_to_disk.sh'
+
 alias spotifyd='$HOME/.config/spotifyd/spotifyd_with_pass.sh'
 # python home (activate python virtual env)
 alias ph='source $HOME/.python_venv/bin/activate'
