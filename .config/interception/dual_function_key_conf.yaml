@@ -9,12 +9,12 @@ MAPPINGS:
     HOLD: KEY_RIGHTALT
 
   - KEY: KEY_LEFTALT
-    TAP: KEY_ENTER
+    TAP: KEY_DELETE
     HOLD: KEY_LEFTALT
     
   # print screen key map to key below esc
   - KEY: KEY_SYSRQ
-    TAP: KEY_DELETE
+    TAP: KEY_ENTER
     HOLD: KEY_SYSRQ
 
   # - KEY: KEY_LEFTMETA
