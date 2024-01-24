@@ -240,9 +240,9 @@ def_key "u"
 #def_key "space"
 #  toggle_lyrics_update_on_song_change
 #
-#def_key "space"
-#  toggle_visualization_type
-#
+def_key "space"
+ toggle_visualization_type
+
 def_key "d"
  delete_playlist_items
 
@@ -334,8 +334,11 @@ def_key "alt-m"
 def_key "alt-k"
  show_tag_editor
 
+# def_key "alt-y"
+#  show_outputs
+#
 def_key "alt-y"
- show_outputs
+ show_visualizer
 
 #def_key "1"
 #  show_playlist
@@ -457,9 +460,12 @@ def_key "A"
 #def_key "R"
 #  shuffle
 #
-#def_key "x"
-#  toggle_crossfade
-#
+def_key "x"
+ toggle_random
+
+def_key "c"
+ toggle_crossfade
+
 #def_key "X"
 #  set_crossfade
 #
