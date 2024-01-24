@@ -55,6 +55,7 @@ alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
 # Music player 
 alias mp='ncmpcpp'
 
+alias vpn='$HOME/.local/bin/vpn_connection.sh'
 # Custom backup script
 alias backup='$HOME/.local/bin/backup_to_disk.sh'
 
@@ -71,4 +72,3 @@ if [ -n "$ZSH_VERSION" ]; then
     # autojump script
     . /usr/share/autojump/autojump.zsh
 fi
-

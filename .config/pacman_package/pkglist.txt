@@ -75,6 +75,7 @@ neofetch
 neovim
 network-manager-applet
 networkmanager
+networkmanager-openvpn
 nodejs
 notify-send-py
 noto-fonts
@@ -83,6 +84,8 @@ noto-fonts-emoji
 npm
 ntp
 obsidian
+openresolv
+openvpn
 otf-ipafont
 p7zip
 pavucontrol
