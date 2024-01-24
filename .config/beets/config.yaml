@@ -2,7 +2,7 @@ directory: ~/Documents/Music
 library: ~/Documents/Music/Data/library.db
 import:
     move: yes
-plugins: chroma lyrics edit lastgenre smartplaylist
+plugins: chroma lyrics edit lastgenre smartplaylist mpdupdate
 chroma:
     auto: yes
 lyrics:
