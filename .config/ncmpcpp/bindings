@@ -464,6 +464,9 @@ def_key "x"
  toggle_random
 
 def_key "c"
+ edit_lyrics
+
+def_key "c"
  toggle_crossfade
 
 #def_key "X"
@@ -532,13 +535,19 @@ def_key "k"
 #def_key "e"
 #  edit_playlist_name
 #
-def_key "c"
- edit_lyrics
-
 def_key "l"
  show_lyrics
 
 def_key "h"
+ require_screen "playlist"
+ show_song_info
+
+def_key "h"
+ require_screen "song_info"
+ show_playlist
+
+def_key "h"
+ require_screen "lyrics"
  toggle_lyrics_fetcher
 
 # "Generate lyrics"
@@ -547,9 +556,6 @@ def_key "g"
 
 #def_key "e"
 #  edit_lyrics
-#
-#def_key "i"
-#  show_song_info
 #
 #def_key "I"
 #  show_artist_info
@@ -590,15 +596,15 @@ def_key "g"
 #def_key "m"
 #  move_sort_order_up
 #
-#def_key "m"
-#  move_selected_items_up
-#
+def_key "E"
+ move_selected_items_up
+
 #def_key "n"
 #  move_sort_order_down
 #
-#def_key "n"
-#  move_selected_items_down
-#
+def_key "N"
+ move_selected_items_down
+
 #def_key "M"
 #  move_selected_items_to
 #
