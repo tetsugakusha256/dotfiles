@@ -29,3 +29,7 @@ smartplaylist:
           query: 'artist:"Lana Del Rey"'
         - name: Eminem.m3u
           query: 'artist:"eminem"'
+        - name: FLAC.m3u
+          query: 'format:"FLAC" ^title:"Check it in"'
+        - name: HighQ.m3u
+          query: 'bitrate:192000..'
