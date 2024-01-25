@@ -106,7 +106,8 @@ visualizer_fps = 60
 #
 visualizer_look = ●󱓻
 # 
-# visualizer_color = blue, cyan, green, yellow, magenta, red
+visualizer_color = blue, cyan, green, yellow, magenta, red, cyan, green, yellow, magenta, red
+
 # visualizer_color = 2, 10, 17, 12, 4, 18, 14, 6, 7, 15, 11, 15, 7, 6, 14, 18, 4, 12, 17, 10, 2
 #
 ## Alternative subset of 256 colors for terminals that support it.
