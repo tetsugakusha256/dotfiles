@@ -6,24 +6,14 @@ option1=append
 option2=play
 # Add playlist
 option3=playlist
-music_dir="/home/anon/Documents/Music"
-playlist_dir="/home/anon/Documents/Music/Playlists"
+music_dir="/$HOME/Documents/Music"
+playlist_dir="/$HOME/Documents/Music/Playlists"
 
 arg1=${1:-nothing}
 
-# process_name=mocp
-# # Check for mocp process
-# if pgrep "$process_name" > /dev/null; then
-#     echo "$process_name is already running."
-# else
-#     echo "$process_name is not running. Starting it now..."
-#     # Start the process (replace with your actual command)
-#     mocp -S
-# fi
-
 if [ $arg1 == $option1 ]
 then
-  song_list=$(find "$music_dir" -type f -iname "*.mp3" | sed "s#^$music_dir/##")
+  song_list=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##")
   echo "${song_list}"
   output=$(echo "${song_list}" | rofi -dmenu -i -p "Choose music" \
             -theme "$HOME"/.config/rofi/music_chooser.rasi\
@@ -34,12 +24,10 @@ then
         echo "Adding : ${output} to playlist"
         mpc del "${output}"
         mpc insert "${output}"
-        # mocp -a "${selected_music_path}"
-        # mocp -q "${selected_music_path}"
         echo "Added"
     fi
 elif [ $arg1 == $option2 ]; then
-    output=$(find "$music_dir" -type f -iname "*.mp3" | sed "s#^$music_dir/##" | rofi -dmenu -i -p "Choose music" \
+    output=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##" | rofi -dmenu -i -p "Choose music" \
             -theme "$HOME"/.config/rofi/music_chooser.rasi\
         )
     if [ -z "$output" ]; then
@@ -50,8 +38,6 @@ elif [ $arg1 == $option2 ]; then
         mpc insert "${output}"
         mpc next
         mpc play
-        # mocp -a "${selected_music_path}"
-        # mocp -l "${selected_music_path}"
         echo "Added to playlist"
     fi
 elif [ $arg1 == $option3 ]; then
@@ -66,6 +52,9 @@ elif [ $arg1 == $option3 ]; then
         echo "Playlist : ${playlist}"
         mpc clear
         mpc load ${playlist}
+        mpc random on
+        mpc repeat on
+        mpc next
         mpc play
         echo "Added to playlist"
     fi
