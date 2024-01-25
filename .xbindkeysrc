@@ -69,18 +69,33 @@
  Mod4+Mod5+h
 "flameshot gui"
  Mod3+q
+
+"kill -s USR1 $(pidof deadd-notification-center)"
+ Mod4+Mod5+c:33
+
+ # Screen brightness
+"brightnessctl set 1%-"
+ Mod4+Mod5+Shift+i 
+"brightnessctl set +1%"
+ Mod4+Mod5+Shift+o 
+"brightnessctl set 2%-"
+ Mod4+Mod5+i 
+"brightnessctl set +2%"
+ Mod4+Mod5+o 
+ 
+ # Screen redness
 "redshift -O 5500"
  Mod4+Mod5+l 
 "redshift -x"
  Mod4+Mod5+u 
 "redshift -O 7500"
  Mod4+Mod5+y 
-"kill -s USR1 $(pidof deadd-notification-center)"
- Mod4+Mod5+c:33
-"brightnessctl set 2%-"
- Mod4+Mod5+i 
-"brightnessctl set +2%"
- Mod4+Mod5+o 
+
+ # Sound 
+"pactl set-sink-volume @DEFAULT_SINK@ +1%"
+ Mod4+Mod5+Shift+e 
+"pactl set-sink-volume @DEFAULT_SINK@ -1%"
+ Mod4+Mod5+Shift+n 
 "pactl set-sink-volume @DEFAULT_SINK@ +5%"
  Mod4+Mod5+e 
 "pactl set-sink-volume @DEFAULT_SINK@ -5%"
