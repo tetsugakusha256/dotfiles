@@ -486,9 +486,11 @@ vim.api.nvim_set_keymap("n", "<Leader>oc", 'zg', { noremap = true })
 
 -- System clipboard shortcut
 vim.api.nvim_set_keymap("v", "<Leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>Y", '"+Y', { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>p", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>P", '"+P', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>y", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>Y", '"+Y', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>pp", '"+p', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>po", 'o<esc>"+p', { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>pO", 'O<esc>"+p', { noremap = true })
@@ -510,36 +512,6 @@ vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
 -------------------------------------------------------
 -------------------------------------------------------
 
--- -- Disable syntax highlighting in big files
--- function DisableSyntaxTreesitter()
---   vim.api.nvim_out_write("Big file, disabling syntax, treesitter, and folding\n")
---
---   if vim.fn.exists(":TSBufDisable") then
---     vim.cmd("TSBufDisable highlight")
---     vim.cmd("TSBufDisable indent")
---     vim.cmd("TSBufDisable incremental_selection")
---   end
---
---   vim.api.nvim_win_set_option(0, "foldmethod", "manual")
---   vim.cmd("syntax clear")
---   vim.cmd("syntax off")
---   vim.cmd("filetype off")
---   vim.cmd("set noundofile")
---   vim.cmd("set noswapfile")
---   vim.cmd("set noloadplugins")
--- end
---
--- -- show cursor line only in active window
--- local BigFileDisable = vim.api.nvim_create_augroup("BigFileDisable", { clear = true })
---
--- vim.api.nvim_create_autocmd(
---   { "BufReadPre", "FileReadPre" },
---   {
---     pattern = "*",
---     command = "if getfsize(expand('%')) > 512 * 1024 | lua DisableSyntaxTreesitter() ",
---     group = BigFileDisable
---   }
--- )
 
 -------------------------------------------------------
 -------------------------------------------------------
