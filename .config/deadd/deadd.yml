@@ -198,9 +198,9 @@ notification:
     ### Margin above/right/between notifications (in pixels). This can
     ### be used to avoid overlap between notifications and a bar such as
     ### polybar or i3blocks.
-    margin-top: 20
-    margin-right: 20
-    margin-between: 20
+    margin-top: 0
+    margin-right: 0
+    margin-between: 0
 
     ### Defines after how many lines of text the body will be truncated. 
     ### Use 0 if you want to disable truncation.

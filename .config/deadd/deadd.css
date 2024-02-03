@@ -82,11 +82,11 @@
 }
 
 .blurredBG.notification {
-  background: #1e1e2e;
+  background: #313244;
 }
 
 .blurredBG.notification.critical {
-  background: #1e1e2e;
+  background: #313244;
 }
 
 .notificationInCenter.critical {
@@ -97,18 +97,21 @@
 
 label {
   background: transparent;
-  color: #fab387;
 }
 
 label.notification {
-  color: #fab387;
 }
 
 label.critical {
   color: #000;
 }
+label.deadd-noti-center.notification.title {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
 label.deadd-noti-center.notification.body {
   color: #f9e2af;
+  margin-left: 20px;
 }
 label.deadd-noti-center.noti-center.date {
   color: #f38ba8;
