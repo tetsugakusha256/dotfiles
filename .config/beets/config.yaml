@@ -2,7 +2,7 @@ directory: ~/Documents/Music
 library: ~/Documents/Music/Data/library.db
 import:
     move: yes
-plugins: chroma lyrics edit lastgenre smartplaylist mpdupdate
+plugins: chroma lyrics edit lastgenre smartplaylist mpdupdate importadded
 chroma:
     auto: yes
 lyrics:
@@ -12,6 +12,8 @@ lastgenre:
 ignore:
     paths:
         - ~/Documents/Music/Need_Import
+importadded:
+    preserve_mtimes: yes
 smartplaylist:
     relative_to: 
     playlist_dir: ~/Documents/Music/Playlists
@@ -29,7 +31,11 @@ smartplaylist:
           query: 'artist:"Lana Del Rey"'
         - name: Eminem.m3u
           query: 'artist:"eminem"'
+        - name: Classical.m3u
+          query: 'genre:"classical"'
         - name: FLAC.m3u
           query: 'format:"FLAC" ^title:"Check it in"'
         - name: HighQ.m3u
           query: 'bitrate:192000..'
+        - name: Spanish.m3u
+          query: 'language:Spanish'
