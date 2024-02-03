@@ -360,7 +360,6 @@ end
 -- vim.keymap.set("n", "<leader>cl", vim.lsp.codelens.display)
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
-vim.keymap.set("n", "<leader>tD", vim.lsp.buf.definition)
 -- List implementation implementation
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 -- Seach for Incoming/Outgoint calls
@@ -371,10 +370,13 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 -- Go to definition
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "<leader>td", vim.lsp.buf.definition)
+vim.keymap.set("n", "<leader>ty", vim.lsp.buf.type_definition)
 vim.keymap.set("n", "<leader>tf", vim.lsp.buf.declaration)
 -- Show info
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover)
+-- FIX: BS is remap with vimwiki
+vim.keymap.set("n", "<BS>", vim.lsp.buf.hover)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>tr", vim.lsp.buf.references)
 
@@ -408,8 +410,8 @@ vim.keymap.set("n", "<leader>ee", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "<leader>ew", vim.diagnostic.setloclist, opts)
 vim.keymap.set("n", "<leader>eh", vim.diagnostic.hide, opts)
 vim.keymap.set("n", "<leader>es", vim.diagnostic.show, opts)
-vim.keymap.set("n", "<a-[>", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "<a-]>", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "<c-(>", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "<c-)>", vim.diagnostic.goto_next, opts)
 
 -------------------------------------------------------
 -- Telescope
