@@ -13,7 +13,8 @@ if  echo $target_partition | grep -q "sda";then
     exit 1
 fi
 
-echo "Target partition : ${target_partition}"
+disk_name=$(udevadm info --name=/dev/${target_partition} --query=property | grep ID_USB_MODEL= | sed "s/ID_USB_MODEL=//")
+echo "Target partition : ${target_partition} on disk: ${disk_name}"
 
 # Check if the target drive is already mounted
 if mount | grep -q "${target_partition}"; then
@@ -32,6 +33,10 @@ else
         # Mount the drive
         echo "mounting /dev/$target_partition to /mnt/backup/"
         sudo mount "/dev/$target_partition" /mnt/backup/
+        # Check if mounted was successful
+        if [ $? -ne 0 ];then
+          exit 1
+        fi
         echo "Drive mounted successfully."
     else
         echo "Drive not found or does not match the specified device ID."
