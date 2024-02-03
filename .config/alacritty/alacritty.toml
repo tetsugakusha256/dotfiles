@@ -1,4 +1,4 @@
-import = ["/home/anon/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
 
 [font]
 size = 17.0

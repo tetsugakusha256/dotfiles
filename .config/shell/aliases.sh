@@ -55,6 +55,9 @@ alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
 # Music player 
 alias mp='ncmpcpp'
 
+# Show color quickly
+alias color='$HOME/.local/bin/print_colors.sh'
+
 alias vpn='$HOME/.local/bin/vpn_connection.sh'
 # Custom backup script
 alias backup='$HOME/.local/bin/backup_to_disk.sh'
