@@ -34,7 +34,7 @@ else
 fi
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$suspend\n$lock\n$logout\n$reboot\n$shutdown"
 
 chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
 case $chosen in
