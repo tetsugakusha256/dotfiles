@@ -63,12 +63,12 @@ crust = "#11111b"
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:blue fg:#000000"
-style_root = "bg:blue fg:#000000"
+style_user = "bg:blue fg:base"
+style_root = "bg:blue fg:base"
 format = '[$user]($style)'
 
 [directory]
-style = "bg:lavender fg:#000000"
+style = "bg:lavender fg:base"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -88,77 +88,77 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:yellow fg:#000000"
+style = "bg:yellow fg:base"
 format = '[ $symbol $context ]($style) $path'
 
 [elixir]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:sky fg:#000000"
+style = "bg:sky fg:base"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:sky fg:#000000"
+style = "bg:sky fg:base"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "bg:green fg:#000000"
+style = "bg:green fg:base"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:red fg:#000000"
+style = "bg:red fg:base"
 format = '[ $time ]($style)'
 
 [shell]
@@ -167,6 +167,6 @@ bash_indicator = 'ᵦ'
 zsh_indicator = 'ᶻ'
 powershell_indicator = '_'
 unknown_indicator = 'mystery shell'
-style = "bg:blue fg:#000000"
+style = "bg:blue fg:base"
 format = '[$indicator ]($style)'
 disabled = false
