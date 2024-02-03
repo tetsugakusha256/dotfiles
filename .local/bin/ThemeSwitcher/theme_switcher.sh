@@ -1,4 +1,6 @@
 #!/bin/bash
+source ./alacritty_switcher.sh 
+source ./gtk_switcher.sh 
 
 # Add song to queue
 option1=dark
@@ -8,9 +10,13 @@ option2=light
 arg1=${1:-nothing}
 if [ $arg1 == $option1 ]
 then
-    echo "dark theme"
+    echo "Setting mocha theme"
+    # alacritty_set_mocha
+    gtk_set_mocha
 elif [ $arg1 == $option2 ]; then
-    echo "light theme"
+    echo "Setting latte theme"
+    # alacritty_set_latte
+    gtk_set_latte
 else
     echo "Invalide arguments"
     exit 1
