@@ -17,7 +17,10 @@ bindkey -M menuselect '^[' accept-line # Leave suggestion printed and leave
 # bindkey -M menuselect '^I' accept-line # Leave suggestion printed and leave
 bindkey -M menuselect '^?' undo # Cancel suggestion validation
 
-bindkey -M viins '^E' autosuggest-accept
+# bindkey -M viins '^E' autosuggest-fetch
+# bindkey -M viins '^E' autosuggest-accept
+bindkey -M viins '^E' history-beginning-search-backward
+bindkey -M viins '^N' history-beginning-search-forward
 bindkey -M viins '^O' autosuggest-execute
 bindkey -M vicmd '^S' autosuggest-toggle
 bindkey -M viins '^S' autosuggest-toggle
@@ -27,6 +30,13 @@ bindkey -M viins '^S' autosuggest-toggle
 # ^? -> Backspace
 # ^I -> Tab
 
+# Surround mode
+# When on, using cc has delay because  it's waiting for a possible s now that
+# the css bindkey also exist
+# bindkey -M vicmd css change-surround
+# bindkey -M vicmd dss delete-surround
+bindkey -M vicmd yss add-surround
+bindkey -M visual S add-surround
 
 bindkey -M menuselect -r "^[," 
 bindkey -M menuselect -r "^[/" 
@@ -77,6 +87,7 @@ bindkey -M vicmd "," vi-rev-repeat-find
 bindkey -M vicmd "." vi-repeat-change
 bindkey -M vicmd "/" history-incremental-search-backward
 # Remap incremental history search to Ctrl+S
+bindkey -M vicmd '^E' history-incremental-pattern-search-backward
 bindkey -M isearch '^E' history-incremental-pattern-search-backward
 bindkey -M isearch '^N' history-incremental-pattern-search-forward
 # bindkey -M isearch '^H' backward-delete-char
@@ -166,7 +177,7 @@ bindkey -M viins "^G" list-expand
 # Backspace and <c-h>
 bindkey -M viins "^H" backward-delete-char
 bindkey -M viins "^I" expand-or-complete
-bindkey -M viins "^N" expand-or-complete
+# bindkey -M viins "^N" expand-or-complete
 bindkey -M viins "^J" accept-line
 bindkey -M viins "^K" self-insert
 bindkey -M viins "^L" clear-screen
