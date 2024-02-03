@@ -32,7 +32,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 # exec --no-startup-id nm-applet
 
 # notification center deamon
-exec --no-startup-id deadd-notification-center
+# made it a service
+# exec --no-startup-id deadd-notification-center
 
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
 exec --no-startup-id xbindkeys
@@ -54,7 +55,7 @@ exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/w
 exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
 exec --no-startup-id "i3-msg 'workspace 7; append_layout /home/anon/.config/i3/workspace-7.json'"
 exec --no-startup-id i3-msg 'workspace 2; exec brave'
-exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim +":cd /home/anon/Documents/myWiki/"'
+exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/"'
 exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
 # exec --no-startup-id "flatpak run com.tomjwatson.Emote"
 # Now using interception tools to set the ctrl_modifier remap at a lower level
@@ -112,6 +113,8 @@ bindsym $mod+Ctrl+h move left 80px
 bindsym $mod+Ctrl+n move down 80px
 bindsym $mod+Ctrl+e move up 80px
 bindsym $mod+Ctrl+i move right 80px
+
+for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
@@ -215,7 +218,6 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+f mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 bindsym $mod+w exec /home/anon/.config/rofi/bin/powermenu
 
-for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
 # Create Log out, Reboot, Poweroff bindings
 mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
         bindsym r exec --no-startup-id systemctl reboot
