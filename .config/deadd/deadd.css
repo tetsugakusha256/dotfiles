@@ -3,151 +3,206 @@
 /* notify-send.py a --hint boolean:deadd-notification-center:true
  * string:type:reloadStyle */
 
-.blurredBG, #main_window, .blurredBG.low, .blurredBG.normal {
-    background: #1e1e2e;
-    border-style: solid;
-    border-width: 3px;
-    border-color: #fab387;
+/* Catppuccin mocha */
+/* #main_window { */
+/*   --base: #1e1e2e; */
+/*   --mantle: #181825; */
+/*   --crust: #11111b; */
+/**/
+/*   --text: #cdd6f4; */
+/*   --subtext0: #a6adc8; */
+/*   --subtext1: #bac2de; */
+/**/
+/*   --surface0: #313244; */
+/*   --surface1: #45475a; */
+/*   --surface2: #585b70; */
+/**/
+/*   --overlay0: #6c7086; */
+/*   --overlay1: #7f849c; */
+/*   --overlay2: #9399b2; */
+/**/
+/*   --blue: #89b4fa; */
+/*   --lavender: #b4befe; */
+/*   --sapphire: #74c7ec; */
+/*   --sky: #89dceb; */
+/*   --teal: #94e2d5; */
+/*   --green: #a6e3a1; */
+/*   --yellow: #f9e2af; */
+/*   --peach: #fab387; */
+/*   --maroon: #eba0ac; */
+/*   --red: #f38ba8; */
+/*   --mauve: #cba6f7; */
+/*   --pink: #f5c2e7; */
+/*   --flamingo: #f2cdcd; */
+/*   --rosewater: #f5e0dc; */
+/* } */
+
+.blurredBG,
+#main_window,
+.blurredBG.low,
+.blurredBG.normal {
+  background: #181825;
+  border-style: none;
+  border-width: 0px;
+  border-color: #fab387;
+  /* border-bottom: solid; */
+  border-width: 1px;
+}
+.noti-center {
+  margin-left: 9px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .noti-center.time {
-    font-size: 122px;
+  font-size: 122px;
+  color: #cba6f7;
 }
 
 /* Notifications */
 
 .title {
-    font-weight: bold;
-    font-size: 44px;
-    margin-left: 5px;
+  font-weight: bold;
+  font-size: 44px;
+  margin-left: 5px;
 }
 
 .appname {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .time {
-    font-size: 20px;
+  font-size: 20px;
+  color: #f5e0dc;
 }
 .in-center.body {
   font-size: 24px;
+  color: #f9e2af;
+  /* background: #1e1e2e; */
 }
 
 .blurredBG.notification {
-    background: #1e1e2e;
+  background: #1e1e2e;
 }
 
 .blurredBG.notification.critical {
-    background: #1e1e2e;
+  background: #1e1e2e;
 }
 
 .notificationInCenter.critical {
-    background: rgba(155, 0, 20, 0.5);
+  background: rgba(155, 0, 20, 0.5);
 }
 
 /* Labels */
 
 label {
-    color: #fab387;
+  background: transparent;
+  color: #fab387;
 }
 
 label.notification {
-    color: #fab387;
+  color: #fab387;
 }
 
 label.critical {
-    color: #000;
+  color: #000;
 }
-
+label.deadd-noti-center.notification.body {
+  color: #f9e2af;
+}
 label.deadd-noti-center.noti-center.date {
-    font-size: 32px;
+  color: #f38ba8;
+  font-size: 32px;
+}
+.notificationInCenter {
+  background: #313244;
+  border-radius: 15px;
+  padding-bottom: 8px;
 }
 .notificationInCenter label.critical {
-    color: #000;
+  color: #000;
 }
 
 label.deadd-noti-center.noti-center.delete-all {
-
+  color: #f9e2af;
 }
 
 /* Buttons */
 
 button {
-    background: transparent;
-    color: #fab387;
-    border-radius: 3px;
-    border-width: 2px;
-    border-color: #fab387;
-    background-position: 0px 0px;
-    text-shadow: none;
-    padding: 10px;
-    margin: 10px;
+  background: transparent;
+  color: #fab387;
+  border-radius: 3px;
+  border-width: 2px;
+  border-color: #fab387;
+  background-position: 0px 0px;
+  text-shadow: none;
+  padding: 10px;
+  margin: 10px;
 }
 
 button:hover {
-    border-radius: 3px;
-    background: #313244;
-    border-radius: 3px;
-    border-width: 2px;
-    border-color: #f38ba8;
-    color: #fee;
+  border-radius: 3px;
+  background: #6c7086;
+  border-radius: 3px;
+  border-width: 2px;
+  border-color: #f38ba8;
+  color: #fee;
 }
-
 
 /* Custom Buttons */
 
 .userbutton {
-    background: #181825;
+  background: #181825;
 }
 
 .userbuttonlabel {
-    color: #fab387;
-    font-size: 30px;
+  color: #fab387;
+  font-size: 30px;
 }
 
 .userbutton:hover {
-    background: #313244;
+  background: #313244;
 }
 
 .userbuttonlabel:hover {
-    color: #111;
+  color: #111;
 }
 
 button.buttonState1 {
-    background: rgba(20,0,0,0.5);
+  background: rgba(20, 0, 0, 0.5);
 }
 
 .userbuttonlabel.buttonState1 {
-    color: #fff;
+  color: #fff;
 }
 
 button.buttonState1:hover {
-    background: rgba(20,0,0, 0.4);
+  background: rgba(20, 0, 0, 0.4);
 }
 
 .userbuttonlabel.buttonState1:hover {
-    color: #111;
+  color: #111;
 }
 
 button.buttonState2 {
-    background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .userbuttonlabel.buttonState2 {
-    color: #111;
+  color: #111;
 }
 
 button.buttonState2:hover {
-    background: rgba(20,0,0, 0.3);
+  background: rgba(20, 0, 0, 0.3);
 }
 
 .userbuttonlabel.buttonState2:hover {
-    color: #000;
+  color: #000;
 }
-
 
 /* Images */
 
 image.deadd-noti-center.notification.image {
-    margin-left: 20px;
+  margin-left: 20px;
 }

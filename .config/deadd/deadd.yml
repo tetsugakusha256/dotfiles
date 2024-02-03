@@ -1,9 +1,9 @@
 ### Margins for notification-center/notifications
-margin-top: 20
-margin-right: 20
+margin-top: 0
+margin-right: 0
 
 ### Margins for notification-center
-margin-bottom: 90
+margin-bottom: 50
 
 ### Width of the notification center/notifications in pixels.
 width: 580
