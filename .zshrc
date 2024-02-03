@@ -60,10 +60,6 @@ autoload -Uz surround
 zle -N delete-surround surround
 zle -N add-surround surround
 zle -N change-surround surround
-bindkey -M vicmd css change-surround
-bindkey -M vicmd dss delete-surround
-bindkey -M vicmd yss add-surround
-bindkey -M visual S add-surround
 
 
 # Disable Ctrl+S and Ctrl+Q
