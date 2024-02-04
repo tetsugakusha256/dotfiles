@@ -57,6 +57,8 @@ alias mp='ncmpcpp'
 
 # Show color quickly
 alias color='$HOME/.local/bin/print_colors.sh'
+# Changing theme
+alias theme='$HOME/.local/bin/ThemeSwitcher/theme_switcher.sh'
 
 alias vpn='$HOME/.local/bin/vpn_connection.sh'
 # Custom backup script
