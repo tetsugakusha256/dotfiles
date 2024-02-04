@@ -1,0 +1,41 @@
+# i3 border color
+# Latte
+
+set $base #eff1f5
+set $mantle #e6e9ef
+set $crust #dce0e8
+
+set $text #4c4f69
+set $subtext0 #6c6f85
+set $subtext1 #5c5f77
+
+set $surface0 #ccd0da
+set $surface1 #bcc0cc
+set $surface2 #acb0be
+
+set $overlay0 #9ca0b0
+set $overlay1 #8c8fa1
+set $overlay2 #7c7f93
+
+set $blue #1e66f5
+set $lavender #7287fd
+set $sapphire #209fb5
+set $sky #04a5e5
+set $teal #179299
+set $green #40a02b
+set $yellow #df8e1d
+set $peach #fe640b
+set $maroon #e64553
+set $red #d20f39
+set $mauve #8839ef
+set $pink #ea76cb
+set $flamingo #dd7878
+set $rosewater #dc8a78
+
+# class                 border  backgr. text    indicator child_borde
+client.focused          $lavender $base  $text   $lavender $lavender
+client.focused_inactive $surface0   $base  $text   #484e50   #585b70
+client.unfocused        $surface0   $base  #888888 #292d2e   $surface0
+client.urgent           #2f343a   $red    $text   $red      $red
+client.placeholder      $mantle   $crust $text   $mantle   $crust
+client.background       $text

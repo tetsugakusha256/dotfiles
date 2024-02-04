@@ -9,6 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+include ~/.config/i3/i3_theme_latte
+
 # Set mod key (Mod1=alt, Mod4=super)
 set $mod Mod4
 
@@ -38,8 +40,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
 exec --no-startup-id xbindkeys
 
-# backgrounds
-exec --no-startup-id feh --bg-scale /usr/share/backgrounds/catpuccin_min.png
+# backgrounds wallpaper
+exec --no-startup-id feh --bg-scale /home/anon/Pictures/Wallpapers/Catppuccin/mocha/catppuccin_main.png
 # Polybar
 exec --no-startup-id polybar -r main
 # exec --no-startup-id polybar -r bottom
@@ -253,12 +255,34 @@ gaps inner 5
 gaps outer 0
 
 # Colors
+# set $base #1e1e2e
+# set $mantle #181825
+# set $crust #11111b
+#
+# set $text #cdd6f4
+# set $subtext0 #a6adc8
+# set $subtext1 #bac2de
+#
+# set $surface0 #313244
+# set $surface1 #45475a
+# set $surface2 #585b70
+#
+# set $overlay0 #6c7086
+# set $overlay1 #7f849c
+# set $overlay2 #9399b2
+#
+# set $blue #89b4fa
+# set $lavender #b4befe
+# set $sapphire #74c7ec
+# set $sky #89dceb
+# set $teal #94e2d5
+# set $green #a6e3a1
+# set $yellow #f9e2af
+# set $peach #fab387
+# set $maroon #eba0ac
+# set $red #f38ba8
+# set $mauve #cba6f7
+# set $pink #f5c2e7
+# set $flamingo #f2cdcd
+# set $rosewater #f5e0dc
 
-# class                 border  backgr. text    indicator child_borde
-client.focused          #b4befe #1e1e2e #cdd6f4 #b4befe   #b4befe
-client.focused_inactive #313244 #1e1e2e #cdd6f4 #484e50   #585b70
-client.unfocused        #313244 #1e1e2e #888888 #292d2e   #313244
-client.urgent           #2f343a #f38ba8 #cdd6f4 #f38ba8   #f38ba8
-client.placeholder      #181825 #11111b #cdd6f4 #181825   #11111b
-
-client.background       #cdd6f4
