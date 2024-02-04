@@ -12,5 +12,5 @@ fcitx_set_latte () {
     fcitx_reload
 }
 fcitx_reload () {
-    fcitx5 -d -r
+    fcitx5 -d -r > /dev/null 2>&1
 }
