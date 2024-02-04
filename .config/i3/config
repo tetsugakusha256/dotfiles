@@ -107,6 +107,8 @@ bindsym $mod+Shift+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+s exec /home/anon/.config/rofi/bin/launcher
+# Anki card
+bindsym $mod+c exec /home/anon/.local/bin/QuickAnki/quick_anki.sh
 
 # TODO:
 # bindsym $mod+period exec "flatpak run it.mijorus.smile"
@@ -132,6 +134,8 @@ bindsym $mod+Ctrl+e move up 80px
 bindsym $mod+Ctrl+i move right 80px
 
 for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
+# Anki window on workspace 9
+assign [title="Anki"] 9
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
