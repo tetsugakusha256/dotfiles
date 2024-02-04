@@ -37,6 +37,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 # made it a service
 # exec --no-startup-id deadd-notification-center
 
+# i3-layouts support
+exec_always i3-layouts
+
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
 exec --no-startup-id xbindkeys
 
@@ -129,14 +132,42 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Ctrl+h move left 80px
-bindsym $mod+Ctrl+n move down 80px
-bindsym $mod+Ctrl+e move up 80px
-bindsym $mod+Ctrl+i move right 80px
+bindsym $mod+Shift+h move left 80px
+bindsym $mod+Shift+n move down 80px
+bindsym $mod+Shift+e move up 80px
+bindsym $mod+Shift+i move right 80px
+bindsym $mod+Ctrl+h exec i3l move left 80px
+bindsym $mod+Ctrl+n exec i3l move down 80px
+bindsym $mod+Ctrl+e exec i3l move up 80px
+bindsym $mod+Ctrl+i exec i3l move right 80px
 
 for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
 # Anki window on workspace 9
 assign [title="Anki"] 9
+
+# i3-layouts
+set $i3l vstack 0.7 right to workspace $ws1
+set $i3l hstack 0.7 down to workspace $ws2
+set $i3l 2columns to workspace $ws3
+set $i3l hstack 0.6 down to workspace $ws4
+set $i3l hstack 0.7 down to workspace $ws5
+set $i3l vstack 0.7 right to workspace $ws6
+set $i3l vstack 0.7 right to workspace $ws7
+set $i3l hstack 0.5 down to workspace $ws8
+set $i3l vstack 0.7 right to workspace $ws9
+set $i3l 2columns to workspace $ws10
+
+# split in horizontal orientation
+bindsym $mod+a exec i3l vstack 0.7
+# split in vertical orientation
+bindsym $mod+v exec i3l hstack 0.7
+# split in 2columns mode
+bindsym $mod+z exec i3l 2columns
+
+# split in horizontal orientation
+# bindsym $mod+a split h
+# split in vertical orientation
+# bindsym $mod+z split v
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
@@ -148,11 +179,6 @@ bindsym $mod+Ctrl+Down move down
 bindsym $mod+Ctrl+Up move up
 bindsym $mod+Ctrl+Right move right
 
-# split in horizontal orientation
-bindsym $mod+a split h
-
-# split in vertical orientation
-bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle

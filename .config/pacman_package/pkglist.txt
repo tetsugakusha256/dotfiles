@@ -42,6 +42,7 @@ hexyl
 hideit.sh-git
 htop
 hyprland
+i3-layouts
 i3-wm
 i3blocks
 i3lock-color
