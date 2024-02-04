@@ -33,9 +33,9 @@ set $flamingo #dd7878
 set $rosewater #dc8a78
 
 # class                 border  backgr. text    indicator child_borde
-client.focused          $lavender $base  $text   $lavender $lavender
-client.focused_inactive $surface0   $base  $text   #484e50   #585b70
-client.unfocused        $surface0   $base  #888888 #292d2e   $surface0
-client.urgent           #2f343a   $red    $text   $red      $red
-client.placeholder      $mantle   $crust $text   $mantle   $crust
+client.focused          $blue     $base  $text   $blue   $blue
+client.focused_inactive $base $base  $text   #484e50 #585b70
+client.unfocused        $base $base  #888888 #292d2e $surface0
+client.urgent           #2f343a   $red   $text   $red    $red
+client.placeholder      $mantle   $crust $text   $mantle $crust
 client.background       $text
