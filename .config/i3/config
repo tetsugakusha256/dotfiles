@@ -75,6 +75,18 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Change theme
+bindsym $mod+1 exec "~/.local/bin/ThemeSwitcher/theme_switcher.sh latte"
+bindsym $mod+2 exec "~/.local/bin/ThemeSwitcher/theme_switcher.sh mocha"
+
+# redshift
+# bindsym $mod+1 exec redshift -O 4000 
+# bindsym $mod+2 exec redshift -x 
+# bindsym $mod+3 exec redshift -O 2500 
+
+# Screen saver
+# bindsym $mod+4 exec xset dpms force off
+
 # Toggle notification center
 bindcode $mod+34 exec kill -s USR1 $(pidof deadd-notification-center)
 # Open chatgpt
@@ -194,13 +206,6 @@ bindsym XF86MonBrightnessUp exec "brightnessctl set +3%"
 bindsym XF86MonBrightnessDown  exec "brightnessctl set 2%-"
 bindcode 235 exec brightnessctl set 1
 
-# redshift
-bindsym $mod+1 exec redshift -O 4000 
-bindsym $mod+2 exec redshift -x 
-bindsym $mod+3 exec redshift -O 2500 
-
-# Screen saver
-bindsym $mod+4 exec xset dpms force off
 
 # move focused container to workspace
 bindsym $mod+Shift+l move container to workspace number $ws1
