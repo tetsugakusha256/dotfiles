@@ -3,6 +3,10 @@
 /* notify-send.py a --hint boolean:deadd-notification-center:true
  * string:type:reloadStyle */
 
+* {
+  transition: background-color 0.5s ease; /* Property, Duration, Timing Function */
+}
+
 .blurredBG,
 #main_window,
 .blurredBG.low,
