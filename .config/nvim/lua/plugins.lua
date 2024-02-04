@@ -129,6 +129,8 @@ require("lazy").setup({
     ---------------------------------------------
     --- Other
     ---------------------------------------------
+    -- Big file made faster
+    -- "LunarVim/bigfile.nvim",
     -- Comment
     'numToStr/Comment.nvim',
     -- Surround easy surrounding
@@ -301,10 +303,11 @@ require("lazy").setup({
         require("anki").setup({
           -- this function will add support for associating '.anki' extension with both 'anki' and 'tex' filetype.
           tex_support = false,
+          move_cursor_after_creation = true, -- Move cursor to first filed
           models = {
             -- Here you specify which notetype should be associated with which deck
-            ["One Q one A"] = "Computer::nvim",
-            ["One Q one A Code"] = "Computer::nvim",
+            ["One Q one A"] = "Computer::nvim_to_order",
+            ["One Q one A Code"] = "Computer::nvim_to_order",
           },
         })
       end,
