@@ -96,6 +96,7 @@ bindsym $mod+period exec rofimoji -f emojis_animals_nature emojis_component emoj
 
 # start a terminal
 bindsym $mod+t exec /home/anon/.config/rofi/bin/rofiTab.sh
+bindsym $mod+q exec /home/anon/.local/bin/ProjectLauncher/project_launcher.sh
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
