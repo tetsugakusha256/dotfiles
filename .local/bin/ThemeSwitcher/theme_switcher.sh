@@ -7,6 +7,8 @@ source "${THEME_SWITCHER_PATH}/polybar_switcher.sh"
 source "${THEME_SWITCHER_PATH}/i3_switcher.sh" 
 source "${THEME_SWITCHER_PATH}/deadd_switcher.sh" 
 source "${THEME_SWITCHER_PATH}/starship_switcher.sh" 
+source "${THEME_SWITCHER_PATH}/nvim_switcher.sh" 
+source "${THEME_SWITCHER_PATH}/fcitx_switcher.sh"
 
 # Set mocha theme
 option1=mocha
@@ -24,6 +26,8 @@ then
     i3_set_mocha
     deadd_set_mocha
     starship_set_mocha
+    neovim_set_mocha
+    fcitx_set_mocha
     # Wallpapers
     feh --bg-fill "${WALLPAPER_PATH}/mocha/catppuccin_main.png"
 elif [ $arg1 == $option2 ]; then
@@ -35,6 +39,8 @@ elif [ $arg1 == $option2 ]; then
     i3_set_latte
     deadd_set_latte
     starship_set_latte
+    neovim_set_latte
+    fcitx_set_latte
     # Wallpapers
     feh --bg-fill "${WALLPAPER_PATH}/Complex/colorful_landscape.png"
 else
