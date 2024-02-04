@@ -11,6 +11,7 @@ if pgrep -x "anki" > /dev/null; then
     echo "Anki already running."
 else
     echo "Launching Anki"
+    notify-send.py "Launching anki..."
     anki&
     disown
     # Waiting for it to launch, maybe should find a way to ping anki-connect 
@@ -22,7 +23,7 @@ fi
 anki_deck="$1"
 # If no arg, just open the quick card file on whatever it was last closed on
 if [ $# -eq 0 ]; then
-    alacritty -e nvim "$QUICK_CARD_PATH"
+    alacritty -e nvim -c ":5 | startinsert" "$QUICK_CARD_PATH"
 # If arg given, load the template of the given deck
 else
     alacritty -e nvim -c ":Anki $anki_deck" ./quick_card.anki
