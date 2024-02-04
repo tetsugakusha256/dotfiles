@@ -165,7 +165,7 @@ mods = "Control"
 
 [window]
 decorations = "full"
-opacity = 0.87
+opacity = 0.9
 
 [window.padding]
 x = 0
