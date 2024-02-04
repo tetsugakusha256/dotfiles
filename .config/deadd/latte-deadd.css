@@ -7,10 +7,10 @@
 #main_window,
 .blurredBG.low,
 .blurredBG.normal {
-  background: #181825;
+  background: #e6e9ef;
   border-style: none;
   border-width: 0px;
-  border-color: #fab387;
+  border-color: #fe640b;
   /* border-bottom: solid; */
   border-width: 1px;
 }
@@ -22,7 +22,7 @@
 
 .noti-center.time {
   font-size: 122px;
-  color: #cba6f7;
+  color: #8839ef;
 }
 
 /* Notifications */
@@ -31,7 +31,7 @@
   font-weight: bold;
   font-size: 44px;
   margin-left: 5px;
-  color: #fab387;
+  color: #fe640b;
 }
 
 .appname {
@@ -40,20 +40,20 @@
 
 .time {
   font-size: 20px;
-  color: #f5e0dc;
+  color: #dc8a78;
 }
 .in-center.body {
   font-size: 24px;
-  color: #f9e2af;
-  /* background: #1e1e2e; */
+  color: #df8e1d;
+  /* background: #eff1f5; */
 }
 
 .blurredBG.notification {
-  background: #313244;
+  background: #ccd0da;
 }
 
 .blurredBG.notification.critical {
-  background: #313244;
+  background: #ccd0da;
 }
 
 .notificationInCenter.critical {
@@ -77,15 +77,15 @@ label.deadd-noti-center.notification.title {
   margin-bottom: 5px;
 }
 label.deadd-noti-center.notification.body {
-  color: #f9e2af;
+  color: #df8e1d;
   margin-left: 20px;
 }
 label.deadd-noti-center.noti-center.date {
-  color: #f38ba8;
+  color: #d20f39;
   font-size: 32px;
 }
 .notificationInCenter {
-  background: #313244;
+  background: #ccd0da;
   border-radius: 15px;
   padding-bottom: 8px;
 }
@@ -94,17 +94,17 @@ label.deadd-noti-center.noti-center.date {
 }
 
 label.deadd-noti-center.noti-center.delete-all {
-  color: #f9e2af;
+  color: #df8e1d;
 }
 
 /* Buttons */
 
 button {
   background: transparent;
-  color: #fab387;
+  color: #fe640b;
   border-radius: 6px;
   border-width: 2px;
-  border-color: #fab387;
+  border-color: #fe640b;
   background-position: 0px 0px;
   text-shadow: none;
   padding: 10px;
@@ -117,8 +117,8 @@ button:hover {
 /* Custom Buttons */
 
 .userbutton {
-  background: #181825;
-  color: #fab387;
+  background: #e6e9ef;
+  color: #fe640b;
   font-size: 34px;
 }
 
@@ -126,24 +126,24 @@ button:hover {
 }
 
 .userbutton:hover {
-  background: #11111b;
-  /* color: #f38ba8; */
+  background: #dce0e8;
+  /* color: #d20f39; */
 }
 
 .userbuttonlabel.buttonState1:hover {
 }
 
 button.buttonState2 {
-  background: #313244;
-  color: #89b4fa;
+  background: #ccd0da;
+  color: #1e66f5;
 }
 
 .userbuttonlabel.buttonState2 {
 }
 
 button.buttonState2:hover {
-  background: #313244;
-  /* color: #f9e2af; */
+  background: #ccd0da;
+  /* color: #df8e1d; */
 }
 
 /* Not working */

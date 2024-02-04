@@ -56,28 +56,32 @@ notification-center:
   buttons:
     ### Numbers of buttons that can be drawn on a row of the notification
     ### center.
-    # buttons-per-row: 5
+    buttons-per-row: 2
 
-    ### Height of buttons in the notification center (in pixels).    
-    # buttons-height: 60
+    ### Height of buttons in the notification center (in pixels).
+    buttons-height: 60
 
-    ### Horizontal and vertical margin between each button in the 
+    ### Horizontal and vertical margin between each button in the
     ### notification center (in pixels).
-    # buttons-margin: 2
+    buttons-margin: 2
 
     ### Button actions and labels. For each button you must specify a
     ### label and a command.
     actions:
+      - label: 󰖔 Mocha
+        command: "/home/anon/.local/bin/ThemeSwitcher/theme_switcher.sh mocha"
+      - label: 󰖙 Latte
+        command: "/home/anon/.local/bin/ThemeSwitcher/theme_switcher.sh latte"
+      # - label: 󱌑 VPN
+      #   command: ""
       # - label: VPN
+      #   command: ""
+      # - label: VPN 󰖂
       #   command: "sudo vpnToggle"
-      # - label: 
-      #   command: bluetoothToggle
-      # - label: 
-      #   command: screensaverToggle
-       # - label: 
-       #   command: nm-connection-editor
-       # - label: 󰌌
-       #   command: fcitx5-configtool
+      # - label: 
+      #   command: nm-connection-editor
+      # - label: 󰌌
+      #   command: fcitx5-configtool
 
 notification:
   ### If true, markup (<u>, <i>, <b>, <a>) will be displayed properly
@@ -89,7 +93,6 @@ notification:
   parse-html-entities: true
 
   dbus:
-
     ### If noti-closed messages are enabled, the sending application
     ### will know that a notification was closed/timed out. This can
     ### be an issue for certain applications, that overwrite
@@ -102,18 +105,16 @@ notification:
     send-noti-closed: false
 
   app-icon:
-
     ### If set to true: If no icon is passed by the app_icon parameter
     ### and no application "desktop-entry"-hint is present, deadd will
     ### try to guess the icon from the application name (if present).
     guess-icon-from-name: true
 
-    ### The display size of the application icons in the notification 
+    ### The display size of the application icons in the notification
     ### pop-ups and in the notification center
     icon-size: 20
 
   image:
-
     ### The maximal display size of images that are part of
     ### notifications for notification pop-ups and in the notification
     ### center
@@ -130,45 +131,45 @@ notification:
   ### Each modification rule needs a "match" and either a "modify" or
   ### a "script" entry.
   modifications:
-  ### Match:
-  ### Matches the notifications against these rules. If all of the
-  ### values (of one modification rule) match, the "modify"/"script"
-  ### part is applied.
-  # - match:
-      ### Possible match criteria:
-      # title: "Notification title"
-      # body: "Notification body"
-      # time: "12:44"
-      # app-name: "App name"
-      # urgency: "low" # "low", "normal" or "critical"
+    ### Match:
+    ### Matches the notifications against these rules. If all of the
+    ### values (of one modification rule) match, the "modify"/"script"
+    ### part is applied.
+    # - match:
+    ### Possible match criteria:
+    # title: "Notification title"
+    # body: "Notification body"
+    # time: "12:44"
+    # app-name: "App name"
+    # urgency: "low" # "low", "normal" or "critical"
 
     # modify:
-      ### Possible modifications
-      # title: "abc"
-      # body: "abc"
-      # app-name: "abc"
-      # app-icon: "file:///abc.png"
-      ### The timeout has three special values:
-      ### timeout: 0 -> don't time out at all
-      ### timeout: -1 -> use default timeout
-      ### timeout: 1 -> don't show as pop-up
-      ### timeout: >1 -> milliseconds until timeout
-      # timeout: 1
-      # margin-right: 10
-      # margin-top: 10
-      # image: "file:///abc.png"
-      # image-size: 10
-      # transient: true
-      # send-noti-closed: false
-      ### Remove action buttons from notifications
-      # remove-actions: true
-      ### Add a class-name to the notification container, that can be
-      ### used for specific styling of notifications using the
-      ### deadd.css file
-      # class-name: "abc"
+    ### Possible modifications
+    # title: "abc"
+    # body: "abc"
+    # app-name: "abc"
+    # app-icon: "file:///abc.png"
+    ### The timeout has three special values:
+    ### timeout: 0 -> don't time out at all
+    ### timeout: -1 -> use default timeout
+    ### timeout: 1 -> don't show as pop-up
+    ### timeout: >1 -> milliseconds until timeout
+    # timeout: 1
+    # margin-right: 10
+    # margin-top: 10
+    # image: "file:///abc.png"
+    # image-size: 10
+    # transient: true
+    # send-noti-closed: false
+    ### Remove action buttons from notifications
+    # remove-actions: true
+    ### Add a class-name to the notification container, that can be
+    ### used for specific styling of notifications using the
+    ### deadd.css file
+    # class-name: "abc"
 
-  # - match:
-      # app-name: "Chromium"
+    # - match:
+    # app-name: "Chromium"
 
     ### Instead of modifying a notification directly, a script can be
     ### run, which will receive the notification as JSON on STDIN. It
@@ -177,19 +178,18 @@ notification:
     ### value must be '{"modify": {}, "match": {}}'. Always leave the "match"
     ### object empty (technical reasons, i.e. I am lazy).
     # script: "linux-notification-center-parse-chromium"
-  - match:
-      app-name: "Spotify"
-    modify:
-      image-size: 80
-      timeout: 1
-      send-noti-closed: true
-      class-name: "Spotify"
+    - match:
+        app-name: "Spotify"
+      modify:
+        image-size: 80
+        timeout: 1
+        send-noti-closed: true
+        class-name: "Spotify"
   # - match:
   #     title: Bildschirmhelligkeit
   #   modify:
   #     image-size: 60
   popup:
-
     ### Default timeout used for notifications in milli-seconds.  This can
     ### be overwritten with the "-t" option (or "--expire-time") of the
     ### notify-send command.
@@ -202,10 +202,10 @@ notification:
     margin-right: 0
     margin-between: 0
 
-    ### Defines after how many lines of text the body will be truncated. 
+    ### Defines after how many lines of text the body will be truncated.
     ### Use 0 if you want to disable truncation.
-    max-lines-in-body: 3 
-    
+    max-lines-in-body: 3
+
     ### Monitor on which the notifications will be
     ### printed. If "follow-mouse" is set true, this does nothing.
     # monitor: 0
@@ -215,8 +215,7 @@ notification:
     # follow-mouse: false
 
     click-behavior:
-      
-      ### The mouse button for dismissing a popup. Must be either "mouse1", 
+      ### The mouse button for dismissing a popup. Must be either "mouse1",
       ### "mouse2", "mouse3", "mouse4", or "mouse5"
       dismiss: mouse1
 
