@@ -320,8 +320,8 @@ vim.api.nvim_set_keymap("n", "<leader>msj", ":MagmaInit javascript<CR>", { silen
 vim.api.nvim_set_keymap("n", "<leader>msp", ":MagmaInit python3<CR>", { silent = true })
 
 -- Anki
-vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A Code<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A<CR>", {})
+vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>:Anki One Q one A<CR>:wqa", {})
 
 -- Easy align (* + delimiter = align on all delimiter) (indent)
 vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)*", {})
@@ -580,5 +580,5 @@ vim.opt.undofile                   = true
 vim.opt.stal                       = 1
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.cmd([[colorscheme catppuccin-mocha]])
+vim.cmd([[colorscheme catppuccin-latte]])
 vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
