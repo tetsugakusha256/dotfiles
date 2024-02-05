@@ -7,4 +7,4 @@ rofi \
 	-drun-display-format "{name}" \
 	-no-drun-show-actions \
 	-terminal alacritty \
-	-theme "$HOME"/.config/rofi/launcher.rasi
+	-theme $HOME/.config/rofi/app_launcher.rasi
