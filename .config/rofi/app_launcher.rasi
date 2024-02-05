@@ -5,5 +5,5 @@ window {
 }
 
 textbox-prompt-colon {
-    str:                 " ";
+    str:                 "  Run";
 }
