@@ -54,6 +54,8 @@
 
 .blurredBG.notification {
   background: #ccd0da;
+  border-bottom-width: 2px;
+  border-radius: 0 0 0 30px;
 }
 
 .blurredBG.notification.critical {
