@@ -9,7 +9,7 @@
 PROJECTS_PATH="$HOME/.local/bin/ProjectLauncher/projects"
 
 choice=$(ls ${PROJECTS_PATH} | rofi -dmenu -i -p "Choose project" \
-        -theme "$HOME"/.config/rofi/music_chooser.rasi\
+        -theme $HOME/.config/rofi/wide_chooser.rasi\
     )
 if [ -z "$choice" ]; then
     echo "Variable is empty."

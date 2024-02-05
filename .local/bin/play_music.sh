@@ -15,8 +15,8 @@ if [ $arg1 == $option1 ]
 then
   song_list=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##")
   echo "${song_list}"
-  output=$(echo "${song_list}" | rofi -dmenu -i -p "Choose music" \
-            -theme "$HOME"/.config/rofi/music_chooser.rasi\
+  output=$(echo "${song_list}" | rofi -dmenu -i -p "Queue" \
+            -theme $HOME/.config/rofi/queue_music_chooser.rasi\
         )
     if [ -z "$output" ]; then
         echo "Variable is empty."
@@ -27,8 +27,8 @@ then
         echo "Added"
     fi
 elif [ $arg1 == $option2 ]; then
-    output=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##" | rofi -dmenu -i -p "Choose music" \
-            -theme "$HOME"/.config/rofi/music_chooser.rasi\
+    output=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##" | rofi -dmenu -i -p "Play" \
+            -theme $HOME/.config/rofi/play_music_chooser.rasi\
         )
     if [ -z "$output" ]; then
         echo "Variable is empty."
@@ -43,8 +43,8 @@ elif [ $arg1 == $option2 ]; then
 elif [ $arg1 == $option3 ]; then
   #select playlist
     playlist=$(find "$playlist_dir" -type f -iname "*.m3u" | sed "s#^$playlist_dir/##" | \
-      sed "s#.m3u##" | rofi -dmenu -i -p "Choose playlist" \
-            -theme "$HOME"/.config/rofi/music_chooser.rasi\
+      sed "s#.m3u##" | rofi -dmenu -i -p "Playlist" \
+            -theme $HOME/.config/rofi/playlist_music_chooser.rasi\
         )
     if [ -z "$playlist" ]; then
         echo "Variable is empty."

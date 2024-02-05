@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-include ~/.config/i3/i3_theme_mocha
+include ~/.config/i3/i3_theme_latte
 
 # Set mod key (Mod1=alt, Mod4=super)
 set $mod Mod4
@@ -95,7 +95,7 @@ bindcode $mod+34 exec kill -s USR1 $(pidof deadd-notification-center)
 # Open chatgpt
 bindsym $mod+slash exec "bt activate `bt list | grep chat.openai | cut -f 1 | head -n 1`;i3-msg workspace 2"
 # bindsym $mod+period exec "bt activate `bt list | grep devdocs.io | cut -f 1`;i3-msg workspace 2"
-bindsym $mod+period exec rofimoji -f emojis_animals_nature emojis_component emojis_flags emojis_food_drink emojis_objects emojis_people_body emojis_smileys_emotion emojis_symbols emojis_travel_places emojis_activities math -a clipboard --selector-args="-theme ~/.config/rofi/launcher.rasi"
+bindsym $mod+period exec rofimoji -r "" -f emojis_animals_nature emojis_component emojis_flags emojis_food_drink emojis_objects emojis_people_body emojis_smileys_emotion emojis_symbols emojis_travel_places emojis_activities math -a clipboard --selector-args="-theme ~/.config/rofi/emoji_chooser.rasi"
 
 # start a terminal
 bindsym $mod+t exec /home/anon/.config/rofi/bin/rofiTab.sh
@@ -146,21 +146,21 @@ for_window [title="Picture in picture"] floating enable, move absolute position 
 assign [title="Anki"] 9
 
 # i3-layouts
-set $i3l vstack 0.7 right to workspace $ws1
+set $i3l vstack 0.6 right to workspace $ws1
 set $i3l hstack 0.7 down to workspace $ws2
 set $i3l 2columns to workspace $ws3
 set $i3l hstack 0.6 down to workspace $ws4
 set $i3l hstack 0.7 down to workspace $ws5
-set $i3l vstack 0.7 right to workspace $ws6
-set $i3l vstack 0.7 right to workspace $ws7
-set $i3l hstack 0.5 down to workspace $ws8
-set $i3l vstack 0.7 right to workspace $ws9
+set $i3l vstack 0.6 right to workspace $ws6
+set $i3l vstack 0.6 right to workspace $ws7
+set $i3l 2columns to workspace $ws8
+set $i3l 2columns to workspace $ws9
 set $i3l 2columns to workspace $ws10
 
 # split in horizontal orientation
-bindsym $mod+a exec i3l vstack 0.7
+bindsym $mod+a exec i3l vstack 0.6 right
 # split in vertical orientation
-bindsym $mod+v exec i3l hstack 0.7
+bindsym $mod+v exec i3l hstack 0.65 down
 # split in 2columns mode
 bindsym $mod+z exec i3l 2columns
 
@@ -191,11 +191,11 @@ bindsym $mod+p layout toggle split
 # toggle tiling / floating
 bindsym $mod+g floating toggle
 # make the toggle between focused and not focused 
-bindsym $mod+d sticky toggle
-
+bindsym $mod+b sticky toggle
 # change focus between tiling / floating windows
-bindsym $mod+b focus mode_toggle
+bindsym $mod+d focus mode_toggle
 bindsym $mod+x focus mode_toggle
+
 # bindsym $mod+g focus floating 
 # bindsym $mod+a focus tiling 
 

@@ -1,0 +1,5 @@
+@import "wide_chooser"
+
+textbox-prompt-colon {
+    str:                 " ";
+}

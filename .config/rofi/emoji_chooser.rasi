@@ -1,0 +1,10 @@
+@import "launcher.rasi"
+
+window {
+    width:                800px;
+    height:               800px;
+}
+
+textbox-prompt-colon {
+    str:                 "";
+}

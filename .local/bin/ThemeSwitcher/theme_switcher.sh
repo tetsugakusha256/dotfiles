@@ -14,6 +14,7 @@ source "${THEME_SWITCHER_PATH}/deadd_switcher.sh"
 source "${THEME_SWITCHER_PATH}/starship_switcher.sh"
 source "${THEME_SWITCHER_PATH}/nvim_switcher.sh"
 source "${THEME_SWITCHER_PATH}/fcitx_switcher.sh"
+source "${THEME_SWITCHER_PATH}/rofi_switcher.sh"
 
 
 current_theme=$(head -n 1 "$THEME_SWITCHER_CONFIG")
@@ -45,11 +46,12 @@ else
         polybar_set_mocha
         i3_set_mocha
         deadd_set_mocha
+        rofi_set_mocha
         starship_set_mocha
         neovim_set_mocha
         fcitx_set_mocha
         # Wallpapers
-        feh --bg-fill "${WALLPAPER_PATH}/mocha/catppuccin_main.png"
+        feh --bg-fill "${WALLPAPER_PATH}/Fav_mocha/skull_girl_light_color.png"
 
     elif [ $arg1 == $option2 ]; then
         echo "Setting latte theme"
@@ -59,6 +61,7 @@ else
         polybar_set_latte
         i3_set_latte
         deadd_set_latte
+        rofi_set_latte
         starship_set_latte
         neovim_set_latte
         fcitx_set_latte

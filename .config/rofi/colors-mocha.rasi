@@ -1,0 +1,41 @@
+* {
+
+    base:      #1e1e2eff;
+    mantle:    #181825ff;
+    crust:     #11111bff;
+    text:      #cdd6f4ff;
+    subtext0:  #a6adc8ff;
+    subtext1:  #bac2deff;
+    surface0:  #313244ff;
+    surface1:  #45475aff;
+    surface2:  #585b70ff;
+    overlay0:  #6c7086ff;
+    overlay1:  #7f849cff;
+    overlay2:  #9399b2ff;
+    blue:      #89b4faff;
+    lavender:  #b4befeff;
+    sapphire:  #74c7ecff;
+    sky:       #89dcebff;
+    teal:      #94e2d5ff;
+    green:     #a6e3a1ff;
+    yellow:    #f9e2afff;
+    peach:     #fab387ff;
+    maroon:    #eba0acff;
+    red:       #f38ba8ff;
+    mauve:     #cba6f7ff;
+    pink:      #f5c2e7ff;
+    flamingo:  #f2cdcdff;
+    rosewater: #f5e0dcff;
+
+    BG:        @surface0;
+    BGA:       @peach;
+    FG:        @text;
+    FGA:       @peach;
+    BDR:       @peach;
+    SEL:       @surface0;
+    UGT:       @red;
+    IMG:       @maroon;
+    OFF:       @surface2;
+    ON:        @green;
+    PROMPT:    @mauve;
+}
