@@ -6,14 +6,15 @@ option1=append
 option2=play
 # Add playlist
 option3=playlist
-music_dir="/$HOME/Documents/Music"
+music_dir="/$HOME/Documents/Music/Non-Album"
 playlist_dir="/$HOME/Documents/Music/Playlists"
 
 arg1=${1:-nothing}
 
+song_list=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##" | shuf) 
+
 if [ $arg1 == $option1 ]
 then
-    song_list=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##")
     echo "${song_list}"
     output=$(echo "${song_list}" | rofi -dmenu -i -p "Queue" \
             -theme $HOME/.config/rofi/queue_music_chooser.rasi\
@@ -22,23 +23,23 @@ then
         echo "Variable is empty."
     else
         echo "Adding : ${output} to playlist"
-        mpc del "${output}"
-        mpc insert "${output}"
+        mpc del "Non-Album/${output}"
+        mpc insert "Non-Album/${output}"
         notify "  Next" "${output}" \
             --hint boolean:transient:true \
             -n "music_queue" -a "  "
         echo "Added"
     fi
 elif [ $arg1 == $option2 ]; then
-    output=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##" | rofi -dmenu -i -p "Play" \
+    output=$(echo "${song_list}" | rofi -dmenu -i -p "Play" \
             -theme $HOME/.config/rofi/play_music_chooser.rasi\
         )
     if [ -z "$output" ]; then
         echo "Variable is empty."
     else
         echo "Playing : ${output}"
-        mpc del "${output}"
-        mpc insert "${output}"
+        mpc del "Non-Album/${output}"
+        mpc insert "Non-Album/${output}"
         mpc next
         mpc play
         echo "Added to playlist"
