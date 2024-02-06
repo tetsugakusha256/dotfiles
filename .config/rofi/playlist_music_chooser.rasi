@@ -1,5 +1,9 @@
 @import "wide_chooser"
 
+window {
+    width:               600px;
+    height:               600px;
+}
 textbox-prompt-colon {
     str:                 " 󰐑";
 }
