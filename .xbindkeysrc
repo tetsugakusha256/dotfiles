@@ -92,15 +92,15 @@
  Mod4+Mod5+y 
 
  # Sound 
-"pactl set-sink-volume @DEFAULT_SINK@ +1%"
+"volume_notif.sh inc 1"
  Mod4+Mod5+Shift+e 
-"pactl set-sink-volume @DEFAULT_SINK@ -1%"
+"volume_notif.sh dec 1"
  Mod4+Mod5+Shift+n 
-"pactl set-sink-volume @DEFAULT_SINK@ +5%"
+"volume_notif.sh inc 5"
  Mod4+Mod5+e 
-"pactl set-sink-volume @DEFAULT_SINK@ -5%"
+"volume_notif.sh dec 5"
  Mod4+Mod5+n 
-"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+"volume_notif.sh toggle"
  Mod4+Mod5+m 
 
 
