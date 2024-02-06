@@ -1,9 +1,17 @@
 #!/bin/bash
+##################################################
+# Notify
+#
+# Makes updating notification easy by naming each notification
+#
+# Author: tetsugakusha256
+# Version: 0.1
+##################################################
 
 TEMP_PATH="/tmp/notify_with_name.save"
 
 # Parse command-line options
-ARGS=$(getopt -o n:a:t:r: --long name:,app-name:,help -- "$@")
+ARGS=$(getopt -o n:a:t:r:h: --long name:,app-name:,hint:,help -- "$@")
 
 # Exit if getopt encounters an error
 if [ $? -ne 0 ]; then
@@ -21,6 +29,7 @@ eval set -- "$ARGS"
 arg_t=""
 arg_name=""
 arg_app_name=""
+arg_hint=""
 
 while true; do
     case "$1" in
@@ -32,6 +41,7 @@ while true; do
             echo "Flags:"
             echo "  --name        -n       Name used to recognise the same notification"
             echo "  --app-name    -a       Specifies the app name for the icon"
+            echo "  --hint        -h       Specifies hint"
             echo "  -t                     Specifies the timeout in milliseconds at which to expire the notification"
             exit 0
             ;;
@@ -53,6 +63,14 @@ while true; do
             ;;
         -t)
             arg_t="$2"
+            shift 2
+            ;;
+        -h)
+            arg_hint="$2"
+            shift 2
+            ;;
+        --hint)
+            arg_hint="$2"
             shift 2
             ;;
         --)
@@ -107,6 +125,10 @@ final_cmd="notify-send"
 if [ ! -z $arg_t ]
 then
     final_cmd="${final_cmd} -t ${arg_t}"
+fi
+if [ ! -z $arg_hint ]
+then
+    final_cmd="${final_cmd} --hint ${arg_hint}"
 fi
 if [ ! -z $arg_app_name ]
 then
