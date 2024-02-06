@@ -321,7 +321,7 @@ vim.api.nvim_set_keymap("n", "<leader>msp", ":MagmaInit python3<CR>", { silent =
 
 -- Anki
 vim.api.nvim_set_keymap("n", "<leader>cc", ":Anki One Q one A<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>:Anki One Q one A<CR>:wqa", {})
+vim.api.nvim_set_keymap("n", "<leader>cs", ":AnkiSend<CR>:Anki One Q one A<CR>:wqa<CR>", {})
 
 -- Easy align (* + delimiter = align on all delimiter) (indent)
 vim.api.nvim_set_keymap("n", "<leader>a", "<Plug>(EasyAlign)*", {})
