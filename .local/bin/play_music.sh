@@ -13,9 +13,9 @@ arg1=${1:-nothing}
 
 if [ $arg1 == $option1 ]
 then
-  song_list=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##")
-  echo "${song_list}"
-  output=$(echo "${song_list}" | rofi -dmenu -i -p "Queue" \
+    song_list=$(find "$music_dir" -type f \( -iname "*.mp3" -o -iname "*.flac" \) | sed "s#^$music_dir/##")
+    echo "${song_list}"
+    output=$(echo "${song_list}" | rofi -dmenu -i -p "Queue" \
             -theme $HOME/.config/rofi/queue_music_chooser.rasi\
         )
     if [ -z "$output" ]; then
@@ -24,6 +24,9 @@ then
         echo "Adding : ${output} to playlist"
         mpc del "${output}"
         mpc insert "${output}"
+        notify "  Next" "${output}" \
+            --hint boolean:transient:true \
+            -n "music_queue" -a "  "
         echo "Added"
     fi
 elif [ $arg1 == $option2 ]; then
@@ -41,9 +44,9 @@ elif [ $arg1 == $option2 ]; then
         echo "Added to playlist"
     fi
 elif [ $arg1 == $option3 ]; then
-  #select playlist
+    #select playlist
     playlist=$(find "$playlist_dir" -type f -iname "*.m3u" | sed "s#^$playlist_dir/##" | \
-      sed "s#.m3u##" | rofi -dmenu -i -p "Playlist" \
+            sed "s#.m3u##" | rofi -dmenu -i -p "Playlist" \
             -theme $HOME/.config/rofi/playlist_music_chooser.rasi\
         )
     if [ -z "$playlist" ]; then

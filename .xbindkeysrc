@@ -52,11 +52,11 @@
  Mod4+Mod5+a #Append music to mocp playlist
  "mpc toggle"
  Mod4+Mod5+s #Toggle repeat
- "mpc repeat; notify-send.py Repeat $(mpc status | sed -n 's/.*repeat: \(.*\)   random.*/\1/p')"
+ "mpc repeat; notify -n music_repeat --hint boolean:transient:true Repeat $(mpc status | sed -n 's/.*repeat: \(.*\)   random.*/\1/p')"
  Mod4+Mod5+r #Shuffle music
  "/home/anon/.local/bin/play_music.sh play"
  Mod4+Mod5+t #Append and play music with mocp
- "mpc random; notify-send.py Random $(mpc status | sed -n 's/.*random: \(.*\)   single.*/\1/p')"
+ "mpc random; notify -n music_shuffle --hint boolean:transient:true Random $(mpc status | sed -n 's/.*random: \(.*\)   single.*/\1/p')"
  Mod4+Mod5+x #Repeat shuffle
  "mpc prev"
  Mod4+Mod5+c:59 #Prev track (,)
@@ -74,21 +74,21 @@
  Mod4+Mod5+c:33
 
  # Screen brightness
-"brightnessctl set 1%-"
+"brightness_notif.sh dec 1"
  Mod4+Mod5+Shift+i 
-"brightnessctl set +1%"
+"brightness_notif.sh inc 1"
  Mod4+Mod5+Shift+o 
-"brightnessctl set 2%-"
+"brightness_notif.sh dec 2"
  Mod4+Mod5+i 
-"brightnessctl set +2%"
+"brightness_notif.sh inc 2"
  Mod4+Mod5+o 
  
  # Screen redness
-"redshift -O 5500"
+"redshift -O 5500;notify -n redshift --hint boolean:transient:true '  redshift'"
  Mod4+Mod5+l 
-"redshift -x"
+"redshift -x;notify -n redshift --hint boolean:transient:true '  redshift'"
  Mod4+Mod5+u 
-"redshift -O 7500"
+"redshift -O 7500;notify -n redshift --hint boolean:transient:true '  redshift'"
  Mod4+Mod5+y 
 
  # Sound 

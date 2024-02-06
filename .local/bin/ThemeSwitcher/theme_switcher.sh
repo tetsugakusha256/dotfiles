@@ -51,7 +51,9 @@ else
         neovim_set_mocha
         fcitx_set_mocha
         # Wallpapers
-        feh --bg-fill "${WALLPAPER_PATH}/Fav_mocha/skull_girl_light_color.png"
+        feh --bg-scale "${WALLPAPER_PATH}/Fav_mocha/skull_girl_light_color.png"
+
+        notify -n theme "  Dark theme on" "" --hint boolean:transient:true
 
     elif [ $arg1 == $option2 ]; then
         echo "Setting latte theme"
@@ -66,7 +68,9 @@ else
         neovim_set_latte
         fcitx_set_latte
         # Wallpapers
-        feh --bg-fill "${WALLPAPER_PATH}/Complex/colorful_landscape.png"
+        feh --bg-scale "${WALLPAPER_PATH}/Complex/colorful_landscape.png"
+
+        notify -n theme "󰖨  Light theme on" "" --hint boolean:transient:true
     else
         echo "Invalide arguments"
         exit 1
