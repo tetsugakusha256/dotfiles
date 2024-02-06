@@ -26,7 +26,7 @@ fi
 
 
 # Parse command-line options
-ARGS=$(getopt -o n:a:t:r:h: --long name:,app-name:,hint:,help -- "$@")
+ARGS=$(getopt -o n:a:t:r:h: --long name:,app-name:,hint:,urgency:,help -- "$@")
 
 # Exit if getopt encounters an error
 if [ $? -ne 0 ]; then
@@ -50,6 +50,7 @@ eval set -- "$ARGS"
 arg_t=""
 arg_name=""
 arg_app_name=""
+arg_urgency=""
 arg_hint=""
 
 while true; do
@@ -93,6 +94,10 @@ while true; do
             ;;
         --hint)
             arg_hint+="--hint $2 "
+            shift 2
+            ;;
+        --urgency)
+            arg_urgency="$2"
             shift 2
             ;;
         --)
@@ -157,13 +162,18 @@ if [ ! -z $arg_app_name ]
 then
     final_cmd="${final_cmd} --app-name ${arg_app_name}"
 fi
+if [ ! -z $arg_urgency ]
+then
+    echo "urgent arg"
+    final_cmd="${final_cmd} --urgency ${arg_urgency}"
+fi
 
 
 if [ ! -z $notif_id ]
 then
     # Remove the line with the id just used $notif_id (ID are regenerated after each call)
-    sed -i "/$(grep -w $arg_name $TEMP_PATH)/d" $TEMP_PATH
-    # echo $(grep -v -w $arg_name $TEMP_PATH) > $TEMP_PATH
+    # sed -i "/$(grep -w $arg_name $TEMP_PATH)/d" $TEMP_PATH
+    echo $(grep -v -w $arg_name $TEMP_PATH) > $TEMP_PATH
     final_cmd="${final_cmd} -r ${notif_id} ${SUMMARY} ${BODY}"
 else
     final_cmd="${final_cmd} ${SUMMARY} ${BODY}"
@@ -173,6 +183,7 @@ fi
 # Command call and ID management
 ##################################################
 
+echo $final_cmd
 ID=$(eval "$final_cmd")
 echo "${ID} ${arg_name}" >> $TEMP_PATH
 
