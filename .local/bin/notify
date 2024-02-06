@@ -1,0 +1,133 @@
+#!/bin/bash
+
+TEMP_PATH="/tmp/notify_with_name.save"
+
+# Parse command-line options
+ARGS=$(getopt -o n:a:t:r: --long name:,app-name:,help -- "$@")
+
+# Exit if getopt encounters an error
+if [ $? -ne 0 ]; then
+    echo "Usage: notify SUMMARY <BODY>"
+    exit 1
+fi
+
+eval set -- "$ARGS"
+
+##################################################
+# Parsing arguments
+##################################################
+
+# Initialize variables
+arg_t=""
+arg_name=""
+arg_app_name=""
+
+while true; do
+    case "$1" in
+        --help)
+            echo ""
+            echo "Usage:"
+            echo "  notify [flag] SUMMARY <BODY> - Create a notification"
+            echo ""
+            echo "Flags:"
+            echo "  --name        -n       Name used to recognise the same notification"
+            echo "  --app-name    -a       Specifies the app name for the icon"
+            echo "  -t                     Specifies the timeout in milliseconds at which to expire the notification"
+            exit 0
+            ;;
+        -n)
+            arg_name="$2"
+            shift 2
+            ;;
+        --name)
+            arg_name="$2"
+            shift 2
+            ;;
+        -a)
+            arg_app_name="$2"
+            shift 2
+            ;;
+        --app-name)
+            arg_app_name="$2"
+            shift 2
+            ;;
+        -t)
+            arg_t="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            echo "Invalid option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+SUMMARY=""
+BODY=""
+# Process remaining positional arguments
+if [ $# -eq 2 ]
+then
+    SUMMARY=$1
+    BODY=$2
+elif [ $# -eq 1 ]
+then
+    SUMMARY=$1
+else
+    echo "Invalid arg"
+    exit 1
+fi
+
+##################################################
+# Checking for ID
+##################################################
+
+notif_id=""
+grep_result=$(grep -w $arg_name $TEMP_PATH | sort -r)
+# Trying to retrieve and add the ID if a name was given
+if [ -n "$grep_result" -a ! -z $arg_name ]
+then
+    if [[ "$(echo $grep_result | cut -d' ' -f2)" = "$arg_name" ]]
+    then
+        notif_id=$(echo $grep_result | cut -d' ' -f1)
+        echo "id = ${notif_id}"
+    fi
+fi
+
+
+##################################################
+# Building final command
+##################################################
+
+# Constructing the notify-send command
+final_cmd="notify-send"
+if [ ! -z $arg_t ]
+then
+    final_cmd="${final_cmd} -t ${arg_t}"
+fi
+if [ ! -z $arg_app_name ]
+then
+    final_cmd="${final_cmd} --app-name ${arg_app_name}"
+fi
+
+
+if [ ! -z $notif_id ]
+then
+    # Remove the line with the id just used $notif_id (ID are regenerated after each call)
+    sed -i "/$(grep -w $arg_name $TEMP_PATH)/d" $TEMP_PATH
+    # echo $(grep -v -w $arg_name $TEMP_PATH) > $TEMP_PATH
+    final_cmd="${final_cmd} -r ${notif_id} -p ${SUMMARY} ${BODY}"
+else
+    final_cmd="${final_cmd} -p ${SUMMARY} ${BODY}"
+fi
+
+##################################################
+# Command call and ID management
+##################################################
+
+
+ID=$($final_cmd)
+echo "${ID} ${arg_name}" >> $TEMP_PATH
