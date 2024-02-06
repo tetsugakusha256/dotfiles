@@ -114,8 +114,8 @@ keybinding:
         nextItem-alt: 'n' # go one line down
         prevPage: ',' # go to next page in list
         nextPage: '.' # go to previous page in list
-        gotoTop: '<' # go to top of list
-        gotoBottom: '>' # go to bottom of list
+        gotoTop: '<c-e>' # go to top of list
+        gotoBottom: '<c-n>' # go to bottom of list
         scrollLeft: 'H' # scroll left within list view
         scrollRight: 'I' # scroll right within list view
         prevBlock: '<left>' # goto the previous block / panel
@@ -202,8 +202,8 @@ keybinding:
         markCommitAsFixup: 'f'
         createFixupCommit: 'F' # create fixup commit for this commit
         squashAboveCommits: 'S'
-        moveDownCommit: '<c-n>' # move commit down one
-        moveUpCommit: '<c-e>' # move commit up one
+        moveDownCommit: 'N' # move commit down one
+        moveUpCommit: 'E' # move commit up one
         amendToCommit: 'A'
         pickCommit: 'p' # pick commit (when mid-rebase)
         revertCommit: 't'
