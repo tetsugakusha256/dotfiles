@@ -5,7 +5,7 @@
 # Makes updating notification easy by naming each notification
 #
 # Author: tetsugakusha256
-# Version: 0.1
+# Version: 0.2
 ##################################################
 
 TEMP_PATH="/tmp/notify_with_name.save"
@@ -20,6 +20,9 @@ if [ $? -ne 0 ]; then
 fi
 
 eval set -- "$ARGS"
+
+# arg_name=$(echo $@ | sed -n 's/.*-n[[:space:]]\([^[:space:]]*\).*/\1/p')
+# args=$(echo $@ | sed 's/-n[[:space:]][^[:space:]]*//')
 
 ##################################################
 # Parsing arguments
@@ -70,7 +73,7 @@ while true; do
             shift 2
             ;;
         --hint)
-            arg_hint="$2"
+            arg_hint+="--hint $2 "
             shift 2
             ;;
         --)
@@ -84,13 +87,14 @@ while true; do
     esac
 done
 
+
 SUMMARY=""
 BODY=""
 # Process remaining positional arguments
 if [ $# -eq 2 ]
 then
-    SUMMARY=$1
-    BODY=$2
+    SUMMARY=\"$1\"
+    BODY=\"$2\"
 elif [ $# -eq 1 ]
 then
     SUMMARY=$1
@@ -104,32 +108,30 @@ fi
 ##################################################
 
 notif_id=""
-grep_result=$(grep -w $arg_name $TEMP_PATH | sort -r)
-# Trying to retrieve and add the ID if a name was given
-if [ -n "$grep_result" -a ! -z $arg_name ]
+if [ ! -z $arg_name ]
 then
-    if [[ "$(echo $grep_result | cut -d' ' -f2)" = "$arg_name" ]]
+    grep_result=$(grep -w $arg_name $TEMP_PATH | sort -r)
+    if [ -n "$grep_result" ]
     then
-        notif_id=$(echo $grep_result | cut -d' ' -f1)
-        echo "id = ${notif_id}"
+        if [[ "$(echo $grep_result | cut -d' ' -f2)" = "$arg_name" ]]
+        then
+            notif_id=$(echo $grep_result | cut -d' ' -f1)
+            echo "id = ${notif_id}"
+        fi
     fi
 fi
-
 
 ##################################################
 # Building final command
 ##################################################
 
 # Constructing the notify-send command
-final_cmd="notify-send"
+final_cmd="notify-send -p "
 if [ ! -z $arg_t ]
 then
     final_cmd="${final_cmd} -t ${arg_t}"
 fi
-if [ ! -z $arg_hint ]
-then
-    final_cmd="${final_cmd} --hint ${arg_hint}"
-fi
+final_cmd="${final_cmd} ${arg_hint}"
 if [ ! -z $arg_app_name ]
 then
     final_cmd="${final_cmd} --app-name ${arg_app_name}"
@@ -141,15 +143,14 @@ then
     # Remove the line with the id just used $notif_id (ID are regenerated after each call)
     sed -i "/$(grep -w $arg_name $TEMP_PATH)/d" $TEMP_PATH
     # echo $(grep -v -w $arg_name $TEMP_PATH) > $TEMP_PATH
-    final_cmd="${final_cmd} -r ${notif_id} -p ${SUMMARY} ${BODY}"
+    final_cmd="${final_cmd} -r ${notif_id} ${SUMMARY} ${BODY}"
 else
-    final_cmd="${final_cmd} -p ${SUMMARY} ${BODY}"
+    final_cmd="${final_cmd} ${SUMMARY} ${BODY}"
 fi
 
 ##################################################
 # Command call and ID management
 ##################################################
 
-
-ID=$($final_cmd)
+ID=$(eval "$final_cmd")
 echo "${ID} ${arg_name}" >> $TEMP_PATH
