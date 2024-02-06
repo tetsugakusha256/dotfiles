@@ -121,7 +121,17 @@ bindkey -M vicmd "T" vi-find-prev-char-skip
 bindkey -M vicmd "V" visual-line-mode
 bindkey -M vicmd "W" vi-forward-blank-word
 bindkey -M vicmd "X" vi-backward-delete-char
-bindkey -M vicmd "Y" vi-yank-whole-line
+
+# Allow to yank cmd to system clipboard with Y
+yank_line_to_clipboard() {
+  print -z ${BUFFER}
+  echo ${BUFFER} | xclip -selection clipboard
+  # zle kill-whole-line
+}
+zle -N yank_line_to_clipboard
+bindkey -M vicmd "Y" yank_line_to_clipboard
+
+# bindkey -M vicmd "Y" vi-yank-whole-line
 bindkey -M vicmd "\^" vi-first-non-blank
 bindkey -M vicmd "\`" vi-goto-mark
 bindkey -M vicmd "a" vi-add-next
