@@ -16,6 +16,17 @@ source "${THEME_SWITCHER_PATH}/nvim_switcher.sh"
 source "${THEME_SWITCHER_PATH}/fcitx_switcher.sh"
 source "${THEME_SWITCHER_PATH}/rofi_switcher.sh"
 
+# Path to the lock file
+LOCK_FILE="/tmp/theme_switcher.lock"
+
+cleanup() {
+    rm -f "$LOCK_FILE"
+}
+# Check if the lock file exists
+if [ -e "$LOCK_FILE" ]; then
+    echo "Another instance of the script is already running. Exiting."
+    exit 1
+fi
 
 current_theme=$(head -n 1 "$THEME_SWITCHER_CONFIG")
 echo "First line: $current_theme"
@@ -73,7 +84,9 @@ else
         notify -n theme "󰖨  Light theme on" "" --hint boolean:transient:true
     else
         echo "Invalide arguments"
+        cleanup
         exit 1
     fi
     echo "$arg1" > $THEME_SWITCHER_CONFIG
+    cleanup
 fi
