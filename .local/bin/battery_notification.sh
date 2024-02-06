@@ -1,6 +1,6 @@
-# TODO: add memory, one notif only
 #!/bin/bash
 
+# Todo try using cron
 #Send notification every 60s if battery is below 15% and the plug is not on
 while true
 do
@@ -10,7 +10,7 @@ do
     #    # paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
     if ! acpi -b | grep -q "Charging" ; then
         if [ $battery_level -le 15 ]; then
-            notify-send --urgency=CRITICAL "Battery Low" "Level: ${battery_level}%"
+            notify --urgency=CRITICAL "Battery Low" "Level: ${battery_level}%"
             # paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
         fi
     fi
