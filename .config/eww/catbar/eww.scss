@@ -1,0 +1,105 @@
+@import "../themes/mocha.scss";
+* {
+  all: unset;
+  font-family: Hack Nerd Font Mono;
+}
+
+/** General **/
+.bar_class {
+  color: $text;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: $crust;
+  border-radius: 30px;
+  border-color: $peach;
+  border-width: 4px;
+  // border-style: solid;
+  box-shadow: 0px 0px 5px $surface0;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 30px;
+  margin-right: 30px;
+  // visibility:hidden;
+}
+.left_modules {
+  margin-left: 20px;
+}
+.right_modules {
+  margin-right: 20px;
+}
+
+.disk_module {
+  color: $teal;
+}
+
+.disk_icon {
+  margin-left: 10px;
+  font-size: 38px;
+}
+
+.clock_module {
+  color: $lavender;
+}
+.clock_icon {
+  font-size: 45px;
+  margin-left: 6px;
+}
+
+.battery_module {
+  color: $sapphire;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.battery_icon {
+  // margin-right: 15px;
+  font-size: 32px;
+  margin-left: 8px;
+}
+.battery_value {
+  margin: 0px;
+}
+.brightness_module {
+  color: $red;
+}
+.brightness_icon {
+  // margin-right: 15px;
+  font-size: 42px;
+  margin-right: 8px;
+}
+.brightness_value {
+  margin: 0px;
+}
+
+.workspace_module {
+}
+.workspace_label {
+  margin-left: 15px;
+}
+.workspace_icon {
+}
+.workspace_hidden {
+  font-size: 0px;
+  margin: 0px;
+}
+.workspace_active {
+  font-size: 40px;
+  color: $red;
+  text-decoration:underline;
+}
+.workspace_inactive {
+  font-size: 30px;
+  color: $blue;
+}
+
+
+.memory_module {
+  color: $peach;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.memory_icon {
+  // margin-right: 15px;
+  font-size: 42px;
+  margin-right: 8px;
+}

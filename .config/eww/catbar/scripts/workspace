@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+if [[ "$1" == "--class" ]]; then
+    open_workspace=$(hyprctl workspaces | grep workspace | cut -d' ' -f3 | sort -n)
+    active_workspace=$(hyprctl activeworkspace | head -n 1 | cut -d' ' -f3)
+    if echo $active_workspace | grep -sq $2
+    then
+        echo "workspace_active"
+    elif echo $open_workspace | grep -sq $2
+    then
+        echo "workspace_inactive"
+    else
+        echo "workspace_hidden"
+    fi
+fi

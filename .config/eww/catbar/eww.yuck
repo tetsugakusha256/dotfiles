@@ -1,0 +1,161 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Poll
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defpoll clock_time :interval "5m" "date +\%H")
+(defpoll clock_minute :interval "5s" "date +\%M")
+(defpoll clock_second :interval "1s" "date +\%S")
+(defpoll battery_value :interval "15s" "./scripts/battery --bat")
+(defpoll battery_status :interval "1m" "./scripts/battery --bat-st")
+(defpoll battery_icon :interval "1m" "./scripts/battery --bat-icon")
+(defpoll disk_value :interval "15s" "./scripts/disk")
+(defpoll memory_value :interval "15s" "./scripts/memory")
+(defpoll brightness_value :interval "15s" "./scripts/brightness --value")
+(defpoll brightness_icon :interval "15s" "./scripts/brightness --icon")
+;; Make the poll happen only on workspace switch?
+;; (defpoll workspace_1 :interval "250ms" "./scripts/workspace --class 1")
+;; (defpoll workspace_2 :interval "250ms" "./scripts/workspace --class 2")
+;; (defpoll workspace_3 :interval "250ms" "./scripts/workspace --class 3")
+;; (defpoll workspace_4 :interval "250ms" "./scripts/workspace --class 4")
+;; (defpoll workspace_5 :interval "250ms" "./scripts/workspace --class 5")
+;; (defpoll workspace_6 :interval "250ms" "./scripts/workspace --class 6")
+;; (defpoll workspace_7 :interval "250ms" "./scripts/workspace --class 7")
+;; (defpoll workspace_8 :interval "250ms" "./scripts/workspace --class 8")
+;; (defpoll workspace_9 :interval "250ms" "./scripts/workspace --class 9")
+;; (defpoll workspace_10 :interval "250ms" "./scripts/workspace --class 10")
+
+(deflisten workspaces :initial "[]" "bash ./scripts/get_workspaces")
+(deflisten current_workspace :initial "1" "bash ./scripts/get_active_workspace")
+
+(defwidget workspaces_module []
+    (box :space-evenly false
+      ;; (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "workspace_active" : "workspace_inactive"} ${workspace.windows > 0 ? "" : ""}"
+            (label :text "${workspace.id}" :class "workspace_label")
+            )
+          )
+        )
+      )
+    )
+
+;; (defwidget workspace_module []
+;;     (box :class "memory_module" :vexpand "false" :hexpand "false" :space-evenly false
+;;         (label :text "1" :class "workspace_label ${workspace_1}" )
+;;         (label :text "" :class "workspace_icon ${workspace_1}" )
+;;         (label :text "2" :class "workspace_label ${workspace_2}" )
+;;         (label :text "󰖟" :class "workspace_icon ${workspace_2}" )
+;;         (label :text "3" :class "workspace_label ${workspace_3}" )
+;;         (label :text "" :class "workspace_icon ${workspace_3}" )
+;;         (label :text "4" :class "workspace_label ${workspace_4}" )
+;;         (label :text "" :class "workspace_icon ${workspace_4}" )
+;;         (label :text "5" :class "workspace_label ${workspace_5}" )
+;;         (label :text "󰕧" :class "workspace_icon ${workspace_5}" )
+;;         (label :text "6" :class "workspace_label ${workspace_6}" )
+;;         (label :text "" :class "workspace_icon ${workspace_6}" )
+;;         (label :text "7" :class "workspace_label ${workspace_7}" )
+;;         (label :text "󱞁" :class "workspace_icon ${workspace_7}" )
+;;         (label :text "8" :class "workspace_label ${workspace_8}" )
+;;         (label :text "󰭹" :class "workspace_icon ${workspace_8}" )
+;;         (label :text "9" :class "workspace_label ${workspace_9}" )
+;;         (label :text "󱟱" :class "workspace_icon ${workspace_9}" )
+;;         (label :text "10" :class "workspace_label ${workspace_10}" )
+;;         (label :text "" :class "workspace_icon ${workspace_10}" )
+;;         ;; (circular-progress :value battery_value
+;;         ;;         :class "battery_circle"
+;;         ;;         :thickness 8)
+;;   ))
+
+(defwidget memory_module []
+    (box :class "memory_module" :vexpand "false" :hexpand "false" :space-evenly false
+        (label :text "󰍛" :class "memory_icon icon" )
+        (label :text memory_value :class "memory_value" )
+        ;; (circular-progress :value battery_value
+        ;;         :class "battery_circle"
+        ;;         :thickness 8)
+  ))
+
+(defwidget brightness_module []
+    (box :class "brightness_module" :vexpand "false" :hexpand "false" :space-evenly false
+        (label :text brightness_icon :class "brightness_icon icon" )
+        (label :text brightness_value :class "brightness_value" )
+        ;; (circular-progress :value battery_value
+        ;;         :class "battery_circle"
+        ;;         :thickness 8)
+  ))
+
+(defwidget clock_module []
+    (box :class "clock_module" :space-evenly "false" :orientation "h" :spacing "3" 
+      (label :text clock_time :class "clock_time_class" )
+      (label :text "" :class "clock_label" )
+      (label :text clock_minute :class "clock_minute_class")
+      (label :text "" :class "clock_label" )
+      (label :text clock_second :class "clock_second")
+      (label :text "󰥔" :class "clock_icon icon" )
+  ))
+
+(defwidget battery_module []
+    (box :class "battery_module" :vexpand "false" :hexpand "false" :space-evenly false
+        (label :text battery_value :class "battery_value" )
+        (label :text battery_icon :class "battery_icon icon" )
+        ;; (circular-progress :value battery_value
+        ;;         :class "battery_circle"
+        ;;         :thickness 8)
+  ))
+
+(defwidget disk_module []
+    (box :class "disk_module" :vexpand "false" :hexpand "false" :space-evenly false
+        ;; (circular-progress :value disk_value
+        ;;         :class "disk_circle"
+        ;;         :thickness 6)
+        (label :text disk_value :class "disk_value" )
+        (label :text "󰋊" :class "disk_icon icon" )
+  ))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Main section
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defwidget left []
+	(box :orientation  "h"
+        :space-evenly false
+        :halign       "start"
+        :class        "left_modules"
+(brightness_module)(memory_module)))
+
+
+(defwidget right []
+	(box :orientation "h" 
+	     :space-evenly false  
+             :halign "end"
+	     :class "right_modules"
+(disk_module)(battery_module)(clock_module)))
+
+
+(defwidget center []
+	(box          :orientation "h"
+	:space-evenly false
+        :halign       "center"
+	:class        "center_modules" 
+(workspaces_module)))
+
+
+(defwidget bar_1 []
+  (box :class "bar_class"
+       :orientation "h"
+  (left)
+  (center)
+  (right)
+    ))
+
+(defwindow catbar
+          :monitor 0
+          :geometry (geometry :x "0%"
+                              :y "0px"
+                              :width "100%"
+                              :height "66px"
+                              :anchor "bottom center")
+          :stacking "overlay"
+          :focusable "false"
+          :exclusive "false"
+          :namespace "eww"
+  (bar_1))
