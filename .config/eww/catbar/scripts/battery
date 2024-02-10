@@ -13,7 +13,7 @@ if [[ "$1" == "--bat" ]]; then
     if [ $(battery) -ge 100 ]; then
         echo "100"
     else
-        printf "%3d\n" battery
+      printf "%3d\n" $(battery)
     fi
 elif [[ "$1" == "--bat-st" ]]; then
     battery_stat

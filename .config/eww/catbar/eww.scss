@@ -27,6 +27,18 @@
 .right_modules {
   margin-right: 20px;
 }
+.separator {
+  margin-left: 15px;
+  margin-right: 15px;
+  color: $flamingo;
+  font-size: 26px;
+}
+
+.icon {
+  font-size: 42px;
+}
+.disk_value {
+}
 
 .disk_module {
   color: $teal;
@@ -44,11 +56,20 @@
   font-size: 45px;
   margin-left: 6px;
 }
-
+.net_up_module {
+  color: $green;
+}
+.net_down_module {
+  color: $green;
+}
+.net_down_label {
+  margin-left: 10px;
+}
+.net_up_label {
+  margin-right: 10px;
+}
 .battery_module {
   color: $sapphire;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 .battery_icon {
   // margin-right: 15px;
@@ -72,30 +93,42 @@
 
 .workspace_module {
 }
+.workspace_entry {
+  font-size: 30px;
+  margin-left:12px;
+  margin-right:12px;
+  color:$pink;
+}
 .workspace_label {
-  margin-left: 15px;
 }
 .workspace_icon {
+  font-size: 45px;
 }
 .workspace_hidden {
   font-size: 0px;
   margin: 0px;
 }
 .workspace_active {
-  font-size: 40px;
-  color: $red;
-  text-decoration:underline;
-}
-.workspace_inactive {
-  font-size: 30px;
-  color: $blue;
+  font-size: 45px;
+  padding-left:12px;
+  padding-right:12px;
+  border-bottom: solid;
+  border-top: solid;
+  // border-left: solid;
+  // border-right: solid;
+  border-width: 2px;
+  color: $mauve;
 }
 
-
+.cpu_module {
+  color: $yellow;
+}
+.cpu_icon {
+  font-size: 42px;
+  margin-right: 8px;
+}
 .memory_module {
   color: $peach;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 .memory_icon {

@@ -1,10 +1,24 @@
 #!/bin/bash
 
-spaces (){
-	WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
-	seq 1 10 | jq --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'
-}
+# spaces (){
+# 	WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+# 	seq 1 10 | jq --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})'
+# }
 
+spaces (){
+    WORKSPACE_WINDOWS=$(hyprctl workspaces -j | jq 'map({key: .id | tostring, value: .windows}) | from_entries')
+    data1=$(seq 1 10 | jq --argjson windows "${WORKSPACE_WINDOWS}" --slurp -Mc 'map(tostring) | map({id: ., windows: ($windows[.]//0)})')
+    data2=$(cat icon.json)
+    jq -nc --argjson data1 "$data1" --argjson data2 "$data2" '
+    ($data1 + $data2) as $merged |
+      reduce $merged[] as $item ({}; 
+          if has($item.id) then 
+            .[$item.id] += $item 
+          else 
+            .[$item.id] = $item 
+          end
+          ) | to_entries | map(.value)'
+}
 spaces
 socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r line; do
 	spaces 
