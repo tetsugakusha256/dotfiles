@@ -1,15 +1,17 @@
+@import "./themes/mocha.css";
 * {
   all: unset;
   font-size: 25px;
+  font-weight: bold;
   font-family: "Hack Nerd Font Mono";
   transition: 200ms;
 }
 
 .floating-notifications.background .notification-row .notification-background {
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
+  box-shadow: 0px 0px 5px @surface0;
   border-radius: 12.6px;
   margin: 18px;
-  background-color: #1e1e2e;
+  background-color: @crust;
   color: #cdd6f4;
   padding: 0;
 }
@@ -28,7 +30,8 @@
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .summary {
-  color: #cdd6f4;
+  color: @peach;
+  font-size: 35px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .time {
@@ -36,7 +39,8 @@
 }
 
 .floating-notifications.background .notification-row .notification-background .notification .notification-content .body {
-  color: #cdd6f4;
+  color: @yellow;
+  font-size: 22px;
 }
 
 .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
@@ -82,10 +86,10 @@
 }
 
 .control-center {
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
-  border-radius: 12.6px;
+  box-shadow: 0px 0px 5px @surface0;
+  border-radius: 15px;
   margin: 18px;
-  background-color: #1e1e2e;
+  background-color: @crust;
   color: #cdd6f4;
   padding: 14px;
 }
@@ -137,7 +141,8 @@
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .summary {
-  color: #cdd6f4;
+  color: @peach;
+  font-size: 35px;
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .time {
@@ -145,7 +150,8 @@
 }
 
 .control-center .notification-row .notification-background .notification .notification-content .body {
-  color: #cdd6f4;
+  color: @yellow;
+  font-size: 22px;
 }
 
 .control-center .notification-row .notification-background .notification > *:last-child > * {
@@ -267,4 +273,8 @@ trough {
   background: #45475a;
   border-radius: 8px;
   border: 1px solid #6c7086;
+}
+
+.button1 {
+  color: @pink;
 }
