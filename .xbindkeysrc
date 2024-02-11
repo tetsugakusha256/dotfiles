@@ -74,33 +74,33 @@
  Mod4+Mod5+c:33
 
  # Screen brightness
-"brightness_notif.sh dec 1"
+"/home/anon/.local/bin/brightness_notif.sh dec 1"
  Mod4+Mod5+Shift+i 
-"brightness_notif.sh inc 1"
+"/home/anon/.local/bin/brightness_notif.sh inc 1"
  Mod4+Mod5+Shift+o 
-"brightness_notif.sh dec 2"
+"/home/anon/.local/bin/brightness_notif.sh dec 2"
  Mod4+Mod5+i 
-"brightness_notif.sh inc 2"
+"/home/anon/.local/bin/brightness_notif.sh inc 2"
  Mod4+Mod5+o 
  
  # Screen redness
-"redshift -O 5500;notify -n redshift --hint boolean:transient:true '  redshift'"
+"redshift -O 5500; /home/anon/.local/bin/notify -n redshift --hint boolean:transient:true '  redshift'"
  Mod4+Mod5+l 
-"redshift -x;notify -n redshift --hint boolean:transient:true '  redshift'"
+"redshift -x; /home/anon/.local/bin/notify -n redshift --hint boolean:transient:true '  redshift'"
  Mod4+Mod5+u 
-"redshift -O 7500;notify -n redshift --hint boolean:transient:true '  redshift'"
+"redshift -O 7500; /home/anon/.local/bin/notify -n redshift --hint boolean:transient:true '  redshift'"
  Mod4+Mod5+y 
 
  # Sound 
-"volume_notif.sh inc 1"
+"/home/anon/.local/bin/volume_notif.sh inc 1"
  Mod4+Mod5+Shift+e 
-"volume_notif.sh dec 1"
+"/home/anon/.local/bin/volume_notif.sh dec 1"
  Mod4+Mod5+Shift+n 
-"volume_notif.sh inc 5"
+"/home/anon/.local/bin/volume_notif.sh inc 5"
  Mod4+Mod5+e 
-"volume_notif.sh dec 5"
+"/home/anon/.local/bin/volume_notif.sh dec 5"
  Mod4+Mod5+n 
-"volume_notif.sh toggle"
+"/home/anon/.local/bin/volume_notif.sh toggle"
  Mod4+Mod5+m 
 
 
