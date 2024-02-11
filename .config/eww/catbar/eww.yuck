@@ -37,12 +37,12 @@
 (defwidget net_down_module []
     (box :class "net_down_module" :vexpand "false" :hexpand "false" :space-evenly false
         (label :text "󰇚" :class "icon" )
-        (label :text {round(EWW_NET["wlan0"]["NET_DOWN"]/1000000,3)} :class "net_down_label" )
+        (label :text {round(EWW_NET["wlan0"]["NET_DOWN"]/8000000,3)} :class "net_down_label" )
         (label :text "Mb/s" :class "net_down_label" )
   ))
 (defwidget net_up_module []
     (box :class "net_up_module" :vexpand "false" :hexpand "false" :space-evenly false
-        (label :text {round(EWW_NET["wlan0"]["NET_UP"]/1000000,3)} :class "net_up_label" )
+        (label :text {round(EWW_NET["wlan0"]["NET_UP"]/8000000,3)} :class "net_up_label" )
         (label :text "Mb/s" :class "net_up_label" )
         (label :text "󰕒" :class "icon" )
   ))
