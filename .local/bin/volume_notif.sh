@@ -23,16 +23,18 @@ if [ "$1" == "toggle" ]; then
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 fi
 
-value=$(pactl list sinks | grep -A 15 'Sink #' | grep 'Volume:' | awk -F '/' '{print $2}' | sed -n '3p' | sed 's/%//g' | sed 's/ //g')
+value=$(pactl list sinks | grep -A 15 'Sink #' | grep 'Volume:' | awk -F '/' '{print $2}' | tail -n 2 | head -n 1 | sed 's/%//g' | sed 's/ //g')
 symbole=$([[ $value > 50 ]] && echo "" || echo "")
-if [[ $value = 0 ]]
+echo $value
+if [ $value -eq 0 ]
 then
     symbole="󰝟"
-elif [[ $value < 30 ]]
+elif [ $value -lt 30 ]
 then
     symbole="󰕿"
-elif [[ $value > 60 ]]
+elif [ $value -gt 60 ]
 then
+    echo "> 60"
     symbole="󰕾"
 else
     symbole="󰖀"
@@ -43,8 +45,7 @@ if pactl list sinks | grep -q 'Mute: yes'; then
 fi
 
 
-
-notify "$symbole   Volume" "$value/100" \
+notify "$symbole Volume" "$value/100" \
     --hint boolean:transient:true \
     --hint int:has-percentage:$value \
     -n "volume-popup" -a "󰖀  "
