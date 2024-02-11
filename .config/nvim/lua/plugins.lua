@@ -12,7 +12,31 @@ require("lazy").setup({
     'folke/tokyonight.nvim',
     {
       'catppuccin/nvim',
-      name = 'catppuccin'
+      name = 'catppuccin',
+      priority = 1000,
+      config = function()
+        require("catppuccin").setup({
+          term_colors = true,
+          integrations = {
+            gitsigns = true,
+            treesitter = true,
+            harpoon = true,
+            notify = false,
+            dashboard = true,
+            mason = true,
+            ufo = true,
+            telescope = {
+              enabled = true,
+              -- style = "nvchad"
+            },
+            vimwiki = true,
+            mini = {
+              enabled = true,
+              indentscope_color = "",
+            },
+          }
+        })
+      end,
     },
     'EdenEast/nightfox.nvim',
 
@@ -56,6 +80,8 @@ require("lazy").setup({
     ---------------------------------------------
     --- LSP
     ---------------------------------------------
+    -- Support highlighting for eww
+    "elkowar/yuck.vim",
     -- (LSP server, Linters, Formatters, DAP) manager
     "williamboman/mason.nvim",
     -- To bridge mason.nvim with lspconfig easily
