@@ -27,12 +27,12 @@
     flamingo:  #f2cdcdff;
     rosewater: #f5e0dcff;
 
-    BG:        @surface0;
+    BG:        @mantle;
     BGA:       @peach;
     FG:        @text;
     FGA:       @peach;
     BDR:       @peach;
-    SEL:       @surface0;
+    SEL:       @mantle;
     UGT:       @red;
     IMG:       @maroon;
     OFF:       @surface2;
