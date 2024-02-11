@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-include ~/.config/i3/i3_theme_latte
+include ~/.config/i3/i3_theme_mocha
 
 # Set mod key (Mod1=alt, Mod4=super)
 set $mod Mod4
@@ -34,14 +34,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 # exec --no-startup-id nm-applet
 
 # notification center deamon
-# made it a service
-# exec --no-startup-id deadd-notification-center
+exec --no-startup-id deadd-notification-center
 
 # i3-layouts support
 exec_always i3-layouts
-
-# Global mapping using xbindkeys saved in ~/.xbindkeysrc
-exec --no-startup-id xbindkeys
 
 # backgrounds wallpaper
 exec --no-startup-id feh --bg-scale /home/anon/Pictures/Wallpapers/Catppuccin/mocha/catppuccin_main.png
@@ -59,9 +55,13 @@ exec --no-startup-id picom --config /home/anon/.config/picom/picom.conf -b
 exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/workspace-2.json'"
 exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
 exec --no-startup-id "i3-msg 'workspace 7; append_layout /home/anon/.config/i3/workspace-7.json'"
-exec --no-startup-id i3-msg 'workspace 2; exec brave'
+exec --no-startup-id i3-msg 'workspace 2; exec brave --password-store=basic'
 exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/"'
 exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
+
+# Global mapping using xbindkeys saved in ~/.xbindkeysrc
+exec --no-startup-id xbindkeys
+
 # exec --no-startup-id "flatpak run com.tomjwatson.Emote"
 # Now using interception tools to set the ctrl_modifier remap at a lower level
 # it should work in the ttc, wayland and x11
@@ -239,6 +239,18 @@ bindcode 235 exec brightnessctl set 1
 
 
 # move focused container to workspace
+bindsym $mod+Ctrl+l move container to workspace number $ws1
+bindsym $mod+Ctrl+u move container to workspace number $ws2
+bindsym $mod+Ctrl+y move container to workspace number $ws3
+# bindsym $mod+Ctrl+semicolon move container to workspace number $ws4
+bindcode $mod+Ctrl+33 move container to workspace number $ws4
+bindsym $mod+Ctrl+o move container to workspace number $ws5
+bindsym $mod+Ctrl+k move container to workspace number $ws6
+bindsym $mod+Ctrl+m move container to workspace number $ws7
+bindsym $mod+Ctrl+8 move container to workspace number $ws8
+bindsym $mod+Ctrl+9 move container to workspace number $ws9
+bindsym $mod+Ctrl+j move container to workspace number $ws10
+
 bindsym $mod+Shift+l move container to workspace number $ws1
 bindsym $mod+Shift+u move container to workspace number $ws2
 bindsym $mod+Shift+y move container to workspace number $ws3
