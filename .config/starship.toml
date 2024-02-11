@@ -1,8 +1,9 @@
 # Sets user-defined palette
 palette = "catppuccin_mocha"
+add_newline = true
 
 format = """
-[ ](blue)\
+[ ](blue)\
 $username\
 $shell\
 [](bg:lavender fg:blue)\
@@ -27,6 +28,9 @@ $docker_context\
 $time\
 [ ](fg:red)\
 """
+
+[line_break]
+disabled = false
 
 [palettes.catppuccin_latte]
 base = "#eff1f5"
@@ -86,7 +90,6 @@ crust = "#11111b"
 
 #$git_status\
 # Disable the blank line at the start of the prompt
-# add_newline = false
 
 # You can also replace your username with a neat symbol like  to save some space
 [username]
@@ -98,7 +101,7 @@ format = '[$user]($style)'
 [directory]
 style = "bg:lavender fg:base"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
