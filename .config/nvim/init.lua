@@ -514,12 +514,37 @@ vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
 -------------------------------------------------------
 -------------------------------------------------------
 
+-------------------------------------------------------
+-- Neovide (GUI for neovim)
+-------------------------------------------------------
+
+
+if vim.g.neovide then
+  vim.o.guifont = "Hack Nerd Font Mono:h19.5" -- text below applies for VimScript
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_theme = 'auto'
+  vim.g.neovide_cursor_vfx_mode = "torpedo"
+  vim.g.neovide_cursor_vfx_particle_density = 20.0
+  vim.g.neovide_cursor_vfx_particle_lifetime = 1.5
+  vim.g.neovide_cursor_trail_size = 0.2
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.opt.linespace = 0
+  vim.g.neovide_scale_factor = 1.0
+  vim.g.neovide_profiler = false
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_cursor_animate_command_line = false
+end
+
 
 -------------------------------------------------------
 -------------------------------------------------------
 -- PARAMS
 -------------------------------------------------------
 -------------------------------------------------------
+
+
+-- Set underscore (_) as a word separator
+vim.api.nvim_set_option('iskeyword', vim.o.iskeyword .. ',_')
 
 -- vim.wo.conceallevel = 2
 
@@ -580,5 +605,5 @@ vim.opt.undofile                   = true
 vim.opt.stal                       = 1
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.cmd([[colorscheme catppuccin-latte]])
+vim.cmd([[colorscheme catppuccin-mocha]])
 vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
