@@ -72,6 +72,10 @@ notification-center:
         command: "/home/anon/.local/bin/ThemeSwitcher/theme_switcher.sh mocha"
       - label: 󰖙 Latte
         command: "/home/anon/.local/bin/ThemeSwitcher/theme_switcher.sh latte"
+      # - label: 󱫠 Start
+      #   command: "/home/anon/.local/bin/chrono.sh&;disown"
+      # - label: 󱎬 Stop
+      #   command: ""
       # - label: 󱌑 VPN
       #   command: ""
       # - label: VPN
@@ -131,6 +135,7 @@ notification:
   ### Each modification rule needs a "match" and either a "modify" or
   ### a "script" entry.
   modifications:
+
     ### Match:
     ### Matches the notifications against these rules. If all of the
     ### values (of one modification rule) match, the "modify"/"script"
@@ -178,6 +183,11 @@ notification:
     ### value must be '{"modify": {}, "match": {}}'. Always leave the "match"
     ### object empty (technical reasons, i.e. I am lazy).
     # script: "linux-notification-center-parse-chromium"
+    #
+    # Not working I think TODO: debug
+    # - match:
+    #     app-name: "Chromium"
+    #   script: "parse-chromium"
     - match:
         app-name: "Spotify"
       modify:
