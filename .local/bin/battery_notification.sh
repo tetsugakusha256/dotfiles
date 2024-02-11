@@ -9,7 +9,7 @@ do
     #    notify-send "Battery Full" "Level: ${battery_level}%"
     #    # paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
     if ! acpi -b | grep -q "Charging" ; then
-        if [ $battery_level -le 15 ]; then
+        if [ $battery_level -le 20 ]; then
             notify --urgency=CRITICAL "Battery Low" "Level: ${battery_level}%"
             # paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
         fi

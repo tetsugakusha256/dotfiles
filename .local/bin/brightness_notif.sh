@@ -15,7 +15,7 @@ fi
 current_b=$(brightnessctl g)
 max_b=$(brightnessctl m)
 value=$(($current_b * 100 / $max_b))
-notify "󰌵   Brightness" "$value/100" \
+notify "󰌵 Brightness" "$value/100" \
                          --hint boolean:transient:true \
                          --hint int:has-percentage:$value \
                          -n "brightness-popup" -a "󰛨  "
