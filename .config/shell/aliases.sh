@@ -35,6 +35,7 @@ man_nvim(){
 alias mann='man_nvim'
 # Open a new terminal in the same working dir
 alias clone='alacritty &;disown'
+
 # When using the dim alias, change the 'search file in dir' function to search for
 # dotfiles only same with the grep function
 dim_nvim(){
@@ -44,15 +45,29 @@ dim_nvim(){
         -c "lua vim.keymap.set('n', '<leader>te', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
         -c "SessionRestore" \
     }
+# neovide version of dim_nvim
+vdim_nvim(){
+    neovide -- -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" \
+        -c "lua vim.keymap.set('n', '<leader>se', require('telescope.builtin').live_grep_dotfiles, {})" \
+        -c "lua vim.keymap.set('n', '<leader>ti', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
+        -c "lua vim.keymap.set('n', '<leader>te', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
+        -c "SessionRestore" \
+        -c "colorscheme catppuccin-mocha"
+}
 # launch nvim with my dotgit config (cd into the bare git repo so it keeps
 # the session link to this directory (causes nvim to have error when closing it))
-alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME dim_nvim ; exit'
-alias wiki='nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/" ; exit'
+alias dim='cd ~; GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME dim_nvim'
+# Vimwiki setup
+alias wiki='nvim -c "set textwidth=80" -c "cd /home/anon/Documents/myWiki/"'
+# Neovide vimwiki setup
+alias vdim='personal_dotfiles.sh'
+alias viki='personal_wiki.sh'
+
 alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
 alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
 
-# Music player 
+# Music player
 alias mp='ncmpcpp'
 
 # Show color quickly
