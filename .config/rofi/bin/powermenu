@@ -5,32 +5,32 @@ uptime=$(uptime -p | sed -e 's/up //g')
 
 # Options
 if [[ "$DIR" == "powermenus" ]]; then
-	shutdown=""
-	reboot=""
-	lock=""
-	suspend=""
-	logout=""
-	ddir="$HOME/.config/rofi"
+    shutdown=""
+    reboot=""
+    lock=""
+    suspend=""
+    logout=""
+    ddir="$HOME/.config/rofi"
 else
 
-# For some reason the Icons are mess up I don't know why but to fix it uncomment section 2 and comment section 1 but if the section 1 icons are mess up uncomment section 2 and comment section 1
+    # For some reason the Icons are mess up I don't know why but to fix it uncomment section 2 and comment section 1 but if the section 1 icons are mess up uncomment section 2 and comment section 1
 
-	# Buttons
-	layout=`cat $HOME/.config/rofi/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
-	if [[ "$layout" == "TRUE" ]]; then
-		shutdown=""
-		reboot=""
-		lock=""
-		suspend=""
-		logout=""
+    # Buttons
+    layout=`cat $HOME/.config/rofi/powermenu.rasi | grep BUTTON | cut -d'=' -f2 | tr -d '[:blank:],*/'`
+    if [[ "$layout" == "TRUE" ]]; then
+        shutdown=""
+        reboot=""
+        lock=""
+        suspend=""
+        logout=""
 
-	else
-		shutdown=" Shutdown"
-		reboot=" Restart"
-		lock=" Lock"
-		suspend=" Sleep"
-	fi
-	ddir="$HOME/.config/rofi"
+    else
+        shutdown=" Shutdown"
+        reboot=" Restart"
+        lock=" Lock"
+        suspend=" Sleep"
+    fi
+    ddir="$HOME/.config/rofi"
 fi
 
 # Variable passed to rofi
@@ -39,19 +39,26 @@ options="$suspend\n$lock\n$logout\n$reboot\n$shutdown"
 chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
 case $chosen in
     $shutdown)
-			systemctl poweroff
+        systemctl poweroff
         ;;
     $reboot)
-			systemctl reboot
+        systemctl reboot
         ;;
     $lock)
-                        /home/anon/.local/bin/i3lock-custom.sh
+        /home/anon/.local/bin/i3lock-custom.sh
         ;;
     $suspend)
-			systemctl suspend
+        systemctl suspend
         ;;
     $logout)
-			i3-msg exit
+        if [ -n "$XDG_SESSION_DESKTOP" ]; then
+            if [ "$XDG_SESSION_DESKTOP" = "i3" ]; then
+                i3-msg exit
+            else
+                hyprctl dispatch exit
+            fi
+        else
+            hyprctl dispatch exit
+        fi
         ;;
 esac
-
