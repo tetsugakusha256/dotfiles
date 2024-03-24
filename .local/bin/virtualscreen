@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+# Create/Delete a virtual display (useful to stream window and
+#   have them refreshed when not in view)
+
+option1=add
+# Add song to playlist and directly play it
+option2=delete
+option3=remove
+
+arg1=${1:-nothing}
+
+if [ $arg1 == $option1 ] 
+then
+    echo "adding virtual screen"
+    xrandr --addmode HDMI-2 2560x1440
+    xrandr --output HDMI-2 --mode 2560x1440 --right-of eDP-1
+elif [ $arg1 == $option2 ] || [ $arg1 == $option3 ]; then
+    echo "deleting virtual screen"
+    xrandr --output HDMI-2 --off
+else
+    echo "Invalide arguments"
+fi

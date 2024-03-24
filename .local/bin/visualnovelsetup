@@ -1,0 +1,53 @@
+#!/usr/bin/env sh
+# Create/Delete a virtual display (useful to stream window and
+#   have them refreshed when not in view)
+
+game0=text
+game1=fata
+game2=suba
+game3=mama
+
+scriptPath="/home/anon/Documents/Wine/Games/LaunchScripts"
+
+arg1=${1:-nothing}
+
+# Launching wine
+setup () {
+    virtualscreen add
+    echo "Launching wine and Textractor"
+    i3-msg 'workspace 11; exec wine /home/anon/Documents/Wine/Textractor/Textractor/x86/Textractor.exe'
+    sleep 5
+}
+# Launching custom webpage
+webpage () {
+  i3-msg 'workspace 3; exec brave /home/anon/Documents/Code/Card_Creator_From_Screenshots/TextractorCompanion.html'
+}
+
+if [ $arg1 == $game0 ] || [ -z $arg1 ]
+then
+    echo "no game given"
+    setup
+    webpage
+elif [ $arg1 == $game1 ]; then
+    echo "Starting Fata morgana"
+    setup
+    webpage
+    $scriptPath/Fata_Morgana.sh
+elif [ $arg1 == $game2 ]; then
+    echo "Starting Subarashiki Hibi ~Furenzoku Sonzai"
+    setup
+    webpage
+    $scriptPath/Subarashiki_Hibi.sh
+elif [ $arg1 == $game3 ]; then
+    echo "Starting mama"
+    setup
+    webpage
+    $scriptPath/mama.sh
+else
+    echo "visualnovelsetup [game] 
+    Games available
+    Fata: The house in Fata Morgana
+    Suba: Subarashiki Hibi ~Furenzoku Sonzai~
+          素晴らしき日々～不連続存在～
+    mama: mama"
+fi
