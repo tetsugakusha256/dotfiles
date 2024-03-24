@@ -47,5 +47,7 @@ fi
 # Start rsync
 echo "Backup ongoing"
 sudo rsync -av --no-o --no-g --progress --filter="merge /home/anon/.config/rsync/data_backup_list.txt" /home/anon/ /mnt/backup/backup_arch/
+echo "sync..."
+sudo sync
 echo "backup done. Unmounting"
 sudo umount /mnt/backup/
