@@ -37,5 +37,7 @@ smartplaylist:
           query: 'format:"FLAC" ^title:"Check it in"'
         - name: HighQ.m3u
           query: 'bitrate:192000..'
+        - name: RecentlyAdded.m3u
+          query: 'added:-7w..'
         - name: Spanish.m3u
           query: 'language:Spanish'
