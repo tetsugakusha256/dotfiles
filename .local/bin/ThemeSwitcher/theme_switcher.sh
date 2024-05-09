@@ -15,6 +15,7 @@ source "${THEME_SWITCHER_PATH}/starship_switcher.sh"
 source "${THEME_SWITCHER_PATH}/nvim_switcher.sh"
 source "${THEME_SWITCHER_PATH}/fcitx_switcher.sh"
 source "${THEME_SWITCHER_PATH}/rofi_switcher.sh"
+source "${THEME_SWITCHER_PATH}/emacs_switcher.sh"
 
 # Path to the lock file
 LOCK_FILE="/tmp/theme_switcher.lock"
@@ -34,8 +35,9 @@ echo "First line: $current_theme"
 
 # Set mocha theme
 option1=mocha
-# Set latte theme
 option2=latte
+option3=frappe
+option4=macchiato
 
 arg1=${1:-nothing}
 if [ $current_theme == $arg1 ]
@@ -46,6 +48,10 @@ then
         feh --randomize --bg-scale $MOCHA_WALLPAPER_PATH
     elif [ $arg1 == $option2 ]; then
         feh --randomize --bg-scale $LATTE_WALLPAPER_PATH
+    elif [ $arg1 == $option3 ]; then
+        feh --randomize --bg-scale $MOCHA_WALLPAPER_PATH
+    elif [ $arg1 == $option4 ]; then
+        feh --randomize --bg-scale $MOCHA_WALLPAPER_PATH
     fi
 else
     if [ $arg1 == $option1 ]
@@ -61,10 +67,10 @@ else
         starship_set_mocha
         neovim_set_mocha
         fcitx_set_mocha
+        emacs_set_mocha
         # Wallpapers
         feh --bg-scale "${WALLPAPER_PATH}/Fav_mocha/skull_girl_light_color.png"
-
-        notify -n theme "  Dark theme on" "" --hint boolean:transient:true
+        notify -n theme "  Mocha theme on" "" --hint boolean:transient:true
 
     elif [ $arg1 == $option2 ]; then
         echo "Setting latte theme"
@@ -78,10 +84,14 @@ else
         starship_set_latte
         neovim_set_latte
         fcitx_set_latte
+        emacs_set_latte
         # Wallpapers
         feh --bg-scale "${WALLPAPER_PATH}/Complex/colorful_landscape.png"
 
-        notify -n theme "󰖨  Light theme on" "" --hint boolean:transient:true
+        notify -n theme "󰖨  Latte theme on" "" --hint boolean:transient:true
+
+
+
     else
         echo "Invalide arguments"
         cleanup
