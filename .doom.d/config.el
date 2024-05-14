@@ -32,7 +32,10 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+
+(setq doom-theme 'catppuccin)
+(setq catppuccin-flavor 'mocha) ;; or 'latte, 'macchiato, or 'mocha
+;;(catppuccin-reload)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -75,9 +78,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(setq doom-theme 'catppuccin)
-(setq catppuccin-flavor 'latte) ;; or 'latte, 'macchiato, or 'mocha
-;;(catppuccin-reload)
 
 (setq confirm-kill-emacs nil)
 
@@ -85,7 +85,28 @@
 
 (setq org-image-actual-width nil)
 
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 28))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 32))
+
+;; Todo keyword
+;; ! = record a timestamp when set
+;; @ = timestamp + note when set
+(after! org
+(setq org-agenda-files
+      (directory-files-recursively "~/Documents/MyOrg" "\\.org$"))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "IDEA(i)" "DOING(g)" "|" "DONE(d)")
+        (sequence "TOFIX(r)" "BUG(B)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "TOBUY(b)" "|" "BOUGHT(o)")
+        ;; This is meant as a lower level category as the one above
+        ;; I have a TOBUY list and inside I have different kinds
+        (sequence "WANT(w)" "NEED(n)" "|" "HAVE(o)")
+        (sequence "|" "CANCELED(c)"))))
+;; add projects accessed with SPC p p or open file in project with SPC SPC
+;; (after! projectile
+;; (projectile-add-known-project “~/Documents/MyOrg”)
+;;   )
+;; Allow time logging when setting a todo to done
+(setq org-log-done 'time)
 
 (doom! :completion (ivy +fuzzy ivy-rich))
 
@@ -94,6 +115,9 @@
    'counsel-rg
    '((counsel-projectile-rg . (:width 0.6))
      (ivy-rich-counsel-function-docstring . (:face font-lock-doc-face)))))
+
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
+(setq-default fill-column 90)
 
 (defun toggle-checkbox ()
   "Toggle the checkbox state at point."
@@ -107,19 +131,23 @@
   (interactive)
   (switch-to-buffer nil))
 
-;; This syntaxe should work all the time
-(define-key general-override-mode-map (kbd "M-n") 'evil-window-down)
+;; (define-key general-override-mode-map (kbd "SPC w w") #'(lambda () (interactive) (find-file "~/.bashrc")))
 ;; (map! :map 'override "SPC s s" #'find-file)
 
+
+
+;; Removes ESC as a prefix globaly (used to be map, and anoying)
+(global-set-key (kbd "<escape>")      'keyboard-escape-quit)
 (global-set-key (kbd "C-h") 'switch-to-last-buffer)
+
+;; This syntaxe should work all the time
+(define-key general-override-mode-map (kbd "M-n") 'evil-window-down)
 
 (after! vertico
   (map!
    :n "SPC s s" #'find-file))
 
 (define-key minibuffer-local-map (kbd "C-e") 'previous-line)
-;; (define-key org-agenda-keymap (kbd "n") 'org-agenda-next-item)
-;; (define-key org-agenda-keymap (kbd "e") 'org-agenda-previous-item)
 
 ;; (map!
 ;;  :after calendar
@@ -129,12 +157,132 @@
 ;;  "C-n" #'calendar-forward-week
 ;;  "C-e" #'calendar-backward-week)
 
+
+(defun decrement-first-number ()
+  "Increment the first number in the current line."
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (re-search-forward "[0-9]+" nil t)
+    (replace-match (number-to-string (1- (string-to-number (match-string 0)))))))
+(defun increment-first-number ()
+  "Increment the first number in the current line."
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (re-search-forward "[0-9]+" nil t)
+    (replace-match (number-to-string (1+ (string-to-number (match-string 0)))))))
+
+
+(pixel-scroll-precision-mode 1)
+(setq org-table-formula-evaluate-inline t)
+
+;; ------------------------------ 
+;; AGENDA
+;; ------------------------------ 
+;; remaps org-agenda to just SPC o a
+
+(map! :leader
+      :desc "org-agenda" "o a" #'org-agenda)
+(setq org-tag-alist '((:startgrouptag)
+                      ("Life")
+                      (:grouptags)
+                      ("Buy")
+                      (:endgrouptag)
+                      (:startgrouptag)
+                      ("Computer")
+                      (:grouptags)
+                      ("MyOrg")
+                      ("nvim")
+                      (:endgrouptag)))
+(setq org-agenda-custom-commands
+      '(("." tags-todo "+Today")
+        ("l" tags-todo "+Life")
+        ("c" tags-todo "+Computer")
+        ("b" tags-todo "+Buy")
+        ("j" tags-todo "+Japanese")
+        ("d" todo "DONE")
+        ("D" todo-tree "DONE")
+        ("o" todo "TODO")
+        ("O" todo-tree "TODO")
+        ("n" todo "NEED")
+        ("N" todo-tree "NEED")
+        ("i" todo "IDEA")
+        ("I" todo-tree "IDEA")))
+;; Remapping of org-agenda keys
+(after! evil-org-agenda
+  (map! :map evil-org-agenda-mode-map
+        :m "i" #'org-agenda-switch-to
+        :m "N" #'org-agenda-priority-down
+        :m "E" #'org-agenda-priority-up
+        :m "H" #'org-agenda-todo-previousset
+        :m "I" #'org-agenda-todo-nextset
+        :m "»" #'org-agenda-next-item
+        :m "«" #'org-agenda-previous-item
+        ;; v = view
+        :m "v n" #'org-agenda-fortnight-view
+        :m "v m" #'org-agenda-month-view
+        :m "v y" #'org-agenda-year-view
+        ))
+;; TODO make it work
+(after! evil-org
+(map! :map evil-org-mode-map
+      :n "H" #'org-shiftleft
+      :n "¬" #'org-shiftleft
+      :n "I" #'org-shiftright
+      :v "i" #'evil-forward-char))
+
+;; ------------------------------ 
+;; Custom
+;; ------------------------------ 
+
+(defvar my-search-directory "~/Documents/MyOrg")
+
+(defun my-search-in-myorg ()
+  "Search in myorg"
+  (interactive)
+  (counsel-rg nil my-search-directory))
+
+(map! :leader
+      (:prefix ("s" . "search")
+       :desc "Search MyOrg" "o" #'my-search-in-myorg))
+
+
+;; Increment decrement
+(map! :desc "Decrement first number"
+      "C-S-a" #'decrement-first-number
+      :desc "Increment first number"
+      "C-a" #'increment-first-number)
+
+;; Go to next/previous link
+(after! org
+(map! :desc "Go to next link"
+      "»" #'org-next-link
+      :desc "Go to prev link"
+      "«" #'org-previous-link)
+        )
+
+;; ------------------------------ 
+;; VIM/evil Mappings 
+;; ------------------------------ 
+(after! evil-motion-state
+  (map! :map evil-motion-state-map
+        :m "C-n" #'evil-scroll-down
+        :m "C-e" #'evil-scroll-up
+        ))
+
+(after! evil-visual-state
+  (map! :map evil-visual-state-map
+        'override "i" #'evil-forward-char
+        ))
 (map!
  ;; :i "C-e" #'evil-complete-previous
+ :n "C-h" #'switch-to-last-buffer
 
  :n "C-n" #'evil-scroll-down
  :n "C-e" #'evil-scroll-up
- :n "C-e" #'evil-scroll-up
+ :m "C-n" #'evil-scroll-down
+ :m "C-e" #'evil-scroll-up
  :n "n" #'evil-next-line
  :n "e" #'evil-previous-line
  :n "i" #'evil-forward-char
@@ -142,10 +290,10 @@
  :m "e" #'evil-previous-line
  :m "i" #'evil-forward-char
 
- :n "k" #'evil-next-match
- :n "K" #'evil-previous-match
- :v "k" #'evil-next-match
- :v "K" #'evil-previous-match
+ :n "k" #'evil-ex-search-next
+ :n "K" #'evil-ex-search-previous
+ :v "k" #'evil-ex-search-next
+ :v "K" #'evil-ex-search-previous
 
  :n "M-+" #'doom/increase-font-size
 
@@ -180,7 +328,4 @@
  :v "e" #'evil-previous-line
 
  )
-
-(map! :map org-agenda-mode-map "n" 'org-agenda-next-line)
-(map! :map org-agenda-mode-map "e" 'org-agenda-previous-line)
 ;; (map! :map org-agenda-mode-map "m" 'org-agenda-month-view)
