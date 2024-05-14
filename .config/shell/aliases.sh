@@ -62,6 +62,8 @@ alias wiki='nvim -c "set textwidth=80" -c "cd /home/anon/Documents/myWiki/"'
 # Neovide vimwiki setup
 alias vdim='personal_dotfiles.sh'
 alias viki='personal_wiki.sh'
+# Org setup
+alias org='cd ~/Documents/MyOrg/; emacs index.org&; disown; exit'
 
 alias key='xbindkeys -k'
 alias keys='xbindkeys -mk'
@@ -69,6 +71,9 @@ alias fzf='fzf --bind=ctrl-e:prev-history,ctrl-e:up'
 
 # Music player
 alias mp='ncmpcpp'
+
+# Visual novel
+alias vn='visualnovelsetup'
 
 # Show color quickly
 alias color='$HOME/.local/bin/print_colors.sh'
