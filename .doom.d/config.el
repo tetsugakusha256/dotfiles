@@ -94,13 +94,10 @@
 (setq org-agenda-files
       (directory-files-recursively "~/Documents/MyOrg" "\\.org$"))
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "IDEA(i)" "DOING(g)" "|" "DONE(d)")
-        (sequence "TOFIX(r)" "BUG(B)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
-        (sequence "TOBUY(b)" "|" "BOUGHT(o)")
-        ;; This is meant as a lower level category as the one above
-        ;; I have a TOBUY list and inside I have different kinds
-        (sequence "WANT(w)" "NEED(n)" "|" "HAVE(o)")
-        (sequence "|" "CANCELED(c)"))))
+      '((sequence "IDEA(i)" "DOING(g)" "TODO(t)"  "|" "DONE(d)" "CANCELED(c)")
+        (sequence "BUG(B)" "KNOWNCAUSE(k)" "TOFIX(r)" "|" "FIXED(f)")
+        (sequence "NEED_DL(l)" "|" "DOWNLOADED(L)")
+        (sequence "WANT(w)" "NEED(n)" "|" "BOUGHT(b)"))))
 ;; add projects accessed with SPC p p or open file in project with SPC SPC
 ;; (after! projectile
 ;; (projectile-add-known-project “~/Documents/MyOrg”)
@@ -177,9 +174,94 @@
 (pixel-scroll-precision-mode 1)
 (setq org-table-formula-evaluate-inline t)
 
-;; ------------------------------ 
+;; --------------------------------------------------
+;; Capture
+;; --------------------------------------------------
+(defun get-org-anniversary-string ()
+  "Return the string 'org-anniversary'."
+  "(org-anniversary")
+(setq org-cycle-separator-lines -1)
+(after! org
+  (setq org-capture-templates
+        '(
+          ("b" "[B]uying list"
+           entry (file+headline "~/Documents/MyOrg/Shopping_list_buying.org" "Stuff I need to buy")
+           "*** NEED %?"
+           :prepend t
+           :empty-lines 0)
+          ("f" "[F]inance"
+           table-line (file+datetree "~/Documents/MyOrg/Money_Management_Finances.org")
+           "| %u | %^{Price} | %^{Type} |"
+           :tree-type month
+           :immediate-finish t
+           ;; This means relative to the 3rd(III) ----- line go one up (-1)
+           :table-line-pos "III-1"
+           :empty-lines 0)
+          ("g" "[G]ame Waitlist"
+           entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Games")
+           "** %?\n %{Game Release Date}^t"
+           :empty-lines 0)
+          ("M" "[M]ovie to download"
+           entry (file+olp "~/Documents/MyOrg/Movies_and_Series.org" "To Download" "Movies" "Newly added")
+           "**** NEED_DL  %^{Movie Title}"
+           :immediate-finish t
+           :empty-lines 0)
+          ("S" "[S]eries to download"
+           entry (file+olp "~/Documents/MyOrg/Movies_and_Series.org" "To Download" "Series" "Newly added")
+           "**** NEED_DL  %^{Serie Title}"
+           :immediate-finish t
+           :empty-lines 0)
+          ("A" "[A]nime to download"
+           entry (file+olp "~/Documents/MyOrg/Movies_and_Series.org" "To Download" "Animes" "Newly added")
+           "**** NEED_DL  %^{Anime Title}"
+           :immediate-finish t
+           :empty-lines 0)
+          ("m" "[M]ovie Waitlist"
+           entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Movies")
+           "** %?\n %^{Movie Release Date}t"
+           :empty-lines 0)
+          ("s" "[S]how Waitlist"
+           entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Shows")
+           "** %?\n %^{Show Release Date}t"
+           :empty-lines 0)
+          ("e" "[E]vent Waitlist"
+           entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Events")
+           "** %?\n %^{Events Date}t"
+           :empty-lines 0)
+          ("B" "[B]irthday"
+           plain (file+headline "~/Documents/MyOrg/Birthdays.org" "Birthdays")
+           "%%%(get-org-anniversary-string) %^{YEAR} %^{MONTH} %^{DAY} \) %^{NAME} %d years old"
+           :immediate-finish t
+           :empty-lines 0)
+          ("n" "Quick [n]ote"
+           entry (file+datetree "~/Documents/MyOrg/quick_note_to_be_added_later.org")
+           "* %?"
+           :empty-lines 0)
+          ("t" "[T]asks"
+           entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Quick Tasks")
+           "* TODO %?"
+           :empty-lines 0)
+          ("o" "[O]rg tasks"
+           entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Org/Wiki Tasks")
+           "* TODO %?"
+           :empty-lines 0)
+          ("l" "[L]ife tasks"
+           entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Life Tasks")
+           "* TODO %?"
+           :empty-lines 0)
+          ("c" "[C]omputer tasks"
+           entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Computer Tasks")
+           "* TODO %?"
+           :empty-lines 0)
+          ("j" "[J]apanese tasks"
+           entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Japanese Tasks")
+           "* TODO %?"
+           :empty-lines 0)
+          )))
+
+;; --------------------------------------------------
 ;; AGENDA
-;; ------------------------------ 
+;; --------------------------------------------------
 ;; remaps org-agenda to just SPC o a
 
 (map! :leader
