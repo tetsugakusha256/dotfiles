@@ -18,15 +18,33 @@ LOCK_FILE="/tmp/notify.lock"
 cleanup() {
     rm -f "$LOCK_FILE"
 }
+is_lock_old() {
+    current_time=$(date +%s)
+    file_creation_time=$(stat -c %Y "$LOCK_FILE")
+    time_difference=$((current_time - file_creation_time))
+    echo "time_difference: $time_difference"
+    # Check if the file is older than 60 seconds
+    if [ "$time_difference" -gt 60 ]; then
+        return 0
+    else
+        return 1
+    fi
+}
 # Check if the lock file exists
 if [ -e "$LOCK_FILE" ]; then
     echo "Another instance of the script is already running. Exiting."
-    exit 1
+    # Remove lock if it's old (means it didn't get removed correctly)
+    if is_lock_old 
+    then
+        rm $LOCK_FILE
+    else
+        exit 1
+    fi
 fi
 
 
 # Parse command-line options
-ARGS=$(getopt -o n:a:t:r:h: --long name:,app-name:,hint:,urgency:,help -- "$@")
+ARGS=$(getopt -o n:a:t:r:h: --long name:,app-name:,hint:,action:,urgency:,help -- "$@")
 
 # Exit if getopt encounters an error
 if [ $? -ne 0 ]; then
@@ -52,6 +70,7 @@ arg_name=""
 arg_app_name=""
 arg_urgency=""
 arg_hint=""
+arg_action=""
 
 while true; do
     case "$1" in
@@ -94,6 +113,10 @@ while true; do
             ;;
         --hint)
             arg_hint+="--hint $2 "
+            shift 2
+            ;;
+        --action)
+            arg_action+="--action $2 "
             shift 2
             ;;
         --urgency)
@@ -142,7 +165,7 @@ then
         if [[ "$(echo $grep_result | cut -d' ' -f2)" = "$arg_name" ]]
         then
             notif_id=$(echo $grep_result | cut -d' ' -f1)
-            echo "id = ${notif_id}"
+            # echo "id = ${notif_id}"
         fi
     fi
 fi
@@ -157,7 +180,7 @@ if [ ! -z $arg_t ]
 then
     final_cmd="${final_cmd} -t ${arg_t}"
 fi
-final_cmd="${final_cmd} ${arg_hint}"
+final_cmd="${final_cmd} ${arg_hint} ${arg_action}"
 if [ ! -z $arg_app_name ]
 then
     final_cmd="${final_cmd} --app-name ${arg_app_name}"
@@ -183,7 +206,7 @@ fi
 # Command call and ID management
 ##################################################
 
-echo $final_cmd
+# echo $final_cmd
 ID=$(eval "$final_cmd")
 echo "${ID} ${arg_name}" >> $TEMP_PATH
 

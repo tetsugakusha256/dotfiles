@@ -6,8 +6,13 @@ game0=text
 game1=fata
 game2=suba
 game3=mama
+game4=garu
+game5=mesu
+game6=opp
+game7=saya
+game8=ao
 
-scriptPath="/home/anon/Documents/Wine/Games/LaunchScripts"
+scriptPath="/home/anon/Documents/Wine/LaunchScripts"
 
 arg1=${1:-nothing}
 
@@ -15,21 +20,20 @@ arg1=${1:-nothing}
 setup () {
     virtualscreen add
     echo "Launching wine and Textractor"
-    i3-msg 'workspace 11; exec wine /home/anon/Documents/Wine/Textractor/Textractor/x86/Textractor.exe'
+    i3-msg 'workspace 11; exec LANG=ja_JP.UTF-8 wine /home/anon/Documents/Wine/Textractor/Textractor/x86/Textractor.exe'
     sleep 5
 }
 # Launching custom webpage
 webpage () {
-  i3-msg 'workspace 3; exec brave /home/anon/Documents/Code/Card_Creator_From_Screenshots/TextractorCompanion.html'
+  i3-msg 'workspace 3; exec brave --new-window /home/anon/Documents/Code/VisualNovelHelper/TextractorCompanion.html'
 }
 
 if [ $arg1 == $game0 ] || [ -z $arg1 ]
 then
     echo "no game given"
-    setup
-    webpage
 elif [ $arg1 == $game1 ]; then
-    echo "Starting Fata morgana"
+    echo "Starting ファタモルガーナの館
+                   Fata morgana"
     setup
     webpage
     $scriptPath/Fata_Morgana.sh
@@ -42,12 +46,50 @@ elif [ $arg1 == $game3 ]; then
     echo "Starting mama"
     setup
     webpage
-    $scriptPath/mama.sh
+    $scriptPath/Mama.sh
+elif [ $arg1 == $game4 ]; then
+    echo "Starting Garudoma"
+    setup
+    webpage
+    $scriptPath/Garudoma.sh
+elif [ $arg1 == $game5 ]; then
+    echo "Starting mesu"
+    setup
+    webpage
+    $scriptPath/Mesu.sh
+elif [ $arg1 == $game6 ]; then
+    echo "Starting opp"
+    setup
+    webpage
+    $scriptPath/Opp.sh
+elif [ $arg1 == $game7 ]; then
+    echo "Starting Saya no Uta"
+    setup
+    webpage
+    $scriptPath/Saya.sh
+elif [ $arg1 == $game8 ]; then
+    echo "Starting 蒼の彼方のフォーリズム
+                    ao no kanata no four rythmes"
+    setup
+    webpage
+    $scriptPath/Saya.sh
 else
     echo "visualnovelsetup [game] 
     Games available
     Fata: The house in Fata Morgana
+          ファタモルガーナの館
     Suba: Subarashiki Hibi ~Furenzoku Sonzai~
           素晴らしき日々～不連続存在～
-    mama: mama"
+    Ruri: Rurizakura
+          瑠璃櫻
+    Ao:   蒼の彼方のフォーリズム
+          ao no kanata no four rythmes
+    ------
+    Saya: Saya no uta
+    ------
+    mama: Mama
+    garu: Garudoma
+    mesu: Mesu
+    opp: oppai
+    "
 fi
