@@ -4,6 +4,7 @@ add_newline = true
 
 format = """
 [ ](blue)\
+$hostname\
 $username\
 $shell\
 [](bg:lavender fg:blue)\
@@ -97,6 +98,11 @@ show_always = true
 style_user = "bg:blue fg:base"
 style_root = "bg:blue fg:base"
 format = '[$user]($style)'
+
+[hostname]
+ssh_only = true
+style = "bg:blue fg:base"
+format = '[$ssh_symbol$hostname]($style) as '
 
 [directory]
 style = "bg:lavender fg:base"
