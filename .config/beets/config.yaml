@@ -24,7 +24,7 @@ smartplaylist:
         - name: Disney.m3u
           query: 'genre:disney'
         - name: Jpop.m3u
-          query: 'genre:"j-pop"'
+          query: 'genre::J-[Pop|Rock]'
         - name: Chanson.m3u
           query: 'genre:"chanson"'
         - name: Lana.m3u
@@ -34,10 +34,12 @@ smartplaylist:
         - name: Classical.m3u
           query: 'genre:"classical"'
         - name: FLAC.m3u
-          query: 'format:"FLAC" ^title:"Check it in"'
+          query: 'format::[FLAC|m4a] ^title:"Check it in"'
         - name: HighQ.m3u
           query: 'bitrate:192000..'
-        - name: RecentlyAdded.m3u
-          query: 'added:-7w..'
+        - name: RecentlyAdded2Weeks.m3u
+          query: 'added:-3w..'
+        - name: RecentlyAdded6Months.m3u
+          query: 'added:-6m..'
         - name: Spanish.m3u
           query: 'language:Spanish'
