@@ -4,6 +4,7 @@
 + /Documents/
 + /Pictures/
 - /Documents/Code/Git_clones
+- /Documents/Wine
 - **/node_modules/
 - **/Code/**/target/
 - /.config/BraveSoftware/**
