@@ -18,7 +18,7 @@ bindkey -M menuselect '^[' accept-line # Leave suggestion printed and leave
 bindkey -M menuselect '^?' undo # Cancel suggestion validation
 
 # bindkey -M viins '^E' autosuggest-fetch
-# bindkey -M viins '^E' autosuggest-accept
+# bindkey -M viins '^I' autosuggest-accept
 bindkey -M viins '^E' history-beginning-search-backward
 bindkey -M viins '^N' history-beginning-search-forward
 bindkey -M viins '^O' autosuggest-execute
@@ -126,6 +126,7 @@ bindkey -M vicmd "X" vi-backward-delete-char
 yank_line_to_clipboard() {
   print -z ${BUFFER}
   echo ${BUFFER} | xclip -selection clipboard
+  echo ${BUFFER} | tr -d '\n' | wl-copy
   # zle kill-whole-line
 }
 zle -N yank_line_to_clipboard
