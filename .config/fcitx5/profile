@@ -2,13 +2,13 @@
 # Group Name
 Name="Group 1"
 # Layout
-Default Layout=cuco
+Default Layout=custom
 # Default Input Method
 DefaultIM=mozc
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-cuco
+Name=keyboard-custom
 # Layout
 Layout=
 
@@ -16,7 +16,7 @@ Layout=
 # Name
 Name=mozc
 # Layout
-Layout=
+Layout=custom
 
 [GroupOrder]
 0="Group 1"
