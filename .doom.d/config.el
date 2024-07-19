@@ -77,8 +77,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-
+;; (add-load-path! "org-super-agenda.el")
+;; (require 'org-super-agenda)
 (setq confirm-kill-emacs nil)
 
 (setq org-list-allow-alphabetical t)
@@ -86,7 +86,6 @@
 (setq org-image-actual-width nil)
 
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 32))
-
 ;; Todo keyword
 ;; ! = record a timestamp when set
 ;; @ = timestamp + note when set
@@ -131,7 +130,13 @@
 ;; (define-key general-override-mode-map (kbd "SPC w w") #'(lambda () (interactive) (find-file "~/.bashrc")))
 ;; (map! :map 'override "SPC s s" #'find-file)
 
-
+(custom-set-faces
+  '(org-level-1 ((t (:inherit outline-1 :height 1.0))))
+  '(org-level-2 ((t (:inherit outline-2 :height 1.0))))
+  '(org-level-3 ((t (:inherit outline-3 :height 1.0))))
+  '(org-level-4 ((t (:inherit outline-4 :height 1.0))))
+  '(org-level-5 ((t (:inherit outline-5 :height 1.0))))
+)
 
 ;; Removes ESC as a prefix globaly (used to be map, and anoying)
 (global-set-key (kbd "<escape>")      'keyboard-escape-quit)
@@ -174,6 +179,26 @@
 (pixel-scroll-precision-mode 1)
 (setq org-table-formula-evaluate-inline t)
 
+
+;; --------------------------------------------------
+;; ePUB with nov.el
+;; --------------------------------------------------
+
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(after! nov
+  (map! :map nov-mode-map
+  :n "C-o" #'nov-history-back
+  :n "<C-i>" #'nov-history-forward
+  :n "n" #'evil-next-line
+  :n "e" #'evil-previous-line)
+  (map! :map nov-button-map
+  "C-o" #'nov-history-back
+  "<C-i>" #'nov-history-forward
+  "n" #'evil-next-line
+  "e" #'evil-previous-line))
+
+
 ;; --------------------------------------------------
 ;; Capture
 ;; --------------------------------------------------
@@ -181,25 +206,57 @@
   "Return the string 'org-anniversary'."
   "(org-anniversary")
 (setq org-cycle-separator-lines -1)
+
+(defun my/org-agenda-sort-by-urgency ()
+  "Sort agenda items by urgency."
+  (setq org-agenda-sorting-strategy
+        '((agenda habit-down time-up priority-down category-keep)
+          (todo priority-down category-keep)
+          (tags priority-down category-keep)
+          (search category-keep))))
+
 (after! org
+  (add-to-list 'org-agenda-custom-commands
+               '("a" "My default agenda"
+                 ((agenda "" )
+                  (tags-todo "+Weekly")
+                  (alltodo "")
+                 )
+                 (
+                  (org-agenda-overriding-header "My Week")
+                  (org-agenda-start-on-weekday nil)
+                  (org-agenda-span 14)
+                  (org-agenda-start-day "0d")
+                  (org-agenda-sorting-strategy '(priority-down))
+                  )
+                 ) t)
   (setq org-capture-templates
         '(
-          ("b" "[B]uying list"
+          ("d" "Diary"
+           plain (file+datetree "~/Documents/MyOrg/journal.org")
+           "%?"
+           :empty-lines 1)
+          ("B" "[B]irthday"
+           plain (file+headline "~/Documents/MyOrg/Birthdays.org" "Birthdays")
+           "%%%(get-org-anniversary-string) %^{YEAR} %^{MONTH} %^{DAY} \) %^{NAME} %d years old"
+           :immediate-finish t
+           :empty-lines 0)
+          ("n" "Quick [n]ote"
+           entry (file+datetree "~/Documents/MyOrg/quick_note_to_be_added_later.org")
+           "* %?"
+           :empty-lines 0)
+          ("b" "[b]uying list"
            entry (file+headline "~/Documents/MyOrg/Shopping_list_buying.org" "Stuff I need to buy")
            "*** NEED %?"
            :prepend t
            :empty-lines 0)
-          ("f" "[F]inance"
+          ("f" "[f]inance"
            table-line (file+datetree "~/Documents/MyOrg/Money_Management_Finances.org")
            "| %u | %^{Price} | %^{Type} |"
            :tree-type month
            :immediate-finish t
            ;; This means relative to the 3rd(III) ----- line go one up (-1)
            :table-line-pos "III-1"
-           :empty-lines 0)
-          ("g" "[G]ame Waitlist"
-           entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Games")
-           "** %?\n %{Game Release Date}^t"
            :empty-lines 0)
           ("M" "[M]ovie to download"
            entry (file+olp "~/Documents/MyOrg/Movies_and_Series.org" "To Download" "Movies" "Newly added")
@@ -216,44 +273,39 @@
            "**** NEED_DL  %^{Anime Title}"
            :immediate-finish t
            :empty-lines 0)
-          ("m" "[M]ovie Waitlist"
+          ("g" "[g]ame Waitlist"
+           entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Games")
+           "** %? %^{Game Release Date}t"
+           :empty-lines 0)
+          ("m" "[m]ovie Waitlist"
            entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Movies")
-           "** %?\n %^{Movie Release Date}t"
+           "** %? %^{Movie Release Date}t"
            :empty-lines 0)
-          ("s" "[S]how Waitlist"
+          ("s" "[s]how Waitlist"
            entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Shows")
-           "** %?\n %^{Show Release Date}t"
+           "** %? %^{Show Release Date}t"
            :empty-lines 0)
-          ("e" "[E]vent Waitlist"
+          ("e" "[e]vent Waitlist"
            entry (file+headline "~/Documents/MyOrg/Waitlist_watchlist.org" "Events")
-           "** %?\n %^{Events Date}t"
+           "** %? %^{Events Date}t"
            :empty-lines 0)
-          ("B" "[B]irthday"
-           plain (file+headline "~/Documents/MyOrg/Birthdays.org" "Birthdays")
-           "%%%(get-org-anniversary-string) %^{YEAR} %^{MONTH} %^{DAY} \) %^{NAME} %d years old"
-           :immediate-finish t
-           :empty-lines 0)
-          ("n" "Quick [n]ote"
-           entry (file+datetree "~/Documents/MyOrg/quick_note_to_be_added_later.org")
-           "* %?"
-           :empty-lines 0)
-          ("t" "[T]asks"
+          ("t" "[t]asks"
            entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Quick Tasks")
            "* TODO %?"
            :empty-lines 0)
-          ("o" "[O]rg tasks"
+          ("o" "[o]rg tasks"
            entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Org/Wiki Tasks")
            "* TODO %?"
            :empty-lines 0)
-          ("l" "[L]ife tasks"
+          ("l" "[l]ife tasks"
            entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Life Tasks")
            "* TODO %?"
            :empty-lines 0)
-          ("c" "[C]omputer tasks"
+          ("c" "[c]omputer tasks"
            entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Computer Tasks")
            "* TODO %?"
            :empty-lines 0)
-          ("j" "[J]apanese tasks"
+          ("j" "[j]apanese tasks"
            entry (file+headline "~/Documents/MyOrg/Todo_list.org" "Japanese Tasks")
            "* TODO %?"
            :empty-lines 0)
@@ -290,7 +342,16 @@
         ("n" todo "NEED")
         ("N" todo-tree "NEED")
         ("i" todo "IDEA")
-        ("I" todo-tree "IDEA")))
+        ("I" todo-tree "IDEA")
+        ("u" "TODOs with Urgency B or above"
+         ((agenda "")
+          (todo "TODO"
+                ((org-agenda-overriding-header "TODOs with Urgency B or above")
+                 (org-agenda-skip-function
+                  '(org-agenda-skip-entry-if 'notpriority "B"))
+                 )))))
+
+      )
 ;; Remapping of org-agenda keys
 (after! evil-org-agenda
   (map! :map evil-org-agenda-mode-map
@@ -314,7 +375,72 @@
       :n "I" #'org-shiftright
       :v "i" #'evil-forward-char))
 
-;; ------------------------------ 
+;; I can't make it work :cry:
+;; (org-super-agenda-mode)
+;;   (setq org-super-agenda-groups
+;;         '(
+;;           (:name "Life tasks"
+;;            :tag "life"
+;;            :order 0
+;;            )
+;;           (:name "Quick tasks"
+;;            :tag "today"
+;;            :order 1
+;;            )
+;;           (:name "Org tasks"
+;;            :tag "MyOrg"
+;;            :order 2
+;;            )
+;;           (:name "Japanese tasks"
+;;            :tag "japanese"
+;;            :order 3
+;;            )
+;;           (:name "Computer tasks"
+;;            :tag "Computer"
+;;            :order 4
+;;            )
+;;           ))
+
+
+;; ------------------------------
+;; Latex preview
+;; ------------------------------
+;; Enable LaTeX fragment previews in Org-mode
+
+;; (use-package! org
+;;   :config
+;;   ;; Use imagemagick for rendering LaTeX fragments
+;;   (setq org-preview-latex-default-process 'dvipng)
+
+;;   ;; Automatically display inline images
+;;   (add-hook 'org-mode-hook 'org-display-inline-images)
+
+;;   ;; Use org-fragtog for automatic LaTeX fragment previews
+;;   (use-package! org-fragtog
+;;     :hook (org-mode . org-fragtog-mode))
+
+;; ;; Configuration for dvipng to trim whitespace
+;; (setq org-preview-latex-process-alist
+;;       '((dvipng :programs
+;;                 ("latex" "dvipng")
+;;                 :description "dvi > png"
+;;                 :message "you need to install the programs: latex and dvipng."
+;;                 :image-input-type "dvi"
+;;                 :image-output-type "png"
+;;                 :image-size-adjust (1.0 . 1.0)
+;;                 :latex-compiler
+;;                 ("latex -interaction nonstopmode -output-directory %o %f")
+;;                 :image-converter
+;;                 ("dvipng -D 300 -T tight -o %O %f"))))
+
+;;   ;; Automatically update LaTeX previews
+
+
+;;   ;; (add-hook 'org-mode-hook 'turn-on-org-cdlatex))
+;; )
+
+
+;; ------------------------------
 ;; Custom
 ;; ------------------------------ 
 
