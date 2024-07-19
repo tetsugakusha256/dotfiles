@@ -56,7 +56,8 @@ exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/w
 exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
 exec --no-startup-id "i3-msg 'workspace 7; append_layout /home/anon/.config/i3/workspace-7.json'"
 exec --no-startup-id i3-msg 'workspace 2; exec brave --password-store=basic'
-exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/"'
+# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/"'
+# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e emacs -c "~/Documents/MyOrg/index.org"'
 exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
 
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
@@ -81,6 +82,7 @@ floating_modifier $mod
 # Change theme
 bindsym $mod+1 exec "~/.local/bin/ThemeSwitcher/theme_switcher.sh latte"
 bindsym $mod+2 exec "~/.local/bin/ThemeSwitcher/theme_switcher.sh mocha"
+bindsym $mod+3 exec "wine /home/anon/.wine/drive_c/Program\ Files/AutoHotkey/AutoHotkey.exe /home/anon/.wine/drive_c/Program\ Files/AutoHotkey/click.ahk"
 
 # redshift
 # bindsym $mod+1 exec redshift -O 4000 
@@ -132,14 +134,32 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left 80px
-bindsym $mod+Shift+n move down 80px
-bindsym $mod+Shift+e move up 80px
-bindsym $mod+Shift+i move right 80px
-bindsym $mod+Ctrl+h exec i3l move left 80px
-bindsym $mod+Ctrl+n exec i3l move down 80px
-bindsym $mod+Ctrl+e exec i3l move up 80px
-bindsym $mod+Ctrl+i exec i3l move right 80px
+bindsym $mod+Ctrl+h move left 80px
+bindsym $mod+Ctrl+n move down 80px
+bindsym $mod+Ctrl+e move up 80px
+bindsym $mod+Ctrl+i move right 80px
+bindsym $mod+Shift+h exec i3l move left 80px
+bindsym $mod+Shift+n exec i3l move down 80px
+bindsym $mod+Shift+e exec i3l move up 80px
+bindsym $mod+Shift+i exec i3l move right 80px
+
+# bindsym $mod+Ctrl+h move workspace to output primary
+# bindsym $mod+Ctrl+n move container to output primary
+# bindsym $mod+Ctrl+i move workspace to output right
+
+
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output primary
+workspace 7 output primary
+workspace 8 output primary
+workspace 9 output primary
+workspace 10 output primary
+workspace 11 output right
+
 
 for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
 # Anki window on workspace 9
