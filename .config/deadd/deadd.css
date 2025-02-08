@@ -53,7 +53,9 @@
 }
 
 .blurredBG.notification {
-  background: #313244;
+  background: #1e1e2e;
+  border-bottom-width: 2px;
+  border-radius: 0 0 0 30px;
 }
 
 .blurredBG.notification.critical {
@@ -61,7 +63,7 @@
 }
 
 .notificationInCenter.critical {
-  background: rgba(155, 0, 20, 0.5);
+  background: #313244;
 }
 
 /* Labels */
@@ -74,7 +76,8 @@ label.notification {
 }
 
 label.critical {
-  color: #000;
+  color: #f38ba8;
+  background: #313244;
 }
 label.deadd-noti-center.notification.title {
   margin-left: 15px;
@@ -94,7 +97,8 @@ label.deadd-noti-center.noti-center.date {
   padding-bottom: 8px;
 }
 .notificationInCenter label.critical {
-  color: #000;
+  color: #f38ba8;
+  background: #313244;
 }
 
 label.deadd-noti-center.noti-center.delete-all {
