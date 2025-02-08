@@ -1,3 +1,10 @@
+# Add pyenv to the shell's PATH
+export PATH="$HOME/.pyenv/bin:$PATH"
+# Initialize pyenv
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+
 # Sourcing config
 source "$HOME/.config/shell/aliases.sh"
 
