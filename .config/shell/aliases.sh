@@ -10,6 +10,46 @@ alias l='ls -CF'
 # Add an alias to manage my dotfiles using a bare git repo in .dotfiles folder using $HOME as the working directory
 alias dotgit='/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
 alias dotlgit='lazygit --git-dir=/home/anon/.dotfiles --work-tree=/home/anon'
+
+# Make yazi cd on close 
+function yazi_cd() {
+    local tmp="$(mktemp)"
+    yazi "$@" --cwd-file="$tmp"
+    if [[ -s "$tmp" ]]; then
+        cd "$(cat "$tmp")"
+    fi
+    rm -f "$tmp"
+}
+alias r="yazi_cd"
+
+# Make joshuto cd on close
+function joshuto_cd() {
+	ID="$$"
+	mkdir -p /tmp/$USER
+	OUTPUT_FILE="/tmp/$USER/joshuto-cwd-$ID"
+	env ~/.local/bin/joshuto_with_uberzug.sh --output-file "$OUTPUT_FILE" $@
+	exit_code=$?
+
+	case "$exit_code" in
+		# regular exit
+		0)
+			;;
+		# output contains current directory
+		101)
+			JOSHUTO_CWD=$(cat "$OUTPUT_FILE")
+			cd "$JOSHUTO_CWD"
+			;;
+		# output selected files
+		102)
+			;;
+		*)
+			echo "Exit code: $exit_code"
+			;;
+	esac
+}
+# alias r="joshuto_cd"
+
+# Make ranger cd on close
 rangercd () {
     tmp="$(mktemp)"
     ranger --choosedir="$tmp" "$@"
@@ -19,7 +59,7 @@ rangercd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
-alias r="rangercd"
+#alias r="rangercd"
 alias ranger="rangercd"
 
 man_nvim(){
@@ -85,10 +125,10 @@ alias ph='source $HOME/.python_venv/bin/activate'
 # Check if the user's shell is Bash
 if [ -n "$BASH_VERSION" ]; then
     # autojump script
-    . /usr/share/autojump/autojump.bash
+    # . /usr/share/autojump/autojump.bash
 fi
 # Check if the user's shell is Zsh
 if [ -n "$ZSH_VERSION" ]; then
     # autojump script
-    . /usr/share/autojump/autojump.zsh
+    # . /usr/share/autojump/autojump.zsh
 fi
