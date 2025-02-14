@@ -112,6 +112,7 @@ require("lazy").setup({
     ---------------------------------------------
     --- Debug
     ---------------------------------------------
+    'nvim-neotest/nvim-nio',
     'mfussenegger/nvim-dap',
     'rcarriga/nvim-dap-ui',
 
@@ -518,6 +519,7 @@ require("lazy").setup({
 --   home = vim.fn.expand("~/Documents/myWiki"), -- Put the name of your notes directory here
 -- })
 -- Might be unnecessary with lazy
+
 require "_lspconfig"
 require "_null-ls"
 require "_nvim-treesitter"
@@ -530,7 +532,6 @@ require "_dashboard"
 require "_todo-comments"
 require "_autosession"
 require "_lspkind"
--- require "_copilot"
 require "_nvim-scrollbar"
 require "_gitsigns"
 require "_surround"
@@ -539,3 +540,5 @@ require "_symbols-outline"
 require "_ufo"
 require "_dap"
 require "_diffview"
+
+-- require "_copilot"

@@ -155,19 +155,24 @@ vim.api.nvim_set_keymap("n", ")", "g,", { noremap = true })
 
 
 -- Scroll smooth motion
-local t    = {}
--- Syntax: t[keys] = {function, {function arguments}}
-t['<C-e>'] = { 'scroll', { '-vim.wo.scroll', 'true', '250' } }
-t['<C-n>'] = { 'scroll', { 'vim.wo.scroll', 'true', '250' } }
-t['<C-b>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '450' } }
-t['<C-f>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '450' } }
-t['<C-y>'] = { 'scroll', { '-1', 'false', '1' } }
-t['<C-u>'] = { 'scroll', { '1', 'false', '1' } }
-t['zt']    = { 'zt', { '250' } }
-t['zz']    = { 'zz', { '250' } }
-t['zb']    = { 'zb', { '250' } }
+neoscroll = require('neoscroll')
+local keymap = {
+  ["<C-e>"] = function() neoscroll.ctrl_u({ duration = 250 }) end,
+  ["<C-n>"] = function() neoscroll.ctrl_d({ duration = 250 }) end,
+  ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end,
+  ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end,
+  ["<C-y>"] = function() neoscroll.scroll(-1, { move_cursor = false, duration = 100 }) end,
+  ["<C-u>"] = function() neoscroll.scroll(1, { move_cursor = false, duration = 100 }) end,
+  ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end,
+  ["zz"]    = function() neoscroll.zz({ half_win_duration = 250 }) end,
+  ["zb"]    = function() neoscroll.zb({ half_win_duration = 250 }) end,
+}
+local modes = { 'n', 'v', 'x' }
+for key, func in pairs(keymap) do
+  vim.keymap.set(modes, key, func)
+end
 
-require('neoscroll.config').set_mappings(t)
+
 
 -- Move line up and down
 vim.api.nvim_set_keymap("n", "N", " :m .+1<CR>==", { noremap = true })
@@ -236,7 +241,7 @@ vim.api.nvim_set_keymap("n", "<a-c-n>", "<c-w>-", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-e>", "<c-w>+", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c-r>", "<c-w>r", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-c>", ":bd<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<a-w>", ":hide<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<a-w>", "<c-w>c", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-s-w>", ":tabclose<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-a>", ":vs<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<a-v>", ":sp<CR>", { noremap = true })
@@ -603,6 +608,10 @@ vim.opt.undofile                   = true
 
 -- Only show tab if 2 or more
 vim.opt.stal                       = 1
+
+-- 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.cmd([[colorscheme catppuccin-mocha]])
