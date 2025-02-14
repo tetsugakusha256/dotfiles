@@ -189,12 +189,12 @@ def_key "ctrl-e"
 def_key "ctrl-n"
  page_down
 
-#def_key "home"
-#  move_home
-#
-#def_key "end"
-#  move_end
-#
+def_key "g"
+ move_home
+
+def_key "G"
+ move_end
+
 #def_key "insert"
 #  select_item
 #
