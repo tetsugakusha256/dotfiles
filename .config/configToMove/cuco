@@ -54,9 +54,9 @@ xkb_symbols "basic" {
     key <AC07> { [            n,     N,           minus,                asciitilde,           Down,      Down] };
     key <AC08> { [            e,     E,           parenleft,            leftsinglequotemark,  Up,        Up] };
     key <AC09> { [            i,     I,           parenright,           rightsinglequotemark, Right,     Right ] };
-    key <AC10> { [            o,     O,           dollar,               bar,                  NoSymbol,  NoSymbol ] };
+    key <AC10> { [            o,     O,           dollar,               0x1002260,                  Left,  NoSymbol ] };
     key <AC11> { [   apostrophe,     exclam,      quotedbl,             exclamdown,           NoSymbol,  NoSymbol ] };
-    key <BKSL> { [    brokenbar,     sterling,    ccedilla,             Ccedilla,             NoSymbol,  NoSymbol ] };
+    key <BKSL> { [    0x1002260,     sterling,    ccedilla,             Ccedilla,             NoSymbol,  NoSymbol ] };
 
     key <AB01> { [            z,     Z,           dead_circumflex,      dead_caron,           NoSymbol,  NoSymbol ] };
     key <AB02> { [            x,     X,           7,                    permille,             F7,        0x1002087] };
