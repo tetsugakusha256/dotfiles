@@ -39,11 +39,11 @@ alias clone='alacritty &;disown'
 # When using the dim alias, change the 'search file in dir' function to search for
 # dotfiles only same with the grep function
 dim_nvim(){
-    nvim -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" \
+    nvim ~/.config/nvim/init.lua -c "lua vim.keymap.set('n', '<leader>ss', require('telescope.builtin').find_dotfiles, {})" \
         -c "lua vim.keymap.set('n', '<leader>se', require('telescope.builtin').live_grep_dotfiles, {})" \
         -c "lua vim.keymap.set('n', '<leader>ti', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
         -c "lua vim.keymap.set('n', '<leader>te', require('telescope.builtin').grep_string_gitignore_dotfiles, {})" \
-        -c "SessionRestore" \
+        
     }
 # neovide version of dim_nvim
 vdim_nvim(){
