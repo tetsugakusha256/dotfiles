@@ -10,3 +10,5 @@ option2=latte
 option3=random
 
 feh --randomize --bg-fill $WALLPAPER_PATH
+
+

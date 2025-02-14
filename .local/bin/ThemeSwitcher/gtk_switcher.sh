@@ -1,4 +1,5 @@
 #!/bin/bash
+# I think this doesn't work anymore as catppuccin theme are not maintained anymore
 
 GTK_CONFIG_PATH="$HOME/.config/gtk-3.0/settings.ini"
 GTK_DOT_PATH="$HOME/.gtkrc-2.0"
@@ -12,9 +13,9 @@ gtk_set_mocha () {
     gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Latte-Standard-Peach-Dark:dark
 }
 gtk_set_latte () {
-    sed -i 's/^gtk-theme-name = .*/gtk-theme-name = Catppuccin-Latte-Standard-Peach-Light/' $GTK_CONFIG_PATH
+    sed -i 's/^gtk-theme-name = .*/gtk-theme-name = catppuccin-mocha-yellow-standard+default/' $GTK_CONFIG_PATH
     sed -i 's/^gtk-application-prefer-dark-theme = .*/gtk-application-prefer-dark-theme = false/' $GTK_CONFIG_PATH
-    sed -i 's/^gtk-theme-name = .*/gtk-theme-name = "Catppuccin-Latte-Standard-Peach-Light"/' $GTK_DOT_PATH
+    sed -i 's/^gtk-theme-name = .*/gtk-theme-name = "catppuccin-mocha-yellow-standard+default"/' $GTK_DOT_PATH
     sed -i 's/^gtk-application-prefer-dark-theme = .*/gtk-application-prefer-dark-theme = false/' $GTK_DOT_PATH
-    gsettings set org.gnome.desktop.interface gtk-theme Catppuccin-Latte-Standard-Peach-Light:light
+    gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-yellow-standard+default
 }

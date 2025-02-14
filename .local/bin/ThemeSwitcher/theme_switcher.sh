@@ -2,8 +2,8 @@
 THEME_SWITCHER_PATH="$HOME/.local/bin/ThemeSwitcher"
 THEME_SWITCHER_CONFIG="$HOME/.local/bin/ThemeSwitcher/theme_switcher.conf"
 WALLPAPER_PATH="$HOME/Pictures/Wallpapers/Catppuccin"
-MOCHA_WALLPAPER_PATH="$HOME/Pictures/Wallpapers/Catppuccin/Fav_mocha/"
-LATTE_WALLPAPER_PATH="$HOME/Pictures/Wallpapers/Catppuccin/Fav_latte/"
+MOCHA_WALLPAPER_PATH="$HOME/Pictures/Wallpapers/Catppuccin/Fav_mocha_real/"
+LATTE_WALLPAPER_PATH="$HOME/Pictures/Wallpapers/Catppuccin/Fav_latte_real/"
 
 # Import the support for various program
 source "${THEME_SWITCHER_PATH}/alacritty_switcher.sh"
@@ -69,7 +69,7 @@ else
         fcitx_set_mocha
         emacs_set_mocha
         # Wallpapers
-        feh --bg-scale "${WALLPAPER_PATH}/Fav_mocha/skull_girl_light_color.png"
+        feh --bg-scale "${WALLPAPER_PATH}/Fav_mocha/catppuccin_main.png"
         notify -n theme "  Mocha theme on" "" --hint boolean:transient:true
 
     elif [ $arg1 == $option2 ]; then
@@ -86,7 +86,7 @@ else
         fcitx_set_latte
         emacs_set_latte
         # Wallpapers
-        feh --bg-scale "${WALLPAPER_PATH}/Complex/colorful_landscape.png"
+        feh --bg-scale "${WALLPAPER_PATH}/Fav_latte_real/sakura-trees-over-river.jpg"
 
         notify -n theme "󰖨  Latte theme on" "" --hint boolean:transient:true
 
