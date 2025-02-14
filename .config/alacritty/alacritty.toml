@@ -1,3 +1,4 @@
+import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
 
 [font]
 size = 16.5
@@ -169,6 +170,3 @@ opacity = 0.9
 [window.padding]
 x = 0
 y = 0
-
-[general]
-import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
