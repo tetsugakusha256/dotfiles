@@ -216,6 +216,7 @@ keybinding:
         copyCommitMessageToClipboard: '<c-y>'
         openLogMenu: '<c-l>'
         viewBisectOptions: 'b'
+        startInteractiveRebase: 'l'
     stash:
         popStash: 'g'
         renameStash: 'r'
