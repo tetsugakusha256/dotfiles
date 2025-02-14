@@ -1,7 +1,7 @@
 import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
 
 [font]
-size = 19.5
+size = 16.5
 
 [font.bold_italic]
 family = "Hack Nerd Font Mono"
