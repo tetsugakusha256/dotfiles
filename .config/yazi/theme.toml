@@ -36,8 +36,8 @@ unset_main  = { fg = "#1e1e2e", bg = "#f2cdcd", bold = true }
 unset_alt   = { fg = "#f2cdcd", bg = "#313244"}
 
 [status]
-separator_open  = ""
-separator_close = ""
+separator_open  = "█" 
+separator_close = ""
 
 progress_label  = { fg = "#ffffff", bold = true }
 progress_normal = { fg = "#89b4fa", bg = "#45475a" }
@@ -115,6 +115,21 @@ rules = [
 ]
 
 [icon]
+dirs = [
+  { name = "Audiobooks", text = "󰺂", fg = "#89b4fa" },
+  { name = "Books", text = "󱉟", fg = "#b4befe" },
+  { name = "Documents", text = "󰉋", fg = "#74c7ec" },
+  { name = "Dotconfig", text = "", fg = "#89dceb" },
+  { name = "Games", text = "", fg = "#94e2d5" },
+  { name = "Images", text = "󱦏", fg = "#a6e3a1" },
+  { name = "Jellyfin", text = "󰈰", fg = "#f9e2af" },
+  { name = "Musics", text = "󰎄", fg = "#fab387" },
+  { name = "Notes", text = "󱓧", fg = "#eba0ac" },
+  { name = "Org", text = "󰥟", fg = "#f38ba8" },
+  { name = "Pictures", text = "󰱻", fg = "#cba6f7" },
+  { name = "Safedoc", text = "󱉼", fg = "#f5c2e7" },
+  { name = "Wikipedia", text = "󰖬", fg = "#f2cdcd" },
+]
 files = [
   { name = "kritadisplayrc", text = "", fg = "#cba6f7" },
   { name = ".gtkrc-2.0", text = "", fg = "#f5e0dc" },
