@@ -580,5 +580,5 @@ vim.opt.undofile                   = true
 vim.opt.stal                       = 1
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.cmd([[colorscheme catppuccin-latte]])
+vim.cmd([[colorscheme catppuccin-mocha]])
 vim.cmd([[highlight Normal guibg=NONE ctermbg=NONE]])
