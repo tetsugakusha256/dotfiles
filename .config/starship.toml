@@ -101,8 +101,9 @@ format = '[$user]($style)'
 
 [hostname]
 ssh_only = true
+ssh_symbol = "󰖟"
 style = "bg:blue fg:base"
-format = '[$ssh_symbol$hostname]($style) as '
+format = '[$ssh_symbol ]($style)'
 
 [directory]
 style = "bg:lavender fg:base"

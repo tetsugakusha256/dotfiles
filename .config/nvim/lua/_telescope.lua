@@ -79,7 +79,11 @@ require("telescope").load_extension('harpoon')
 
 -- Get all the files tracked by my dotgit repo and feed it to telescope
 local cmdRes = assert(io.popen(
-  '/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'))
+-- List all file in the main branch of my dotfile config
+-- '/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r main --name-only'
+-- List all file in the acitve branch of my dotfile config
+  '/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon ls-tree --full-tree -r $(/usr/bin/git --git-dir=/home/anon/.dotfiles --work-tree=/home/anon rev-parse --abbrev-ref HEAD) --name-only'
+  ))
 local dotfiles = {}
 for line in cmdRes:lines() do
   table.insert(dotfiles, line)

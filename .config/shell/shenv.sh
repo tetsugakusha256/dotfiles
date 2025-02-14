@@ -7,6 +7,10 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# Custom keybinds for fzf fuzzy finding programs
+export FZF_DEFAULT_OPTS="--bind ctrl-n:down,ctrl-e:up,ctrl-u:half-page-down,ctrl-y:half-page-up,alt-a:select-all,alt-d:deselect-all"
+
 # Problem with weird char
 # export MANPAGER="nvim -R"
 

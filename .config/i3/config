@@ -27,7 +27,7 @@ font pango:Hack Nerd Font Mono 24px
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock-custom.sh
+# exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock-custom.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -37,27 +37,27 @@ exec --no-startup-id xss-lock --transfer-sleep-lock /home/anon/.local/bin/i3lock
 exec --no-startup-id deadd-notification-center
 
 # i3-layouts support
-exec_always i3-layouts
+# exec_always i3-layouts
 
 # backgrounds wallpaper
-exec --no-startup-id feh --bg-scale /home/anon/Pictures/Wallpapers/Catppuccin/mocha/catppuccin_main.png
+# exec --no-startup-id feh --bg-scale /home/anon/Pictures/Wallpapers/Catppuccin/mocha/catppuccin_main.png
 # Polybar
 exec --no-startup-id polybar -r main
 # exec --no-startup-id polybar -r bottom
-exec --no-startup-id sleep 0.1;python /home/anon/.local/bin/hide_polybar_mod4.py
+exec --no-startup-id sleep 0.3;/home/anon/.pyenv/versions/3.12.3/bin/python /home/anon/.local/bin/hide_polybar_mod4.py
 #exec --no-startup-id hideIt.sh -N polybar -H -d top
 
 # Input manager (japanese etc...)
-exec --no-startup-id fcitx5 -d
+# exec --no-startup-id fcitx5 -d
 
+exec --no-startup-id nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
 
 exec --no-startup-id picom --config /home/anon/.config/picom/picom.conf -b
-exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/workspace-2.json'"
-exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
+# exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/anon/.config/i3/workspace-2.json'"
+# exec --no-startup-id "i3-msg 'workspace 5; append_layout /home/anon/.config/i3/workspace-5.json'"
 # exec --no-startup-id "i3-msg 'workspace 7; append_layout /home/anon/.config/i3/workspace-7.json'"
-exec --no-startup-id i3-msg 'workspace 2; exec brave --password-store=basic'
+exec --no-startup-id i3-msg 'workspace 2; exec vivaldi'
 # exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e nvim -c "set textwidth=80" +":cd /home/anon/Documents/myWiki/"'
-# exec --no-startup-id i3-msg 'workspace 7; exec alacritty -e emacs -c "~/Documents/MyOrg/index.org"'
 exec --no-startup-id /home/anon/.local/bin/battery_notification.sh
 
 # Global mapping using xbindkeys saved in ~/.xbindkeysrc
@@ -82,7 +82,11 @@ floating_modifier $mod
 # Change theme
 bindsym $mod+1 exec "~/.local/bin/ThemeSwitcher/theme_switcher.sh latte"
 bindsym $mod+2 exec "~/.local/bin/ThemeSwitcher/theme_switcher.sh mocha"
-bindsym $mod+3 exec "wine /home/anon/.wine/drive_c/Program\ Files/AutoHotkey/AutoHotkey.exe /home/anon/.wine/drive_c/Program\ Files/AutoHotkey/click.ahk"
+bindsym $mod+3 exec "~/.screenlayout/Basic_layout.sh"
+bindsym $mod+4 exec "~/.screenlayout/Only_small.sh"
+bindsym $mod+5 exec "~/.screenlayout/wide_dp2.sh"
+bindsym $mod+6 exec "~/.screenlayout/2_screen.sh"
+bindsym $mod+0 exec "~/.local/bin/screenshot_to_last_ankicard.sh"
 
 # redshift
 # bindsym $mod+1 exec redshift -O 4000 
@@ -134,32 +138,14 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Ctrl+h move left 80px
-bindsym $mod+Ctrl+n move down 80px
-bindsym $mod+Ctrl+e move up 80px
-bindsym $mod+Ctrl+i move right 80px
-bindsym $mod+Shift+h exec i3l move left 80px
-bindsym $mod+Shift+n exec i3l move down 80px
-bindsym $mod+Shift+e exec i3l move up 80px
-bindsym $mod+Shift+i exec i3l move right 80px
-
-# bindsym $mod+Ctrl+h move workspace to output primary
-# bindsym $mod+Ctrl+n move container to output primary
-# bindsym $mod+Ctrl+i move workspace to output right
-
-
-workspace 1 output primary
-workspace 2 output primary
-workspace 3 output primary
-workspace 4 output primary
-workspace 5 output primary
-workspace 6 output primary
-workspace 7 output primary
-workspace 8 output primary
-workspace 9 output primary
-workspace 10 output primary
-workspace 11 output right
-
+bindsym $mod+Shift+h move left 80px
+bindsym $mod+Shift+n move down 80px
+bindsym $mod+Shift+e move up 80px
+bindsym $mod+Shift+i move right 80px
+# bindsym $mod+Ctrl+h exec i3l move left 80px
+# bindsym $mod+Ctrl+n exec i3l move down 80px
+bindsym $mod+Ctrl+e exec i3l move up 80px
+# bindsym $mod+Ctrl+i exec i3l move right 80px
 
 for_window [title="Picture in picture"] floating enable, move absolute position 2027px 45px, resize set width 533px 
 # Anki window on workspace 9
@@ -178,16 +164,16 @@ set $i3l 2columns to workspace $ws9
 set $i3l 2columns to workspace $ws10
 
 # split in horizontal orientation
-bindsym $mod+a exec i3l vstack 0.6 right
+# bindsym $mod+a exec i3l vstack 0.6 right
 # split in vertical orientation
-bindsym $mod+v exec i3l hstack 0.65 down
+# bindsym $mod+v exec i3l hstack 0.65 down
 # split in 2columns mode
 bindsym $mod+z exec i3l 2columns
 
 # split in horizontal orientation
-# bindsym $mod+a split h
+bindsym $mod+a split h
 # split in vertical orientation
-# bindsym $mod+z split v
+bindsym $mod+v split v
 
 # alt-tab like for workspaces
 bindsym Mod4+Tab workspace back_and_forth
@@ -238,6 +224,19 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output primary
+workspace 7 output primary
+workspace 8 output primary
+workspace 9 output primary
+workspace 10 output primary
+workspace 11 output right
+
 # switch to workspace
 bindsym $mod+l workspace number $ws1
 bindsym $mod+u workspace number $ws2
@@ -257,6 +256,16 @@ bindsym XF86MonBrightnessUp exec "brightnessctl set +3%"
 bindsym XF86MonBrightnessDown  exec "brightnessctl set 2%-"
 bindcode 235 exec brightnessctl set 1
 
+workspace 1 output DP-0
+workspace 2 output DP-0
+workspace 3 output DVI-D-0
+workspace 4 output DP-0
+workspace 5 output DP-0
+workspace 6 output DVI-D-0
+workspace 7 output DVI-D-0
+workspace 8 output DP-0
+workspace 9 output DP-0
+workspace 10 output DP-0
 
 # move focused container to workspace
 bindsym $mod+Ctrl+l move container to workspace number $ws1
@@ -304,23 +313,24 @@ mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
 }
 
 # resizing out of rezise mode
-bindsym $mod+Shift+Ctrl+h resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+i move workspace to output right
 bindsym $mod+Shift+Ctrl+n resize grow height 5 px or 5 ppt
 bindsym $mod+Shift+Ctrl+e resize shrink height 5 px or 5 ppt
-bindsym $mod+Shift+Ctrl+i resize grow width 5 px or 5 ppt
 
 bindsym $mod+Shift+b gaps bottom all toggle 33
 #bindsym $mod+r mode "resize"
 
 # Activate smart borders (always) border if more than 1 window
 smart_borders on
-smart_gaps on
+smart_gaps off
 
 default_border pixel 2
 default_floating_border pixel 1
 focus_follows_mouse no
-hide_edge_borders both
+hide_edge_borders smart
 
 # Inner gaps for all windows: space between two adjacent windows (or split containers).
 gaps inner 5
 gaps outer 0
+gaps bottom 0

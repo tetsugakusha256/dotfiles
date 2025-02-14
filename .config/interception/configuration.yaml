@@ -5,4 +5,9 @@
   # FIX: fix my program after moving directories
   #/home/anon/Documents/Code/Key_capture/target/debug/intercept | uinput -d $DEVNODE
   DEVICE:
-    NAME: "AT Translated Set 2 keyboard"
+    NAME: "Keyboard K380 Keyboard"
+- JOB: intercept -g $DEVNODE |  caps2esc 0.15 | dual-function-keys -c /home/anon/.config/interception/dual_function_key_conf.yaml | uinput -d $DEVNODE
+  # FIX: fix my program after moving directories
+  #/home/anon/Documents/Code/Key_capture/target/debug/intercept | uinput -d $DEVNODE
+  DEVICE:
+    NAME: "Razer Razer BlackWidow Elite Keyboard"

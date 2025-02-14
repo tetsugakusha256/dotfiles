@@ -537,7 +537,7 @@ require "_gitsigns"
 require "_surround"
 require "_neoscroll"
 require "_symbols-outline"
-require "_ufo"
+--require "_ufo"
 require "_dap"
 require "_diffview"
 
