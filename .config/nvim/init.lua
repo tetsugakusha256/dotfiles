@@ -1,5 +1,12 @@
 -------------------------------------------------------
--- Functions
+-------------------------------------------------------
+---- Neovim configuration
+---- The very best text editor
+-------------------------------------------------------
+-------------------------------------------------------
+
+-------------------------------------------------------
+--- Custom functions
 -------------------------------------------------------
 
 -- Create new tab with the current buffer inside
@@ -70,9 +77,10 @@ end
 
 -- Create a command to call the function
 vim.cmd("command! PrintTodo lua PrintTodo()")
+
 -------------------------------------------------------
 -------------------------------------------------------
--- EARLY call
+--- EARLY call
 -------------------------------------------------------
 -------------------------------------------------------
 
@@ -95,9 +103,10 @@ vim.g.vimwiki_list = {
 }
 -- vim.g.vimwiki_folding              = 'custom'
 -- vim.g.markdown_folding             = 1
+
 -------------------------------------------------------
 -------------------------------------------------------
--- PLUGINS
+--- PLUGINS
 -------------------------------------------------------
 -------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -116,18 +125,20 @@ require("plugins")
 
 -------------------------------------------------------
 -------------------------------------------------------
--- KEYMAPPINGS
+--- KEYMAPPINGS
 -------------------------------------------------------
 -------------------------------------------------------
 
 -------------------------------------------------------
--- Motion
+--- Motion mappings
+--- Using my custom colmak layout
 -------------------------------------------------------
--- This is for colemak configuration
+
 -- Move the cursor based on physical lines
 vim.api.nvim_set_keymap("n", "n", "(v:count == 0 ? 'gj' : 'j')", { noremap = true, expr = true })
 vim.api.nvim_set_keymap("n", "e", "(v:count == 0 ? 'gk' : 'k')", { noremap = true, expr = true })
 vim.api.nvim_set_keymap("n", "i", "l", { noremap = true })
+vim.api.nvim_set_keymap("n", "I", "L", { noremap = true })
 vim.api.nvim_set_keymap("n", "j", "e", { noremap = true })
 vim.api.nvim_set_keymap("n", "J", "E", { noremap = true })
 vim.api.nvim_set_keymap("n", "k", "n", { noremap = true })
@@ -193,7 +204,7 @@ vim.api.nvim_create_autocmd(
   })
 
 -------------------------------------------------------
--- Git
+--- Git
 -------------------------------------------------------
 -- TODO: only map those when buffer has a git using onattached
 -- Show git tree view
@@ -215,7 +226,7 @@ vim.api.nvim_set_keymap("n", "<leader>gf", ':DiffviewFileHistory %<CR>', { norem
 vim.api.nvim_set_keymap("n", "<a-d>", ':DiffviewFileHistory %<CR>', { noremap = true })
 
 -------------------------------------------------------
--- Tab/Window/Buffer
+--- Tab/Window/Buffer
 -------------------------------------------------------
 --- Tab ---
 vim.keymap.set('n', '<a-o>', move_window_tab, {})
@@ -301,7 +312,7 @@ vim.api.nvim_set_keymap("n", "<CR>", "gd", { noremap = false, silent = true })
 -- vim.api.nvim_set_keymap("n", "<leader>w<leader>w", ":e ~/Documents/myWiki/diary/diary.md <CR>", { noremap = true })
 
 -----------------------------------
--- Plugins mappings
+--- Plugins mappings
 -----------------------------------
 
 -- Magma mappings and opitons
@@ -338,7 +349,7 @@ vim.api.nvim_set_keymap("n", "<leader>l", ":LazyGit<CR>", {})
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -------------------------------------------------------
--- Lsp
+--- Lsp
 -------------------------------------------------------
 
 local lsp_formatting = function()
@@ -375,7 +386,6 @@ vim.keymap.set("n", "<leader>tf", vim.lsp.buf.declaration)
 -- Show info
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>th", vim.lsp.buf.hover)
--- FIX: BS is remap with vimwiki
 vim.keymap.set("n", "<BS>", vim.lsp.buf.hover)
 vim.keymap.set("n", "gr", vim.lsp.buf.references)
 vim.keymap.set("n", "<leader>tr", vim.lsp.buf.references)
@@ -510,13 +520,6 @@ vim.api.nvim_set_keymap("n", "<leader>tt", "*", { noremap = true })
 
 -------------------------------------------------------
 -------------------------------------------------------
--- Autocmd
--------------------------------------------------------
--------------------------------------------------------
-
-
--------------------------------------------------------
--------------------------------------------------------
 -- PARAMS
 -------------------------------------------------------
 -------------------------------------------------------
@@ -578,6 +581,7 @@ vim.opt.undofile                   = true
 
 -- Only show tab if 2 or more
 vim.opt.stal                       = 1
+
 -- Setting colorscheme
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.cmd([[colorscheme catppuccin-mocha]])
