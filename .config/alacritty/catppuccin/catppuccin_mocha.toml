@@ -1,3 +1,7 @@
+##################################################
+#### Alacritty Mocha Theme
+##################################################
+
 [colors.primary]
 background = '#1E1E2E' # base
 foreground = '#CDD6F4' # text
@@ -12,7 +16,7 @@ cursor = '#F5E0DC' # rosewater
 
 [colors.vi_mode_cursor]
 text = '#1E1E2E'   # base
-cursor = '#B4BEFE' # lavender
+cursor = '#fab387' # lavender
 
 # Search colors
 [colors.search.matches]

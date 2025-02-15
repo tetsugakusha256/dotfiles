@@ -11,9 +11,11 @@
 # Catppuccin theme for alacritty (I change this line with a script for ligth/dark mode switch)
 [general]
 import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
+live_config_reload = true
 
 [font]
 size = 17.0
+offset = {x = 0, y = 1}
 
 [font.bold_italic]
 family = "Hack Nerd Font Mono"
@@ -23,17 +25,47 @@ style = "bold italic"
 family = "Hack Nerd Font Mono"
 style = "bold"
 
-[font.offset]
-x = 0
-y = 1
-
 [window]
 decorations = "full"
 opacity = 0.9
+padding = { x = 0, y = 0}
 
-[window.padding]
-x = 0
-y = 0
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+history = 20000
+
+[cursor]
+style = {shape = "Block", blinking = "Never"}
+vi_mode_style = {shape = "Block", blinking = "Never"}
+thickness = 0.15
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "O", mods = "Control|Shift", mode = "Vi" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+# Hints for terminal prompt
+[[hints.enabled]]
+command = ""
+action = "MoveViModeCursor"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "S", mods = "Shift", mode = "Vi" }
+regex = "\\s"
+
+[[hints.enabled]]
+command = ""
+action = "MoveViModeCursor"
+persist = false
+mouse.enabled = true
+binding = { key = "a", mods = "Shift", mode = "Vi" }
+regex = "a"
 
 ##################################################
 ### Mappings
@@ -88,11 +120,6 @@ key = "L"
 mode = "Vi|~Search"
 
 [[keyboard.bindings]]
-action = "ScrollToBottom"
-key = "J"
-mode = "Vi|~Search"
-
-[[keyboard.bindings]]
 action = "ScrollLineUp"
 key = "Y"
 mode = "Vi|~Search"
@@ -115,6 +142,16 @@ action = "ScrollHalfPageDown"
 key = "N"
 mode = "Vi|~Search"
 mods = "Control"
+
+[[keyboard.bindings]]
+action = "FirstOccupied"
+key = "_"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "$"
+mode = "Vi|~Search"
 
 [[keyboard.bindings]]
 action = "Up"
