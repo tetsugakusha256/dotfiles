@@ -1,3 +1,16 @@
+##################################################
+#### Alacritty Configuration 
+#### Terminal with vim like bindings
+##################################################
+
+
+##################################################
+### Visual Config
+##################################################
+
+# Catppuccin theme for alacritty (I change this line with a script for ligth/dark mode switch)
+[general]
+import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
 
 [font]
 size = 17.0
@@ -14,6 +27,21 @@ style = "bold"
 x = 0
 y = 1
 
+[window]
+decorations = "full"
+opacity = 0.9
+
+[window.padding]
+x = 0
+y = 0
+
+##################################################
+### Mappings
+##################################################
+
+##############################
+## Fix some bindings that don't work otherwise because of old reasons
+##############################
 [[keyboard.bindings]]
 chars = "\u001B[105;5u"
 key = "I"
@@ -44,6 +72,10 @@ chars = "\u001B[91;5u"
 key = "LBracket"
 mods = "Control"
 
+
+##############################
+## Vi mode bindings
+##############################
 [[keyboard.bindings]]
 action = "ToggleViMode"
 key = "Space"
@@ -147,6 +179,9 @@ key = "Return"
 mode = "Search|~Vi"
 mods = "Shift"
 
+##############################
+## Other bindings
+##############################
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
 key = "Return"
@@ -161,14 +196,3 @@ mods = "Control"
 action = "DecreaseFontSize"
 key = "PageDown"
 mods = "Control"
-
-[window]
-decorations = "full"
-opacity = 0.9
-
-[window.padding]
-x = 0
-y = 0
-
-[general]
-import = ["/home/anon/.config/alacritty/catppuccin/catppuccin_mocha.toml"]
